@@ -29,6 +29,18 @@ class:
 name_NI=1_RA=0_OS=1_PoF=0_AI=0_CP=1_UI=1_CP2=1_W=0_R=0+S;gun_damage=100_charge=100;gun_recharge=100+AAD;bot_HP=100_armor=200_damage=100_strong=3_critical-dmg=45_drop-trophy:smart-card=write=True
 ```
 
+### Характеристики SE зависят друг от друга:
+Например, у устройства у которого нет панели управления и портов, не может иметь физического доступа.
+
+``control_panel`` - это интерфейс пользователя для физического доступа.
+``user_interface`` - UI для удаленного доступа.
+
+если порты закрыты, а именно ``connection_port == 0``, то физическиц доступ не возможен.
+
+``possibility_of_flashing`` - возможность прошивки - позволяет изменить любое поле, кроме storage и access_algorithm_dict.
+
+Но прошивка доступна лишь если есть права на запись.
+
 А вот так буде выглядить карта доступа. tool_id:
 ```Python
 name_access_card_read_write # Чтение Запись
