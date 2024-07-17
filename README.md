@@ -64,3 +64,12 @@ bot_HP=100_armor=200_damage=100_strong=3_critical-dmg=45_drop-trophy:gun_damage=
 ```Python
 patron_recharge:gun_damage=500_charge=0
 ```
+
+
+
+
+
+
+
+
+
