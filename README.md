@@ -60,11 +60,24 @@ class:
 bot_HP=100_armor=200_damage=100_strong=3_critical-dmg=45_drop-trophy:gun_damage=100
 ```
 
+
+## tool_id:
+На основе этоц строки характеристик были реализованы другие ID.
+Шаблон:
+```Python
+nane_damage=500_charge=100
+```
+
+## Оружие. tool_id:
 Пример зарядов для оружия, относиться к механики зарядов у инструментов. tool_id:
 ```Python
 patron_recharge:gun_damage=500_charge=0
 ```
 
+Пример оружие:
+```Python
+gun_damage=500_charge=0
+```
 
 
 
