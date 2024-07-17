@@ -22,6 +22,7 @@ def save_data_store():
 # Тут вывод оставить как есть! пока что.  #
 #-----------------------------------------#
 def get_store():
+    from functions import buy, sell
     while True:
         print("\033[32m{}".format("Welcom to the Store menu:")+"\033[0m{}".format("\n"))
         for tool_id, ETO in store.items():
