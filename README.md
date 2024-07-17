@@ -1,18 +1,27 @@
 # protocol_wd_3_game
+## Описание:
+``Инструменты`` и ``Умная электорника``, ``NPC`` - это три главных класса. ``Умная электроника`` и ``NPC`` - это цели, которые нужно атаковать и взламывать, 
+а ``инструменты класс`` общего назначения. Все предметы в ``инвенторе`` - это ``инструменты``, все враги, это ``NPC``, а ``умная электроника`` любая электроника
+- ноутбук, умное оружие, карты доступа. По сути, есть ``игрок`` и ``цели``.
+
+Вся эта пограмма, это движок игры, которая по сути менеджер задачь с элементами ролевой игры. Программа относиться к классу игр по геймификации.
 
 ## SE - Smart Electronics:
 ```Python
 class:
-      se.network_interface       = int(base_char_all[0][1]) # NI - network_interface
-	    se.remote_access           = int(base_char_all[1][1]) # RA - remote_access
-	    se.operation_system        = int(base_char_all[2][1]) # OS - operation_system
-	    se.possibility_of_flashing = int(base_char_all[3][1]) # PoF - possibility_of_flashing
-	    se.artificial_intelligence = int(base_char_all[4][1]) # AI - artificial_intelligence
-	    se.connection_port         = int(base_char_all[5][1]) # CP - connection_port
-	    se.user_interface          = int(base_char_all[6][1]) # UI - user_interface
-	    se.control_panel           = int(base_char_all[7][1]) # CP2 - control_panel
-	    se.write                   = int(base_char_all[8][1]) # W - write
-	    se.read                    = int(base_char_all[9][1]) # R - read
+	se.network_interface       = int(base_char_all[0][1]) # NI - network_interface
+	se.remote_access           = int(base_char_all[1][1]) # RA - remote_access
+	se.operation_system        = int(base_char_all[2][1]) # OS - operation_system
+	se.possibility_of_flashing = int(base_char_all[3][1]) # PoF - possibility_of_flashing
+	se.artificial_intelligence = int(base_char_all[4][1]) # AI - artificial_intelligence
+	se.connection_port         = int(base_char_all[5][1]) # CP - connection_port
+	se.user_interface          = int(base_char_all[6][1]) # UI - user_interface
+	se.control_panel           = int(base_char_all[7][1]) # CP2 - control_panel
+	se.write                   = int(base_char_all[8][1]) # W - write
+	se.read                    = int(base_char_all[9][1]) # R - read
+
+	access_algorithm_dict = arr[11]            # Список целей, список NPC которые имеют карты доступа. AAD - access_algorithm_dict
+	storage = arr[12]                          # Тут трофеи - инструменты, ETO, карты доступа. Их может быть сколько угодно, но больше чем у NPC. S - storage
 ```
 
 Пример SE_ID:
@@ -34,6 +43,7 @@ netbook_smart_electronics=1
 
 ## NPC:
 ```Python
+class:
                 self.name = arr[0]
                 self.HP = int(arr[1])
                 self.armor = int(arr[2])
