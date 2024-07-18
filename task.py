@@ -522,10 +522,10 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
             import person
             
             ID = input("ID> ")
-            ID = int(ID)
             if ID.isdigit() == False:
                 print("\033[31m{}".format("ERROR: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
                 break
+            ID = int(ID)
             task = task_dict[ID]
             npc = NPC.get_instance()
             prof = Profile.get_instance()
