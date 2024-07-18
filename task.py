@@ -522,6 +522,7 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
             import person
             
             ID = input("ID> ")
+            ID = int(ID)
             if ID.isdigit() == False:
                 print("\033[31m{}".format("ERROR: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
                 break
@@ -530,7 +531,6 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
             prof = Profile.get_instance()
             npc_attack(prof)
             task.set_status("No active") # Задачи из словарей удаляются вообще?
-            ID = int(ID)
             del task_dict[ID]            # Теперь - удаляется )
             print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Поражение зафиксировано !"))
         if number == "3":
