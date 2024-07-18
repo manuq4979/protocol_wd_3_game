@@ -138,7 +138,7 @@ class SingleTask(Task):
     # Вернет False если нет.
     def check_complition_time(self):
         res = self.check_time(self.execute_to)
-        if res == 2 or res == False:
+        if res == False:
             return False
         return True
     
