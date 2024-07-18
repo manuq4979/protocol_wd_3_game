@@ -260,7 +260,7 @@ def check_relevance_task():
     for ID, task in list(daily_task_dict.items()):
         if task.get_status() == "Active":        # Если задание активно
             start_date = task.get_start_date()   # Получаем дату начала
-            if task.check_time(start_date) == 1: # Если дата начала уже прошла, то и день прошел с момента создания - итог: игрок не успел выполнить задание в срок
+            if task.check_time(start_date) == 1 or task.check_time(start_date) == True: # Если дата начала уже прошла или дата повтора сегодня наступила, то и день прошел с момента создания прошел - итог: игрок не успел выполнить задание в срок
                 task.set_status("No active")     # Если так, то сделать задние не активным
                 npc = NPC.get_instance()
                 if npc.installed_contender != "None":
