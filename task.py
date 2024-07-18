@@ -514,6 +514,7 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
                     prof.add_reward(task.complexity, ID=ID, task_class="одиночное") 
                                                      # Добавляем награду в соответсвии с настройками вознаграждения в зависимости от сложности задания
                     task.set_status("No active")
+                    ID = int(ID)
                     del task_dict[ID]
             if habit_menu == True:
                 get_series_points_menu(task_dict)
@@ -529,6 +530,7 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
             prof = Profile.get_instance()
             npc_attack(prof)
             task.set_status("No active") # Задачи из словарей удаляются вообще?
+            ID = int(ID)
             del task_dict[ID]            # Теперь - удаляется )
             print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Поражение зафиксировано !"))
         if number == "3":
