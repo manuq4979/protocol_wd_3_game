@@ -52,7 +52,6 @@ class Task:
     # Вернет False если ещё рано.
     def check_time(self, activation_time):
         now_time = datetime.now().date()
-        now_time = datetime.strptime(now_time, '%Y-%m-%d')
         activation_time = datetime.strptime(activation_time, '%Y-%m-%d')
 
         
