@@ -486,7 +486,8 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
         print("\n-----------")
         print("1. Добавить")
         if habit_menu == False:
-            print("2. Завершить")
+            print("2. Завершено")
+            print("2.5. Провалено")
         else:
             print("2. Выбрать")
         print("3. Удалить")
@@ -515,7 +516,13 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
                     task.set_status("No active")
             if habit_menu == True:
                 get_series_points_menu(task_dict)
-        
+        if number == "2.5":
+            import person
+            npc = NPC.get_instance()
+            prof = Profile.get_instance()
+            npc_attack(prof)
+            task.set_status("No active") # Задачи из словарей удаляются вообще?
+            print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Поражение зафиксировано !"))
         if number == "3":
             del_task()
         if number == "4":
