@@ -138,9 +138,9 @@ class SingleTask(Task):
     # Вернет False если нет.
     def check_complition_time(self):
         res = self.check_time(self.execute_to)
-        if res == False:
-            return False
-        return True
+        if res == 2:
+            return True
+        return False
     
     def input_single_task(self):
         meta_data = self.input_task("Выполнить нужно до", "До")
