@@ -514,14 +514,22 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
                     prof.add_reward(task.complexity, ID=ID, task_class="одиночное") 
                                                      # Добавляем награду в соответсвии с настройками вознаграждения в зависимости от сложности задания
                     task.set_status("No active")
+                    del task_dict[ID]
             if habit_menu == True:
                 get_series_points_menu(task_dict)
         if number == "2.5":
             import person
+            
+            ID = input("ID> ")
+            if ID.isdigit() == False:
+                print("\033[31m{}".format("ERROR: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
+                break
+            task = task_dict[ID]
             npc = NPC.get_instance()
             prof = Profile.get_instance()
             npc_attack(prof)
             task.set_status("No active") # Задачи из словарей удаляются вообще?
+            del task_dict[ID]            # Теперь - удаляется )
             print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Поражение зафиксировано !"))
         if number == "3":
             del_task()
