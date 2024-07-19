@@ -2,6 +2,12 @@ from datetime import datetime, timedelta
 from player_profile import *
 from person import *
 
+
+def print_current_date():
+    current_date = str(datetime.now().date())
+    print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Текущая дата: ["+current_date+"]."))
+
+
 class Task:
     # Пример "2000-01-01" времени.
     def __init__(self, title="", description="", complexity="+", activation_time="", reward="", status="Active"):
