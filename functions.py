@@ -242,7 +242,7 @@ def check_relevance_task():
     # Проверка Одиночных заданий:
     for ID, task in list(single_task_dict.items()):
         res = task.check_complition_time()
-        print(res)
+    
         if res == True:                         # если игрок просрочил задание
             npc = NPC.get_instance()
             if npc.installed_contender != "None":
