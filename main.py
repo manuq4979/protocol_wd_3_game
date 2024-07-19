@@ -18,6 +18,7 @@ def print_NPC():
 
 while(True):
     print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Используйте команду help, если не разобрались!")+"\n")
+    functions.print_current_date()
     functions.check_relevance_task() # Проверяем, не просрочил ли игрок задания или не пора бы сделать задание активным или вовсе сбросить серии просто у задний привычек
     functions.check_HP()
     print_NPC()
