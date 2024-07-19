@@ -47,6 +47,7 @@ class Task:
     def get_status(self):
         return self.status
     
+    # Может быть другой часовой пояс!
     # Вернет 1 если дата уже прошла.
     # Вернет 2 если дата сегодня.
     # Вернет False если ещё рано.
@@ -183,6 +184,20 @@ class DailyTask(Task):
     def set_series(self, series):
         self.series = series
     
+    
+    # Вернет True если уже день закончился
+    # и False если ещё дня не прошло.
+    def check_day_end(self):
+        start_date = self.start_date
+        try: # не ожиданный баг тут, а вдруг?)
+            start_date = datetime.strptime(start_date, "%Y-%m-%d").date()
+        except TypeError:
+            pass
+        next_date = start_date + timedelta(days=1)
+        res = self.check_time(next_date) 
+        if res == 1 or res == 2:
+            return True
+        return False
     
     # Вернеет 1, если дата уже прошла.
     # Вернет True если дата сегодня.
