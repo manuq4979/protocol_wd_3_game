@@ -89,7 +89,7 @@ class Task:
                 return "ERROR"
         if no_date == True:
             if date.isdigit() == False:
-                print("\033[31m{}".format("ERROR: ")+"\033[0m{}".format("Напишите только кол-во дней число, даже год писать нужно днями !"))
+                print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Напишите только кол-во дней число, даже год писать нужно днями !"))
                 return "ERROR"
             
         
