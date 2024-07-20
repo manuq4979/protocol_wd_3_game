@@ -364,6 +364,7 @@ def get_history():
     prof = Profile.get_instance()
     prof.get_history()
     print("\n")
+    print("\nMenu: ----------------------")
     print("0. Назад.")
     print("\n#######################################################\n")
     command = input("> ")
