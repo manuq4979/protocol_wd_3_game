@@ -403,7 +403,12 @@ def find_recharge_for_tool_id(prof, finding_tool_id, array_tool=[], i=0):
     for tool_id, price in inventory.items():
         tool_recharge_id = Profile.decoding_of_characteristics(tool_id)         # tool_recharge_id == ['recharge', tool_id]
         if len(tool_recharge_id) == 2:                                          # Может содержать ['']
-            if tool_recharge_id[1] == finding_tool_id:
+
+            # Инструмент может иметь рандомное значение charge - заряда, из-за чего обычный поиск может не дать результата, поэтому искать инструмент буду по имени.
+            finding_tool_id_arr = finding_tool_id.split("_")
+            tool_recharge_id_arr = tool_recharge_id[1].split("_")
+            
+            if tool_recharge_id_arr[0] == finding_tool_id_arr[0]:
                 prof.del_tools_id(tool_id)                                      # Удаляем предмет перезарядки, это типа значит что мы перезарядили предммет
                 prof.del_keep_tool(finding_tool_id)                             # заряд предмета будет изменен из чего следует что нужно стереть старый tool_id
                 charge = 100                                                    # 1 заряд всегда равен 100 уровням заряда!
