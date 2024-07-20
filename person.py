@@ -68,6 +68,7 @@ class NPC:
         
         # Код выше некорректно трофеи создает, а именно, разбеляет patron_recharge:tool_id на 2 разных масива,
         # Код ниже их снова объеденяет:
+        drop_trophy = drop_trophy[2:] # удаляет 2 лишних позиции в массиве.
         size = len(drop_trophy)
         drop_trophy_new = []
         flag = 0
