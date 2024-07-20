@@ -73,7 +73,9 @@ class NPC:
         drop_trophy_new = []
         flag = 0
         for i in range(size):
-            flag = 0
+            if flag == 1:
+                flag = 0
+                continue
             if drop_trophy[i].find("recharge") != -1:
                 res = drop_trophy[i] + ":" + drop_trophy[i+1]
                 drop_trophy_new.append(res)
