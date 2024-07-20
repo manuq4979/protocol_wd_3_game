@@ -220,7 +220,7 @@ def get_inventory():
         keep_tool      = prof.get_keep_tool()
         slots          = prof.get_slots()
         slots_occupied = prof.get_slots_occupied()
-        print("\nЭкиперованно("+str(slots_occupied)+" из "+str(slots)+"):")
+        print("\033[32m{}".format("\nЭкиперованно")+"\033[0m{}".format("(")+str(slots_occupied)+" из "+str(slots)+"):")
         for tool in keep_tool:
             print("Инструмент: "+tool)
         print("\nMenu: ----------------------")
