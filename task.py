@@ -5,7 +5,7 @@ from person import *
 
 def print_current_date():
     current_date = str(datetime.now())
-    print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Текущая дата и время: ["+current_date+"]."))
+    print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Текущая дата и время: ["+current_date+"]."))
 
 
 class Task:
