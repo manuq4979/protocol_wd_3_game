@@ -349,7 +349,7 @@ def get_load_habit_task_dict(habit_task_dict):
 
 
         
-        
+# Инициализация Одиночных задани:
 # инициализация должна быть из файла!
 with open("DataApp/single_task.txt", "r", encoding="utf-8") as file:
     json_string = file.read()
@@ -363,8 +363,9 @@ with open("DataApp/single_task.txt", "r", encoding="utf-8") as file:
             json_string = json.dumps(arr1)
             file.write(json_string)
             print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Save Single Task class data!"))
-    
 
+
+# Инициализация Заданиц Привычек:
 # инициализация должна быть из файла!
 with open("DataApp/habit_task.txt", "r", encoding="utf-8") as file:
     json_string = file.read()
@@ -378,8 +379,9 @@ with open("DataApp/habit_task.txt", "r", encoding="utf-8") as file:
             json_string = json.dumps(arr2)
             file.write(json_string)
             print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Save Habit Task class data!"))
-            
-            
+
+
+# Инициализация Дневных Заданий:
 # инициализация должна быть из файла!
 with open("DataApp/daily_task.txt", "r", encoding="utf-8") as file:
     json_string = file.read()
@@ -397,7 +399,14 @@ with open("DataApp/daily_task.txt", "r", encoding="utf-8") as file:
         
         
         
-
+def print_counter_tasks():
+    stl = len(single_task_dict)
+    dtl = len(daily_task_dict)
+    htl = len(habit_task_dict)
+    print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Общий подсчет кол-во заданий:"))
+    print("[Ежедневные задания]: "+str(dtl))
+    print("[Одиночные задания]: "+str(stl))
+    print("[Задания привычки]: "+str(htl))
 
 
 def add_single_task():
