@@ -34,6 +34,7 @@ def get_store():
             print("\n")
             print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("В данный момент товаров на продажу нет!\n"))
         
+        print("\nMenu: ----------------------")
         print("1. Купить")
         print("2. Продать")
         print("3. Назад")
