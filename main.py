@@ -23,6 +23,8 @@ while(True):
     print("\n")
     functions.print_current_date()
     print("\n")
+    functions.print_counter_tasks()
+    print("\n")
     functions.check_relevance_task() # Проверяем, не просрочил ли игрок задания или не пора бы сделать задание активным или вовсе сбросить серии просто у задний привычек
     functions.check_HP()
     print_NPC()
