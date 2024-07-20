@@ -91,7 +91,8 @@ class Profile:
         from datetime import datetime
         self.history.append(str(datetime.now())+"\n"+history_line)
         # print("\033[32m{}".format("[info]:")+"\033[0m{}".format("Готово!\n\n"))
-        
+    
+    # print history по сути:
     def get_history(self):
         print("\033[32m{}".format("ETO history:")+"\033[0m{}".format("\n"))
         for history_line in self.history:
@@ -357,10 +358,17 @@ def get_prof():
         print("\033[32m{}".format("Profile:")+"\033[0m{}".format(""))
         prof.get_profile()
 
+# print history по сути:
 def get_history():
+    print("\n#######################################################\n")
     prof = Profile.get_instance()
     prof.get_history()
-    
+    print("\n")
+    print("0. Назад.")
+    print("\n#######################################################\n")
+    command = input("> ")
+    if command == "0":
+        return
     
     
 def calculate_drop_trophy(npc):
