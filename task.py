@@ -250,7 +250,7 @@ class DailyTask(Task):
 
 class HabitTask(Task):
     def __init__(self, title="", description="", complexity="", activation_time="", reward="", status="Active", useful=True, useless=False, series_point=0):
-        super().__init__(title, description, complexity, int(activation_time), reward, status)
+        super().__init__(title, description, complexity, activation_time, reward, status)
         self.useful = useful   # полезная
         self.useless = useless # бесполезная
         self.series_point = series_point # серия
