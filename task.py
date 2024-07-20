@@ -495,6 +495,7 @@ def get_series_points_menu(task_dict):
 def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
     index = 0
     while True:
+        print("\n#######################################################\n")
         task_list = task_dict.values()           # Берем массив задачь - получаем dict_values([])
         task_list = list(task_list)              # dict_values([]) преобразуем в []
         pages = get_pages(task_list)             # Делим на страницы
@@ -517,7 +518,8 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
         if index > 0:
             print("5. Назад")
         print("0. Выход")
-            
+        print("\n#######################################################\n")
+        
         number = input("> ")
         
         if number == "1":
