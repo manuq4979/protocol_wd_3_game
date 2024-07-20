@@ -66,6 +66,21 @@ class NPC:
         n = res-1
         char_line = char_line[:n]
         
+        # Код выше некорректно трофеи создает, а именно, разбеляет patron_recharge:tool_id на 2 разных масива,
+        # Код ниже их снова объеденяет:
+        size = len(drop_trophy)
+        drop_trophy_new = []
+        flag = 0
+        for i in range(size):
+            flag = 0
+            if drop_trophy[i].find("recharge") != -1:
+                res = drop_trophy[i] + ":" + drop_trophy[i+1]
+                drop_trophy_new.append(res)
+                flag = 1
+            elif flag == 0:
+                drop_trophy_new.append(drop_trophy[i])
+        drop_trophy = drop_trophy_new
+        
         chars = char_line.split("_")
         self.name = chars[0]
         chars.remove(self.name)
