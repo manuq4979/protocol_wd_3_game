@@ -214,7 +214,7 @@ def get_inventory():
     tools = prof.get_tools_id()
     while True:
         for tool, price in tools.items():
-            print("Инструмент: "+tool)
+            print("\033[32m{}".format("[Инструмент]: ")+"\033[0m{}".format(tool))
             print("Его можно продать в магазине за "+str(price)+" ETO.\n\n")
             
         keep_tool      = prof.get_keep_tool()
