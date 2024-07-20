@@ -355,7 +355,7 @@ def get_prof():
         if res == "1":
             prof.set_HP(100)                                # Далее просто восстанавливаем HP и продолжаем игру!
     else:
-        print("\033[32m{}".format("Profile:")+"\033[0m{}".format(""))
+        print("\033[32m{}".format("[Profile]:")+"\033[0m{}".format(""))
         prof.get_profile()
 
 # print history по сути:
