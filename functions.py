@@ -208,6 +208,7 @@ def take_off(tool_id):
     Profile.take_off(tool_id)
 
 def get_inventory():
+    print("\n#######################################################\n")
     print("\033[32m{}".format("Inventory:")+"\033[0m{}".format("\n"))
     prof = Profile.get_instance()
     tools = prof.get_tools_id()
@@ -226,7 +227,10 @@ def get_inventory():
         print("1. Экипировать")
         print("2. Снять предмет")
         print("3. Назад.")
+        print("\n#######################################################\n")
+        
         text = input("> ")
+        
         if text == "1":
             tool_id = input("tool_id> ")
             keeping_tool(tool_id)
