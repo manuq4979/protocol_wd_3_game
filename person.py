@@ -82,7 +82,7 @@ class NPC:
                 flag = 1
             elif flag == 0:
                 drop_trophy_new.append(drop_trophy[i])
-        drop_trophy = drop_trophy_new
+        drop_trophy = ["drop-trophy", drop_trophy_new]
         print("drop: "+str(drop_trophy))
         
         chars = char_line.split("_")
@@ -132,7 +132,7 @@ class NPC:
                     if self.critical_dmg > 45:
                         self.critical_dmg = 45
             if tool[0] == "drop-trophy":
-                self.drop_trophy = tool[-1]
+                self.drop_trophy = tool[1]
 
     def keeping_tool_NPC(self, tool_id):
         self.apply_to_characteristics_NPC(tool_id)
