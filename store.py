@@ -24,14 +24,20 @@ def save_data_store():
 def get_store():
     from functions import buy, sell
     while True:
-        print("\033[32m{}".format("Welcom to the Store menu:")+"\033[0m{}".format("\n"))
+        print("\n#######################################################\n")
+        print("\033[32m{}".format("[Welcom to the Store menu]: ")+"\033[0m{}".format("\n"))
         for tool_id, ETO in store.items():
             print("ID: "+str(tool_id) + "\nЦена: "+str(ETO)+" ETO")
             print("\n")
+        # Элемент дизайна:
+        if len(store) == 0: # если в магазине нет товара, то будет рапечатано:
+            print("\n")
+            print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("В данный момент товаров на продажу нет!\n"))
         
         print("1. Купить")
         print("2. Продать")
         print("3. Назад")
+        print("\n#######################################################\n")
         text = input("> ")
         
         if text == "3":
