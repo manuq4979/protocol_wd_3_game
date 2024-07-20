@@ -17,6 +17,7 @@ def print_NPC():
         print("\n")
 
 while(True):
+    print("#######################################################")
     print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Используйте команду help, если не разобрались!")+"\n")
     print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Если игрок погибает, то задания вероятно будут все сброшены!(это баг который стал фичей)"))
     functions.print_current_date()
@@ -24,22 +25,29 @@ while(True):
     functions.check_HP()
     print_NPC()
     functions.get_prof()
+    print("#######################################################")
     
     text = input(PS1)
 	
     if text == "2":
+        print("#######################################################")
         functions.save_data_store()
         functions.save_data_profile()
         functions.save_data_person()
         functions.save_data_task()
         functions.save_data_SE()
+        print("#######################################################")
         break
 	
     if text == "help":
+        print("#######################################################")
         print("\033[32m{}".format("Helper:")+"\033[0m{}".format(""))
         print(help)
+        print("#######################################################")
 	
     if text == "1":
+        print("#######################################################")
         functions.get_menu()
+        print("#######################################################")
 
     
