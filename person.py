@@ -83,7 +83,6 @@ class NPC:
             elif flag == 0:
                 drop_trophy_new.append(drop_trophy[i])
         drop_trophy = ["drop-trophy", drop_trophy_new]
-        print("drop: "+str(drop_trophy))
         
         chars = char_line.split("_")
         self.name = chars[0]
