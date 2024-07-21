@@ -400,7 +400,7 @@ with open("DataApp/daily_task.txt", "r", encoding="utf-8") as file:
         
 def get_count_task(task_dict, size):
     print(str(task_dict)+" "+str(size))
-    if size == 0:
+    if len(task_dict) == 0:
         return 0
     l = 0
     for task in task_dict.values():
