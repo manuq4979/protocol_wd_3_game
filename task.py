@@ -398,7 +398,7 @@ with open("DataApp/daily_task.txt", "r", encoding="utf-8") as file:
         
         
         
-def get_count_task(task_dict, size):
+def get_count_task(task_dict):
     print(str(task_dict)+" "+str(size))
     print(len(task_dict))
     if len(task_dict) == 0:
@@ -410,18 +410,14 @@ def get_count_task(task_dict, size):
     return l
 
 def print_counter_tasks():
-    stl = len(single_task_dict)
-    dtl = len(daily_task_dict)
-    htl = len(habit_task_dict)
-    
-    single_len = get_count_task(single_task_dict, stl)
-    daily_len = get_count_task(daily_task_dict, dtl)
-    habit_len = get_count_task(habit_task_dict, htl)
+    single_len = get_count_task(single_task_dict)
+    daily_len = get_count_task(daily_task_dict)
+    habit_len = get_count_task(habit_task_dict)
     
     
     print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Общий подсчет кол-во заданий:"))
     print("[Ежедневные задания]: "+str(daily_len))
-    print("[Одиночные задания]: "+str(daily_len))
+    print("[Одиночные задания]: "+str(single_len))
     print("[Задания привычки]: "+str(habit_len))
 
 
