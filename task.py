@@ -403,8 +403,7 @@ def get_count_task(task_dict, size):
     if size == 0:
         return 0
     l = 0
-    for i in range(0, size):
-        task = task_dict[i]
+    for task in task_dict:
         if task.get_status() == "Active":
             l += 1
     return l
