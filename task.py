@@ -463,13 +463,22 @@ def del_daily_task():
     del daily_task_dict[ID]
     print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Задание ID_"+str(ID)+" удалено !"))
     
-
+def del_no_active_task(task_list):
+    new_task_list = []
+    for task in task_list:
+        if task.get_status() == "Active":
+            new_task_list.append(task)
+    return new_task_list
+    
 def get_pages(task_list, chunk_size=3):
-    if get_count_task(task_list, len(task_list)) == 0:
+    # Удаляем не активные задачи, так как они тоже в списке и мешают отображать страницы корректно:
+    task_list = del_no_active_task(task_list)
+    
+    if len(task_list) == 0:
         return []
     new_task_list = []
     page = []
-    size = get_count_task(task_list, len(task_list))
+    size = len(task_list)
     chunk_size = 3
     step = chunk_size
     i = 0
