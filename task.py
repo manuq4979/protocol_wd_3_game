@@ -398,15 +398,28 @@ with open("DataApp/daily_task.txt", "r", encoding="utf-8") as file:
         
         
         
-        
+def get_count_task(task_dict, size):
+    l = 0
+    for i in round(size):
+        task = task_dict[i]
+        if task.get_status() == "Active":
+            l += 1
+    return l
+
 def print_counter_tasks():
     stl = len(single_task_dict)
     dtl = len(daily_task_dict)
     htl = len(habit_task_dict)
+    
+    single_len = get_count_task(single_task_dict, stl)
+    daily_len = get_count_task(daily_task_dict, dtl)
+    habit_len = get_count_task(habit_task_dict, htl)
+    
+    
     print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Общий подсчет кол-во заданий:"))
-    print("[Ежедневные задания]: "+str(dtl))
-    print("[Одиночные задания]: "+str(stl))
-    print("[Задания привычки]: "+str(htl))
+    print("[Ежедневные задания]: "+str(daily_len))
+    print("[Одиночные задания]: "+str(daily_len))
+    print("[Задания привычки]: "+str(habit_len))
 
 
 def add_single_task():
@@ -450,11 +463,11 @@ def del_daily_task():
     
 
 def get_pages(task_list, chunk_size=3):
-    if len(task_list) == 0:
+    if get_count_task(task_list, len(task_list)) == 0:
         return []
     new_task_list = []
     page = []
-    size = len(task_list)
+    size = get_count_task(task_list, len(task_list))
     chunk_size = 3
     step = chunk_size
     i = 0
