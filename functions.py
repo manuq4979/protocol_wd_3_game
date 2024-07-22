@@ -287,7 +287,8 @@ def check_relevance_task():
 
             this_day = datetime.now().date()
             task.set_start_date(this_day)        # Устанавливаем новую дату начала - а именно лень активации, потому что если оставить прежний день, то окажется что задание не было выполненно, а было провалено!
-            
+            new_description = "[Повтор]: "+str(this_day)+": "+str(task.get_repeat())
+            task.set_description(new_description)# Новое описание, в котором дата начала также изменена на сегодня - дату повтора.
 
 
 def check_HP():
