@@ -285,7 +285,7 @@ def check_relevance_task():
             task.set_status("Active")            # Делаем задание активным
             from datetime import datetime
 
-            this_day = datetime.now().date()
+            this_day = str(datetime.now().date())
             task.set_activation_time(this_day)   # Устанавливаем новую дату начала - а именно лень активации, потому что если оставить прежний день, то окажется что задание не было выполненно, а было провалено!
             
 
