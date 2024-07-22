@@ -283,6 +283,10 @@ def check_relevance_task():
         res = task.check_repeat_time()           # Далее, получаем ответ на вопрос: наступила ли дата повтора задания
         if res == True:                          # И если дата уже наступила, то пора снова задание делать активным
             task.set_status("Active")            # Делаем задание активным
+            from datetime import datetime
+
+            this_day = datetime.now().date()
+            task.set_activation_time(this_day)   # Устанавливаем новую дату начала - а именно лень активации, потому что если оставить прежний день, то окажется что задание не было выполненно, а было провалено!
             
 
 
