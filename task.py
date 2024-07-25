@@ -206,7 +206,7 @@ class DailyTask(Task):
         return False
     
     # Вернеет 1, если дата уже прошла.
-    # Вернет True если дата сегодня.
+    # Вернет True если дата повтора или дата начала сегодня.
     # Вернет False если ещё рано.
     def check_repeat_time(self):
         # Создаём локальную переменную:
@@ -226,11 +226,13 @@ class DailyTask(Task):
         self.start_data = res
         # проверяем пора ли делать повтор задания,
         # т.е просто проверяем наступила или прошла дата:
-        if self.check_time(res) == 1: # дата уже прошла?
-            return 1             # дата прошла, ожидаем следующего раза
-        if self.check_time(res) == 2: # сегодня запланированная дата для повтора?
-            return True          # Да
-        return False             # Нет
+        if self.check_time(res) == 1:  # дата уже прошла?
+            return 1                   # дата прошла, ожидаем следующего раза
+        if self.check_time(res) == 2:  # сегодня запланированная дата для повтора?
+            return True                # Да
+        if self.check_time(date) == 2: # если сегодня дата указанная как начало, то также вернуть True, ведь задачу уже должна быть отображена, начало задания де сегодня!
+            return True
+        return False                   # Если сегодня не дата начала и не дата повтора то - Нет
         
     def input_daily_task(self):
         meta_data = self.input_task("Укажите дату начала", "Повтор", repeat=True)
