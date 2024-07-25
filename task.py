@@ -553,7 +553,7 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
         else:
             print("2. Выбрать")
         print("3. Удалить")
-        if len(pages) > 1 and index != len(pages):                       # Если страниц более 1, то отобразить кнопку Далее
+        if len(pages) > 1 and index < len(pages):                       # Если страниц более 1, то отобразить кнопку Далее
             print("4. Далее")
         if index > 0:
             print("5. Назад")
