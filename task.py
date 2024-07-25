@@ -504,14 +504,14 @@ def get_pages(task_list, chunk_size=3):
 def get_series_points_menu(task_dict):
     ID = input("ID> ")
     if ID.isdigit() == False:
-        print("\033[31m{}".format("ERROR: ")+"\033[0m{}".format("ID указывается лишь в числах!"))
+        print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("ID указывается лишь в числах!"))
         return
     ID = int(ID)
     task = ""
     try:
         task = task_dict[ID]
     except KeyError:
-        print("\033[31m{}".format("ERROR: ")+"\033[0m{}".format("задание не найдено!"))
+        print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("задание не найдено!"))
         return
     
     print("Серия: "+str(task.get_series_point()))
@@ -571,7 +571,7 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
             if habit_menu == False:
                 ID = input("ID> ")
                 if ID.isdigit() == False:
-                    print("\033[31m{}".format("ERROR: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
+                    print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
                 else:
                     ID = int(ID)
                     task = task_dict[ID]
@@ -588,7 +588,7 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
             
             ID = input("ID> ")
             if ID.isdigit() == False:
-                print("\033[31m{}".format("ERROR: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
+                print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
                 break
             ID = int(ID)
             task = task_dict[ID]
