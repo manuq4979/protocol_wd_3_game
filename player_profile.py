@@ -73,12 +73,12 @@ class Profile:
             print("редактируется "+difficulty_lvl+":")
             new_reward = input("Введите награду> ")
             if new_reward.isdigit() == False:
-                print("\033[31m{}".format("ERROR: ")+"\033[0m{}".format("Допустимы использовать лишь целые числа!"))
+                print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы использовать лишь целые числа!"))
                 return "ERROR"
             self.quest_reward_setting[difficulty_lvl] = int(new_reward)
             print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Настройка успешно применена!"))
         else:
-            print("\033[31m{}".format("ERROR: ")+"\033[0m{}".format("Допустимо указывать до 4х + и только плюсы можно указывать !"))
+            print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимо указывать до 4х + и только плюсы можно указывать !"))
             return "ERROR"
     
     def print_quest_reward_setting(self):
