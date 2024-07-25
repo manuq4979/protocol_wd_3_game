@@ -318,6 +318,8 @@ class Profile:
         # Если был использован medkit в качестве экипировки, то следовательно он одноразовый, его требуется удалить после использования: 
         if tool_id.find("medkit") != -1:
             prof.del_keep_tool(tool_id)
+            if prof.get_HP > 100: # аптечка не может поднять больша 100 едениц.
+                prof.set_HP(100)
             print("\033[32m{}".format("[INFO]:")+"\033[0m{}".format("Был использован medkit!"))
     
     def take_off(tool_id):
