@@ -492,6 +492,13 @@ def get_pages(task_list, chunk_size=3):
             print(chunk_size)
         i+=1
     new_task_list.append(page)
+    
+    # удаляем пустые страницы, созданнве по ошибки:
+    for i in range(len(new_task_list)):
+        if len(new_task_list[i]) == 0:
+            new_task_list.pop(i)
+    print(new_task_list)
+    
     return new_task_list
 
 def get_series_points_menu(task_dict):
@@ -591,8 +598,6 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
         if number == "3":
             del_task()
         if number == "4":
-            print(len(pages))
-            print(pages)
             if len(pages) > 1:
                 index += 1
         if number == "5":
