@@ -415,8 +415,8 @@ def find_recharge_for_tool_id(prof, finding_tool_id, array_tool=[], i=0):
 
             # Инструмент может иметь рандомное значение charge - заряда, из-за чего обычный поиск может не дать результата, поэтому искать инструмент буду по имени.
             finding_tool_id_arr = finding_tool_id.split("_")
-            # херня ниже почему-то тут есть и она должна разбиавать строку на массивы, но это уже сделано, странно..
-            # tool_recharge_id_arr = tool_recharge_id[1].split("_")
+            # Убрал split() в крнце след строки, это не требуется!!!
+            tool_recharge_id_arr = tool_recharge_id[1]
             
             if tool_recharge_id_arr[0] == finding_tool_id_arr[0]:
                 prof.del_tools_id(tool_id)                                      # Удаляем предмет перезарядки, это типа значит что мы перезарядили предммет
