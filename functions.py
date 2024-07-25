@@ -281,7 +281,7 @@ def check_relevance_task():
                     prof = Profile.get_instance()
                     npc_attack(prof)             # и нанести игроку урон от врага, если враг есть
         res = task.check_repeat_time()           # Далее, получаем ответ на вопрос: наступила ли дата повтора задания
-        if res == True:                          # И если дата уже наступила, то пора снова задание делать активным
+        if res == True and res != 1:                          # И если дата уже наступила, то пора снова задание делать активным
             task.set_status("Active")            # Делаем задание активным
             from datetime import datetime
 
