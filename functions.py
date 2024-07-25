@@ -158,12 +158,12 @@ def buy(tool_id):
     prof = Profile.get_instance()
     price = store.get(tool_id)          # получаем цену за инструмент
     if price == None:                   # проверяем наличие товара
-        print("\033[31m{}".format("ERROR: ")+"\033[0m{}".format("Данного товара нет!"))
+        print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Данного товара нет!"))
         return
     balance = int(prof.get_ETO())
     price = int(price)
     if balance < price:                 # проверяем достаточно ли ETO
-        print("\033[31m{}".format("ERROR: ")+"\033[0m{}".format("Не достаточно средств!"))
+        print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Не достаточно средств!"))
         return
     history_line = "Куплен: "+str(tool_id)+" за "+str(price) 
     prof.save_to_history(history_line)  # заносим в историю
