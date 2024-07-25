@@ -239,61 +239,61 @@ def set_new_soft():
             if new_bool == "1" or new_bool == "0":
                 se.network_interface = int(new_bool)
             else:
-                print("\033[31m{}".format("ERROR: ")+"\033[0m{}".format("Только 1 или 0!"))
+                print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Только 1 или 0!"))
         if soft == "RA":
             new_bool = input("RA> ") # RA - remote_access
             if new_bool == "1" or new_bool == "0":
                 se.remote_access = int(new_bool)
             else:
-                print("\033[31m{}".format("ERROR: ")+"\033[0m{}".format("Только 1 или 0!"))
+                print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Только 1 или 0!"))
         if soft == "OS":
             new_bool = input("OS> ") # OS - operation_system
             if new_bool == "1" or new_bool == "0":
                 se.operation_system = int(new_bool)
             else:
-                print("\033[31m{}".format("ERROR: ")+"\033[0m{}".format("Только 1 или 0!"))
+                print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Только 1 или 0!"))
         if soft == "PoF":
             new_bool = input("PoF> ") # PoF - possibility_of_flashing
             if new_bool == "1" or new_bool == "0":
                 se.possibility_of_flashing = int(new_bool)
             else:
-                print("\033[31m{}".format("ERROR: ")+"\033[0m{}".format("Только 1 или 0!"))
+                print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Только 1 или 0!"))
         if soft == "AI":
             new_bool = input("AI> ") # AI - artificial_intelligence
             if new_bool == "1" or new_bool == "0":
                 se.artificial_intelligence = int(new_bool)
             else:
-                print("\033[31m{}".format("ERROR: ")+"\033[0m{}".format("Только 1 или 0!"))
+                print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Только 1 или 0!"))
         if soft == "CP":
             new_bool = input("CP> ") # CP - connection_port
             if new_bool == "1" or new_bool == "0":
                 se.connection_port = int(new_bool)
             else:
-                print("\033[31m{}".format("ERROR: ")+"\033[0m{}".format("Только 1 или 0!"))
+                print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Только 1 или 0!"))
         if soft == "UI":
             new_bool = input("UI> ") # UI - user_interface
             if new_bool == "1" or new_bool == "0":
                 se.user_interface = int(new_bool)
             else:
-                print("\033[31m{}".format("ERROR: ")+"\033[0m{}".format("Только 1 или 0!"))
+                print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Только 1 или 0!"))
         if soft == "CP2":
             new_bool = input("CP2> ") # CP2 - control_panel
             if new_bool == "1" or new_bool == "0":
                 se.control_panel = int(new_bool)
             else:
-                print("\033[31m{}".format("ERROR: ")+"\033[0m{}".format("Только 1 или 0!"))
+                print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Только 1 или 0!"))
         if soft == "W":
             new_bool = input("W> ") # W - write
             if new_bool == "1" or new_bool == "0":
                 se.write = int(new_bool)
             else:
-                print("\033[31m{}".format("ERROR: ")+"\033[0m{}".format("Только 1 или 0!"))
+                print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Только 1 или 0!"))
         if soft == "R":
             new_bool = input("R> ") # R - read
             if new_bool == "1" or new_bool == "0":
                 se.read = int(new_bool)
             else:
-                print("\033[31m{}".format("ERROR: ")+"\033[0m{}".format("Только 1 или 0!"))
+                print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Только 1 или 0!"))
         else:
             print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Не верный пункт меню!"))
             break
