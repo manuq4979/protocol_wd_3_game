@@ -592,6 +592,7 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
             del_task()
         if number == "4":
             print(len(pages))
+            print(pages)
             if len(pages) > 1:
                 index += 1
         if number == "5":
