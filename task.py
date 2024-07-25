@@ -496,8 +496,7 @@ def get_pages(task_list, chunk_size=3):
     # удаляем пустые страницы, созданнве по ошибки:
     for i in range(len(new_task_list)):
         if len(new_task_list[i]) == 0:
-            # new_task_list.pop(i)
-            pass
+            new_task_list.pop(i)
     print(new_task_list)
     
     return new_task_list
