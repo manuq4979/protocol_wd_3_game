@@ -540,11 +540,14 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
         task_list = list(task_list)              # dict_values([]) преобразуем в []
         pages = get_pages(task_list)             # Делим на страницы
         print(title_minu+":\n")
-        if len(pages) != 0:
-            for task in pages[index]:
-                if task.get_status() == "Active":# Не активные задания не будут отображены!
-                    print(task.get_title())
-                    print(task.get_description())
+        try:
+            if len(pages) != 0:
+                for task in pages[index]:
+                    if task.get_status() == "Active":# Не активные задания не будут отображены!
+                        print(task.get_title())
+                        print(task.get_description())
+        except IndexError:
+            print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Больше нет страниц!"))
         print("\n-----------")
         print("1. Добавить")
         if habit_menu == False:
@@ -553,7 +556,7 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
         else:
             print("2. Выбрать")
         print("3. Удалить")
-        if len(pages) > 1 and index < len(pages):                       # Если страниц более 1, то отобразить кнопку Далее
+        if len(pages) > 1:                       # Если страниц более 1, то отобразить кнопку Далее
             print("4. Далее")
         if index > 0:
             print("5. Назад")
