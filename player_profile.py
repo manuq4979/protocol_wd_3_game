@@ -445,6 +445,7 @@ def find_recharge_for_tool_id(prof, finding_tool_id, array_tool=[], i=0):
     inventory = prof.get_tools_id()
     for tool_id, price in inventory.items():
         tool_recharge_id = Profile.decoding_of_characteristics(tool_id)         # tool_recharge_id == ['recharge', tool_id]
+        print(tool_recharge_id)
         if len(tool_recharge_id) == 2:                                          # Может содержать ['']
 
             # Инструмент может иметь рандомное значение charge - заряда, из-за чего обычный поиск может не дать результата, поэтому искать инструмент буду по имени.
