@@ -125,7 +125,7 @@ nane_damage=500_charge=100
 
 Боеприпас конкретного инструмента:
 ```Python
-patron_recharge:gun_damage=500_charge=0
+patron-recharge:gun_damage=500_charge=0
 ```
 
 #### Важно:
