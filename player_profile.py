@@ -450,11 +450,10 @@ def find_recharge_for_tool_id(prof, finding_tool_id, array_tool=[], i=0):
 
             # Инструмент может иметь рандомное значение charge - заряда, из-за чего обычный поиск может не дать результата, поэтому искать инструмент буду по имени.
             finding_tool_id_arr = finding_tool_id.split("_")
-            # Убрал split() в крнце след строки, это не требуется!!!
-            tool_recharge_id_arr = tool_recharge_id[0]
-            print(tool_recharge_id_arr[0])
+            
+            print(tool_recharge_id[0])
             print(finding_tool_id_arr[0])
-            if tool_recharge_id_arr[0] == finding_tool_id_arr[0]:
+            if tool_recharge_id[0] == finding_tool_id_arr[0]:
                 prof.del_tools_id(tool_id)                                      # Удаляем предмет перезарядки, это типа значит что мы перезарядили предммет
                 prof.del_keep_tool(finding_tool_id)                             # заряд предмета будет изменен из чего следует что нужно стереть старый tool_id
                 charge = 100                                                    # 1 заряд всегда равен 100 уровням заряда!
