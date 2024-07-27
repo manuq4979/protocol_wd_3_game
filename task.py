@@ -145,7 +145,7 @@ class SingleTask(Task):
     # Вернет False если нет.
     def check_complition_time(self):
         res = self.check_time(self.execute_to)
-        if res == 2:
+        if res == 1 or res == 2: # если дата прошла - 1 и если дата сегодня - 2(если дата сегодня, то выполнить нужно как раз до этой даты!)
             return True
         return False
     
