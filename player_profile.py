@@ -329,6 +329,11 @@ class Profile:
             return
         price = prof.get_keep_tool().get(tool_id)
         prof.del_keep_tool(tool_id)
+        
+        if tool_id.find("armor") != -1:
+            decoded_tool = decoding_of_characteristics(tool_id)
+            
+            
         prof.add_tools_id(tool_id, price)
         Profile.apply_to_characteristics(tool_id, up=False) # Меняем характеристики игрока(понижаем)
         slots_occupied = prof.get_slots_occupied()
