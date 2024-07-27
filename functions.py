@@ -273,13 +273,16 @@ def check_relevance_task():
                 if npc.installed_contender != "None":
                     prof = Profile.get_instance()
                     npc_attack(prof)             # npc атакует, потому что день прошел, а задание не выполнено!
+
             start_date = task.get_start_date()   # Получаем дату начала
             if task.check_time(start_date) == 1 or task.check_time(start_date) == True: # Если дата начала уже прошла или дата повтора сегодня наступила, то и день прошел с момента создания прошел - итог: игрок не успел выполнить задание в срок
-                task.set_status("No active")     # Если так, то сделать задние не активным
-                npc = NPC.get_instance()
-                if npc.installed_contender != "None":
-                    prof = Profile.get_instance()
-                    npc_attack(prof)             # и нанести игроку урон от врага, если враг есть
+                if task.get_status() == "No active":
+                    task.set_status("No active")     # Если так, то сделать задние не активным
+                    npc = NPC.get_instance()
+                    if npc.installed_contender != "None":
+                        prof = Profile.get_instance()
+                        npc_attack(prof)             # и нанести игроку урон от врага, если враг есть
+        
         res = task.check_repeat_time()           # Далее, получаем ответ на вопрос: наступила ли дата повтора задания
         # 1 и True для оператора if,то одно и тоже, но явное прописывания что это не одно и тоже помогает избежать неловких ситуаций!!!!
         # 1 более не возвращается!!!
