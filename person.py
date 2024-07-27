@@ -175,6 +175,7 @@ def calculate_critical_dmg_NPC():
         result = 1.5+((strong*50) / (strong+200))
         result = round(result, 1)
         crit_dmg = npc.damage * result
+        print("\033[32m{}".format("[INFO]:")+"\033[0m{}".format("Враг нанес критический урон, урон был "+str(crit_dmg)))
         return crit_dmg
     return npc.damage
 
