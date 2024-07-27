@@ -345,13 +345,13 @@ class Profile:
             if armor_value == 0:
                 return # и мы делаем возврат метода take_off, до того как инструмент попал бы в инвентарь, таким образом инструмент клален без возвратно.
             # например была строка "armor_armor=200", а станет ["armor",["armor", 200]]:
-            decoded_tool = decoding_of_characteristics(tool_id) # если же показатель брони не равен 0, то декодируем tool_id и:
+            decoded_tool = Profile.decoding_of_characteristics(tool_id) # если же показатель брони не равен 0, то декодируем tool_id и:
             for i in range(len(decoded_tool)): # перебераем по индексу все характеристики декодированного tool_id, пока что:
                 if i != 0:
                     if decoded_tool[i][0] == "armor": # не найдем характеристику брони, после чего:
                         decoded_tool[i][1] = armor_value # меняем, например, это ["armor", 200] на это ["armor", armor_value] и далее:
                         break # прерываем перебор всех характеристик, так как уже нашли нужную и идем дальше:
-            tool_id = compile_tool(decoded_tool) # компелируем декодированый tool_id снова в строку, после чего продолжаем работу метода take_off:
+            tool_id = Profile.compile_tool(decoded_tool) # компелируем декодированый tool_id снова в строку, после чего продолжаем работу метода take_off:
             
         prof.add_tools_id(tool_id, price)
         Profile.apply_to_characteristics(tool_id, up=False) # Меняем характеристики игрока(понижаем)
