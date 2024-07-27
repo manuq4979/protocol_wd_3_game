@@ -445,14 +445,14 @@ def find_recharge_for_tool_id(prof, finding_tool_id, array_tool=[], i=0):
     inventory = prof.get_tools_id()
     for tool_id, price in inventory.items():
         tool_recharge_id = Profile.decoding_of_characteristics(tool_id)         # tool_recharge_id == ['recharge', tool_id]
-        print(tool_recharge_id)
+        # print(tool_recharge_id)
         if len(tool_recharge_id) == 2:                                          # Может содержать ['']
 
             # Инструмент может иметь рандомное значение charge - заряда, из-за чего обычный поиск может не дать результата, поэтому искать инструмент буду по имени.
             finding_tool_id_arr = finding_tool_id.split("_")
             tool_recharge_id[1] = tool_recharge_id[1].split("_")
-            print(tool_recharge_id[1][0])
-            print(finding_tool_id_arr[0])
+            # print(tool_recharge_id[1][0])
+            # print(finding_tool_id_arr[0])
             # строка patron_recharge:1911-pistols_damage=90_charge=100
             # станет ['recharge', '1911-pistols_damage=90_charge=0'], поэтому и [1], если именеи patron - не окажется, то индексом должно быть [0]!
             if tool_recharge_id[1][0] == finding_tool_id_arr[0]:
