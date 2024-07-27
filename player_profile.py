@@ -344,6 +344,8 @@ class Profile:
             armor_value = int(prof.get_armor())
             if armor_value == 0:
                 print("\033[32m{}".format("[INFO]:")+"\033[0m{}".format("Броня была израсходована!")) # Оповещаем об это игрока, и:
+                slots_occupied = prof.get_slots_occupied()
+                prof.set_slots_occupied(slots_occupied-1)   # Указываем что 1 слот был освобожден
                 return # и мы делаем возврат метода take_off, до того как инструмент попал бы в инвентарь, таким образом инструмент клален без возвратно.
             # например была строка "armor_armor=200", а станет ["armor",["armor", 200]]:
             decoded_tool = Profile.decoding_of_characteristics(tool_id) # если же показатель брони не равен 0, то декодируем tool_id и:
