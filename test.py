@@ -3,8 +3,12 @@ name = input("Укажите имя для системы:\n-> ")
 print("\n")
 network_interface = input("Есть ли доступ в интернет:\n-> ")
 print("\n")
-remote_access = input("Есть ли удаленный доступ:\n-> ")
-print("\n")
+if network_interface == "1":
+        remote_access = input("Есть ли удаленный доступ:\n-> ")
+        print("\n")
+else:
+        remote_access = "0"
+
 operation_system = input("Есть ли ОС:\n-> ")
 print("\n")
 possibility_of_flashing = input("Есть ли возможность прошивки:\n-> ")
@@ -13,10 +17,18 @@ artificial_intelligence = input("Есть ли AI:\n-> ")
 print("\n")
 connection_port = input("Есть ли физические порты доступа:\n-> ")
 print("\n")
-user_interface = input("Есть ли UI(нужен для удаленного доступа):\n-> ")
-print("\n")
-control_panel = input("Есть ли панель управления(нужна для физического доступа):\n-> ")
-print("\n")
+if network_interface == "1":
+        user_interface = input("Есть ли UI(нужен для удаленного доступа):\n-> ")
+        print("\n")
+else:
+        user_interface = "0"
+
+if connection_port == "1":
+        control_panel = input("Есть ли панель управления(нужна для физического доступа):\n-> ")
+        print("\n")
+else:
+        control_panel = "0"
+        
 write = input("Есть ли доступ на запись:\n-> ")
 print("\n")
 read = input("Есть ли доступ на чтение:\n-> ")
@@ -45,7 +57,7 @@ while True:
         print("0. Готово")
         print("\n#######################################################\n")
         
-        rea = input("Добавьте tool_id:\n-> ")
+        res = input("Добавьте tool_id:\n-> ")
         if res == "0":
                 storage = storage[:-1] # удаляем лишнию ;
                 break
@@ -62,8 +74,8 @@ SE_ID = (name+"_"+
          "UI="+user_interface+"_"+
          "CP2="+control_panel+"_"+
          "W="+write+"_"+
-         "R="+read+"+"+"_"+
-         "S;"+storage+"+"+"_"+
+         "R="+read+"+"+
+         "S;"+storage+"+"+
          "AAD;"+access_algorithm_dict)
 
 print("\n\n\n")
