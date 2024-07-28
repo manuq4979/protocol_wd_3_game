@@ -3,7 +3,7 @@ name = input("Укажите имя для системы:\n-> ")
 network_interface = input("Есть ли доступ в интернет:\n-> ")
 remote_access = input("Есть ли удаленный доступ:\n-> ")
 operation_system = input("Есть ли ОС:\n-> ")
-possibility_of_flashing = input("Есть ли возможность поошивки:\n-> ")
+possibility_of_flashing = input("Есть ли возможность прошивки:\n-> ")
 artificial_intelligence = input("Есть ли AI:\n-> ")
 connection_port = input("Есть ли физические порты доступа:\n-> ")
 user_interface = input("Есть ли UI(нужен для удаленного доступа):\n-> ")
@@ -21,7 +21,7 @@ while True:
         
         res = input("Цель с доступом к системе:\n-> ")
         if res == "0":
-                access_algorithm_dict.pop(-1) # удаляем лишнию ;
+                access_algorithm_dict = access_algorithm_dict[:-1] # удаляем лишнию ;
                 break
         access_algorithm_dict += res + ";"
         i += 1
@@ -35,7 +35,7 @@ while True:
         
         rea = input("Добавьте tool_id:\n-> ")
         if res == "0":
-                storage.pop(-1) # удаляем лишнию ;
+                storage = storage[:-1] # удаляем лишнию ;
                 break
         storage += res + ";"
         i += 1
