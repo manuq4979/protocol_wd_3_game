@@ -1,3 +1,4 @@
+
 name = input("Укажите имя для системы> ")
 network_interface = input("Есть ли доступ в интернет> ")
 remote_access = input("Есть ли удаленный доступ> ")
@@ -13,8 +14,10 @@ read = input("Есть ли доступ на чтение> ")
 i = 0
 access_algorithm_dict = ""
 while True:
+        print("\n#######################################################\n")
         print("Добавлено: "+str(i))
         print("0. Готово")
+        
         res = input("Цель с доступом к системе> ")
         if res == "0":
                 access_algorithm_dict.pop(-1) # удаляем лишнию ;
