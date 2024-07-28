@@ -11,6 +11,7 @@ write = input("Есть ли доступ на запись> ")
 read = input("Есть ли доступ на чтение> ")
 
 i = 0
+access_algorithm_dict = ""
 while True:
         print("Добавлено: "+str(i))
         print("0. Готово")
@@ -21,6 +22,7 @@ while True:
         access_algorithm_dict += res + ";"
         i += 1
 i = 0
+storage = ""
 while True:
         print("Добавлено: "+str(i))
         print("0. Готово")
