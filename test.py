@@ -53,17 +53,17 @@ while True:
         i += 1
 
 SE_ID = (name+"_"+
-         "NI="+network_interface+
-         "RA="+remote_access+
-         "OS="+operation_system+
-         "PoF="+possibility_of_flashing+
-         "AI="+artificial_intelligence+
-         "CP="+connection_port+
-         "UI="+user_interface+
-         "CP2="+control_panel+
-         "W="+write+
-         "R="+read+"+"+
-         "S;"+storage+"+"+
+         "NI="+network_interface+"_"+
+         "RA="+remote_access+"_"+
+         "OS="+operation_system+"_"+
+         "PoF="+possibility_of_flashing+"_"+
+         "AI="+artificial_intelligence+"_"+
+         "CP="+connection_port+"_"+
+         "UI="+user_interface+"_"+
+         "CP2="+control_panel+"_"+
+         "W="+write+"_"+
+         "R="+read+"+"+"_"+
+         "S;"+storage+"+"+"_"+
          "AAD;"+access_algorithm_dict)
 
 print("\n\n\n")
