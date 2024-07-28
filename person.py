@@ -96,7 +96,7 @@ class NPC:
             result.append(drop_trophy)
         return result
 	
-    def apply_to_characteristics_NPC(self, tool_id, up=True):
+    def apply_to_characteristics_NPC(self, tool_id, up=True,  new_npc=False):
         tools = self.decoding_of_characteristics_NPC(tool_id)
         # print(tools)
         name = tools[0]
@@ -107,16 +107,22 @@ class NPC:
             if tool[0] == "armor":
                 if up == False:
                     self.armor -= int(tool[1])
+		if new_npc == True:
+		    self.armor = int(tool[1])
                 else:
                     self.armor += int(tool[1])
             if tool[0] == "damage":
                 if up == False:
                     self.damage -= int(tool[1])
+		if new_npc == True:
+		    self.damage = int(tool[1])
                 else:
                     self.damage += int(tool[1])
             if tool[0] == "strong":
                 if up == False:
                     self.strong -= int(tool[1])
+		if new_npc == True:
+		    self.strong = int(tool[1])
                 else:
                     self.strong += int(tool[1])
             if tool[0] == "critical-dmg":
@@ -126,6 +132,8 @@ class NPC:
 	                
                 if up == False:
                     self.critical_dmg -= int(tool[1])
+		if new_npc == True:
+		    self.critical_dmg = int(tool[1])
                 else:
                     self.critical_dmg += int(tool[1])
                     if self.critical_dmg > 45:
@@ -144,6 +152,9 @@ class NPC:
     
     def set_drop_trophy(self, drop_trophy):
         self.drop_trophy = drop_trophy
+
+    def set_new_npc(NPC_ID):
+	self.apply_to_characteristics_NPC(NPC_ID, new_npc=True)
         
 
 def add_NPC(tool_id):
@@ -158,11 +169,11 @@ def del_NPC():
 def get_installer_NPC():
     npc = NPC.get_instance()
     print("\033[32m{}".format("Set NPC_ID:")+"\033[0m{}".format(""))    # NPC_ID- это тот же tool_id, отличается лишь тем что есть drop-trophy
-    tool_id = input("NPC_ID> ")
-    if tool_id == "" or tool_id == None:
+    NPC_ID = input("NPC_ID> ")
+    if NPC_ID == "" or NPC_ID == None:
         print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("NPC не был добавлен!"))
         return
-    add_NPC(tool_id)
+    set_new_npc(NPC_ID)
 
 # если выпадет крит урон, вернет урон помноженный в разы
 # иначе, вернет обычный урон
