@@ -1,11 +1,14 @@
 print("\n")
+
 name = input("Укажите имя для системы:\n-> ")
 print("\n")
+
 network_interface = input("Есть ли доступ в интернет:\n-> ")
 print("\n")
 if network_interface == "1":
-        remote_access = input("Есть ли удаленный доступ:\n-> ")
-        print("\n")
+        remote_access = "1"
+        # input("Есть ли удаленный доступ:\n-> ")
+        # print("\n")
 else:
         remote_access = "0"
 
@@ -18,14 +21,16 @@ print("\n")
 connection_port = input("Есть ли физические порты доступа:\n-> ")
 print("\n")
 if network_interface == "1":
-        user_interface = input("Есть ли UI(нужен для удаленного доступа):\n-> ")
-        print("\n")
+        user_interface = "1"
+        # input("Есть ли UI(нужен для удаленного доступа):\n-> ")
+        # print("\n")
 else:
         user_interface = "0"
 
 if connection_port == "1":
-        control_panel = input("Есть ли панель управления(нужна для физического доступа):\n-> ")
-        print("\n")
+        control_panel = "1"
+        # input("Есть ли панель управления(нужна для физического доступа):\n-> ")
+        # print("\n")
 else:
         control_panel = "0"
         
