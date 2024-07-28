@@ -107,22 +107,22 @@ class NPC:
             if tool[0] == "armor":
                 if up == False:
                     self.armor -= int(tool[1])
-		if new_npc == True:
-		    self.armor = int(tool[1])
+                if new_npc == True:
+                    self.armor = int(tool[1])
                 else:
                     self.armor += int(tool[1])
             if tool[0] == "damage":
                 if up == False:
                     self.damage -= int(tool[1])
-		if new_npc == True:
-		    self.damage = int(tool[1])
+                if new_npc == True:
+                    self.damage = int(tool[1])
                 else:
                     self.damage += int(tool[1])
             if tool[0] == "strong":
                 if up == False:
                     self.strong -= int(tool[1])
-		if new_npc == True:
-		    self.strong = int(tool[1])
+                if new_npc == True:
+                    self.strong = int(tool[1])
                 else:
                     self.strong += int(tool[1])
             if tool[0] == "critical-dmg":
@@ -132,8 +132,8 @@ class NPC:
 	                
                 if up == False:
                     self.critical_dmg -= int(tool[1])
-		if new_npc == True:
-		    self.critical_dmg = int(tool[1])
+                if new_npc == True:
+                    self.critical_dmg = int(tool[1])
                 else:
                     self.critical_dmg += int(tool[1])
                     if self.critical_dmg > 45:
@@ -154,7 +154,7 @@ class NPC:
         self.drop_trophy = drop_trophy
 
     def set_new_npc(NPC_ID):
-	self.apply_to_characteristics_NPC(NPC_ID, new_npc=True)
+        self.apply_to_characteristics_NPC(NPC_ID, new_npc=True)
         
 
 def add_NPC(tool_id):
