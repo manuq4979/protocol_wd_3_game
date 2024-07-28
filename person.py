@@ -77,7 +77,7 @@ class NPC:
                 flag = 0
                 continue
             if drop_trophy[i].find("recharge") != -1:
-                res = drop_trophy[i] + ":" + drop_trophy[i+1]
+                res = drop_trophy[i] + ":" + drop_trophy[i] # если сделать i-1 то первый трофей в списке будет проигнорирован!
                 drop_trophy_new.append(res)
                 flag = 1
             elif flag == 0:
