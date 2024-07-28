@@ -1,21 +1,32 @@
-
+print("\n")
 name = input("Укажите имя для системы:\n-> ")
+print("\n")
 network_interface = input("Есть ли доступ в интернет:\n-> ")
+print("\n")
 remote_access = input("Есть ли удаленный доступ:\n-> ")
+print("\n")
 operation_system = input("Есть ли ОС:\n-> ")
+print("\n")
 possibility_of_flashing = input("Есть ли возможность прошивки:\n-> ")
+print("\n")
 artificial_intelligence = input("Есть ли AI:\n-> ")
+print("\n")
 connection_port = input("Есть ли физические порты доступа:\n-> ")
+print("\n")
 user_interface = input("Есть ли UI(нужен для удаленного доступа):\n-> ")
+print("\n")
 control_panel = input("Есть ли панель управления(нужна для физического доступа):\n-> ")
+print("\n")
 write = input("Есть ли доступ на запись:\n-> ")
+print("\n")
 read = input("Есть ли доступ на чтение:\n-> ")
-
+print("\n")
+        
 i = 0
 access_algorithm_dict = ""
 while True:
         print("\n#######################################################\n")
-        print("Добавлено: "+str(i))
+        print("Уже добавлено: "+str(i))
         print("0. Готово")
         print("\n#######################################################\n")
         
@@ -29,7 +40,8 @@ i = 0
 storage = ""
 while True:
         print("\n#######################################################\n")
-        print("Добавлено: "+str(i))
+        print("Добавьте награду в хранилище:")
+        print("Уже добавлено: "+str(i))
         print("0. Готово")
         print("\n#######################################################\n")
         
@@ -54,7 +66,9 @@ SE_ID = (name+"_"+
          "S;"+storage+"+"+
          "AAD;"+access_algorithm_dict)
 
+print("\n\n\n")
 print(SE_ID)
+print("\n\n\n")
          
  
 
