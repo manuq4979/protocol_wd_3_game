@@ -173,7 +173,7 @@ def get_installer_NPC():
     if NPC_ID == "" or NPC_ID == None:
         print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("NPC не был добавлен!"))
         return
-    set_new_npc(NPC_ID)
+    npc.set_new_npc(NPC_ID)
 
 # если выпадет крит урон, вернет урон помноженный в разы
 # иначе, вернет обычный урон
