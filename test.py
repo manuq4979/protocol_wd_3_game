@@ -1,15 +1,15 @@
 
-name = input("Укажите имя для системы> ")
-network_interface = input("Есть ли доступ в интернет> ")
-remote_access = input("Есть ли удаленный доступ> ")
-operation_system = input("Есть ли ОС> ")
-possibility_of_flashing = input("Есть ли возможность поошивки> ")
-artificial_intelligence = input("Есть ли AI> ")
-connection_port = input("Есть ли физические порты доступа> ")
-user_interface = input("Есть ли UI(нужен для удаленного доступа)> ")
-control_panel = input("Есть ли панель управления(нужна для физического доступа)> ")
-write = input("Есть ли доступ на запись> ")
-read = input("Есть ли доступ на чтение> ")
+name = input("Укажите имя для системы:\n-> ")
+network_interface = input("Есть ли доступ в интернет:\n-> ")
+remote_access = input("Есть ли удаленный доступ:\n-> ")
+operation_system = input("Есть ли ОС:\n-> ")
+possibility_of_flashing = input("Есть ли возможность поошивки:\n-> ")
+artificial_intelligence = input("Есть ли AI:\n-> ")
+connection_port = input("Есть ли физические порты доступа:\n-> ")
+user_interface = input("Есть ли UI(нужен для удаленного доступа):\n-> ")
+control_panel = input("Есть ли панель управления(нужна для физического доступа):\n-> ")
+write = input("Есть ли доступ на запись:\n-> ")
+read = input("Есть ли доступ на чтение:\n-> ")
 
 i = 0
 access_algorithm_dict = ""
@@ -17,8 +17,9 @@ while True:
         print("\n#######################################################\n")
         print("Добавлено: "+str(i))
         print("0. Готово")
+        print("\n#######################################################\n")
         
-        res = input("Цель с доступом к системе> ")
+        res = input("Цель с доступом к системе:\n-> ")
         if res == "0":
                 access_algorithm_dict.pop(-1) # удаляем лишнию ;
                 break
@@ -27,9 +28,12 @@ while True:
 i = 0
 storage = ""
 while True:
+        print("\n#######################################################\n")
         print("Добавлено: "+str(i))
         print("0. Готово")
-        rea = input("Добавьте tool_id> ")
+        print("\n#######################################################\n")
+        
+        rea = input("Добавьте tool_id:\n-> ")
         if res == "0":
                 storage.pop(-1) # удаляем лишнию ;
                 break
