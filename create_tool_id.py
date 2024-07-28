@@ -1,4 +1,34 @@
 
+def gun_compile():
+    name = input("Наименование оружия:\n-> ")
+    damage = input("Урон:\n-> ")
+    res = input("Это всё?(да/нет - 0/1):\n-> ")
+    if res == 1:
+        charge = input("Заряженность:\n-> ")
+        critical-dmg
+        armor
+        HP
+        strong
+        intellect
+
+def menu():
+    while True:
+        print("1. Оружие.")
+        print("2. Патроны.")
+        print("3. Аптечка.")
+        print("4. Броня.")
+        print("5. Карта доступа.")
+        print("6. Компьютер.")
+    
+        res = input("> ")
+    
+        if 
+    
+
+
+
+
+
 name = input("Введите имя инструмента:\n-> ")
 name = name.replace(" ", "-")
 
