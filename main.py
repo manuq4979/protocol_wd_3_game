@@ -1,12 +1,14 @@
 import profile_wd
 import functions
 from person import NPC
+from hot_scripts.high_speed_task_creation import redirecting_input
 
     
 
 PS1 = profile_wd.PS1
 help = ("1 - меню игры\n"+
-        "2 - выход из приложения\n")
+        "2 - сохранить и выйти\n"
+        "3 - сохранить")
         
 def print_NPC():
     npc = NPC.get_instance()
@@ -31,8 +33,10 @@ while(True):
     print("\n#######################################################\n")
     
     text = input(PS1)
+
+    redirecting_input(text)
 	
-    if text == "2":
+    if text == "2" or text == "3":
         print("\n#######################################################\n")
         functions.save_data_store()
         functions.save_data_profile()
@@ -40,7 +44,9 @@ while(True):
         functions.save_data_task()
         functions.save_data_SE()
         print("\n#######################################################\n")
-        break
+        input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+        if text == "2":
+            break
 	
     if text == "help":
         print("\n#######################################################\n")
