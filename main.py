@@ -37,7 +37,14 @@ while(True):
     
     text = input(PS1)
 
-    redirecting_input(text) # перенаправка на hot scripts
+    if text == "help":
+        print("\n#######################################################\n")
+        print("\033[32m{}".format("Helper:")+"\033[0m{}".format(""))
+        print(help)
+        print("\n#######################################################\n")
+        input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+    else: # если текст, то метод выдаст ошибку, так я исключу попадание текста в него.
+        redirecting_input(text) # перенаправка на hot scripts
     if text == "4":
         import hot_scripts.create_NPC_ID
     if text == "5":
@@ -56,12 +63,6 @@ while(True):
         input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
         if text == "2":
             break
-	
-    if text == "help":
-        print("\n#######################################################\n")
-        print("\033[32m{}".format("Helper:")+"\033[0m{}".format(""))
-        print(help)
-        print("\n#######################################################\n")
 	
     if text == "1":
         functions.get_menu()
