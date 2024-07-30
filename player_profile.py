@@ -66,25 +66,28 @@ class Profile:
         
     
     def edit_quest_reward_setting(self):
-        difficulty_lvl = input("Введите уровень сложности или 0 для выхода> ")
-        if difficulty_lvl == "0":
-            return
-        if difficulty_lvl == "+" or difficulty_lvl == "++" or difficulty_lvl == "+++" or difficulty_lvl == "++++":
-            print("редактируется "+difficulty_lvl+":")
-            new_reward = input("Введите награду> ")
-            if new_reward.isdigit() == False:
-                print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы использовать лишь целые числа!"))
+        while True:
+            print("\n#######################################################\n")
+            difficulty_lvl = input("Введите уровень сложности или 0 для выхода> ")
+            if difficulty_lvl == "0":
+                return
+            if difficulty_lvl == "+" or difficulty_lvl == "++" or difficulty_lvl == "+++" or difficulty_lvl == "++++":
+                print("[Редактируется "+difficulty_lvl+"]:")
+                print("\n#######################################################\n")
+                new_reward = input("Введите награду> ")
+                if new_reward.isdigit() == False:
+                    print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы использовать лишь целые числа!"))
+                    return "ERROR"
+                self.quest_reward_setting[difficulty_lvl] = int(new_reward)
+                print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Настройка успешно применена!"))
+            else:
+                print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимо указывать до 4х + и только плюсы можно указывать !"))
                 return "ERROR"
-            self.quest_reward_setting[difficulty_lvl] = int(new_reward)
-            print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Настройка успешно применена!"))
-        else:
-            print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимо указывать до 4х + и только плюсы можно указывать !"))
-            return "ERROR"
     
     def print_quest_reward_setting(self):
         for plus, reward in self.quest_reward_setting.items():
-            print("Сложность - "+plus)
-            print("Награда - "+str(reward))
+            print("[Сложность]: "+plus)
+            print("[Награда]: "+str(reward))
             print("\n")
     
     def save_to_history(self, history_line):
