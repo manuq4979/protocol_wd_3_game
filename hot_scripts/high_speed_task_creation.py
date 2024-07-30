@@ -214,9 +214,7 @@ def redirecting_input(input_text):
 	from task import single_task_dict, habit_task_dict, daily_task_dict, DailyTask, SingleTask, HabitTask
 	from player_profile import player_attack, Profile
 	from person import npc_attack, NPC
-	print(daily_task_dict)
-	print(single_task_dict)
-	print(habit_task_dict)
+	
 	task_menu_item = input_text[0]
 	task_operation = input_text[1]
 	task_complexity = ""
@@ -239,7 +237,7 @@ def redirecting_input(input_text):
 				return
 		else: # или, если поьзователь не добавил ID и хочет использовать уже готовую задачу, то:
 			task_id = get_last_task_id(single_task_dict, habit_task_dict, daily_task_dict, task_menu_item)
-	task_id = str(task_id) # все ID заданий использую числовые строки!
+	task_id = int(task_id) # все ID заданий использую числовые значения типа int - перепроверил!
 
 
 
