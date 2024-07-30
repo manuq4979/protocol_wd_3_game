@@ -237,6 +237,7 @@ def redirecting_input(input_text):
 				return
 		else: # или, если поьзователь не добавил ID и хочет использовать уже готовую задачу, то:
 			task_id = get_last_task_id(single_task_dict, habit_task_dict, daily_task_dict, task_menu_item)
+	task_id = str(task_id) # все ID заданий использую числовые строки!
 
 
 
