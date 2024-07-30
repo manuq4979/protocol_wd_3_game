@@ -155,6 +155,7 @@ class NPC:
 
     def set_new_npc(self, NPC_ID):
         self.apply_to_characteristics_NPC(NPC_ID, up=False, new_npc=True)
+	self.installed_contender = True
         
 
 def add_NPC(tool_id):
