@@ -210,7 +210,7 @@ def redirecting_input(input_text):
 
 	if checking_input(input_text) == False:
 		return
-
+ # daily_task_dict иногда даже при наличии задач пустым будет, но это условное явление которое редко возникает. Нжуно потом исправить!
 	from task import single_task_dict, habit_task_dict, daily_task_dict, DailyTask, SingleTask, HabitTask
 	from player_profile import player_attack, Profile
 	from person import npc_attack, NPC
