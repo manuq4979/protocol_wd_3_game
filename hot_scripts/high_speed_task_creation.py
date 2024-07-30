@@ -227,7 +227,7 @@ def redirecting_input(input_text):
 	else:
 		task_id = input_text[2:]
 	# если пользователь не добавил ID, то:
-	if task_id == "":
+	if task_id == 0:
 		# Создать новый при условии, что игрок хочет создать новое задание:
 		if task_operation == ADD:
 			task_id = get_task_id(single_task_dict, habit_task_dict, daily_task_dict)
