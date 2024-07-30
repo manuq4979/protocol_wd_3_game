@@ -401,7 +401,8 @@ with open("DataApp/daily_task.txt", "r", encoding="utf-8") as file:
             file.write(json_string)
             print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Save Daily Task class data!"))
         
-        
+# ТУТ !!!!!!!
+print(daily_task_dict)
         
 def get_count_task(task_dict):
     if len(task_dict) == 0:
