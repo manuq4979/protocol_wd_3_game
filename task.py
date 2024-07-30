@@ -402,7 +402,8 @@ with open("DataApp/daily_task.txt", "r", encoding="utf-8") as file:
             print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Save Daily Task class data!"))
         
 # ТУТ !!!!!!!
-print(daily_task_dict)
+# print(daily_task_dict)
+# Иногда daily_task_dict инициализируется пустым в hot scripts даже если это не так, тут я проверяю каким он впринципи инициализируется.
         
 def get_count_task(task_dict):
     if len(task_dict) == 0:
