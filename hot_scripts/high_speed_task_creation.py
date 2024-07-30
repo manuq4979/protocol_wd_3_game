@@ -214,7 +214,7 @@ def redirecting_input(input_text):
 	from task import single_task_dict, habit_task_dict, daily_task_dict, DailyTask, SingleTask, HabitTask
 	from player_profile import player_attack, Profile
 	from person import npc_attack, NPC
-
+	print(daily_task_dict)
 	task_menu_item = input_text[0]
 	task_operation = input_text[1]
 	task_complexity = ""
