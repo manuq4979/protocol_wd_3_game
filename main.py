@@ -7,8 +7,11 @@ from hot_scripts.high_speed_task_creation import redirecting_input
 
 PS1 = profile_wd.PS1
 help = ("1 - меню игры\n"+
-        "2 - сохранить и выйти\n"
-        "3 - сохранить")
+        "2 - сохранить и выйти\n"+
+        "3 - сохранить\n"+
+        "4 - создать NPC_ID\n"+
+        "5 - создать SE_ID\n"+
+        "6 - создать tool_id\n")
         
 def print_NPC():
     npc = NPC.get_instance()
@@ -34,7 +37,13 @@ while(True):
     
     text = input(PS1)
 
-    redirecting_input(text)
+    redirecting_input(text) # перенаправка на hot scripts
+    if text == "4":
+        import hot_scripts.create_NPC_ID
+    if text == "5":
+        import hot_scripts.create_SE_ID
+    if text == "6":
+        import hot_scripts.create_tool_id
 	
     if text == "2" or text == "3":
         print("\n#######################################################\n")
