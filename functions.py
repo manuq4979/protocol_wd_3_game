@@ -86,7 +86,9 @@ def get_menu_developer():
             break
         if number == "5":
             prof = Profile.get_instance()
+            print("\n#######################################################\n")
             prof.print_quest_reward_setting()
+            print("\n#######################################################\n")
             prof.edit_quest_reward_setting()
             break
         if number == "6":
