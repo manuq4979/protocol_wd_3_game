@@ -223,9 +223,9 @@ def redirecting_input(input_text):
 
 	task_id = 0
 	if task_operation == ADD:
-		task_id = input_text[3:]
+		task_id = int(input_text[3:])
 	else:
-		task_id = input_text[2:]
+		task_id = int(input_text[2:])
 	# если пользователь не добавил ID, то:
 	if task_id == 0:
 		# Создать новый при условии, что игрок хочет создать новое задание:
