@@ -239,7 +239,8 @@ def redirecting_input(input_text):
 			task_id = get_last_task_id(single_task_dict, habit_task_dict, daily_task_dict, task_menu_item)
 	if task_id != "":
 			task_id = int(task_id) # все ID заданий использую числовые значения типа int - перепроверил!
-
+ else:
+			task_id = 0
 
 
 	# print("Вот мой task_id: "+str(task_id))
