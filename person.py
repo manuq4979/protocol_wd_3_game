@@ -154,7 +154,7 @@ class NPC:
         self.drop_trophy = drop_trophy
 
     def set_new_npc(self, NPC_ID):
-        self.apply_to_characteristics_NPC(NPC_ID, new_npc=True)
+        self.apply_to_characteristics_NPC(NPC_ID, up=False, new_npc=True)
         
 
 def add_NPC(tool_id):
