@@ -67,13 +67,11 @@ class Profile:
     
     def edit_quest_reward_setting(self):
         while True:
-            print("\n#######################################################\n")
             difficulty_lvl = input("Введите уровень сложности или 0 для выхода> ")
             if difficulty_lvl == "0":
                 return
             if difficulty_lvl == "+" or difficulty_lvl == "++" or difficulty_lvl == "+++" or difficulty_lvl == "++++":
                 print("[Редактируется "+difficulty_lvl+"]:")
-                print("\n#######################################################\n")
                 new_reward = input("Введите награду> ")
                 if new_reward.isdigit() == False:
                     print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы использовать лишь целые числа!"))
