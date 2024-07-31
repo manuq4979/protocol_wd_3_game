@@ -112,7 +112,7 @@ def get_menu():
         print("4. История баланса ETO")
         print("5. Магазин инструментов")
         print("6. Установить ID врага")
-        print("6.5. Открыть Smart Electronics.")
+        print("65. Открыть Smart Electronics.")
         print("7. Инвентарь")
         print("8. Правила")
         print("9. Назад")
@@ -138,7 +138,7 @@ def get_menu():
         if number == "6":
             get_installer_NPC()
             break
-        if number == "6.5":
+        if number == "65":
             get_smart_electronics_menu()
             break
         if number == "7":
