@@ -366,14 +366,19 @@ def get_OS_menu():
             print("[2]: Изменить хранилище данных.")
         if se.write == 0 or se.write == 0:
             print("[3]: Получить доступ.")
-        print("[4]: Назад.")
+								print("[4]: Отключиться.")
+        print("[5]: Назад.")
         print("\n")
         
         command = input(PS1)
         
-        if command == "4":
+        if command == "5":
             return
-        
+        if command == "4":
+            se.set_all_fields_default()
+            print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Отключено успешно - все настройки SE класса установлены по умолчанию!"))
+            input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+            break
         if command == "1" and se.write == 1 and se.possibility_of_flashing == 1:
             set_new_soft()
             break
