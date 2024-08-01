@@ -217,6 +217,8 @@ def set_new_soft():
     se = Smart_Electronics.get_instance()
     while True:
         print("\n#######################################################\n")
+        print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Впишите в поле NI или иной из отображенных параметров класса, а далее присвойте ему новое значение!\n"))
+
         print("NI == "+str(se.network_interface)+" # NI - network_interface")
         print("RA == "+str(se.remote_access)+" # RA - remote_access")
         print("OS == "+str(se.operation_system)+" # OS - operation_system")
