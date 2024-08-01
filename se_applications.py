@@ -141,7 +141,7 @@ def get_ability_to_flash_firmware(prof):
         
             print("\033[32m{}".format("[COMPLITE]: ")+"\033[0m{}".format("Взлом успешно выполнен!"))
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
-        if command == "2" and access = 1:
+        if command == "2" and access == 1:
             while True:
                 print("\n#######################################################\n")
                 print("[1]: Установить новые параметры..")
