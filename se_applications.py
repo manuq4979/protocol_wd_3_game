@@ -76,7 +76,7 @@ def hack_trophy(prof):
         if command == "3":
             print("\n#######################################################\n")
             for bot_id in bots_id:
-                print("\033[34m{}".format("[tool_id]: ")+"\033[0m{}".format(bot_id[0])
+                print("\033[34m{}".format("[tool_id]: ")+"\033[0m{}".format(bot_id[0]))
                 print("С ним шанс выпадения трофея будет: "+str(bot_id[1])+"%.")
                 print("\n")
             print("\n#######################################################\n")
