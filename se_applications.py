@@ -45,6 +45,8 @@ def hack_trophy(prof):
             if command == "4":
                 print("\n#######################################################\n")
                 for my_bot_id in my_bots:
+                    if len(my_bots) == 0:
+                        print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Доступных ботов не найдено!"))
                     print("\033[34m{}".format("[tool_id]: ")+"\033[0m{}".format(my_bot_id[0]))
                     print("\n")
                 print("\n#######################################################\n")
