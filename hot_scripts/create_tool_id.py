@@ -99,8 +99,6 @@ def id_compile(index=0):
 
     if welcom_string == "Заряды":
         recharge = input("\n[tool_id перезаряжаемого инструмента]:\n-> ")
-        if checkin_for_int_and_spaces(recharge) == False:
-            return
         array_tool.append(["recharge", recharge])
 
     tool_id = ""
