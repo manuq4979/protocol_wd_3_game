@@ -443,7 +443,7 @@ def poit_of_entry(computer, prof):
             return
         if command == "01":
             import se_applications
-            se_applications.applications_menu(prof)
+            se_applications.application_menu(prof)
         select_item(command)
         
             
