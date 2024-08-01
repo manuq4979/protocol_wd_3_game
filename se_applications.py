@@ -93,7 +93,7 @@ def hack_trophy(prof):
 
 ###
 
-applications_list = [] # [[name, app_address], ...]
+applications_list = [["hack_trophy_systems", hack_trophy]] # [[name, app_address], ...]
 
 def get_applications_and_print():
     size = len(applications_list)
