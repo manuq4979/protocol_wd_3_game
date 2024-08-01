@@ -106,7 +106,7 @@ def hack_trophy(prof):
 def get_ability_to_flash_firmware(prof):
     from smart_electronics import Smart_Electronics, set_new_soft
     se = Smart_Electronics.get_instance()
-    access = 0
+    access = se.possibility_of_flashing
     while True:
         print("\n#######################################################\n")
         print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Приложение позволяет вам получать возможность устанавливать прошивку для подключенного устройтсва!\n"))
