@@ -104,6 +104,8 @@ def hack_trophy(prof):
 
 # APP NUMBER 2
 def get_ability_to_flash_firmware(prof):
+    from smart_electronics import Smart_Electronics, set_new_soft
+    se = Smart_Electronics.get_instance()
     access = 0
     while True:
         print("\n#######################################################\n")
@@ -126,8 +128,6 @@ def get_ability_to_flash_firmware(prof):
             return
     
         if command == "1":
-            from smart_electronics import Smart_Electronics, set_new_soft
-            se = Smart_Electronics.get_instance()
             if se.name == "": # по умолчанию имя name
                 print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Нет подключенных устройств!"))
                 input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
