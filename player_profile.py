@@ -409,7 +409,7 @@ def get_history():
     
 def calculate_drop_trophy(npc):
     r = random.randint(1, 100)
-    print("Трофей: "+str(r))
+    print("\033[32m{}".format("[INFO]:")+"\033[0m{}".format("Шанс выпадения трофея был: "+str(r)))
     if r <= 40:                     # 40% шанс выпадения трафея
         return npc.drop_trophy
     return 0
