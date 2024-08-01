@@ -449,16 +449,16 @@ def find_recharge_for_tool_id(prof, finding_tool_id, array_tool=[], i=0):
                                                  # Может содержать ['']
 
         # Инструмент может иметь рандомное значение charge - заряда, из-за чего обычный поиск может не дать результата, поэтому искать инструмент буду по имени.
-        if tool_recharge_id.find("recharge") == -1:
+        if tool_recharge_id.find("recharge") == -1: # если инструмент не относиться к перезарядке пропускаем итерацию цикла:
             continue
-        tool_recharge_id = tool_recharge_id.split(":")[1].split("_")[0] # это патроны
+        
+        finding_tool_name = finding_tool_id[0]
+        tool_recharge_name = tool_recharge_id.split(":")[1].split("_")[0] # это патроны
         print(str(finding_tool_id) + " == "+str(tool_recharge_id))
-        # строка patron_recharge:1911-pistols_damage=90_charge=100
-        # станет ['recharge', '1911-pistols_damage=90_charge=0'], поэтому и [1], если именеи patron - не окажется, то индексом должно быть [0]!
-            
-        if tool_recharge_id == finding_tool_id:
+        
+        if tool_recharge_name == finding_tool_name:
             prof.del_tools_id(tool_id)                                      # Удаляем предмет перезарядки, это типа значит что мы перезарядили предммет
-            prof.del_keep_tool(finding_tool_id)                             # заряд предмета будет изменен из чего следует что нужно стереть старый tool_id
+            prof.del_keep_tool(finding_tool_id[1])                          # заряд предмета будет изменен из чего следует что нужно стереть старый tool_id
             charge = 100                                                    # 1 заряд всегда равен 100 уровням заряда!
             array_tool[i][1] = charge                                       # Заряжаем инструмент, тем самым меняя его
             new_tool_id = compile_tool(array_tool)                          # Создаём новый - измененный, инструмент аналогичный исходному но с полным зарядом.
@@ -482,7 +482,7 @@ def check_charge(prof):
             if char[0] == "charge":                                          # [charge, 100] как пример
                 charge = int(char[1])                                        # от 0 до 100
                 if charge == 0:                                              # Проверяем не равен ли заряд 0, есл да то
-                     if find_recharge_for_tool_id(prof, name, array_tool, i-1) != True:    # Проверяем есть ли перезарядка, если да, то просто ничего не делать. Иначе
+                     if find_recharge_for_tool_id(prof, [name, tool_id], array_tool, i-1) != True:    # Проверяем есть ли перезарядка, если да, то просто ничего не делать. Иначе
                         print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Инструмент - "+tool_id+" разряжен, добавьте новый заряд в инвентарь!"))
                         Profile.take_off(tool_id)                               # Снимаем предмет.
                         take_off_tool.append(tool_id)
