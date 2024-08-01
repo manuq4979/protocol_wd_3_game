@@ -434,12 +434,16 @@ def poit_of_entry(computer, prof):
     while True:
         print("\n######################################################\n")
         print_menu_smart_electronics()
+        print("[01]: Приложения.")
         print("\n######################################################\n")
         
         command = input(PS1)
         
         if command == "3":
             return
+        if command == "01":
+            import se_applications
+            se_applications.applications_menu(prof)
         select_item(command)
         
             
