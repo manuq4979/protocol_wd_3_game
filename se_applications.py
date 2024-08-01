@@ -101,8 +101,42 @@ def hack_trophy(prof):
             print("\n#######################################################\n")
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             
-                
 
+# APP NUMBER 2
+def get_ability_to_flash_firmware(prof):
+    print("\n#######################################################\n")
+    print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Приложение позволяет взламывать вам противника с помощью ботов!\n"))
+    print("Hack Menu: ----------------------")
+    print("[1]: Получить возможность перепрошивки.")
+    print("[0]: Выход.")
+    print("\n#######################################################\n")
+    
+    command = input("~# ")
+    
+    if command.isdigit() == False:
+        print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
+        input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+        continue
+    
+    if command == "0":
+        return
+    
+    if command == "1":
+        from smart_electronics import Smart_Electronics
+        se = Smart_Electronics.get_instance()
+        if se.name == "": # по умолчанию имя name
+            print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Нет подключенных устройств!"))
+            input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+            continue
+        if se.possibility_of_flashing == 1:
+            print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Доступ уже получен!"))
+            input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+            continue
+        se.possibility_of_flashing = 1
+        
+        print("\033[32m{}".format("[COMPLITE]: ")+"\033[0m{}".format("Взлом успешно выполнен!"))
+        input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+        continue
 
 
 
