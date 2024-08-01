@@ -8,6 +8,7 @@
 percent = 40
 original_calculate_drop_trophy = "Unknown"
 def hacked_calculate_drop_trophy(npc):
+    import random
     print("\033[32m{}".format("[DONE]: ")+"\033[0m{}".format("THIS CODE HAS BEEN HACKED!"))
     r = random.randint(1, 100)
     print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Шанс выпадения трофея был: "+str(r)))
