@@ -4,7 +4,9 @@
 
 ###
 
+# METHOD APP 1
 percent = 40
+original_calculate_drop_trophy = "Unknown"
 def hacked_calculate_drop_trophy(npc):
     r = random.randint(1, 100)
     print("Трофей: "+str(r))
@@ -48,16 +50,19 @@ def hack_trophy(prof):
             max_percent = max(values)
             
             from player_profile import calculate_drop_trophy
-            global percent
+            global percent, original_calculate_drop_trophy
             percent = max_percent
+            original_calculate_drop_trophy = calculate_drop_trophy
             calculate_drop_trophy = hacked_calculate_drop_trophy
             print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Вероятность выпадения вместо 40 - "+str(percent)+"%."))
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
         if command == "2":
             from player_profile import calculate_drop_trophy
-            global percent
+            global percent, original_calculate_drop_trophy
             percent = 40
-            calculate_drop_trophy = calculate_drop_trophy # как вернуть адресс прежней функции??
+            calculate_drop_trophy = original_calculate_drop_trophy
+            print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Вероятность выпадения снова 40%."))
+            input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить...")) 
             
                 
 
