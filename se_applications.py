@@ -120,7 +120,7 @@ def application_menu(prof):
     print("\n#######################################################\n")
     print("Menu: ----------------------")
     get_applications_and_print()
-    print("[0]: Выход."])
+    print("[0]: Выход.")
     print("\n#######################################################\n")
     
     index = input("APP-MENU:~# ")
