@@ -228,7 +228,7 @@ def set_new_soft():
         print("W == "+str(se.write)+" # W - write")
         print("R == "+str(se.read)+" # R - read")
         print("\n#######################################################\n")
-								print("[0]: Назад.")
+        print("[0]: Назад.")
         
         soft = input("> ")
         if soft == "0":
