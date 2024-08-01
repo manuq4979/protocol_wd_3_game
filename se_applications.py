@@ -72,17 +72,22 @@ def hack_trophy(prof):
             print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Вероятность успеха взлома: "+str(percent)+"%."))
             
             from person import NPC
+            if npc.installed_contender != "None":
+                print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Нет цели для взлома!"))
+                input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+                continue
             npc = NPC.get_instance()
             drop = hacked_calculate_drop_trophy(npc)
             if drop == 0:
-                print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Нет цели для взлома!"))
+                print("\033[31m{}".format("[FAILED]: ")+"\033[0m{}".format("Взлом провалился!"))
                 input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
                 continue
             
             prof.add_tools_id(drop, 50)
+            npc.drop_trophy = []
             history_line = "Получен трофей "+str(drop)+" - ценность 50 ETO при помощи взлома."
             prof.save_to_history(history_line)
-            print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Вероятность выпадения вместо 40 - "+str(percent)+"%."))
+            print("\033[32m{}".format("[COMPLITE]: ")+"\033[0m{}".format(history_line))
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
         
         if command == "2":
