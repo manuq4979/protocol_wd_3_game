@@ -451,7 +451,7 @@ def find_recharge_for_tool_id(prof, finding_tool_id, array_tool=[], i=0):
         # Инструмент может иметь рандомное значение charge - заряда, из-за чего обычный поиск может не дать результата, поэтому искать инструмент буду по имени.
         finding_tool_id_arr = finding_tool_id.split("_") # Это оружие
         tool_recharge_id = tool_recharge_id.split("=")[1].split("_") # это патроны
-        print(finding_tool_id_arr + " == "+tool_recharge_id)
+        print(str(finding_tool_id_arr) + " == "+str(tool_recharge_id))
         # строка patron_recharge:1911-pistols_damage=90_charge=100
         # станет ['recharge', '1911-pistols_damage=90_charge=0'], поэтому и [1], если именеи patron - не окажется, то индексом должно быть [0]!
             
