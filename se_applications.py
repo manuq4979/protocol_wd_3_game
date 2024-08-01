@@ -99,7 +99,7 @@ def get_applications_and_print():
     size = len(applications_list)
     for i in range(size):
         app = applications_list[i]
-        print("["+str(i)+"]: "+ app[0]+".")
+        print("["+str(i+1)+"]: "+ app[0]+".")
 
 # Вернет index или False с текстом ошибки в случае ошибки ввода:
 def check_input(input_text):
