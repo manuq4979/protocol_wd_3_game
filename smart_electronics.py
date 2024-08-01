@@ -216,7 +216,7 @@ def apply_to_characteristics_SE(char_line):
 def set_new_soft():
     se = Smart_Electronics.get_instance()
     while True:
-        print("\n")
+        print("\n#######################################################\n")
         print("NI == "+str(se.network_interface)+" # NI - network_interface")
         print("RA == "+str(se.remote_access)+" # RA - remote_access")
         print("OS == "+str(se.operation_system)+" # OS - operation_system")
@@ -227,12 +227,11 @@ def set_new_soft():
         print("CP2 == "+str(se.control_panel)+" # CP2 - control_panel")
         print("W == "+str(se.write)+" # W - write")
         print("R == "+str(se.read)+" # R - read")
-        
-        print("\n")
-        print("[1]: Назад.")
+        print("\n#######################################################\n")
+								print("[0]: Назад.")
         
         soft = input("> ")
-        if soft == "1":
+        if soft == "0":
             return
         
         if soft == "NI":
