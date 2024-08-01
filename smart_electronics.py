@@ -214,6 +214,7 @@ def apply_to_characteristics_SE(char_line):
 
 
 def set_new_soft():
+    se = Smart_Electronics.get_instance()
     while True:
         print("\n")
         print("NI == "+str(se.network_interface)+" # NI - network_interface")
