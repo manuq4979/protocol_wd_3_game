@@ -35,7 +35,7 @@ def hack_trophy(prof):
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             continue
     
-        if command == "1" and command == "4":
+        if command == "1" or command == "4":
             inventory = prof.get_tools_id()
             my_bots = []
             for tool_id, price in inventory.items():
