@@ -445,19 +445,18 @@ def compile_tool(array_tool):
 def find_recharge_for_tool_id(prof, finding_tool_id, array_tool=[], i=0):
     inventory = prof.get_tools_id()
     for tool_id, price in inventory.items():
-        tool_recharge_id = Profile.decoding_of_characteristics(tool_id)         # tool_recharge_id == ['recharge', tool_id]
         # print(tool_recharge_id)
         if len(tool_recharge_id) == 2:                                          # Может содержать ['']
 
             # Инструмент может иметь рандомное значение charge - заряда, из-за чего обычный поиск может не дать результата, поэтому искать инструмент буду по имени.
-            finding_tool_id_arr = finding_tool_id.split("_")
-            tool_recharge_id[1] = tool_recharge_id[1]
-            print(tool_recharge_id[1])
+            finding_tool_id_arr = finding_tool_id.split("_") # Это оружие
+            tool_recharge_id = tool_recharge_id.split("=")[1].split("_") # это патроны
+            print(tool_recharge_id[0])
             print(finding_tool_id_arr[0])
             # строка patron_recharge:1911-pistols_damage=90_charge=100
             # станет ['recharge', '1911-pistols_damage=90_charge=0'], поэтому и [1], если именеи patron - не окажется, то индексом должно быть [0]!
             
-            if tool_recharge_id[1] == finding_tool_id_arr[0]:
+            if tool_recharge_id[0] == finding_tool_id_arr[0]:
                 prof.del_tools_id(tool_id)                                      # Удаляем предмет перезарядки, это типа значит что мы перезарядили предммет
                 prof.del_keep_tool(finding_tool_id)                             # заряд предмета будет изменен из чего следует что нужно стереть старый tool_id
                 charge = 100                                                    # 1 заряд всегда равен 100 уровням заряда!
