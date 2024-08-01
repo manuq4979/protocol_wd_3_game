@@ -72,11 +72,13 @@ def hack_trophy(prof):
             print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Вероятность успеха взлома: "+str(percent)+"%."))
             
             from person import NPC
+            npc = NPC.get_instance()
+            
             if npc.installed_contender != "None":
                 print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Нет цели для взлома!"))
                 input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
                 continue
-            npc = NPC.get_instance()
+            
             drop = hacked_calculate_drop_trophy(npc)
             if drop == 0:
                 print("\033[31m{}".format("[FAILED]: ")+"\033[0m{}".format("Взлом провалился!"))
