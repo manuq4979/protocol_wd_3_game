@@ -454,7 +454,7 @@ def find_recharge_for_tool_id(prof, finding_tool_id, array_tool=[], i=0):
         
         finding_tool_name = finding_tool_id[0]
         tool_recharge_name = tool_recharge_id.split(":")[1].split("_")[0] # это патроны
-        print(str(finding_tool_id) + " == "+str(tool_recharge_id))
+        # print(str(finding_tool_id) + " == "+str(tool_recharge_id))
         
         if tool_recharge_name == finding_tool_name:
             prof.del_tools_id(tool_id)                                      # Удаляем предмет перезарядки, это типа значит что мы перезарядили предммет
