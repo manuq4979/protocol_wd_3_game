@@ -4,7 +4,7 @@
 
 ###
 
-def hack_trophy():
+def hack_trophy(prof):
     print("\n#######################################################\n")
     print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Приложение позволяет взламывать вам противника с помощью ботов!\n"))
     print("Hack Menu: ----------------------")
@@ -53,7 +53,7 @@ def check_input(input_text):
             return False
         return index
 
-def application_menu():
+def application_menu(prof):
     print("\n#######################################################\n")
     print("Menu: ----------------------")
     get_applications_and_print()
@@ -66,4 +66,4 @@ def application_menu():
     index = check_input(index)
     
     
-    applications_list[index][1]()
+    applications_list[index][1](prof)
