@@ -30,10 +30,15 @@ def hack_trophy(prof):
         print("\n#######################################################\n")
     
         command = input("~# ")
+        
+        if command == "0":
+            return
+        
         if command.isdigit() == False:
             print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             continue
+            
     
         if command == "1" or command == "4":
             inventory = prof.get_tools_id()
