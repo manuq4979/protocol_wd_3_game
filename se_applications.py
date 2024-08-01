@@ -123,7 +123,7 @@ def get_ability_to_flash_firmware(prof):
             return
     
         if command == "1":
-            from smart_electronics import Smart_Electronics
+            from smart_electronics import Smart_Electronics, set_new_soft
             se = Smart_Electronics.get_instance()
             if se.name == "": # по умолчанию имя name
                 print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Нет подключенных устройств!"))
@@ -137,7 +137,25 @@ def get_ability_to_flash_firmware(prof):
         
             print("\033[32m{}".format("[COMPLITE]: ")+"\033[0m{}".format("Взлом успешно выполнен!"))
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
-
+            
+            while True:
+                print("\n#######################################################\n")
+                print("[1]: Перепрошить.")
+                print("[0]: Назад.")
+                print("\n#######################################################\n")
+                
+                command_2 = input("~# ")
+                
+                if command_2 == "0":
+                    break
+                
+                if command_2.isdigit() == False:
+                    print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
+                    input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+                    continue
+                    
+                if command_2 == "1":
+                    set_new_soft()
 
 
 
