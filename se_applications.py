@@ -155,6 +155,17 @@ def check_access_2(prof):
     print("\033[31m{}".format("[ACCESS DENIED]: ")+"\033[0m{}".format("Требуется доступ уровня DedSec!"))
     input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
     return
+
+# APP NUMBER 1 DEF
+def check_access_1(prof):
+    inventory = prof.get_tools_id()
+    for tool_id, price in inventory.items():
+        if tool_id == "dedsec_flash-driver=retro4979":
+            hack_trophy(prof)
+            return
+    print("\033[31m{}".format("[ACCESS DENIED]: ")+"\033[0m{}".format("Требуется доступ уровня DedSec!"))
+    input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+    return
     
     
 
@@ -165,7 +176,7 @@ def check_access_2(prof):
 
 ###
 
-applications_list = [["hack_trophy_systems", hack_trophy], ["get_ability_to_flash_firmware", check_access_2]] # [[name, app_address], ...]
+applications_list = [["hack_trophy_systems", check_access_1], ["get_ability_to_flash_firmware", check_access_2]] # [[name, app_address], ...]
 
 def get_applications_and_print():
     size = len(applications_list)
