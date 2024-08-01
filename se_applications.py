@@ -147,7 +147,7 @@ def get_ability_to_flash_firmware(prof):
 
 ###
 
-applications_list = [["hack_trophy_systems", hack_trophy]] # [[name, app_address], ...]
+applications_list = [["hack_trophy_systems", hack_trophy], ["get_ability_to_flash_firmware", get_ability_to_flash_firmware]] # [[name, app_address], ...]
 
 def get_applications_and_print():
     size = len(applications_list)
