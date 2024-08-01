@@ -523,7 +523,7 @@ def player_attack():
             prof.add_tools_id(drop, 50)
             history_line = "Получен трофей "+str(drop)+" - ценность 50 ETO."
             prof.save_to_history(history_line)
-            print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Получен трофей "+str(drop)+" !"))
+            print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Получен трофей: "+str(drop)+" !"))
         npc.installed_contender = "None"
         
         npc.set_all_fields_default()    # после нейтрализации противника, класс NPC устанавливает свои поля в поля по умолчанию.
