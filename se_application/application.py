@@ -5,7 +5,7 @@
 ###
 
 def hack_trophy(prof):
-    tools_id = ["two-wheeled-bot", "spider-bot"]
+    bots_id = [["two-wheeled-bot", 70], ["spider-bot", 100]]
     while True:
         print("\n#######################################################\n")
         print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Приложение позволяет взламывать вам противника с помощью ботов!\n"))
@@ -22,7 +22,16 @@ def hack_trophy(prof):
     
         if command == "1":
             inventory = prof.get_tools_id()
-            inventory[tool_id]
+            my_bots = []
+            for tool_id, price in inventory.items():
+                for bot_id in bots_id:
+                    if tool_id == bot_id[0]:
+                        my_bota.append(bot_id)
+            values = []
+            for bot_id in my_bots:
+                values.append(bot_id[1])
+            max_percent = max(values)
+                
 
 
 
