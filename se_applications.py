@@ -75,9 +75,14 @@ def hack_trophy(prof):
             print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Вероятность выпадения вместо 40 - "+str(percent)+"%."))
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
         if command == "2":
+            if original_calculate_drop_trophy == "Unknown":
+                print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Взлома ещё не производилось!"))
+                input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+                continue
             from player_profile import calculate_drop_trophy
             percent = 40
             calculate_drop_trophy = original_calculate_drop_trophy
+            original_calculate_drop_trophy = "Unknown"
             print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Вероятность выпадения снова 40%."))
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
         if command == "3":
