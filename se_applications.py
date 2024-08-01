@@ -24,6 +24,7 @@ def hack_trophy(prof):
         print("[1]: Выполнить взлом.")
         print("[2]: Отменить взлом.")
         print("[3]: Список поддерживаемых ботов.")
+        print("[4]: Список моих ботов.")
         print("[0]: Выход.")
         print("\n#######################################################\n")
     
@@ -33,13 +34,22 @@ def hack_trophy(prof):
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             continue
     
-        if command == "1":
+        if command == "1" and command == "4":
             inventory = prof.get_tools_id()
             my_bots = []
             for tool_id, price in inventory.items():
                 for bot_id in bots_id:
                     if tool_id == bot_id[0]:
                         my_bota.append(bot_id)
+            if command == "4":
+                print("\n#######################################################\n")
+                for my_bot_id in my_bots:
+                    print("\033[34m{}".format("[tool_id]: ")+"\033[0m{}".format(my_bot_id[0]))
+                    print("\n")
+                print("\n#######################################################\n")
+                input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+                continue
+                
             if len(my_bots) == 0:
                 print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Требуется наличие бота в инвентаре!"))
                 input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
@@ -62,7 +72,15 @@ def hack_trophy(prof):
             percent = 40
             calculate_drop_trophy = original_calculate_drop_trophy
             print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Вероятность выпадения снова 40%."))
-            input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить...")) 
+            input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+        if command == "3":
+            print("\n#######################################################\n")
+            for bot_id in bots_id:
+                print("\033[34m{}".format("[tool_id]: ")+"\033[0m{}".format(bot_id[0])
+                print("С ним шанс выпадения трофея будет: "+str(bot_id[1])+"%.")
+                print("\n")
+            print("\n#######################################################\n")
+            input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             
                 
 
