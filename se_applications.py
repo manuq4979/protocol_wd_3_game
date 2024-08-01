@@ -74,7 +74,7 @@ def hack_trophy(prof):
             from person import NPC
             npc = NPC.get_instance()
             
-            if npc.installed_contender != "None":
+            if npc.installed_contender != True:
                 print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Нет цели для взлома!"))
                 input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
                 continue
