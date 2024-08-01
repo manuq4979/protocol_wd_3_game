@@ -102,6 +102,7 @@ def hack_trophy(prof):
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             
 
+
 # APP NUMBER 2
 def get_ability_to_flash_firmware(prof):
     from smart_electronics import Smart_Electronics, set_new_soft
@@ -143,8 +144,17 @@ def get_ability_to_flash_firmware(prof):
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
         if command == "2" and access == 1:
             set_new_soft()
-                    
 
+# APP NUMBER 2 DEF
+def check_access_2(prof):
+    inventory = prof.get_tools_id()
+    for tool_id, price in inventory.items():
+        if tool_id.find("dedsec_flash-driver=retro4979") == -1:
+            print("\033[31m{}".format("[ACCESS DENIED]: ")+"\033[0m{}".format("Требуется доступ уровня DedSec!"))
+            input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+            return
+    get_ability_to_flash_firmware(prof)
+    
 
 
 ###
@@ -153,7 +163,7 @@ def get_ability_to_flash_firmware(prof):
 
 ###
 
-applications_list = [["hack_trophy_systems", hack_trophy], ["get_ability_to_flash_firmware", get_ability_to_flash_firmware]] # [[name, app_address], ...]
+applications_list = [["hack_trophy_systems", hack_trophy], ["get_ability_to_flash_firmware", check_access_2]] # [[name, app_address], ...]
 
 def get_applications_and_print():
     size = len(applications_list)
