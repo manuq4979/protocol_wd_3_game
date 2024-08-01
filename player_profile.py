@@ -445,7 +445,7 @@ def compile_tool(array_tool):
 def find_recharge_for_tool_id(prof, finding_tool_id, array_tool=[], i=0):
     inventory = prof.get_tools_id()
     for tool_id, price in inventory.items():
-        # print(tool_recharge_id)
+        tool_recharge_id = tool_id # ищем заряды в инаенторе и переименовываем для ясности
         if len(tool_recharge_id) == 2:                                          # Может содержать ['']
 
             # Инструмент может иметь рандомное значение charge - заряда, из-за чего обычный поиск может не дать результата, поэтому искать инструмент буду по имени.
