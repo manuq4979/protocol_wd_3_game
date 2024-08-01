@@ -24,9 +24,8 @@ def hack_trophy(prof):
         print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Приложение позволяет взламывать вам противника с помощью ботов!\n"))
         print("Hack Menu: ----------------------")
         print("[1]: Выполнить взлом.")
-        print("[2]: Отменить взлом.")
-        print("[3]: Список поддерживаемых ботов.")
-        print("[4]: Список моих ботов.")
+        print("[2]: Список поддерживаемых ботов.")
+        print("[3]: Список моих ботов.")
         print("[0]: Выход.")
         print("\n#######################################################\n")
     
@@ -41,14 +40,14 @@ def hack_trophy(prof):
             continue
             
     
-        if command == "1" or command == "4":
+        if command == "1" or command == "3":
             inventory = prof.get_tools_id()
             my_bots = []
             for tool_id, price in inventory.items():
                 for bot_id in bots_id:
                     if tool_id == bot_id[0]:
                         my_bots.append(bot_id)
-            if command == "4":
+            if command == "3":
                 print("\n#######################################################\n")
                 if len(my_bots) == 0:
                     print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Доступных ботов не найдено!"))
@@ -68,25 +67,24 @@ def hack_trophy(prof):
             for bot_id in my_bots:
                 values.append(bot_id[1])
             max_percent = max(values)
-            
-            from player_profile import calculate_drop_trophy
             percent = max_percent
-            original_calculate_drop_trophy = calculate_drop_trophy
-            calculate_drop_trophy = hacked_calculate_drop_trophy
-            print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Вероятность выпадения вместо 40 - "+str(percent)+"%."))
-            input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
-        if command == "2":
-            if original_calculate_drop_trophy == "Unknown":
-                print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Взлома ещё не производилось!"))
+            print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Вероятность успеха взлома: "+str(percent)+"%."))
+            
+            from person import NPC
+            npc = NPC.get_instance()
+            drop = hacked_calculate_drop_trophy(npc)
+            if drop == 0:
+                print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Нет цели для взлома!"))
                 input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
                 continue
-            from player_profile import calculate_drop_trophy
-            percent = 40
-            calculate_drop_trophy = original_calculate_drop_trophy
-            original_calculate_drop_trophy = "Unknown"
-            print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Вероятность выпадения снова 40%."))
+            
+            prof.add_tools_id(drop, 50)
+            history_line = "Получен трофей "+str(drop)+" - ценность 50 ETO при помощи взлома."
+            prof.save_to_history(history_line)
+            print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Вероятность выпадения вместо 40 - "+str(percent)+"%."))
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
-        if command == "3":
+        
+        if command == "2":
             print("\n#######################################################\n")
             for bot_id in bots_id:
                 print("\033[34m{}".format("[tool_id]: ")+"\033[0m{}".format(bot_id[0]))
