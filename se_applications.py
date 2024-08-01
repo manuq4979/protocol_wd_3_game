@@ -149,11 +149,13 @@ def get_ability_to_flash_firmware(prof):
 def check_access_2(prof):
     inventory = prof.get_tools_id()
     for tool_id, price in inventory.items():
-        if tool_id.find("dedsec_flash-driver=retro4979") == -1:
-            print("\033[31m{}".format("[ACCESS DENIED]: ")+"\033[0m{}".format("Требуется доступ уровня DedSec!"))
-            input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+        if tool_id == "dedsec_flash-driver=retro4979":
+            get_ability_to_flash_firmware(prof)
             return
-    get_ability_to_flash_firmware(prof)
+    print("\033[31m{}".format("[ACCESS DENIED]: ")+"\033[0m{}".format("Требуется доступ уровня DedSec!"))
+    input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+    return
+    
     
 
 
