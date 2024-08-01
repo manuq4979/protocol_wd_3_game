@@ -449,13 +449,12 @@ def find_recharge_for_tool_id(prof, finding_tool_id, array_tool=[], i=0):
                                                  # Может содержать ['']
 
         # Инструмент может иметь рандомное значение charge - заряда, из-за чего обычный поиск может не дать результата, поэтому искать инструмент буду по имени.
-        finding_tool_id_arr = finding_tool_id.split("_") # Это оружие
         tool_recharge_id = tool_recharge_id.split("=")[1].split("_") # это патроны
-        print(str(finding_tool_id_arr) + " == "+str(tool_recharge_id))
+        print(str(name) + " == "+str(tool_recharge_id[0]))
         # строка patron_recharge:1911-pistols_damage=90_charge=100
         # станет ['recharge', '1911-pistols_damage=90_charge=0'], поэтому и [1], если именеи patron - не окажется, то индексом должно быть [0]!
             
-        if tool_recharge_id[0] == finding_tool_id_arr[0]:
+        if tool_recharge_id[0] == finding_tool_id:
             prof.del_tools_id(tool_id)                                      # Удаляем предмет перезарядки, это типа значит что мы перезарядили предммет
             prof.del_keep_tool(finding_tool_id)                             # заряд предмета будет изменен из чего следует что нужно стереть старый tool_id
             charge = 100                                                    # 1 заряд всегда равен 100 уровням заряда!
@@ -481,7 +480,7 @@ def check_charge(prof):
             if char[0] == "charge":                                          # [charge, 100] как пример
                 charge = int(char[1])                                        # от 0 до 100
                 if charge == 0:                                              # Проверяем не равен ли заряд 0, есл да то
-                     if find_recharge_for_tool_id(prof, tool_id, array_tool, i-1) != True:    # Проверяем есть ли перезарядка, если да, то просто ничего не делать. Иначе
+                     if find_recharge_for_tool_id(prof, name, array_tool, i-1) != True:    # Проверяем есть ли перезарядка, если да, то просто ничего не делать. Иначе
                         print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Инструмент - "+tool_id+" разряжен, добавьте новый заряд в инвентарь!"))
                         Profile.take_off(tool_id)                               # Снимаем предмет.
                         take_off_tool.append(tool_id)
