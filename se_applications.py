@@ -16,6 +16,7 @@ def hacked_calculate_drop_trophy(npc):
     
 # APP NUMBER 1
 def hack_trophy(prof):
+    global percent, original_calculate_drop_trophy
     bots_id = [["two-wheeled-bot", 70], ["spider-bot", 100]]
     while True:
         print("\n#######################################################\n")
@@ -60,7 +61,6 @@ def hack_trophy(prof):
             max_percent = max(values)
             
             from player_profile import calculate_drop_trophy
-            global percent, original_calculate_drop_trophy
             percent = max_percent
             original_calculate_drop_trophy = calculate_drop_trophy
             calculate_drop_trophy = hacked_calculate_drop_trophy
@@ -68,7 +68,6 @@ def hack_trophy(prof):
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
         if command == "2":
             from player_profile import calculate_drop_trophy
-            global percent, original_calculate_drop_trophy
             percent = 40
             calculate_drop_trophy = original_calculate_drop_trophy
             print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Вероятность выпадения снова 40%."))
