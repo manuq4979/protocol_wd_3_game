@@ -4,6 +4,8 @@
 
 ###
 
+
+# APP NUMBER 1
 def hack_trophy(prof):
     bots_id = [["two-wheeled-bot", 70], ["spider-bot", 100]]
     while True:
