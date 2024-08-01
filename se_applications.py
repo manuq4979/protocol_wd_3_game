@@ -142,24 +142,8 @@ def get_ability_to_flash_firmware(prof):
             print("\033[32m{}".format("[COMPLITE]: ")+"\033[0m{}".format("Взлом успешно выполнен!"))
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
         if command == "2" and access == 1:
-            while True:
-                print("\n#######################################################\n")
-                print("[1]: Установить новые параметры..")
-                print("[0]: Назад.")
-                print("\n#######################################################\n")
-                
-                command_2 = input("~# ")
-                
-                if command_2 == "0":
-                    break
-                
-                if command_2.isdigit() == False:
-                    print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
-                    input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
-                    continue
+            set_new_soft()
                     
-                if command_2 == "1":
-                    set_new_soft()
 
 
 
