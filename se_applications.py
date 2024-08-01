@@ -41,14 +41,15 @@ def hack_trophy(prof):
             for tool_id, price in inventory.items():
                 for bot_id in bots_id:
                     if tool_id == bot_id[0]:
-                        my_bota.append(bot_id)
+                        my_bots.append(bot_id)
             if command == "4":
                 print("\n#######################################################\n")
-                for my_bot_id in my_bots:
-                    if len(my_bots) == 0:
-                        print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Доступных ботов не найдено!"))
-                    print("\033[34m{}".format("[tool_id]: ")+"\033[0m{}".format(my_bot_id[0]))
-                    print("\n")
+                if len(my_bots) == 0:
+                    print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Доступных ботов не найдено!"))
+                else:
+                    for my_bot_id in my_bots:
+                        print("\033[34m{}".format("[tool_id]: ")+"\033[0m{}".format(my_bot_id[0]))
+                        print("\n")
                 print("\n#######################################################\n")
                 input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
                 continue
