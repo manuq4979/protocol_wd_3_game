@@ -115,11 +115,14 @@ def get_menu():
         print("65. Открыть Smart Electronics.")
         print("7. Инвентарь")
         print("8. Правила")
-        print("9. Назад")
+        print("0. Назад")
         print("10. Для разработчиков")
         print("\n#######################################################\n")
     
         number = input("> ")
+        
+        if number == "0":
+            return
         if number == "1":
             get_menu_DailyTask()
             continue
