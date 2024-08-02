@@ -369,12 +369,12 @@ def get_OS_menu():
         if se.write == 0 or se.write == 0:
             print("[3]: Получить доступ.")
         print("[4]: Отключиться.")
-        print("[5]: Назад.")
+        print("[0]: Назад.")
         print("\n")
         
         command = input(PS1)
         
-        if command == "5":
+        if command == "0":
             return
         if command == "4":
             se.set_all_fields_default()
@@ -403,7 +403,7 @@ def set_SE():
 def print_menu_smart_electronics():
     print("[1]: Текущие подключение.")
     print("[2]: Подключиться.")
-    print("[3]: Назад.")
+    print("[0]: Назад.")
     
 def select_item(command):
     se = Smart_Electronics.get_instance()
@@ -441,7 +441,7 @@ def poit_of_entry(computer, prof):
         
         command = input(PS1)
         
-        if command == "3":
+        if command == "0":
             return
         if command == "01":
             import se_applications
