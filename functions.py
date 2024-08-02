@@ -55,48 +55,48 @@ def get_menu_developer():
         print("4.5. Удалить предмет из инвенторя.")
         print("5. Изменить настройки наград.")
         print("6. Установить профиль в default.")
-        print("7. Назад.")
+        print("0. Назад.")
         print("\n#######################################################\n")
         
         number = input("> ")
         
         if number == "1":
             add_product()
-            break
+            continue
         if number == "2":
             del_product()
-            break
+            continue
         if number == "3":
             ETO = input("ETO> ")
             prof = Profile.get_instance()
             prof.save_to_history("Разработчик накинул тебе "+str(ETO)+" ETO ;)\n")
             prof.set_ETO(int(ETO))
-            break
+            continue
         if number == "4":
             tool_id = input("tool_id> ")
             price   = input("price> ")
             prof = Profile.get_instance()
             prof.add_tools_id(tool_id, price)
-            break
+            continue
         if number == "4.5":
             prof = Profile.get_instance()
             tool_id = input("tool_id> ")
             prof.del_tools_id(tool_id)
             print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Предмет " + str(tool_id) + " успешно удален!"))
-            break
+            continue
         if number == "5":
             prof = Profile.get_instance()
             print("\n#######################################################\n")
             prof.print_quest_reward_setting()
             print("\n#######################################################\n")
             prof.edit_quest_reward_setting()
-            break
+            continue
         if number == "6":
             prof = Profile.get_instance()
             prof.set_all_fields_default()
-            break
-        if number == "7":
-            break
+            continue
+        if number == "0":
+            return
         else:
             print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("выбран не верный номер."))
 
@@ -122,33 +122,33 @@ def get_menu():
         number = input("> ")
         if number == "1":
             get_menu_DailyTask()
-            break
+            continue
         if number == "2":
             get_menu_SingleTask()
-            break
+            continue
         if number == "3":
             get_menu_HabitTask()
-            break
+            continue
         if number == "4":
             get_history()
-            break
+            continue
         if number == "5":
             get_store()
-            break
+            continue
         if number == "6":
             get_installer_NPC()
-            break
+            continue
         if number == "65":
             get_smart_electronics_menu()
-            break
+            continue
         if number == "7":
             get_inventory()
-            break
+            continue
         if number == "9":
-            break
+            continue
         if number == "10":
             get_menu_developer()
-            break
+            continue
         else:
             print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("выбран не верный номер."))
 
@@ -236,11 +236,11 @@ def get_inventory():
         if text == "1":
             tool_id = input("tool_id> ")
             keeping_tool(tool_id)
-            break
+            continue
         if text == "2":
             tool_id = input("tool_id> ")
             take_off(tool_id)
-            break
+            continue
         if text == "3":
             return
         else:
