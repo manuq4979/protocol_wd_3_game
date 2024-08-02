@@ -4,6 +4,15 @@
 
 ###
 
+# METHOD APP 3
+def use_consumables(prof): # Если расходный материал успешно использован вернет True иначе False:
+    inventory = prof.get_tools_id()
+    for tool_id, price in inventory.items():
+        if tool_id == "smartphone_consumables":
+            prof.del_tools_id(tool_id)
+            return True
+    return False
+
 # METHOD APP 1
 percent = 40
 original_calculate_drop_trophy = "Unknown"
@@ -71,6 +80,11 @@ def hack_trophy(prof):
             percent = max_percent
             print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Вероятность успеха взлома: "+str(percent)+"%."))
             
+            if use_consumables(prof) == False:
+                print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Отсутствует расходный материал - смартфон!"))
+                input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+                continue
+            
             from person import NPC
             npc = NPC.get_instance()
             
@@ -103,7 +117,7 @@ def hack_trophy(prof):
             
 
 
-# APP NUMBER 2
+# METHOD APP 2
 def get_ability_to_flash_firmware(prof):
     from smart_electronics import Smart_Electronics, set_new_soft
     se = Smart_Electronics.get_instance()
@@ -137,6 +151,12 @@ def get_ability_to_flash_firmware(prof):
                 print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Доступ уже получен!"))
                 input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
                 continue
+            
+            if use_consumables(prof) == False:
+                print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Отсутствует расходный материал - смартфон!"))
+                input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+                continue
+            
             se.possibility_of_flashing = 1
             access = 1
         
