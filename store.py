@@ -47,11 +47,11 @@ def get_store():
         if text == "1":
             tool_id = input("tool_id> ")
             buy(tool_id)
-            break
+            continue
         if text == "2":
             tool_id = input("tool_id> ")
             sell(tool_id)
-            break
+            continue
         else:
             print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("не верный запрос!"))
         
