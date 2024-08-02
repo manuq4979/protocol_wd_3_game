@@ -52,7 +52,7 @@ def get_menu_developer():
         print("2. Удалить товар из магазина.")
         print("3. Установить ETO игроку.")
         print("4. Добавить предмет в инвентарь.")
-        print("4.5. Удалить предмет из инвенторя.")
+        print("45. Удалить предмет из инвенторя.")
         print("5. Изменить настройки наград.")
         print("6. Установить профиль в default.")
         print("0. Назад.")
@@ -78,7 +78,7 @@ def get_menu_developer():
             prof = Profile.get_instance()
             prof.add_tools_id(tool_id, price)
             continue
-        if number == "4.5":
+        if number == "45":
             prof = Profile.get_instance()
             tool_id = input("tool_id> ")
             prof.del_tools_id(tool_id)
