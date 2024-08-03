@@ -94,6 +94,7 @@ class NPC:
             result.append(char)
         if len(drop_trophy) != 0:
             result.append(drop_trophy)
+        print(result)
         return result
 	
     def apply_to_characteristics_NPC(self, tool_id, up=True,  new_npc=False):
