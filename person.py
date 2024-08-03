@@ -83,7 +83,7 @@ class NPC:
             elif flag == 0:
                 drop_trophy_new.append(drop_trophy[i])
         drop_trophy = ["drop-trophy", drop_trophy_new[1:]] # во вложенном массиве под индексом 0 идет имя - "drop-trophy", которое уже добавлялось, пожтому создаем вложенный массив без индекса 0!
-        
+        print(drop_trophy)
         chars = char_line.split("_")
         self.name = chars[0]
         chars.remove(self.name)
