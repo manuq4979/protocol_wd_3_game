@@ -68,7 +68,7 @@ class NPC:
         
         # Код выше некорректно трофеи создает, а именно, разбеляет patron_recharge:tool_id на 2 разных масива,
         # Код ниже их снова объеденяет:
-        drop_trophy = drop_trophy[2:] # удаляет 2 лишних позиции в массиве.
+        # drop_trophy = drop_trophy[2:] # удаляет 2 лишних позиции в массиве.
         size = len(drop_trophy)
         drop_trophy_new = []
         flag = 0
@@ -83,7 +83,7 @@ class NPC:
             elif flag == 0:
                 drop_trophy_new.append(drop_trophy[i])
         drop_trophy = ["drop-trophy", drop_trophy_new[1:]] # во вложенном массиве под индексом 0 идет имя - "drop-trophy", которое уже добавлялось, пожтому создаем вложенный массив без индекса 0!
-        print(drop_trophy)
+        
         chars = char_line.split("_")
         self.name = chars[0]
         chars.remove(self.name)
@@ -94,7 +94,7 @@ class NPC:
             result.append(char)
         if len(drop_trophy) != 0:
             result.append(drop_trophy)
-        print(result)
+        
         return result
 	
     def apply_to_characteristics_NPC(self, tool_id, up=True,  new_npc=False):
