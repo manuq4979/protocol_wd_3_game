@@ -368,6 +368,8 @@ def get_OS_menu():
             print("[2]: Изменить хранилище данных.")
         if se.write == 0 or se.write == 0:
             print("[3]: Получить доступ.")
+        if se.read == 1:
+            print("[32]: Установить противника для попытки получения доступа.")
         print("[4]: Отключиться.")
         print("[0]: Назад.")
         print("\n")
@@ -376,6 +378,8 @@ def get_OS_menu():
         
         if command == "0":
             return
+        if command == "32" and se.read == 1:
+            pass
         if command == "4":
             se.set_all_fields_default()
             print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Отключено успешно - все настройки SE класса установлены по умолчанию!"))
@@ -423,6 +427,7 @@ def select_item(command):
     print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Не верный пункт меню!"))
     
 
+# ТОЧКА ВХОДА - это аналог функции main:
 def poit_of_entry(computer, prof):
     # Нужно чтобы получить доступ к инвентарю игрока, только для получения карты доступа, всё остальное(из хранилища данных) добавляется в инвентарь вручную!
     se = Smart_Electronics.get_instance()
