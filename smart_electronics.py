@@ -359,7 +359,7 @@ def get_access():
 def set_npc_as_target():
     from person import NPC
     npc = NPC.get_instance()
-				se = Smart_Electronics.get_instance()
+    se = Smart_Electronics.get_instance()
     while True:
         if npc.installed_contender != True:
             print("\n#######################################################\n")
