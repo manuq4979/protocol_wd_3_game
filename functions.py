@@ -63,10 +63,11 @@ def get_menu_developer():
         
         if number == "1":
             add_product()
-            
+            input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             continue
         if number == "2":
             del_product()
+            input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             continue
         if number == "3":
             ETO = input("ETO> ")
