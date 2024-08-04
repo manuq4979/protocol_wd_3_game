@@ -359,6 +359,7 @@ def get_access():
 def set_npc_as_target():
     from person import NPC
     npc = NPC.get_instance()
+				se = Smart_Electronics.get_instance()
     while True:
         if npc.installed_contender != True:
             print("\n#######################################################\n")
@@ -374,7 +375,7 @@ def set_npc_as_target():
             if command == "2":
                 print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Операция отменена!"))
                 return
-        NPC_ID = list(npc.access_algorithm_dict.value())[0]
+        NPC_ID = list(se.access_algorithm_dict.value())[0]
         npc.set_new_npc(NPC_ID)
         print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Новый противник установлен в качестве цели!"))
 
