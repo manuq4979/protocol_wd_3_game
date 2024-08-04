@@ -585,7 +585,7 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
                     # Задания привычек не должны удаляться после выполнения, потому что есть функция повтора через какое-то время!
             if habit_menu == True:
                 get_series_points_menu(task_dict)
-        if number == "2.5":
+        if number == "25":
             import person
             
             ID = input("ID> ")
