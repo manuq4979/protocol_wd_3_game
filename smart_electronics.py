@@ -378,6 +378,7 @@ def set_npc_as_target():
         NPC_ID = se.access_algorithm_dict[0]
         npc.set_new_npc(NPC_ID)
         print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Новый противник установлен в качестве цели!"))
+        return
 
 
 def get_OS_menu():
