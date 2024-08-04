@@ -37,11 +37,11 @@ def get_store():
         print("\nMenu: ----------------------")
         print("1. Купить")
         print("2. Продать")
-        print("3. Назад")
+        print("0. Назад")
         print("\n#######################################################\n")
         text = input("> ")
         
-        if text == "3":
+        if text == "0":
             return
         
         if text == "1":
