@@ -554,7 +554,7 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
         print("1. Добавить")
         if habit_menu == False:
             print("2. Завершено")
-            print("2.5. Провалено")
+            print("25. Провалено")
         else:
             print("2. Выбрать")
         print("3. Удалить")
