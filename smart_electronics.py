@@ -360,7 +360,7 @@ def set_npc_as_target():
     from person import NPC
     npc = NPC.get_instance()
     while True:
-        if NPC.installed_contender != True:
+        if npc.installed_contender != True:
             print("\n#######################################################\n")
             print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Вы уже выбрали себе врага, хотите его заменить?"))
             print("[1]: Да.")
