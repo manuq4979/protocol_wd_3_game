@@ -55,6 +55,7 @@ def get_menu_developer():
         print("45. Удалить предмет из инвенторя.")
         print("5. Изменить настройки наград.")
         print("6. Установить профиль в default.")
+        print("7. Установить ID врага в значение по умолчанию.")
         print("0. Назад.")
         print("\n#######################################################\n")
         
@@ -94,6 +95,10 @@ def get_menu_developer():
         if number == "6":
             prof = Profile.get_instance()
             prof.set_all_fields_default()
+            continue
+        if number == "7":
+            npc = NPC.get_instance()
+            npc.set_all_fields_default()
             continue
         if number == "0":
             return
