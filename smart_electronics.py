@@ -355,6 +355,30 @@ def get_access():
             if access == False:
                 print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Ошибка доступа! У вас нет карты доступа!\n"))
 
+
+def set_npc_as_target():
+    from person import NPC
+    npc = NPC.get_instance()
+    while True:
+        if NPC.installed_contender != True:
+            print("\n#######################################################\n")
+            print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Вы уже выбрали себе врага, хотите его заменить?"))
+            print("[1]: Да.")
+            print("[2]: Нет.")
+            print("\n#######################################################\n")
+        
+            command = input("> ")
+								
+            if command == "1":
+                break
+            if command == "2":
+                print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Операция отменена!"))
+                return
+        
+        npc.set_new_npc(NPC_ID)
+        print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Новый противник установлен в качестве цели!"))
+
+
 def get_OS_menu():
     se = Smart_Electronics.get_instance()
     print("\n")
@@ -379,7 +403,8 @@ def get_OS_menu():
         if command == "0":
             return
         if command == "32" and se.read == 1:
-            pass
+            set_npc_as_target()
+            break
         if command == "4":
             se.set_all_fields_default()
             print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Отключено успешно - все настройки SE класса установлены по умолчанию!"))
