@@ -63,6 +63,7 @@ def get_menu_developer():
         
         if number == "1":
             add_product()
+            
             continue
         if number == "2":
             del_product()
@@ -72,18 +73,21 @@ def get_menu_developer():
             prof = Profile.get_instance()
             prof.save_to_history("Разработчик накинул тебе "+str(ETO)+" ETO ;)\n")
             prof.set_ETO(int(ETO))
+            input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             continue
         if number == "4":
             tool_id = input("tool_id> ")
             price   = input("price> ")
             prof = Profile.get_instance()
             prof.add_tools_id(tool_id, price)
+            input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             continue
         if number == "45":
             prof = Profile.get_instance()
             tool_id = input("tool_id> ")
             prof.del_tools_id(tool_id)
             print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Предмет " + str(tool_id) + " успешно удален!"))
+            input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             continue
         if number == "5":
             prof = Profile.get_instance()
@@ -95,10 +99,12 @@ def get_menu_developer():
         if number == "6":
             prof = Profile.get_instance()
             prof.set_all_fields_default()
+            input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             continue
         if number == "7":
             npc = NPC.get_instance()
             npc.set_all_fields_default()
+            input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             continue
         if number == "0":
             return
