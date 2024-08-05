@@ -569,6 +569,7 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
         
         if number == "1":
             add_task()
+            continue
         if number == "2":
             if habit_menu == False:
                 ID = input("ID> ")
@@ -585,6 +586,7 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
                     # Задания привычек не должны удаляться после выполнения, потому что есть функция повтора через какое-то время!
             if habit_menu == True:
                 get_series_points_menu(task_dict)
+            continue
         if number == "25":
             import person
             
@@ -600,20 +602,22 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
             task.set_status("No active") # Задачи из словарей удаляются вообще? - Ответ: удаляются с помощью пункта "удалить" в меню заданий.
             # Я отказался от удаления заданий, ведь у Ежедневных есть функция повтора.
             print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Поражение зафиксировано !"))
+            continue
         if number == "3":
             del_task()
+            continue
         if number == "4":
             if len(pages) > 1:
                 index += 1
+            continue
         if number == "5":
             if index > 0:
                 index -= 1
+            continue
         if number == "0":
             return
-        if number.isdigit():
-            if int(number) > 5:
-                print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("выбран не верный номер."))
-                
+        
+        print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("выбран не верный номер."))
                 
 
 
