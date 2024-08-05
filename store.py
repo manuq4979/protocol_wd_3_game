@@ -61,9 +61,9 @@ def add_product():
     tool_id = input("tool_id> ")
     price   = input("price> ")
     store[tool_id] = price
-    print("\033[32m{}".format("[info]:")+"\033[0m{}".format("Готово!\n\n"))
+    print("\033[32m{}".format("[INFO]:")+"\033[0m{}".format("Готово!\n\n"))
     
 def del_product():
     tool_id = input("tool_id> ")
     del store[tool_id]
-    print("\033[32m{}".format("[info]:")+"\033[0m{}".format("Предмет удален!\n\n"))
+    print("\033[32m{}".format("[INFO]:")+"\033[0m{}".format("Предмет удален!\n\n"))
