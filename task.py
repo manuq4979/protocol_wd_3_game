@@ -516,11 +516,16 @@ def get_series_points_menu(task_dict):
         print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("задание не найдено!"))
         return
     
-    print("Серия: "+str(task.get_series_point()))
+    print("\n#######################################################\n")
+    print("[Серия]: "+str(task.get_series_point()))
+    print("\nMenu: ----------------------")
     print("1. +")
     print("2. -")
     print("3. Назад")
+    print("\n#######################################################\n")
+    
     res = input("> ")
+    
     if res == "1":                       # При выборе плюса, игрок отмечает, что выполнил привычку.
         task.add_series_point()
         player_attack()                  # Атакуем врага, потому что мы выполнили задание привычки
@@ -528,14 +533,14 @@ def get_series_points_menu(task_dict):
         prof.add_reward(task.complexity, ID=ID, task_class="привычки или ежедневные")
                                          # Добавляем награду в соответсвии с настройками вознаграждения в зависимости от сложности задания
         print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Выполнение привычки зафиксированно!"))
-        input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
         return
     if res == "2":                       # При выборе минуса, игрок подтверждает, что не выполнил привычку
         task.turn_down_point()
         prof = Profile.get_instance()
         npc_attack(prof)                 # Получаем урон от врага, потому что не выполнили задание привычки
         print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Не выполнение привычки зафиксированно!"))
-        input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+        return
+    if res == "3":
         return
     
     print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Выбран не существующий номер в этом меню!"))
