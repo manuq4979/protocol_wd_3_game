@@ -504,6 +504,9 @@ def get_pages(task_list, chunk_size=3):
     return new_task_list
 
 def get_series_points_menu(task_dict):
+    print("\n#######################################################\n")
+    print("\033[32m{}".format("[INFO]:")+"\033[0m{}".format("Выберете ID задания привычки"))
+    print("\n#######################################################\n")
     ID = input("ID> ")
     if ID.isdigit() == False:
         print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("ID указывается лишь в числах!"))
