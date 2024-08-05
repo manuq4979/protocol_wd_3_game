@@ -529,18 +529,16 @@ def get_series_points_menu(task_dict):
                                          # Добавляем награду в соответсвии с настройками вознаграждения в зависимости от сложности задания
         print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Выполнение привычки зафиксированно!"))
         input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
-        continue
     if res == "2":                       # При выборе минуса, игрок подтверждает, что не выполнил привычку
         task.turn_down_point()
         prof = Profile.get_instance()
         npc_attack(prof)                 # Получаем урон от врага, потому что не выполнили задание привычки
         print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Не выполнение привычки зафиксированно!"))
         input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
-        continue
     if res == "3":
         return
     
-    print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("выбран не верный номер."))
+    print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Выбран не существующий номер в этом меню!"))
 
 def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
     index = 0
@@ -631,7 +629,7 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
         if number == "0":
             return
         
-        print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("выбран не верный номер."))
+        print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Выбран не существующий номер в этом меню!"))
                 
 
 
