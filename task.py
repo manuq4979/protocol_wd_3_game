@@ -527,12 +527,20 @@ def get_series_points_menu(task_dict):
         prof = Profile.get_instance()
         prof.add_reward(task.complexity, ID=ID, task_class="привычки или ежедневные")
                                          # Добавляем награду в соответсвии с настройками вознаграждения в зависимости от сложности задания
+        print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Выполнение привычки зафиксированно!"))
+        input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+        continue
     if res == "2":                       # При выборе минуса, игрок подтверждает, что не выполнил привычку
         task.turn_down_point()
         prof = Profile.get_instance()
         npc_attack(prof)                 # Получаем урон от врага, потому что не выполнили задание привычки
+        print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Не выполнение привычки зафиксированно!"))
+        input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+        continue
     if res == "3":
         return
+    
+    print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("выбран не верный номер."))
 
 def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
     index = 0
@@ -569,6 +577,7 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
         
         if number == "1":
             add_task()
+            input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             continue
         if number == "2":
             if habit_menu == False:
@@ -586,6 +595,7 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
                     # Задания привычек не должны удаляться после выполнения, потому что есть функция повтора через какое-то время!
             if habit_menu == True:
                 get_series_points_menu(task_dict)
+            input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             continue
         if number == "25":
             import person
@@ -601,23 +611,27 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
             npc_attack(prof)
             task.set_status("No active") # Задачи из словарей удаляются вообще? - Ответ: удаляются с помощью пункта "удалить" в меню заданий.
             # Я отказался от удаления заданий, ведь у Ежедневных есть функция повтора.
-            print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Поражение зафиксировано !"))
+            print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Поражение зафиксировано!"))
+            input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             continue
         if number == "3":
             del_task()
+            input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             continue
         if number == "4":
             if len(pages) > 1:
                 index += 1
+            input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             continue
         if number == "5":
             if index > 0:
                 index -= 1
+            input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             continue
         if number == "0":
             return
         
-        print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("выбран не верный номер."))
+        print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("выбран не верный номер."))
                 
 
 
