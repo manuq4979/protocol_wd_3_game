@@ -627,12 +627,10 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
         if number == "4":
             if len(pages) > 1:
                 index += 1
-            input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             continue
         if number == "5":
             if index > 0:
                 index -= 1
-            input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             continue
         if number == "0":
             return
