@@ -524,7 +524,7 @@ def get_series_points_menu(task_dict):
     print("\nMenu: ----------------------")
     print("1. +")
     print("2. -")
-    print("3. Назад")
+    print("0. Назад")
     print("\n#######################################################\n")
     
     res = input("> ")
@@ -543,7 +543,7 @@ def get_series_points_menu(task_dict):
         npc_attack(prof)                 # Получаем урон от врага, потому что не выполнили задание привычки
         print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Не выполнение привычки зафиксированно!"))
         return
-    if res == "3":
+    if res == "0":
         return
     
     print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Выбран не существующий номер в этом меню!"))
