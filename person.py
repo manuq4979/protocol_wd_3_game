@@ -66,25 +66,9 @@ class NPC:
         n = res-1
         char_line = char_line[:n]
         
-        # Код выше некорректно трофеи создает, а именно, разбеляет patron_recharge:tool_id на 2 разных масива,
-        # Код ниже их снова объеденяет:
-        # drop_trophy = drop_trophy[2:] # удаляет 2 лишних позиции в массиве.
-        '''
-        size = len(drop_trophy)
-        drop_trophy_new = []
-        flag = 0
-        for i in range(size):
-            if flag == 1:
-                flag = 0
-                continue
-            if drop_trophy[i].find("recharge") != -1:
-                res = drop_trophy[i] + ":" + drop_trophy[i] # если сделать i-1 то первый трофей в списке будет проигнорирован!
-                drop_trophy_new.append(res)
-                flag = 1
-            elif flag == 0:
-                drop_trophy_new.append(drop_trophy[i])
-        '''
         drop_trophy = ["drop-trophy", drop_trophy[1:]] # во вложенном массиве под индексом 0 идет имя - "drop-trophy", которое уже добавлялось, пожтому создаем вложенный массив без индекса 0!
+        for dt in drop_trophy:
+            print(dt)
         
         chars = char_line.split("_")
         self.name = chars[0]
