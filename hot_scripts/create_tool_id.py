@@ -189,5 +189,3 @@ def menu():
 
         if command == "0":
             return
-
-menu()
