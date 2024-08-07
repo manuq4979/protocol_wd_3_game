@@ -69,15 +69,14 @@ class NPC:
         drop_trophy = ["drop-trophy", drop_trophy[1:]] # во вложенном массиве под индексом 0 идет имя - "drop-trophy", которое уже добавлялось, пожтому создаем вложенный массив без индекса 0!
         new_dt = []
         print(drop_trophy[1])
-        continue_flag = 0
+        skip_index = None
         for i in range(len(drop_trophy[1])):
-            continue_flag = 0
             if drop_trophy[1][i].find("recharge") != -1:
                 print(i)
                 new_tool_id = drop_trophy[1][i] + ":" + drop_trophy[1][i+1]
                 new_dt.append(new_tool_id)
-                continue_flag = 1
-            elif continue_flag == 0:
+                skip_index = i+1
+            elif skip_index != i:
                 new_dt.append(drop_trophy[1][i])
         drop_trophy.pop(1)
         drop_trophy.append(new_dt)
