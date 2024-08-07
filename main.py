@@ -46,14 +46,14 @@ while(True):
     else: # если текст, то метод выдаст ошибку, так я исключу попадание текста в него.
         redirecting_input(text) # перенаправка на hot scripts
     if text == "4":
-        from hot_scripts.create_NPC_ID import main
-        main()
+        from hot_scripts.create_NPC_ID import menu
+        menu()
     if text == "5":
-        from hot_scripts.create_SE_ID import main
-        main()
+        from hot_scripts.create_SE_ID import menu
+        menu()
     if text == "6":
-        from hot_scripts.create_tool_id import main
-        main()
+        from hot_scripts.create_tool_id import menu
+        menu()
 	
     if text == "2" or text == "3":
         print("\n#######################################################\n")
