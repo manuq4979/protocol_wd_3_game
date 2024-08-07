@@ -71,6 +71,7 @@ class NPC:
         print(drop_trophy[1])
         for i in range(len(drop_trophy[1])):
             if drop_trophy[1][i].find("recharge"):
+                print(i)
                 new_tool_id = drop_trophy[1][i] + ":" + drop_trophy[1][i+1]
                 new_dt.append(new_tool_id)
             else:
