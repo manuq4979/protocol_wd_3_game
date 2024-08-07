@@ -74,6 +74,7 @@ class NPC:
                 print(i)
                 new_tool_id = drop_trophy[1][i] + ":" + drop_trophy[1][i+1]
                 new_dt.append(new_tool_id)
+                drop_trophy.pop(i+1)
             else:
                 new_dt.append(drop_trophy[1][i])
         drop_trophy.pop(1)
