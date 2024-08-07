@@ -243,7 +243,7 @@ def get_inventory():
         print("\nMenu: ----------------------")
         print("1. Экипировать")
         print("2. Снять предмет")
-        print("3. Назад.")
+        print("0. Назад.")
         print("\n#######################################################\n")
         
         text = input("> ")
@@ -256,7 +256,7 @@ def get_inventory():
             tool_id = input("tool_id> ")
             take_off(tool_id)
             continue
-        if text == "3":
+        if text == "0":
             return
         else:
             print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("выбран не верный номер."))
