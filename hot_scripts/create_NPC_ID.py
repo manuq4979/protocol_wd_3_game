@@ -124,5 +124,3 @@ def menu():
             id_compile()
         if command == "0":
             return
-
-menu()
