@@ -283,6 +283,14 @@ def check_relevance_task():
     
     # Проверка Ежедневных заданий:
     for ID, task in list(daily_task_dict.items()):
+        if task.check_day_end() == True:
+            if task.get_status() == "Active":
+                npc = NPC.get_instance()
+                if npc.installed_contender != "None":
+                    prof = Profile.get_instance()
+                    npc_attack(prof)
+            
+'''
         if task.get_status() == "Active":        # Если задание активно
             
             start_date = task.get_start_date()   # Получаем дату начала
@@ -305,7 +313,7 @@ def check_relevance_task():
             new_description = "[Повтор]: "+str(this_day)+": "+str(task.get_repeat())
             task.set_description(new_description)# Новое описание, в котором дата начала также изменена на сегодня - дату повтора.
 
-
+'''
 def check_HP():
     prof = Profile.get_instance()
     npc = NPC.get_instance()
