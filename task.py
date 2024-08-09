@@ -163,7 +163,7 @@ class SingleTask(Task):
     
         
 class DailyTask(Task):
-    def __init__(self, title="", description="", complexity="", activation_time="", reward="", status="Active", start_date="", repeat="", series=""):
+    def __init__(self, title="", description="", complexity="", activation_time="", reward="", status="No active", start_date="", repeat="", series=""):
         super().__init__(title, description, complexity, activation_time, reward, status)
         if start_date == '':
             self.start_date = ''
