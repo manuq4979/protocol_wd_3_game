@@ -283,14 +283,14 @@ def check_relevance_task():
     
     # Проверка Ежедневных заданий:
     for ID, task in list(daily_task_dict.items()):
-'''
+
         '''
         Если прошли сутки с момента создания то:
         — > Активно? Да, то:
         ———> засчитать поражение.
         —-> Если дата повтора сегодня то:
         ———> пересоздать ежедневное задание с теми же полями.
-        '''
+        
         if task.check_day_end() == True:
             
             if task.get_status() == "Active":
@@ -309,7 +309,7 @@ def check_relevance_task():
                 task.set_start_date(this_day)        # Устанавливаем новую дату начала - а именно лень активации, потому что если оставить прежний день, то окажется что задание не было выполненно, а было провалено!
                 new_description = "[Повтор]: "+str(this_day)+": "+str(task.get_repeat())
                 task.set_description(new_description)
-'''
+        '''
         if task.get_status() == "Active":        # Если задание активно
             
             start_date = task.get_start_date()   # Получаем дату начала
