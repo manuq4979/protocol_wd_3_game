@@ -287,7 +287,7 @@ def check_relevance_task():
     for ID, task in list(daily_task_dict.items()):
         
         start_date = task.get_start_date()
-        print(start_date)
+        print(task.check_time(start_date))
         if task.check_time(start_date) == False: # если ещё рано!
             continue
         if task.check_time(start_date) == 2: # если сегодня дата начала задания, то:
