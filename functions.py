@@ -288,6 +288,10 @@ def check_relevance_task():
         
         start_date = task.get_start_date()
         if task.check_time(start_date) == False: # если дата начла не наступила
+            current_date = datetime.now().date()
+            task.set_start_date(current_date)        # Устанавливаем новую дату начала - а именно лень активации, потому что если оставить прежний день, то окажется что задание не было выполненно, а было провалено!
+            new_description = "[Повтор]: "+str(current_date)+": "+str(repeat_days)
+            task.set_description(new_description)
             continue
         if task.check_time(start_date) == 2: # если сегодня не дата начала задания, то:
             task.set_status("Active")         # сделать задние не активным и
