@@ -283,36 +283,20 @@ def check_relevance_task():
     
     # Проверка Ежедневных заданий:
     for ID, task in list(daily_task_dict.items()):
-
-        '''
-        Если прошли сутки с момента создания то:
-        — > Активно? Да, то:
-        ———> засчитать поражение.
-        —-> Если дата повтора сегодня то:
-        ———> пересоздать ежедневное задание с теми же полями.
-        '''
+        
         start_date = task.get_start_date()
-        if task.check_time(start_date) != False: # если сегодня не дата начала задания, то:
-            task.set_status("No active")         # сделать задние не активным и
+        if task.check_time(start_date) == False: # если дата начла не наступила
+            continue
+        if task.check_time(start_date) == 2: # если сегодня не дата начала задания, то:
+            task.set_status("Active")         # сделать задние не активным и
             continue                             # то задание не проверять на просроченное!
-        else:                                    # иначе дата начала уже прошла или она сегодня:
-            if task.check_time(start_date) == 2: # если дата сегодня, то:
-                task.set_status("Active")        # задание сделать активным и всё!
-                continue
-            if task.check_time(start_date) == 1: # если дата начала прошла, то:
-                task.set_status("Active")        # сделать задание активным и:
-            
-        if task.check_day_end() == True: # проверить, кончился ли день, если да то:
-            
-            if task.get_status() == "Active":
+        if task.check_time(start_date) == 1 and task.status() == "Active": # если дата сегодня, то:
                 npc = NPC.get_instance()
                 if npc.installed_contender != "None":
                     prof = Profile.get_instance()
                     npc_attack(prof)
-                    
-            task.set_status("No active")
-            
-            if task.check_repeat_time() == True:
+    
+        if task.check_repeat_time() == True:
                 task.set_status("Active")            # Делаем задание активным
                 from datetime import datetime
 
