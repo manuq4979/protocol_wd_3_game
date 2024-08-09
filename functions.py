@@ -291,12 +291,15 @@ def check_relevance_task():
         ———> пересоздать ежедневное задание с теми же полями.
         '''
         if task.check_day_end() == True:
-            task.set_status("No active")
+            
             if task.get_status() == "Active":
                 npc = NPC.get_instance()
                 if npc.installed_contender != "None":
                     prof = Profile.get_instance()
                     npc_attack(prof)
+                    
+            task.set_status("No active")
+            
             if task.check_repeat_time() == True:
                 task.set_status("Active")            # Делаем задание активным
                 from datetime import datetime
