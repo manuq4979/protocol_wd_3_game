@@ -598,7 +598,7 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
                     prof = Profile.get_instance()
                     prof.add_reward(task.complexity, ID=ID, task_class="одиночное") 
                                                      # Добавляем награду в соответсвии с настройками вознаграждения в зависимости от сложности задания
-                    task.set_status("No active")
+                    task.set_status("Complite")
                     # Задания привычек не должны удаляться после выполнения, потому что есть функция повтора через какое-то время!
             if habit_menu == True:
                 get_series_points_menu(task_dict)
@@ -616,7 +616,7 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
             npc = NPC.get_instance()
             prof = Profile.get_instance()
             npc_attack(prof)
-            task.set_status("No active") # Задачи из словарей удаляются вообще? - Ответ: удаляются с помощью пункта "удалить" в меню заданий.
+            task.set_status("Failed") # Задачи из словарей удаляются вообще? - Ответ: удаляются с помощью пункта "удалить" в меню заданий.
             # Я отказался от удаления заданий, ведь у Ежедневных есть функция повтора.
             print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Поражение зафиксировано!"))
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
