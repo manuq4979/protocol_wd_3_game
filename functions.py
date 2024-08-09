@@ -290,7 +290,8 @@ def check_relevance_task():
         if task.check_time(start_date) == False: # если ещё рано!
             continue
         if task.check_time(start_date) == 2: # если сегодня дата начала задания, то:
-            task.set_status("Active")        # сделать задние активным и
+            if task.get_status() == "No active": # может быть равен Complite и Failed
+                task.set_status("Active")        # сделать задние активным и
             continue                         # то задание не проверять на просроченное!
         if task.check_time(start_date) == 1: # если дата начала прошла, то:
             if task.get_status() == "Active":
