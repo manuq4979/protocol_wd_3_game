@@ -299,6 +299,7 @@ def check_relevance_task():
                 if npc.installed_contender != "None":
                     prof = Profile.get_instance()
                     npc_attack(prof)
+                task.set_status("Failed")
             # ниже я актуализирую дату, ведь если дата начала уже далека от даты повтора, то она без этого ей никак не догнать дату повтора:
             repeat_days = task.get_repeat()
             current_date = None
