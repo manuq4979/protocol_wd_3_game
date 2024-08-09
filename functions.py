@@ -301,16 +301,6 @@ def check_relevance_task():
                     npc_attack(prof)
                 task.set_status("Failed")
             # ниже я актуализирую дату, ведь если дата начала уже далека от даты повтора, то она без этого ей никак не догнать дату повтора:
-            repeat_days = task.get_repeat()
-            current_date = None
-            if repeat_days > 1:
-                while task.check_time(start_date) == 1:
-                    current_date = start_date + timedelta(days=repeat_days)
-            else:
-                current_date = datetime.now().date()
-            task.set_start_date(current_date)        # Устанавливаем новую дату начала - а именно лень активации, потому что если оставить прежний день, то окажется что задание не было выполненно, а было провалено!
-            new_description = "[Повтор]: "+str(current_date)+": "+str(repeat_days)
-            task.set_description(new_description)
     
         if task.check_repeat_time() == True:
                 task.set_status("Active")            # Делаем задание активным
