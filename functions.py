@@ -290,7 +290,7 @@ def check_relevance_task():
         ———> засчитать поражение.
         —-> Если дата повтора сегодня то:
         ———> пересоздать ежедневное задание с теми же полями.
-        
+        '''
         if task.check_day_end() == True:
             
             if task.get_status() == "Active":
@@ -331,7 +331,7 @@ def check_relevance_task():
             task.set_start_date(this_day)        # Устанавливаем новую дату начала - а именно лень активации, потому что если оставить прежний день, то окажется что задание не было выполненно, а было провалено!
             new_description = "[Повтор]: "+str(this_day)+": "+str(task.get_repeat())
             task.set_description(new_description)# Новое описание, в котором дата начала также изменена на сегодня - дату повтора.
-
+        '''
 def check_HP():
     prof = Profile.get_instance()
     npc = NPC.get_instance()
