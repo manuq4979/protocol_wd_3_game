@@ -287,22 +287,19 @@ def check_relevance_task():
     for ID, task in list(daily_task_dict.items()):
         
         start_date = task.get_start_date()
-        if task.check_time(start_date) == False: # если дата начла не наступила
-            current_date = datetime.now().date()
-            task.set_start_date(current_date)        # Устанавливаем новую дату начала - а именно лень активации, потому что если оставить прежний день, то окажется что задание не было выполненно, а было провалено!
-            new_description = "[Повтор]: "+str(current_date)+": "+str(repeat_days)
-            task.set_description(new_description)
+        print(start_date)
+        if task.check_time(start_date) == False: # если ещё рано!
             continue
-        if task.check_time(start_date) == 2: # если сегодня не дата начала задания, то:
-            task.set_status("Active")         # сделать задние не активным и
-            continue                             # то задание не проверять на просроченное!
-        if task.check_time(start_date) == 1:
+        if task.check_time(start_date) == 2: # если сегодня дата начала задания, то:
+            task.set_status("Active")        # сделать задние активным и
+            continue                         # то задание не проверять на просроченное!
+        if task.check_time(start_date) == 1: # если дата начала прошла, то:
             if task.status() == "Active":
                 npc = NPC.get_instance()
                 if npc.installed_contender != "None":
                     prof = Profile.get_instance()
                     npc_attack(prof)
-            # ниже я актуализирую дату, ведь если дата начала уже далека от даты поатора, то она без этого ей никак не догнать дату повтора:
+            # ниже я актуализирую дату, ведь если дата начала уже далека от даты повтора, то она без этого ей никак не догнать дату повтора:
             repeat_days = task.get_repeat()
             current_date = None
             if repeat_days > 1:
