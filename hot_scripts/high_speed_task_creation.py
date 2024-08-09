@@ -113,7 +113,7 @@ def complite_hot_task(task, task_id, task_class, player_attack):
 	# task_class ниже используется лишь для того чтобы занести в историю тип задания.
 	prof.add_reward(task.complexity, ID=task_id, task_class=task_class_str) # Добавляем награду в соответсвии с настройками вознаграждения в зависимости от сложности задания
 	if task_class != HABIT:
-		task.set_status("No active")
+		task.set_status("Complite")
 	if task_class == DAILY: # Ниже мы переносим дату начала на завтра:
 		deadlines = get_deadlines(DAILY)
 		from datetime import datetime, timedelta 
@@ -135,7 +135,7 @@ def failed_hot_task(task, task_id, task_class, npc_attack):
 	prof = Profile.get_instance()
 	npc_attack(prof)
 	if task_class != HABIT:
-		task.set_status("No active") # Задачи из словарей удаляются вообще? - Ответ: удаляются с помощью пункта "удалить" в меню заданий.
+		task.set_status("Failed") # Задачи из словарей удаляются вообще? - Ответ: удаляются с помощью пункта "удалить" в меню заданий.
 	# Я отказался от удаления заданий, ведь у Ежедневных есть функция повтора.
 	print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Поражение зафиксировано!"))
 	input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
