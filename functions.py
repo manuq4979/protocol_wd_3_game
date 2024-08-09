@@ -293,8 +293,7 @@ def check_relevance_task():
             task.set_status("Active")        # сделать задние активным и
             continue                         # то задание не проверять на просроченное!
         if task.check_time(start_date) == 1: # если дата начала прошла, то:
-            print(task)
-            if task.status() == "Active":
+            if task.get_status() == "Active":
                 npc = NPC.get_instance()
                 if npc.installed_contender != "None":
                     prof = Profile.get_instance()
