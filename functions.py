@@ -291,6 +291,9 @@ def check_relevance_task():
         —-> Если дата повтора сегодня то:
         ———> пересоздать ежедневное задание с теми же полями.
         '''
+        start_date = task.get_start_date()
+        if task.check_time(start_date) != 1: # если сегодня не дата начала задания, то:
+            continue                         # то задание не проверять на просроченное!
         if task.check_day_end() == True:
             
             if task.get_status() == "Active":
