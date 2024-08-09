@@ -287,13 +287,14 @@ def check_relevance_task():
     for ID, task in list(daily_task_dict.items()):
         
         start_date = task.get_start_date()
-        print(task.check_time(start_date))
+        print(str(task.check_time(start_date)))
         if task.check_time(start_date) == False: # если ещё рано!
             continue
         if task.check_time(start_date) == 2: # если сегодня дата начала задания, то:
             task.set_status("Active")        # сделать задние активным и
             continue                         # то задание не проверять на просроченное!
         if task.check_time(start_date) == 1: # если дата начала прошла, то:
+            print(task)
             if task.status() == "Active":
                 npc = NPC.get_instance()
                 if npc.installed_contender != "None":
