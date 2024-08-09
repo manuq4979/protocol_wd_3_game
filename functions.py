@@ -295,9 +295,14 @@ def check_relevance_task():
         if task.check_time(start_date) != False: # если сегодня не дата начала задания, то:
             task.set_status("No active")         # сделать задние не активным и
             continue                             # то задание не проверять на просроченное!
-        else:                                    # иначе:
-            task.set_status("No active")         # задание сделать активным и проверить на просроченность:
-        if task.check_day_end() == True:
+        else:                                    # иначе дата начала уже прошла или она сегодня:
+            if task.check_time(start_date) == 2: # если дата сегодня, то:
+                task.set_status("Active")        # задание сделать активным и всё!
+                continue
+            if task.check_time(start_date) == 1: # если дата начала прошла, то:
+                task.set_status("Active")        # сделать задание активным и:
+            
+        if task.check_day_end() == True: # проверить, кончился ли день, если да то:
             
             if task.get_status() == "Active":
                 npc = NPC.get_instance()
