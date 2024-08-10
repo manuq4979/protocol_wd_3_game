@@ -196,8 +196,10 @@ def npc_attack(prof):
     # Враг не был установлен - игрок врага не ставил:
     if npc.installed_contender == "None":
         return
-    print("Урон нанесен врагом: "+str(prof.get_HP()))
+    
+    print("\033[33m{}".format("[WARNING]:")+"\033[0m{}".format("Враг атакует!"))
     if int(prof.get_HP()) <= 0:
+        print("\033[33m{}".format("[WARNING]:")+"\033[0m{}".format("Враг победил :("))
         prof.death()
     if int(prof.get_armor()) == 0:         # Если защиты нет, то наносим урон по HP игрока
         HP = int(prof.get_HP())          
