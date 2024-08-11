@@ -357,51 +357,57 @@ def get_load_habit_task_dict(habit_task_dict):
         
 # Инициализация Одиночных задани:
 # инициализация должна быть из файла!
-with open("DataApp/single_task.txt", "r", encoding="utf-8") as file:
-    json_string = file.read()
-    try:
-        arr = json.loads(json_string)
-        single_task_dict = get_load_single_task_dict(arr)           # ID : Task
-    except json.decoder.JSONDecodeError:                               # Это исключение значит, что файл конфигурации пуст, код ниже задат дефолтные значения.
-        single_task_dict = {}
-        arr1 = single_task_dict
-        with open("DataApp/single_task.txt", "w+", encoding="utf-8") as file:
-            json_string = json.dumps(arr1)
-            file.write(json_string)
-            print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Save Single Task class data!"))
-
+# Инициализация кажетьсч не надежной и пожтому будет обращена в метод и вызвана в гланом цикле!
+def init_single_tasks():
+    with open("DataApp/single_task.txt", "r", encoding="utf-8") as file:
+        json_string = file.read()
+        try:
+            arr = json.loads(json_string)
+            single_task_dict = get_load_single_task_dict(arr)           # ID : Task
+        except json.decoder.JSONDecodeError:                               # Это исключение значит, что файл конфигурации пуст, код ниже задат дефолтные значения.
+            single_task_dict = {}
+            arr1 = single_task_dict
+            with open("DataApp/single_task.txt", "w+", encoding="utf-8") as file:
+                json_string = json.dumps(arr1)
+                file.write(json_string)
+                print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Save Single Task class data!"))
+    
 
 # Инициализация Заданиц Привычек:
 # инициализация должна быть из файла!
-with open("DataApp/habit_task.txt", "r", encoding="utf-8") as file:
-    json_string = file.read()
-    try:
-        arr = json.loads(json_string)
-        habit_task_dict  = get_load_habit_task_dict(arr)
-    except json.decoder.JSONDecodeError: 
-        habit_task_dict = {}
-        arr2 = habit_task_dict
-        with open("DataApp/habit_task.txt", "w+", encoding="utf-8") as file:
-            json_string = json.dumps(arr2)
-            file.write(json_string)
-            print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Save Habit Task class data!"))
-
+# Инициализация кажетьсч не надежной и пожтому будет обращена в метод и вызвана в гланом цикле!
+def init_habit_tasks():
+    with open("DataApp/habit_task.txt", "r", encoding="utf-8") as file:
+        json_string = file.read()
+        try:
+            arr = json.loads(json_string)
+            habit_task_dict  = get_load_habit_task_dict(arr)
+        except json.decoder.JSONDecodeError: 
+            habit_task_dict = {}
+            arr2 = habit_task_dict
+            with open("DataApp/habit_task.txt", "w+", encoding="utf-8") as file:
+                json_string = json.dumps(arr2)
+                file.write(json_string)
+                print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Save Habit Task class data!"))
+    
 
 # Инициализация Дневных Заданий:
 # инициализация должна быть из файла!
-with open("DataApp/daily_task.txt", "r", encoding="utf-8") as file:
-    json_string = file.read()
-    try:
-        arr = json.loads(json_string)
-        daily_task_dict  = get_load_daily_task_dict(arr)     
-    except json.decoder.JSONDecodeError: 
-        daily_task_dict = {}
-        arr3 = daily_task_dict
-        with open("DataApp/daily_task.txt", "w+", encoding="utf-8") as file:
-            json_string = json.dumps(arr3)
-            file.write(json_string)
-            print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Save Daily Task class data!"))
-        
+# Инициализация кажетьсч не надежной и пожтому будет обращена в метод и вызвана в гланом цикле!
+def init_daily_tasks():
+    with open("DataApp/daily_task.txt", "r", encoding="utf-8") as file:
+        json_string = file.read()
+        try:
+            arr = json.loads(json_string)
+            daily_task_dict  = get_load_daily_task_dict(arr)     
+        except json.decoder.JSONDecodeError: 
+            daily_task_dict = {}
+            arr3 = daily_task_dict
+            with open("DataApp/daily_task.txt", "w+", encoding="utf-8") as file:
+                json_string = json.dumps(arr3)
+                file.write(json_string)
+                print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Save Daily Task class data!"))
+
 # ТУТ !!!!!!!
 # print(daily_task_dict)
 # Иногда daily_task_dict инициализируется пустым в hot scripts даже если это не так, тут я проверяю каким он впринципи инициализируется.
