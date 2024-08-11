@@ -647,7 +647,7 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
 
 
 # Сохранить данные модуля в файл:
-def save_data_task():
+def save_data_task(msg_on_or_off=True):
     new_single_task_dict = get_dump_single_task_dict(single_task_dict)
     new_habit_task_dict  = get_dump_habit_task_dict(habit_task_dict)
     new_daily_task_dict  = get_dump_daily_task_dict(daily_task_dict)
@@ -659,14 +659,17 @@ def save_data_task():
     with open("DataApp/daily_task.txt", "w+", encoding="utf-8") as file:
         json_string = json.dumps(arr3)
         file.write(json_string)
-        print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Save Daily Task class data!"))
+        if msg_on_or_off == True:
+            print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Save Daily Task class data!"))
         
     with open("DataApp/habit_task.txt", "w+", encoding="utf-8") as file:
         json_string = json.dumps(arr2)
         file.write(json_string)
-        print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Save Habit Task class data!"))
+        if msg_on_or_off == True:
+            print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Save Habit Task class data!"))
     
     with open("DataApp/single_task.txt", "w+", encoding="utf-8") as file:
         json_string = json.dumps(arr1)
         file.write(json_string)
-        print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Save Single Task class data!"))
+        if msg_on_or_off == True:
+            print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Save Single Task class data!"))
