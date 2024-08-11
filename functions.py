@@ -276,22 +276,26 @@ def check_relevance_task():
                 prof = Profile.get_instance()
                 npc_attack(prof)                # Наносим игроку урон
             del single_task_dict[ID]            # удалить задачу
+            save_data_task(msg_on_or_off=False)
     
     # Проверка заданий Привычек:
     for ID, task in list(habit_task_dict.items()):
         res = task.check_reset_time()
         if int(res) == 1 or int(res) == 2:       # если дата уже прошла или она сегодня, то пора произвести сброс серии
             task.reset_series_point()
+            save_data_task(msg_on_or_off=False)
     
     # Проверка Ежедневных заданий:
     for ID, task in list(daily_task_dict.items()):
         
         start_date = task.get_start_date()
         if task.check_time(start_date) == False: # если ещё рано!
+            save_data_task(msg_on_or_off=False)
             continue
         if task.check_time(start_date) == 2: # если сегодня дата начала задания, то:
             if task.get_status() == "No active": # может быть равен Complite и Failed
                 task.set_status("Active")        # сделать задние активным и
+            save_data_task(msg_on_or_off=False)
             continue                         # то задание не проверять на просроченное!
         if task.check_time(start_date) == 1: # если дата начала прошла, то:
             if task.get_status() == "Active":
@@ -300,6 +304,7 @@ def check_relevance_task():
                     prof = Profile.get_instance()
                     npc_attack(prof)
                 task.set_status("Failed")
+                save_data_task(msg_on_or_off=False)
             # ниже я актуализирую дату, ведь если дата начала уже далека от даты повтора, то она без этого ей никак не догнать дату повтора:
     
         if task.check_repeat_time() == True:
@@ -309,6 +314,7 @@ def check_relevance_task():
                 task.set_start_date(this_day)        # Устанавливаем новую дату начала - а именно лень активации, потому что если оставить прежний день, то окажется что задание не было выполненно, а было провалено!
                 new_description = "[Повтор]: "+str(this_day)+": "+str(task.get_repeat())
                 task.set_description(new_description)
+                save_data_task(msg_on_or_off=False)
         '''
         if task.get_status() == "Active":        # Если задание активно
             
