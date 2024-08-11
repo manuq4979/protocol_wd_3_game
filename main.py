@@ -30,9 +30,9 @@ while(True):
     functions.print_counter_tasks()
     print("\n")
     # теперь инициализация заданий будет из файла каждый раз, чтобы информация о файле была всегда актуальна!
-    init_single_tasks()
-    init_habit_tasks()
-    init_daily_tasks()
+    functions.init_single_tasks()
+    functions.init_habit_tasks()
+    functions.init_daily_tasks()
     functions.check_relevance_task() # Проверяем, не просрочил ли игрок задания или не пора бы сделать задание активным или вовсе сбросить серии просто у задний привычек
     functions.check_HP()
     print_NPC()
