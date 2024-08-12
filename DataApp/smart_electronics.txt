@@ -1,1 +1,0 @@
-["name", 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, ["bot_HP=100_armor=200_damage=100_strong=3_critical-dmg=45_drop-trophy:smart-card=write=True"], ["gun_damage=100_charge=100", "gun_recharge=100"]]
