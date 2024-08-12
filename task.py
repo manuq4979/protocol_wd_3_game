@@ -3,6 +3,12 @@ from player_profile import *
 from person import *
 
 
+single_task_dict = None
+daily_task_dict = None
+habit_task_dict = None
+
+
+
 def print_current_date():
     current_date = str(datetime.now())
     print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Текущая дата и время: ["+current_date+"]."))
