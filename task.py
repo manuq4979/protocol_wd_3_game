@@ -373,10 +373,7 @@ def init_single_tasks():
                 json_string = json.dumps(arr1)
                 file.write(json_string)
                 print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Save Single Task class data!"))
-    
-single_task_dict
-daily_task_dict
-habit_task_dict
+
 
 # Инициализация Заданиц Привычек:
 # инициализация должна быть из файла!
@@ -412,6 +409,12 @@ def init_daily_tasks():
                 json_string = json.dumps(arr3)
                 file.write(json_string)
                 print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Save Daily Task class data!"))
+
+single_task_dict = init_single_tasks()
+daily_task_dict = init_daily_tasks()
+habit_task_dict = init_habit_tasks()
+
+
 
 # ТУТ !!!!!!!
 # print(daily_task_dict)
