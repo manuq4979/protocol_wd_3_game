@@ -3,9 +3,9 @@ from player_profile import *
 from person import *
 
 
-single_task_dict = None
-daily_task_dict = None
-habit_task_dict = None
+single_task_dict = {}
+daily_task_dict = {}
+habit_task_dict = {}
 
 
 
