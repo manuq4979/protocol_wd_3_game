@@ -1,0 +1,1 @@
+["arasaka-special-forces-squad", 3320, 0, 9000, 15, 45, ["patrons_recharge:m251s-ajax_damage=410_charge=0"], true]

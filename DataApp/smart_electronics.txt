@@ -1,0 +1,1 @@
+["main-server", 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, ["bot_HP=100_armor=200_damage=100_strong=3_critical-dmg=45_drop-trophy:97e6490e2204c72897a1f99092188de2c4bc7d1094c388a2084fc6573a3138a2"], ["gun_damage=100_charge=100", "gun_recharge=100"]]

@@ -1,0 +1,1 @@
+[{"main-server_access_card_read_write": "1000", "netbook_smart_electronics=1": "1000"}, 0]
