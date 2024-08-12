@@ -270,7 +270,7 @@ def check_relevance_task():
     for ID, task in list(single_task_dict.items()):
         res = task.check_complition_time()
     
-        if res == True:                         # если игрок просрочил задание
+        if res == True and task.get_status() == "Active":                         # если игрок просрочил задание
             npc = NPC.get_instance()
             if npc.installed_contender != "None":
                 prof = Profile.get_instance()
