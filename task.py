@@ -3,10 +3,6 @@ from player_profile import *
 from person import *
 
 
-single_task_dict = {}
-daily_task_dict = {}
-habit_task_dict = {}
-
 
 
 def print_current_date():
@@ -378,6 +374,9 @@ def init_single_tasks():
                 file.write(json_string)
                 print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Save Single Task class data!"))
     
+single_task_dict
+daily_task_dict
+habit_task_dict
 
 # Инициализация Заданиц Привычек:
 # инициализация должна быть из файла!
