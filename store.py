@@ -50,7 +50,7 @@ def buy_reload_tool(prof):
 	my_price = 0
 	inventory = list(prof.get_tools().keys())
 	
-        index = input("index> ")
+	index = input("index> ")
 
 	if checking_input(index) == False:
 		continue
@@ -59,7 +59,7 @@ def buy_reload_tool(prof):
 	my_tool_id = char_line
 	my_price = prof.get_tools()[my_tool_id]
 	
-        if char_line.find("recharge") != -1:
+	if char_line.find("recharge") != -1:
             res = char_line.find("recharge")
             recharge = char_line[res:]
             recharge = recharge.split(":")
