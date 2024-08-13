@@ -233,6 +233,26 @@ def take_off(tool_id):
     Profile.take_off(tool_id)
 
 
+def checking_input_inventory(input_text):
+	if len(input_text) <= 1:
+		return False
+
+	if input_text.isdigit() == False:
+		print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
+		input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))     
+		return False
+
+	return True
+
+def hot_key_inventory(text, tools):
+    if checking_input(text) == False:
+        return False
+    inventory_menu_item     = int(text[0])
+    inventory_tool_id_index = int(text[1:])
+    index                   = inventory_tool_id_index-1
+    tool_id                 = list(tools.keys())[index]
+    
+    return [store_menu_item, tool_id]
 
 def get_inventory():
     print("\n#######################################################\n")
@@ -259,17 +279,22 @@ def get_inventory():
         print("\n#######################################################\n")
         
         text = input("> ")
-        
-        if text == "1":
-            tool_id = input("tool_id> ")
-            keeping_tool(tool_id)
-            continue
-        if text == "2":
-            tool_id = input("tool_id> ")
-            take_off(tool_id)
-            continue
         if text == "0":
             return
+            
+        text = hot_key_inventory(text, tools)
+        
+        if text == False:
+            continue
+        
+        if text[0] == 1:
+            tool_id = text[1]
+            keeping_tool(tool_id)
+            continue
+        if text[0] == 2:
+            tool_id = text[1]
+            take_off(tool_id)
+            continue
         else:
             print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("выбран не верный номер."))
     
