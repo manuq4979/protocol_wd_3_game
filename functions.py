@@ -176,11 +176,13 @@ def buy(tool_id):
     price = store.get(tool_id)          # получаем цену за инструмент
     if price == None:                   # проверяем наличие товара
         print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Данного товара нет!"))
+        input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
         return
     balance = int(prof.get_ETO())
     price = int(price)
     if balance < price:                 # проверяем достаточно ли ETO
         print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Не достаточно средств!"))
+        input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
         return
     history_line = "Куплен: "+str(tool_id)+" за "+str(price) 
     prof.save_to_history(history_line)  # заносим в историю
@@ -197,11 +199,13 @@ def sell(tool_id):
     price = prof.get_price_of_tools_id(tool_id)     # получаем цену за инструмент
     if price == None:                               # проверяем наличие предмета для продажи
         print("\033[31m{}".format("ERROR: ")+"\033[0m{}".format("Нет предмета для продажи!"))
+        input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
         return
     balance = int(store_ETO)
     price = int(price)
     if balance < price:                             # проверяем достаточно ли ETO
         print("\033[31m{}".format("ERROR: ")+"\033[0m{}".format("У продовца не достаточно средств :("))
+        input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
         return
     history_line = "Продан: "+str(tool_id)+" за "+str(price)
     prof.save_to_history(history_line)              # заносим в историю
