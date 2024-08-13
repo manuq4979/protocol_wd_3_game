@@ -42,8 +42,49 @@ def hot_key(text, prof):
         tool_id         = inventory[index]
     
     return [store_menu_item, tool_id]
+
+
+def buy_reload_tool(prof):
+	charge = 0
+	inventory = list(prof.get_tools().keys())
+	
+        index = input("index> ")
+
+	if checking_input(index) == False:
+		continue
+	index = int(index)
+	char_line = inventory(index-1)
+	
+        if char_line.find("recharge") != -1:
+            res = char_line.find("recharge")
+            recharge = char_line[res:]
+            recharge = recharge.split(":")
+            return recharge
     
-    
+        chars = char_line.split("_")
+        name = chars[0]
+        chars.remove(name)
+        result = []
+        result.append(name)
+        for char in chars:
+            char = char.split("=")
+            result.append(char)
+            
+        new_tool = ""
+        for i in range(len(result)):
+            if i == 0:
+                new_tool += result[i]+"_"
+                continue
+            if result[i][0] == "charge":
+                charge = int(input("charge> "))
+		if checking_input(str(charge)) == False:
+			break
+		price = int(charge/100)*50 # каждые 100 - это 50
+		charge = int(price*100)    # если ввести 453 - то будет округлено до 400, потому что продаётся лишь по 100 зарядов.
+                result[i][1] = str(charge)
+            new_tool += result[i][0]+"="+result[i][1]+"_"
+        new_tool = new_tool[0:-1]
+	
 
 #-----------------------------------------#
 # Тут вывод оставить как есть! пока что.  #
@@ -68,6 +109,7 @@ def get_store():
         print("[1]: Купить")
         print("[2]: Продать")
         print("[3]: Инвентарь")
+	print("[4]: Зарядить")
         print("[0]: Назад")
         print("\n#######################################################\n")
         text = input("> ")
@@ -76,6 +118,8 @@ def get_store():
             return
         if text == "3":
             get_inventory()
+	if text == "4":
+		
         
         text = hot_key(text, prof)
         if text == False:
