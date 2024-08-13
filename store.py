@@ -65,7 +65,7 @@ def buy_reload_tool(prof, buy):
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             return
 	my_tool_id = char_line
-        my_price = prof.get_tools_id()[my_tool_id]
+	my_price = prof.get_tools_id()[my_tool_id]
 	
 	if char_line.find("recharge") != -1:
             res = char_line.find("recharge")
