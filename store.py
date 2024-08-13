@@ -65,17 +65,17 @@ def buy_reload_tool(prof):
             recharge = recharge.split(":")
             return recharge
     
-        chars = char_line.split("_")
-        name = chars[0]
-        chars.remove(name)
-        result = []
-        result.append(name)
-        for char in chars:
+	chars = char_line.split("_")
+	name = chars[0]
+	chars.remove(name)
+	result = []
+	result.append(name)
+	for char in chars:
             char = char.split("=")
             result.append(char)
             
-        new_tool = ""
-        for i in range(len(result)):
+	new_tool = ""
+	for i in range(len(result)):
             if i == 0:
                 new_tool += result[i]+"_"
                 continue
@@ -91,7 +91,7 @@ def buy_reload_tool(prof):
                 result[i][1] = str(charge)
             new_tool += result[i][0]+"="+result[i][1]+"_"
 	prof.del_tools_id(my_tool_id)
-        new_tool = new_tool[0:-1]
+	new_tool = new_tool[0:-1]
 	prof.add_tools_id(new_tool, my_price)
 	print("\033[32m{}".format("[INFO]:")+"\033[0m{}".format("Готово!"))
 	input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
