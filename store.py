@@ -30,9 +30,14 @@ def checking_input(input_text):
 
 def hot_key(text):
     if checking_input(text) == False:
-        return
+        return False
     store_menu_item     = int(text[0])
     store_tool_id_index = int(text[1:])
+    index               = store_tool_id_index-1
+    tool_id             = list(store.keys())[index]
+    
+    return [store_menu_item, tool_id]
+    
     
 
 #-----------------------------------------#
@@ -63,13 +68,17 @@ def get_store():
         if text == "0":
             return
         
-        if text == str(BUY):
-            index = text
-            tool_id = list(store.keys())[index]
+        text = hot_key(text)
+        if text == False:
+            continue
+        
+        
+        if text[0] == BUY:
+            tool_id = text[1]
             buy(tool_id)
             continue
-        if text == str(SELL):
-            tool_id = input("tool_id> ")
+        if text[0] == SELL:
+            tool_id = text[1]
             sell(tool_id)
             continue
         else:
