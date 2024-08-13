@@ -260,18 +260,18 @@ def get_inventory():
     prof = Profile.get_instance()
     tools = prof.get_tools_id()
     while True:
+        index = 0
         for tool, price in tools.items():
-            print("\033[34m{}".format("[Инструмент]: ")+"\033[0m{}".format(tool))
+            index += 1
+            print("\033[34m{}".format("[Инструмент]: ")+"\033[0m{}".format("["+str(index)+"]: "+tool))
             print("Его можно продать в магазине за "+str(price)+" ETO.\n\n")
             
         keep_tool      = prof.get_keep_tool()
         slots          = prof.get_slots()
         slots_occupied = prof.get_slots_occupied()
         print("\033[32m{}".format("\nЭкиперованно")+"\033[0m{}".format("(")+str(slots_occupied)+" из "+str(slots)+"):")
-        index = 0
         for tool in keep_tool:
-            index += 1
-            print("\033[34m{}".format("[Инструмент]: ")+"\033[0m{}".format("[" + str(index)+"]: "+tool))
+            print("\033[34m{}".format("[Инструмент]: ")+"\033[0m{}".format(tool))
         print("\nMenu: ----------------------")
         print("1. Экипировать")
         print("2. Снять предмет")
