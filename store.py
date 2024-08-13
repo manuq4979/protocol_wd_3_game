@@ -52,8 +52,8 @@ def buy_reload_tool(prof, buy):
 	
 	index = input("index> ")
 
-	if checking_input(str(index)) == False:
-		print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Не допустимое числовое значение!"))
+	if str(index).isdigit() == False:
+		print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
 		input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
 		return
 	index = int(index)
@@ -83,7 +83,9 @@ def buy_reload_tool(prof, buy):
                 continue
             if result[i][0] == "charge":
                 charge = int(input("charge> "))
-                if checking_input(str(charge)) == False:
+                if str(charge).isdigit() == False:
+			print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
+			input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
                         break
                 price = int(charge/100)*50 # каждые 100 - это 50
                 if buy(price, no_add_to_inventory=True) == False:
