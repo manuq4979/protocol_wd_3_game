@@ -191,6 +191,8 @@ def buy(tool_id):
     store_ETO = store_ETO+price         # увеличиваем баланс продавца
     price = price / 2                   # уменьшаем стоимость проданного инструмента
     prof.add_tools_id(tool_id, price)   # добавляем инструмент в инвентарь
+    print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Товар успешно куплен!"))
+    input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
     
 def sell(tool_id):
     global store_ETO, store
@@ -214,6 +216,8 @@ def sell(tool_id):
     prof.set_ETO(prof.get_ETO() + price)            # увеличиваем баланс игрока
     price = price*2                                 # делаем наценку на купленный инструмент
     store[tool_id] = price                          # добавляем инструмент в магазин
+    print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Товар успешно продан!"))
+    input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
 
 # "gun_damage=200_strong=2" == ['gun', ['damage', '200'], ['strong', '2']]
 def decoding_of_characteristics(char_line):
