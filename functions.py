@@ -267,7 +267,7 @@ def hot_key_inventory(text, prof):
     elif take_off == True:
         tool_id             = list(tools_keep.keys())[index]
     
-    return [store_menu_item, tool_id]
+    return [inventory_menu_item, tool_id]
 
 def get_inventory():
     print("\n#######################################################\n")
