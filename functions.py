@@ -169,11 +169,15 @@ def get_menu():
 
 
 
-def buy(tool_id, no_add_to_inventory=False):
+def buy(tool_id, no_add_to_inventory=False, service_price=0):
     global store_ETO, store
 
     prof = Profile.get_instance()
-    price = store.get(tool_id)          # получаем цену за инструмент
+    price = 0
+    if no_add_to_inventory == False:
+        price = store.get(tool_id)          # получаем цену за инструмент
+    elif no_add_to_inventory == True:
+        price = service_price
     if price == None:                   # проверяем наличие товара
         print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Данного товара нет!"))
         input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
@@ -190,9 +194,11 @@ def buy(tool_id, no_add_to_inventory=False):
         history_line = "Списания в размере: "+str(price)+" за доп услуги магазина(по типу за подзарядку инструената)."
     prof.save_to_history(history_line)  # заносим в историю
     prof.set_ETO(balance-price)         # вычетаем из баланса игрока сумму за товар
-    del store[tool_id]                  # удаляем инструмент из магазина
+    if no_add_to_inventory == False:
+        del store[tool_id]                  # удаляем инструмент из магазина
     store_ETO = store_ETO+price         # увеличиваем баланс продавца
-    price = price / 2                   # уменьшаем стоимость проданного инструмента
+    if no_add_to_inventory == False:
+        price = price / 2                   # уменьшаем стоимость проданного инструмента
     if no_add_to_inventory == False:   
         prof.add_tools_id(tool_id, price)   # добавляем инструмент в инвентарь
         print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Товар успешно куплен!"))
