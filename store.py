@@ -46,6 +46,8 @@ def hot_key(text, prof):
 
 def buy_reload_tool(prof):
 	charge = 0
+	my_tool_id = ""
+	my_price = 0
 	inventory = list(prof.get_tools().keys())
 	
         index = input("index> ")
@@ -54,6 +56,8 @@ def buy_reload_tool(prof):
 		continue
 	index = int(index)
 	char_line = inventory(index-1)
+	my_tool_id = char_line
+	my_price = prof.get_tools()[my_tool_id]
 	
         if char_line.find("recharge") != -1:
             res = char_line.find("recharge")
@@ -80,10 +84,15 @@ def buy_reload_tool(prof):
 		if checking_input(str(charge)) == False:
 			break
 		price = int(charge/100)*50 # каждые 100 - это 50
+		if buy(price, no_add_to_inventory=True) == False:
+			return
 		charge = int(price*100)    # если ввести 453 - то будет округлено до 400, потому что продаётся лишь по 100 зарядов.
                 result[i][1] = str(charge)
             new_tool += result[i][0]+"="+result[i][1]+"_"
+	prof.del_tools_id(my_tool_id)
         new_tool = new_tool[0:-1]
+	prof.add_tools_id(new_tool, my_price)
+	
 	
 
 #-----------------------------------------#
