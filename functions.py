@@ -183,7 +183,7 @@ def buy(tool_id, no_add_to_inventory=False):
     if balance < price:                 # проверяем достаточно ли ETO
         print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Не достаточно средств!"))
         input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
-        return
+        return False
     if no_add_to_inventory == False:
     	history_line = "Куплен: "+str(tool_id)+" за "+str(price)
     elif no_add_to_inventory == True:
@@ -195,7 +195,10 @@ def buy(tool_id, no_add_to_inventory=False):
     price = price / 2                   # уменьшаем стоимость проданного инструмента
     if no_add_to_inventory == False:   
         prof.add_tools_id(tool_id, price)   # добавляем инструмент в инвентарь
-    print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Товар успешно куплен!"))
+        print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Товар успешно куплен!"))
+    elif no_add_to_inventory == True:
+	print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Услуга успешно оплачена!"))
+	return True
     input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
     
 def sell(tool_id):
