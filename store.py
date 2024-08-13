@@ -57,7 +57,7 @@ def buy_reload_tool(prof, buy):
 		input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
 		return
 	index = int(index)
-	char_line = inventory(index-1)
+	char_line = inventory[index-1]
 	my_tool_id = char_line
 	my_price = prof.get_tools()[my_tool_id]
 	
