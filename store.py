@@ -52,7 +52,9 @@ def buy_reload_tool(prof, buy):
 	
 	index = input("index> ")
 
-	if checking_input(index) == False:
+	if checking_input(str(index)) == False:
+		print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Не допустимое числовое значение!"))
+		input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
 		return
 	index = int(index)
 	char_line = inventory(index-1)
