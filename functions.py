@@ -299,7 +299,7 @@ def get_inventory():
         if text == "0":
             return
             
-        text = hot_key_inventory(text, tools)
+        text = hot_key_inventory(text, prof)
         
         if text == False:
             continue
