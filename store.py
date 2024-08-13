@@ -85,6 +85,7 @@ def buy_reload_tool(prof):
 			break
 		price = int(charge/100)*50 # каждые 100 - это 50
 		if buy(price, no_add_to_inventory=True) == False:
+			print("\033[31m{}".format("[ERROR]:")+"\033[0m{}".format("Отменено!"))
 			return
 		charge = int(price*100)    # если ввести 453 - то будет округлено до 400, потому что продаётся лишь по 100 зарядов.
                 result[i][1] = str(charge)
@@ -92,6 +93,8 @@ def buy_reload_tool(prof):
 	prof.del_tools_id(my_tool_id)
         new_tool = new_tool[0:-1]
 	prof.add_tools_id(new_tool, my_price)
+	print("\033[32m{}".format("[INFO]:")+"\033[0m{}".format("Готово!"))
+	input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
 	
 	
 
