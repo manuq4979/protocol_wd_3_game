@@ -44,7 +44,7 @@ def hot_key(text):
 # Тут вывод оставить как есть! пока что.  #
 #-----------------------------------------#
 def get_store():
-    from functions import buy, sell
+    from functions import buy, sell, get_inventory
     while True:
         print("\n#######################################################\n")
         print("\033[32m{}".format("[Welcom to the Store menu]: ")+"\033[0m{}".format("\n"))
@@ -59,14 +59,17 @@ def get_store():
             print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("В данный момент товаров на продажу нет!\n"))
         
         print("\nMenu: ----------------------")
-        print("1. Купить")
-        print("2. Продать")
-        print("0. Назад")
+        print("[1]: Купить")
+        print("[2]: Продать")
+        print("[3]: Инвентарь")
+        print("[0]: Назад")
         print("\n#######################################################\n")
         text = input("> ")
         
         if text == "0":
             return
+        if text == "3":
+            get_inventory()
         
         text = hot_key(text)
         if text == False:
