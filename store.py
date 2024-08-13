@@ -81,13 +81,13 @@ def buy_reload_tool(prof):
                 continue
             if result[i][0] == "charge":
                 charge = int(input("charge> "))
-		if checking_input(str(charge)) == False:
+                if checking_input(str(charge)) == False:
 			break
-		price = int(charge/100)*50 # каждые 100 - это 50
-		if buy(price, no_add_to_inventory=True) == False:
+                price = int(charge/100)*50 # каждые 100 - это 50
+                if buy(price, no_add_to_inventory=True) == False:
 			print("\033[31m{}".format("[ERROR]:")+"\033[0m{}".format("Отменено!"))
 			return
-		charge = int(price*100)    # если ввести 453 - то будет округлено до 400, потому что продаётся лишь по 100 зарядов.
+                charge = int(price*100)    # если ввести 453 - то будет округлено до 400, потому что продаётся лишь по 100 зарядов.
                 result[i][1] = str(charge)
             new_tool += result[i][0]+"="+result[i][1]+"_"
 	prof.del_tools_id(my_tool_id)
