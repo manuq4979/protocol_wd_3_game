@@ -44,7 +44,7 @@ def hot_key(text, prof):
     return [store_menu_item, tool_id]
 
 
-def buy_reload_tool(prof):
+def buy_reload_tool(prof, buy):
 	charge = 0
 	my_tool_id = ""
 	my_price = 0
@@ -130,8 +130,8 @@ def get_store():
             return
         if text == "3":
             get_inventory()
-	if text == "4":
-		
+        if text == "4":
+            buy_reload_tool(prof, buy)
         
         text = hot_key(text, prof)
         if text == False:
