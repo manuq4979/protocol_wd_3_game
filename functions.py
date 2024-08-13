@@ -197,8 +197,8 @@ def buy(tool_id, no_add_to_inventory=False):
         prof.add_tools_id(tool_id, price)   # добавляем инструмент в инвентарь
         print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Товар успешно куплен!"))
     elif no_add_to_inventory == True:
-	print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Услуга успешно оплачена!"))
-	return True
+        print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Услуга успешно оплачена!"))
+        return True
     input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
     
 def sell(tool_id):
