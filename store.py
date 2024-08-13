@@ -84,8 +84,8 @@ def buy_reload_tool(prof, buy):
             if result[i][0] == "charge":
                 charge = int(input("charge> "))
                 if str(charge).isdigit() == False:
-			print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
-			input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+                        print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
+                        input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
                         break
                 price = int(charge/100)*50 # каждые 100 - это 50
                 if buy(price, no_add_to_inventory=True) == False:
