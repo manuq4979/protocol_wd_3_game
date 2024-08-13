@@ -57,9 +57,15 @@ def buy_reload_tool(prof, buy):
 		input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
 		return
 	index = int(index)
-	char_line = inventory[index-1]
+	size = len(prof.get_tools_id())
+	if index-1 >= size:
+            char_line = inventory[index-1]
+	else:
+            print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Инструмента не может быть по данному индексу!"))
+            input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+            return
 	my_tool_id = char_line
-	my_price = prof.get_tools_id()[my_tool_id]
+        my_price = prof.get_tools_id()[my_tool_id]
 	
 	if char_line.find("recharge") != -1:
             res = char_line.find("recharge")
