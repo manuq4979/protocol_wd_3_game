@@ -26,8 +26,10 @@ def get_store():
     while True:
         print("\n#######################################################\n")
         print("\033[32m{}".format("[Welcom to the Store menu]: ")+"\033[0m{}".format("\n"))
+        index = 0
         for tool_id, ETO in store.items():
-            print("ID: "+str(tool_id) + "\nЦена: "+str(ETO)+" ETO")
+            index += 1
+            print("["+str(index)+"]: "+"ID: "+str(tool_id) + "\nЦена: "+str(ETO)+" ETO")
             print("\n")
         # Элемент дизайна:
         if len(store) == 0: # если в магазине нет товара, то будет рапечатано:
