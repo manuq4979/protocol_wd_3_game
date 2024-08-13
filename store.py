@@ -1,5 +1,7 @@
 import json, os
 
+BUY = 1
+SELL = 2
 
 with open("DataApp/store.txt", "r", encoding="utf-8") as file:
     json_string = file.read()
@@ -15,7 +17,22 @@ def save_data_store():
         file.write(json_string)
         print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Save store data!"))
 
+def checking_input(input_text):
+	if len(input_text) <= 1:
+		return False
 
+	if input_text.isdigit() == False:
+		print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
+		input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))     
+		return False
+
+	return True
+
+def hot_key(text):
+    if checking_input(text) == False:
+        return
+    store_menu_item     = int(text[0])
+    store_tool_id_index = int(text[1:])
     
 
 #-----------------------------------------#
@@ -46,11 +63,12 @@ def get_store():
         if text == "0":
             return
         
-        if text == "1":
-            tool_id = input("tool_id> ")
+        if text == str(BUY):
+            index = text
+            tool_id = list(store.keys())[index]
             buy(tool_id)
             continue
-        if text == "2":
+        if text == str(SELL):
             tool_id = input("tool_id> ")
             sell(tool_id)
             continue
