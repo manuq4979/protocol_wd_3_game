@@ -28,13 +28,18 @@ def checking_input(input_text):
 
 	return True
 
-def hot_key(text):
+def hot_key(text, prof):
     if checking_input(text) == False:
         return False
     store_menu_item     = int(text[0])
     store_tool_id_index = int(text[1:])
     index               = store_tool_id_index-1
-    tool_id             = list(store.keys())[index]
+    tool_id = ""
+    if store_menu_item == BUY:
+        tool_id         = list(store.keys())[index]
+    elif store_menu_item == SELL:
+        inventory       = list(prof.get_tools_id().keys())
+        tool_id         = inventory[index]
     
     return [store_menu_item, tool_id]
     
@@ -44,7 +49,8 @@ def hot_key(text):
 # Тут вывод оставить как есть! пока что.  #
 #-----------------------------------------#
 def get_store():
-    from functions import buy, sell, get_inventory
+    from functions import buy, sell, get_inventory, Profile
+    prof = Profile.get_instance()
     while True:
         print("\n#######################################################\n")
         print("\033[32m{}".format("[Welcom to the Store menu]: ")+"\033[0m{}".format("\n"))
@@ -71,7 +77,7 @@ def get_store():
         if text == "3":
             get_inventory()
         
-        text = hot_key(text)
+        text = hot_key(text, prof)
         if text == False:
             continue
         
