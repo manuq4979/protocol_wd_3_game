@@ -48,7 +48,7 @@ def buy_reload_tool(prof, buy):
 	charge = 0
 	my_tool_id = ""
 	my_price = 0
-	inventory = list(prof.get_tools().keys())
+	inventory = list(prof.get_tools_id().keys())
 	
 	index = input("index> ")
 
