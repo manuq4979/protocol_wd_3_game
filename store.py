@@ -59,7 +59,7 @@ def buy_reload_tool(prof, buy):
 	index = int(index)
 	char_line = inventory[index-1]
 	my_tool_id = char_line
-	my_price = prof.get_tools()[my_tool_id]
+	my_price = prof.get_tools_id()[my_tool_id]
 	
 	if char_line.find("recharge") != -1:
             res = char_line.find("recharge")
