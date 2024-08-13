@@ -251,13 +251,21 @@ def checking_input_inventory(input_text):
 
 	return True
 
-def hot_key_inventory(text, tools):
+def hot_key_inventory(text, prof):
+    take_off   = False
+    tools      = prof.get_tools_id()
+    tools_keep = prof.get_keep_tool()
     if checking_input(text) == False:
         return False
     inventory_menu_item     = int(text[0])
+    if inventory_menu_item == 2:
+        take_off = True
     inventory_tool_id_index = int(text[1:])
     index                   = inventory_tool_id_index-1
-    tool_id                 = list(tools.keys())[index]
+    if take_off == False:
+        tool_id             = list(tools.keys())[index]
+    elif take_off == True:
+        tool_id             = list(tools_keep.keys())[index]
     
     return [store_menu_item, tool_id]
 
