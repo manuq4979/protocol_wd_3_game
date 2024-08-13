@@ -53,7 +53,7 @@ def buy_reload_tool(prof, buy):
 	index = input("index> ")
 
 	if checking_input(index) == False:
-		continue
+		return
 	index = int(index)
 	char_line = inventory(index-1)
 	my_tool_id = char_line
