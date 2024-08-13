@@ -58,9 +58,9 @@ def buy_reload_tool(prof, buy):
 		return
 	index = int(index)
 	size = len(prof.get_tools_id())
-	if index-1 <= size:
+	try:
             char_line = inventory[index-1]
-	else:
+	except IndexError:
             print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Инструмента не может быть по данному индексу!"))
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             return
