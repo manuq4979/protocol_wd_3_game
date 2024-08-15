@@ -35,6 +35,7 @@ class Profile:
                 self.keep_tool = arr[12]            # {} экипированное снаряжение по умолчанию
                 
                 self.history = arr[13]              # [] по умолчанию
+                self.current_raiting = arr[14]
             except json.decoder.JSONDecodeError:                      # Это исключение значит, что файл конфигурации пуст, код ниже задат дефолтные значения.
                 self.set_all_fields_default()
                 arr = self.get_all_fields()
@@ -44,7 +45,7 @@ class Profile:
                     print("Save profile data!")
     
     def get_all_fields(self):
-        return [self.HP, self.armor, self.strong, self.intellect, self.damage, self.critical_dmg, self.quest_reward_setting, self.ETO, self.tools_id, self.pers_id, self.slots_occupied, self.slots, self.keep_tool, self.history]
+        return [self.HP, self.armor, self.strong, self.intellect, self.damage, self.critical_dmg, self.quest_reward_setting, self.ETO, self.tools_id, self.pers_id, self.slots_occupied, self.slots, self.keep_tool, self.history, self.current_raiting]
     
     def set_all_fields_default(self):
         self.HP = 100
@@ -61,6 +62,7 @@ class Profile:
         self.slots = 5
         self.keep_tool = {}
         self.history = []
+        self.current_raiting = "Новичок"
         print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Все значения профиля установлены по умолчанию!"))
         
         
@@ -223,6 +225,12 @@ class Profile:
     def set_slots(self, slots):
         self.slots = slots
         return 0
+
+    def get_current_raiting(self):
+        return self.current_raiting
+
+    def set_current_raiting(self, new_current_raiting):
+        self.current_raiting = new_current_raiting
     
     def apply_to_characteristics(char_line, up=True): # char_line == tool_id
         chars = Profile.decoding_of_characteristics(char_line)

@@ -91,6 +91,22 @@ def add_hot_task(new_task, task_id, task_class):
 	input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
 
 
+def up_raiting(task, prof):
+	from raiting import determine_my_ranking
+	# повышение рейтинга
+	complexity = task.complexity
+	complite = True
+	determine_my_ranking(complexity, complite, prof)
+
+def down_raiting(task, prof):
+	from raiting import determine_my_ranking
+	# Код понижения рейтинга:
+	complexity = task.complexity
+	complite = False
+	determine_my_ranking(complexity, complite, prof)
+
+
+
 def complite_hot_task(task, task_id, task_class, player_attack):
 	from task import single_task_dict, habit_task_dict, daily_task_dict
 	from player_profile import Profile
@@ -110,6 +126,9 @@ def complite_hot_task(task, task_id, task_class, player_attack):
 		task.add_series_point()
 	player_attack() # Атакуем врага, потому что мы выполнили задание
 	prof = Profile.get_instance()
+
+	up_raiting(task, prof)
+
 	# task_class ниже используется лишь для того чтобы занести в историю тип задания.
 	prof.add_reward(task.complexity, ID=task_id, task_class=task_class_str) # Добавляем награду в соответсвии с настройками вознаграждения в зависимости от сложности задания
 	if task_class != HABIT:
@@ -133,6 +152,7 @@ def failed_hot_task(task, task_id, task_class, npc_attack):
 
 	npc = NPC.get_instance()
 	prof = Profile.get_instance()
+	down_raiting(task, prof)
 	npc_attack(prof)
 	if task_class != HABIT:
 		task.set_status("Failed") # Задачи из словарей удаляются вообще? - Ответ: удаляются с помощью пункта "удалить" в меню заданий.
@@ -206,6 +226,8 @@ def get_task_complexity(task_complexity):
 	if task_complexity == "4":
 		return "++++"
 
+
+
 def redirecting_input(input_text):
 
 	if checking_input(input_text) == False:
@@ -214,6 +236,7 @@ def redirecting_input(input_text):
 	from task import single_task_dict, habit_task_dict, daily_task_dict, DailyTask, SingleTask, HabitTask
 	from player_profile import player_attack, Profile
 	from person import npc_attack, NPC
+
 	
 	task_menu_item = input_text[0]
 	task_operation = input_text[1]

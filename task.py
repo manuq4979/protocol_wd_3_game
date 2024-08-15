@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 from player_profile import *
 from person import *
+import os
 
 
 
@@ -553,12 +554,21 @@ def get_series_points_menu(task_dict):
         prof = Profile.get_instance()
         prof.add_reward(task.complexity, ID=ID, task_class="привычки или ежедневные")
                                          # Добавляем награду в соответсвии с настройками вознаграждения в зависимости от сложности задания
+        # Код повышения рейтинга:
+        complexity = task.complexity
+        complite = True
+        determine_my_ranking(complexity, complite, prof)
         print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Выполнение привычки зафиксированно!"))
         return
     if res == "2":                       # При выборе минуса, игрок подтверждает, что не выполнил привычку
         task.turn_down_point()
         prof = Profile.get_instance()
         npc_attack(prof)                 # Получаем урон от врага, потому что не выполнили задание привычки
+        
+        # Код понижения рейтинга:
+        complexity = task.complexity
+        complite = True
+        determine_my_ranking(complexity, complite, prof)
         print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Не выполнение привычки зафиксированно!"))
         return
     if res == "0":
@@ -567,6 +577,8 @@ def get_series_points_menu(task_dict):
     print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Выбран не существующий номер в этом меню!"))
 
 def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
+    from raiting import determine_my_ranking
+
     index = 0
     while True:
         print("\n#######################################################\n")
@@ -615,7 +627,12 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
                     prof = Profile.get_instance()
                     prof.add_reward(task.complexity, ID=ID, task_class="одиночное") 
                                                      # Добавляем награду в соответсвии с настройками вознаграждения в зависимости от сложности задания
-                    task.set_status("Complite")
+                    # Код для повышения рейтинга:
+                    status = "Complite"
+                    complexity = task.complexity
+                    complite = True
+                    task.set_status(status)
+                    determine_my_ranking(complexity, complite, prof)
                     # Задания привычек не должны удаляться после выполнения, потому что есть функция повтора через какое-то время!
             if habit_menu == True:
                 get_series_points_menu(task_dict)
@@ -635,6 +652,11 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
             npc_attack(prof)
             task.set_status("Failed") # Задачи из словарей удаляются вообще? - Ответ: удаляются с помощью пункта "удалить" в меню заданий.
             # Я отказался от удаления заданий, ведь у Ежедневных есть функция повтора.
+            
+            # Код понижения рейтинга:
+            complexity = task.complexity
+            complite = False
+            determine_my_ranking(complexity, complite, prof)
             print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Поражение зафиксировано!"))
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             continue
@@ -654,8 +676,38 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
             return
         
         print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Выбран не существующий номер в этом меню!"))
-                
 
+
+def create_entry_rewards_date_file(current_date):
+    file = open("DataApp/entry_rewards_date.txt", "w+", encoding='utf-8')
+    file.write(str(current_date))
+    return file
+
+def read_entry_rewards_date_file():
+    file = open("DataApp/entry_rewards_date.txt", "r", encoding='utf-8')
+    current_date = file.read()
+    file.close()
+    return current_date
+         
+def get_entry_rewards():
+    entry_reward = 30
+    current_date = datetime.now().date()
+    if os.path.exists("DataApp/entry_rewards_date.txt") == False:
+        create_entry_rewards_date_file(current_date)
+    entry_rewards_date = read_entry_rewards_date_file()
+    entry_rewards_date = datetime.strptime(entry_rewards_date, "%Y-%m-%d").date()
+    if current_date != entry_rewards_date:
+        prof = Profile.get_instance()
+        player_eto = prof.get_ETO()
+        new_player_eto = int(player_eto) + entry_reward
+        prof.set_ETO(new_player_eto)
+        history_line = "Получена награда за ежедневный вход в сумме: "+str(entry_reward)+" в ETO."
+        prof.save_to_history(history_line)
+        create_entry_rewards_date_file(current_date)
+        print("\n#######################################################\n\n\n\n\n\n")
+        print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Получена награда за ежедневный вход в сумме: "+str(entry_reward)+" в ETO."))
+        print("\n\n\n\n\n\n#######################################################\n")
+        input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
 
 # Сохранить данные модуля в файл:
 def save_data_task(msg_on_or_off=True):

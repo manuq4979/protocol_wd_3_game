@@ -1,8 +1,8 @@
 import profile_wd
 import functions
 from person import NPC
+from raiting import check_reset_time_of_points, print_reset_point_counter, print_status
 from hot_scripts.high_speed_task_creation import redirecting_input
-
     
 
 PS1 = profile_wd.PS1
@@ -11,7 +11,8 @@ help = ("1 - меню игры\n"+
         "3 - сохранить\n"+
         "4 - создать NPC_ID\n"+
         "5 - создать SE_ID\n"+
-        "6 - создать tool_id\n")
+        "6 - создать tool_id\n"+
+        "7 - текущий рейтинг\n")
         
 def print_NPC():
     npc = NPC.get_instance()
@@ -27,6 +28,7 @@ while(True):
     print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Если игрок погибает, то задания вероятно будут все сброшены!(это баг который стал фичей)"))
     print("\n")
     functions.print_current_date()
+    print_reset_point_counter()
     functions.print_counter_tasks()
     print("\n")
     # теперь инициализация заданий будет из файла каждый раз, чтобы информация о файле была всегда актуальна!
@@ -35,6 +37,8 @@ while(True):
     functions.init_daily_tasks()
     functions.check_relevance_task() # Проверяем, не просрочил ли игрок задания или не пора бы сделать задание активным или вовсе сбросить серии просто у задний привычек
     functions.check_HP()
+    functions.get_entry_rewards() # проверяет нужно ли выдать награду за вход - module task
+    check_reset_time_of_points() # проверяет пора ли сбрасывать счетчик или нет - module raiting
     print_NPC()
     functions.get_prof()
     print("\n#######################################################\n")
@@ -58,6 +62,9 @@ while(True):
     if text == "6":
         from hot_scripts.create_tool_id import menu
         menu()
+    if text == "7":
+        print_status()
+        input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
 	
     if text == "2" or text == "3":
         print("\n#######################################################\n")
