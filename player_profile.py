@@ -35,7 +35,10 @@ class Profile:
                 self.keep_tool = arr[12]            # {} экипированное снаряжение по умолчанию
                 
                 self.history = arr[13]              # [] по умолчанию
-                self.current_raiting = arr[14]
+                try:
+                    self.current_raiting = arr[14]
+                except IndexError:
+                    self.current_raiting = "Новичок"
             except json.decoder.JSONDecodeError:                      # Это исключение значит, что файл конфигурации пуст, код ниже задат дефолтные значения.
                 self.set_all_fields_default()
                 arr = self.get_all_fields()
