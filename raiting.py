@@ -197,7 +197,13 @@ def create_reset_time_of_points_file(reset_date):
     return file
 
 def read_reset_time_of_points_file():
-    file = open("DataApp/reset_time_of_points.txt", "r", encoding='utf-8')
+    file = None
+    try:
+        file = open("DataApp/reset_time_of_points.txt", "r", encoding='utf-8')
+    except FileNotFoundError:
+        reset_day   = 30
+        reset_date  = current_date + timedelta(days=reset_day)
+        create_reset_time_of_points_file(reset_date)
     reset_date = file.read()
     file.close()
     return reset_date
