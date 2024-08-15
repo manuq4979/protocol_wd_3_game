@@ -201,6 +201,7 @@ def read_reset_time_of_points_file():
     try:
         file = open("DataApp/reset_time_of_points.txt", "r", encoding='utf-8')
     except FileNotFoundError:
+        from datetime import datetime, timedelta
         current_date = datetime.now().date()
         reset_day    = 30
         reset_date   = current_date + timedelta(days=reset_day)
