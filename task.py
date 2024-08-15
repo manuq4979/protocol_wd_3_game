@@ -693,6 +693,11 @@ def get_entry_rewards():
     entry_reward = 30
     current_date = datetime.now().date()
     if os.path.exists("DataApp/entry_rewards_date.txt") == False:
+        prof = Profile.get_instance()
+        player_eto = prof.get_ETO()
+        new_player_eto = int(player_eto) + entry_reward
+        prof.set_ETO(new_player_eto)
+        history_line = "Получена награда за ежедневный вход в сумме: "+str(entry_reward)+" в ETO."
         create_entry_rewards_date_file(current_date)
     entry_rewards_date = read_entry_rewards_date_file()
     entry_rewards_date = datetime.strptime(entry_rewards_date, "%Y-%m-%d").date()
