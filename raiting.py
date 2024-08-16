@@ -302,9 +302,13 @@ def raiting_menu():
         print("[2]: Добавить очки.")
         print("[3]: Удалить очки.")
         print("[4]: Текущий статус.")
+        print("[5]: Выход.")
         print("\n#######################################################\n")
 
         command = input("> ")
+
+        if command == "0":
+            return
 
         if command == "1": 
             default_rank()
