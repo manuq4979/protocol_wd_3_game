@@ -302,7 +302,7 @@ class Profile:
             chars = Profile.decoding_of_characteristics(npc_id)
         else:
             npc_id = my_characteristics
-        charsc = npc_id
+        chars = npc_id
         name = chars[0]
         chars.remove(name)
         prof = Profile.get_instance()
