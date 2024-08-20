@@ -340,6 +340,10 @@ class Profile:
 
     def reset_new_characteristics(self):
         my_characteristics = []
+        if path.exists("DataApp/my_characteristics.txt") != True:
+            print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Вы ещё не меняли характеристики своего персонажа!\n\n\n"))
+            input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+            return
         with open("DataApp/my_characteristics.txt", "r", encoding="utf-8") as file:
             json_string = file.read()
         my_characteristics = json.loads(json_string)
