@@ -320,27 +320,21 @@ class Profile:
             if char[0] == "HP":
                 ch = int(char[1])
                 prof.set_HP(ch)
-                continue
             if char[0] == "armor":
                 ch = int(char[1])
                 prof.set_armor(ch)
-                continue
             if char[0] == "strong":
                 ch = int(char[1])
                 prof.set_strong(ch)
-                continue
             if char[0] == "intellect":
                 ch = int(char[1])
                 prof.set_intellect(ch)
-                continue
             if char[0] == "damage":
                 ch = int(char[1])
                 prof.set_damage(ch)
-                continue
             if char[0] == "critical-dmg":
                 ch = int(char[1])
                 prof.set_critical_dmg(ch)
-                continue
         if reset == False:
             print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Смена характеристик была успешно применена!\n\n\n"))
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
