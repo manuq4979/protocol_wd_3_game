@@ -287,7 +287,7 @@ class Profile:
     def set_new_characteristics(self, my_characteristics="", reset=False):
         
         if reset == False:
-            my_characteristics = get_all_fields()
+            my_characteristics = self.get_all_fields()
             with open("DataApp/my_charcteristics.txt", "w+", encoding="utf-8") as file:
                 json_string = json.dumps(my_characteristics)
                 file.write(json_string)
