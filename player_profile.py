@@ -290,6 +290,7 @@ class Profile:
         if reset == False:
             my_characteristics = self.get_all_fields()
             with open("DataApp/my_characteristics.txt", "w+", encoding="utf-8") as file:
+                my_characteristics = my_characteristics[:5]
                 json_string = json.dumps(my_characteristics)
                 file.write(json_string)
             print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Save my characteristics class data!"))
@@ -308,6 +309,7 @@ class Profile:
         prof = Profile.get_instance()
         print(chars)
         for char in chars:
+            print(char)
             if char[0] == "HP":
                 ch = int(char[1])
                 prof.set_HP(ch)
