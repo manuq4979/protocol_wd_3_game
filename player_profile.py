@@ -165,7 +165,7 @@ class Profile:
         critical_dmg = int(critical_dmg)
         if critical_dmg <= 45:              # максимальный крит урон равен 45%
             self.critical_dmg = critical_dmg
-            print("\033[31m{}".format("ERROR: ")+"\033[0m{}".format("У игрока как и у NPC, крит урон не может привышать 45%!"))
+            print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("У игрока как и у NPC, крит урон не может привышать 45%!"))
         else:
             critical_dmg = 45
         return 1
@@ -290,7 +290,7 @@ class Profile:
         if reset == False:
             my_characteristics = self.get_all_fields()
             with open("DataApp/my_characteristics.txt", "w+", encoding="utf-8") as file:
-                my_characteristics = my_characteristics[:5]
+                my_characteristics = my_characteristics[:6]
                 char_names = ["HP", "armor", "strong", "intellect", "damage", "critical_dmg"]
                 for i in range(len(my_characteristics)):
                     my_characteristics[i] = [char_names[i], my_characteristics[i]]
