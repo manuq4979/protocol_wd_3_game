@@ -291,6 +291,9 @@ class Profile:
             my_characteristics = self.get_all_fields()
             with open("DataApp/my_characteristics.txt", "w+", encoding="utf-8") as file:
                 my_characteristics = my_characteristics[:5]
+                char_names = ["HP", "armor", "strong", "intellect", "damage", "critical_dmg"]
+                for i in range(len(my_characteristics)):
+                    my_characteristics[i] = [char_names[i], my_characteristics[i]]
                 json_string = json.dumps(my_characteristics)
                 file.write(json_string)
             print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Save my characteristics class data!"))
