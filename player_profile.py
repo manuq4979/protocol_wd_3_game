@@ -296,11 +296,13 @@ class Profile:
             
         print("\n\n\n\n\n\n\n")
         npc_id = []
+        chars = []
         if reset == False:
             npc_id = input("npc_id> ")
+            chars = Profile.decoding_of_characteristics(npc_id)
         else:
             npc_id = my_characteristics
-        chars = Profile.decoding_of_characteristics(npc_id)
+        charsc = npc_id
         name = chars[0]
         chars.remove(name)
         prof = Profile.get_instance()
