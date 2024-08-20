@@ -284,7 +284,7 @@ class Profile:
                     ch = prof.get_critical_dmg()+int(char[1])
                 prof.set_critical_dmg(ch)
     
-    def set_new_characteristics(my_characteristics="", reset=False):
+    def set_new_characteristics(self, my_characteristics="", reset=False):
         
         if reset == False:
             my_characteristics = get_all_fields()
@@ -326,13 +326,13 @@ class Profile:
         if reset == False:
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
 
-    def reset_new_characteristics():
+    def reset_new_characteristics(self):
         my_characteristics = []
         with open("DataApp/my_characteristics.txt", "r", encoding="utf-8") as file:
             json_string = file.read()
             my_characteristics = json.loads(json_string)
             
-        set_new_characteristics(my_characteristics=my_characteristics, reset=True)
+        self.set_new_characteristics(my_characteristics=my_characteristics, reset=True)
         print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Возврат эарактеристик успешно завершен!\n\n\n"))
         input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
 
