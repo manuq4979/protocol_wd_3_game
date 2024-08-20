@@ -290,7 +290,7 @@ class Profile:
         if reset == False:
             keep_tools = self.get_keep_tool()
             if len(keep_tools) != 0:
-                for tool_id in len(keep_tools):
+                for tool_id in keep_tools.keys():
                     self.take_off(tool_id)
             my_characteristics = self.get_all_fields()
             with open("DataApp/my_characteristics.txt", "w+", encoding="utf-8") as file:
