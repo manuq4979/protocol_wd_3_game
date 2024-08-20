@@ -289,7 +289,7 @@ class Profile:
         
         if reset == False:
             my_characteristics = self.get_all_fields()
-            with open("DataApp/my_charcteristics.txt", "w+", encoding="utf-8") as file:
+            with open("DataApp/my_characteristics.txt", "w+", encoding="utf-8") as file:
                 json_string = json.dumps(my_characteristics)
                 file.write(json_string)
             print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Save my characteristics class data!"))
