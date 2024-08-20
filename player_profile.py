@@ -288,6 +288,10 @@ class Profile:
     def set_new_characteristics(self, my_characteristics="", reset=False):
         
         if reset == False:
+            keep_tools = self.get_keep_tool()
+            if len(keep_tools) != 0:
+                for tool_id in len(keep_tools):
+                    self.take_off(tool_id)
             my_characteristics = self.get_all_fields()
             with open("DataApp/my_characteristics.txt", "w+", encoding="utf-8") as file:
                 my_characteristics = my_characteristics[:6]
