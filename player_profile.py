@@ -308,11 +308,11 @@ class Profile:
         if reset == False:
             npc_id = input("npc_id> ")
             chars = Profile.decoding_of_characteristics(npc_id)
+            name = chars[0]
+            chars.remove(name)
         else:
             npc_id = my_characteristics
             chars = npc_id
-        name = chars[0]
-        chars.remove(name)
         prof = Profile.get_instance()
         print(chars)
         for char in chars:
