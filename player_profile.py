@@ -288,6 +288,7 @@ class Profile:
     def set_new_characteristics(self, my_characteristics="", reset=False):
         
         if reset == False:
+            # Важно снять экипировку перед сохранением характеристик игрока!
             keep_tools = self.get_keep_tool()
             if len(keep_tools) != 0:
                 for tool_id in list(keep_tools.keys()):
@@ -314,9 +315,7 @@ class Profile:
             npc_id = my_characteristics
             chars = npc_id
         prof = Profile.get_instance()
-        print(chars)
         for char in chars:
-            print(char)
             if char[0] == "HP":
                 ch = int(char[1])
                 prof.set_HP(ch)
