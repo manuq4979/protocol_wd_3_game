@@ -346,7 +346,7 @@ class Profile:
         my_characteristics = json.loads(json_string)
             
         self.set_new_characteristics(my_characteristics=my_characteristics, reset=True)
-        print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Возврат эарактеристик успешно завершен!\n\n\n"))
+        print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Возврат характеристик успешно завершен!\n\n\n"))
         input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
 
     # "gun_damage=200_strong=2" == ['gun', ['damage', '200'], ['strong', '2']]
