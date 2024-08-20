@@ -306,6 +306,7 @@ class Profile:
         name = chars[0]
         chars.remove(name)
         prof = Profile.get_instance()
+        print(chars)
         for char in chars:
             if char[0] == "HP":
                 ch = int(char[1])
