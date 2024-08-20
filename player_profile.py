@@ -1,4 +1,5 @@
-import random, json, os, path
+import random, json, os
+from os import path
 
 class Profile:
     @staticmethod
