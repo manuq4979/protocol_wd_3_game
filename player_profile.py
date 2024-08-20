@@ -291,7 +291,7 @@ class Profile:
         if reset == False:
             # Важно снять экипировку перед сохранением характеристик игрока!
             keep_tools = self.get_keep_tool()
-            print(keep_tools)
+            print("keep_tools: "+str(keep_tools))
             if len(keep_tools) != 0:
                 for tool_id in list(keep_tools.keys()):
                     Profile.take_off(tool_id)
