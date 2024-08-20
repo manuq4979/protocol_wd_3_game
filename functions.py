@@ -131,7 +131,8 @@ def get_menu():
         print("[ 6]: Установить ID врага")
         print("[65]: Открыть Smart Electronics.")
         print("[ 7]: Инвентарь")
-        print("[ 8]: Правила")
+        print("[ 8]: Сменить характеристики своего персонажа.")
+        print("[ 85]: Вернуть предыдущие характеристики моего персонажа.")
         print("[ 0]: Назад")
         print("[10]: Для разработчиков")
         print("\n#######################################################\n")
@@ -163,6 +164,12 @@ def get_menu():
             continue
         if number == "7":
             get_inventory()
+            continue
+        if number == "8":
+            set_new_characteristics()
+            continue
+        if number == "85":
+            reset_new_characteristics()
             continue
         if number == "9":
             continue
