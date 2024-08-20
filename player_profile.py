@@ -284,6 +284,58 @@ class Profile:
                     ch = prof.get_critical_dmg()+int(char[1])
                 prof.set_critical_dmg(ch)
     
+    def set_new_characteristics(my_characteristics="", reset=False):
+        
+        if reset == False:
+            my_characteristics = get_all_fields()
+            with open("DataApp/my_charcteristics.txt", "w+", encoding="utf-8") as file:
+                json_string = json.dumps(my_characteristics)
+                file.write(json_string)
+            print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Save my characteristics class data!"))
+            
+        print("\n\n\n\n\n\n\n")
+        npc_id = []
+        if reset == False:
+            npc_id = input("npc_id> ")
+        else:
+            npc_id = my_characteristics
+        chars = Profile.decoding_of_characteristics(npc_id)
+        name = chars[0]
+        chars.remove(name)
+        prof = Profile.get_instance()
+        for char in chars:
+            if char[0] == "HP":
+                ch = int(char[1])
+                prof.set_HP(ch)
+            if char[0] == "armor":
+                ch = int(char[1])
+                prof.set_armor(ch)
+            if char[0] == "strong":
+                ch = int(char[1])
+                prof.set_strong(ch)
+            if char[0] == "intellect":
+                ch = int(char[1])
+                prof.set_intellect(ch)
+            if char[0] == "damage":
+                ch = int(char[1])
+                prof.set_damage(ch)
+            if char[0] == "critical-dmg":
+                ch = int(char[1])
+                prof.set_critical_dmg(ch)
+        print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Смена характеристик была успешно применена!\n\n\n"))
+        if reset == False:
+            input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+
+    def reset_new_characteristics():
+        my_characteristics = []
+        with open("DataApp/my_characteristics.txt", "r", encoding="utf-8") as file:
+            json_string = file.read()
+            my_characteristics = json.loads(json_string)
+            
+        set_new_characteristics(my_characteristics=my_characteristics, reset=True)
+        print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Возврат эарактеристик успешно завершен!\n\n\n"))
+        input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+
     # "gun_damage=200_strong=2" == ['gun', ['damage', '200'], ['strong', '2']]
     def decoding_of_characteristics(char_line):
         if char_line.find("recharge") != -1:
