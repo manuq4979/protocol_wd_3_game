@@ -281,7 +281,7 @@ class Profile:
                 if up == False:
                     ch = prof.get_critical_dmg()-int(char[1])
                 else:
-                    ch = prof.get_critical_dmg()-int(char[1])
+                    ch = prof.get_critical_dmg()+int(char[1])
                 prof.set_critical_dmg(ch)
     
     # "gun_damage=200_strong=2" == ['gun', ['damage', '200'], ['strong', '2']]
