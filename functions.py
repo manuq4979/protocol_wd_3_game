@@ -166,10 +166,12 @@ def get_menu():
             get_inventory()
             continue
         if number == "8":
-            set_new_characteristics()
+            prof = Profile.get_instance()
+            prof.set_new_characteristics()
             continue
         if number == "85":
-            reset_new_characteristics()
+            prof = Profile.get_instance()
+            prof.reset_new_characteristics()
             continue
         if number == "9":
             continue
