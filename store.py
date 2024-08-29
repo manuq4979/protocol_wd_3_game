@@ -3,15 +3,34 @@ import json, os
 BUY = 1
 SELL = 2
 
-with open("DataApp/store.txt", "r", encoding="utf-8") as file:
-    json_string = file.read()
-    arr = json.loads(json_string)
-    store =  arr[0]                 # хранит  tool_id : ETO
-    store_ETO = arr[1]
+def create_default_store_file():
+    if os.path.exists("DataApp/store.txt") != True:
+        with open("DataApp/store.txt", "w+", encoding="utf-8") as file:
+            json_string = json.dumps([{}, 0])
+            file.write(json_string)
 
+def init_store():
+    create_default_store_file()
+    with open("DataApp/store.txt", "r", encoding="utf-8") as file:
+        json_string = file.read()
+        arr = json.loads(json_string)
+        store =  arr[0]                 # хранит  tool_id : ETO
+        store_ETO = int(arr[1])
+
+        return [store, store_ETO]
+
+store = init_store()[0]
+store_ETO = init_store()[1]
 
 # Сохранить данные модуля в файл:
-def save_data_store():
+def save_data_store(store_ETO, save_only_store=False):
+    global store
+
+    create_default_store_file()
+
+    if save_only_store == True:
+        store_ETO = init_store()[1]
+
     with open("DataApp/store.txt", "w+", encoding="utf-8") as file:
         json_string = json.dumps([store, store_ETO])
         file.write(json_string)
@@ -106,17 +125,127 @@ def buy_reload_tool(prof, buy):
 	prof.add_tools_id(new_tool, my_price)
 	print("\033[32m{}".format("[INFO]:")+"\033[0m{}".format("Готово!"))
 	input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
-	
-	
+
+
+def transfer_ETO_to_storage(prof):
+    global store_ETO
+
+    print("\n#######################################################\n\n\n\n\n\n")
+    print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Будет взыматься коммисия - 20%!"))
+    print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("\n- Будет создан card-with-tokens_eto=X,\n  где X - это указанная сумма!\n- Предмет в инвентаре нужно просто продать\n  чтобы снять токены с носителя."))
+    print("\n\n\n\n\n\n#######################################################\n")
+
+    command = input("Введите сумму> ")
+
+    command.replace(" ", "")
+    if command == "":
+        return
+
+    if command.isdigit() == False:
+        print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допускаются лишь числа и цифры, текст и прч не допустимо!"))
+        input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+        return
+
+    ETO = int(command)
+
+    if prof.get_ETO() < ETO:
+        print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Не достаточно средств для совершения операции!"))
+        input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+        return
+
+    prof.set_ETO(int(prof.get_ETO()-ETO))
+
+    commission_rate = int(ETO * 0.2)
+    prof.save_to_history("Покупка услуги \"перенос ETO на носитель\" за "+str(commission_rate)+" ETO - остальная сумму "+str(int(ETO-commission_rate))+" ETO отправилась на сам носитель.")
+    storage_card = "card-with-tokens_eto="+str(int(ETO-commission_rate))
+    prof.add_tools_id(storage_card, ETO-commission_rate)
+
+    store_ETO = int(store_ETO)
+    store_ETO += ETO
+
+    save_data_store(store_ETO)
+    print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Готво, сумма коммисии составила "+str(commission_rate)+" ETO!"))
+    input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+    return
+
+def transfer_ETO_to_inventary(prof, tool_id):
+    price = tool_id.split("=")[1]
+    prof.set_ETO(int(prof.get_ETO())+int(price))
+    prof.save_to_history("Продажа особого предмета: "+tool_id+" за цену "+str(price)+" ETO.")
+    store_ETO = int(init_store()[1])
+    store_ETO -= int(price)
+    save_data_store(store_ETO)
+    prof.del_tools_id(tool_id)
+    print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Пополнение счета на "+str(price)+" ETO!"))
+    input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+
+
+# В методе use_consumables модуля se_applications есть проверка на "smartphone_consumables", с помощью str.find(), из чего следует, что строчка просто должна присутствовать.
+def buy_consumables(prof):
+    global store_ETO
+    price = 150 # Такая вот цена за расходный материал, заряды стоят всего 50 при этом.
+
+    i = input("укажите количество> ")
+
+    if i.isdigit() == False:
+        print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
+        input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+        return
+
+    i = int(i)
+    copy_i = i
+    counter_price = price * i
+
+    # Проверить есть ли у игрока средства
+    if prof.get_ETO() < counter_price:
+        print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Не достаточно средств для покупки!"))
+        input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+        return
+
+    while i != 0:
+        new_consumables_ID = 1
+        there_are_coincidences = False # есть_совпадения?
+
+        # Есть ли у игрока уже этот предмет
+        size = len(list(prof.get_tools_id().values()))
+        for index in range(size):
+            for tool_id in list(prof.get_tools_id().keys()):
+                if tool_id.find("smartphone_consumables_ID="+str(new_consumables_ID)) == -1:
+                    there_are_coincidences = True
+                    continue
+
+            if there_are_coincidences == True:
+                new_consumables_ID += 1
+                there_are_coincidences = False
+                continue
+
+
+        new_consumables = "smartphone_consumables_ID="+str(new_consumables_ID)
+
+        prof.set_ETO(int(prof.get_ETO()-price))
+        prof.save_to_history("Покупка расходного материала за "+str(price)+" ETO.")
+        prof.add_tools_id(new_consumables, int(price/2))
+        i -= 1
+
+    store_ETO = int(init_store()[1])
+    store_ETO += counter_price
+
+    save_data_store(store_ETO)
+    print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Готво, расходный матереал куплен в количестве "+str(copy_i)+" штук по цене "+str(counter_price)+"!"))
+    input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+    return
+
 
 #-----------------------------------------#
 # Тут вывод оставить как есть! пока что.  #
 #-----------------------------------------#
 def get_store():
+
     from functions import buy, sell, get_inventory, Profile
     prof = Profile.get_instance()
     while True:
         print("\n#######################################################\n")
+        print("Баланс продовца: "+str(init_store()[1]))
         print("\033[32m{}".format("[Welcom to the Store menu]: ")+"\033[0m{}".format("\n"))
         index = 0
         for tool_id, ETO in store.items():
@@ -133,6 +262,8 @@ def get_store():
         print("[2]: Продать")
         print("[3]: Инвентарь")
         print("[4]: Зарядить")
+        print("[5]: Перенести ETO на носитель.")
+        print("[6]: Купить расходный материал .")
         print("[0]: Назад")
         print("\n#######################################################\n")
         text = input("> ")
@@ -143,8 +274,19 @@ def get_store():
             get_inventory()
         if text == "4":
             buy_reload_tool(prof, buy)
+        if text == "5":
+            transfer_ETO_to_storage(prof)
+            continue
+        if text == "6":
+            buy_consumables(prof)
+            continue
         
-        text = hot_key(text, prof)
+        try:
+            text = hot_key(text, prof)
+        except IndexError:
+            print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("не верный индекс!"))
+            input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+
         if text == False:
             continue
         
@@ -155,7 +297,10 @@ def get_store():
             continue
         if text[0] == SELL:
             tool_id = text[1]
-            sell(tool_id)
+            if tool_id.find("card-with-tokens_eto=") != -1:
+                transfer_ETO_to_inventary(prof, tool_id)
+            else:
+                sell(tool_id)
             continue
         else:
             print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("не верный запрос!"))
@@ -163,12 +308,22 @@ def get_store():
 
 
 def add_product():
-    tool_id = input("tool_id> ")
-    price   = input("price> ")
+    while True:
+        tool_id = input("tool_id> ")
+        tool_id = tool_id.replace(" ", "")
+        if tool_id != "":
+            break
+
+        price   = input("price> ")
+        price = price.replace(" ", "")
+        if price != "":
+            break
     store[tool_id] = price
+    save_data_store(store_ETO=0, save_only_store=True)
     print("\033[32m{}".format("[INFO]:")+"\033[0m{}".format("Готово!\n\n"))
     
 def del_product():
     tool_id = input("tool_id> ")
     del store[tool_id]
+    save_data_store(store_ETO=0, save_only_store=True)
     print("\033[32m{}".format("[INFO]:")+"\033[0m{}".format("Предмет удален!\n\n"))

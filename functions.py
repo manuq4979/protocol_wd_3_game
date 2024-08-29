@@ -201,9 +201,9 @@ def buy(tool_id, no_add_to_inventory=False, service_price=0):
         print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Данного товара нет!"))
         input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
         return
-    balance = int(prof.get_ETO())
+
     price = int(price)
-    if balance < price:                 # проверяем достаточно ли ETO
+    if int(prof.get_ETO()) < price:                 # проверяем достаточно ли ETO
         print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Не достаточно средств!"))
         input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
         return False
@@ -212,10 +212,11 @@ def buy(tool_id, no_add_to_inventory=False, service_price=0):
     elif no_add_to_inventory == True:
         history_line = "Списания в размере: "+str(price)+" за доп услуги магазина(по типу за подзарядку инструената)."
     prof.save_to_history(history_line)  # заносим в историю
-    prof.set_ETO(balance-price)         # вычетаем из баланса игрока сумму за товар
+    prof.set_ETO(int(prof.get_ETO())-price)         # вычетаем из баланса игрока сумму за товар
     if no_add_to_inventory == False:
         del store[tool_id]                  # удаляем инструмент из магазина
-    store_ETO = store_ETO+price         # увеличиваем баланс продавца
+    store_ETO = int(store_ETO)
+    store_ETO += price         # увеличиваем баланс продавца
     if no_add_to_inventory == False:
         price = price / 2                   # уменьшаем стоимость проданного инструмента
     if no_add_to_inventory == False:   
@@ -224,6 +225,7 @@ def buy(tool_id, no_add_to_inventory=False, service_price=0):
     elif no_add_to_inventory == True:
         print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Услуга успешно оплачена!"))
         return True
+    save_data_store(store_ETO)
     input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
     
 def sell(tool_id):
@@ -235,19 +237,21 @@ def sell(tool_id):
         print("\033[31m{}".format("ERROR: ")+"\033[0m{}".format("Нет предмета для продажи!"))
         input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
         return
-    balance = int(store_ETO)
+
     price = int(price)
-    if balance < price:                             # проверяем достаточно ли ETO
+    if init_store()[1] < price:                             # проверяем достаточно ли ETO
         print("\033[31m{}".format("ERROR: ")+"\033[0m{}".format("У продовца не достаточно средств :("))
         input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
         return
     history_line = "Продан: "+str(tool_id)+" за "+str(price)
     prof.save_to_history(history_line)              # заносим в историю
-    store_ETO = balance-price                       # вычетаем из баланса продовца сумму за товар
+    store_ETO = int(store_ETO)
+    store_ETO -= price                       # вычетаем из баланса продовца сумму за товар
     prof.del_tools_id(tool_id)                      # удаляем инструмент из магазина
     prof.set_ETO(prof.get_ETO() + price)            # увеличиваем баланс игрока
     price = price*2                                 # делаем наценку на купленный инструмент
     store[tool_id] = price                          # добавляем инструмент в магазин
+    save_data_store(store_ETO)
     print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Товар успешно продан!"))
     input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
 

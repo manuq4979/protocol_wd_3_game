@@ -556,7 +556,7 @@ def get_series_points_menu(task_dict):
         if task.get_status() != "Active":
             print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Задание с ID_"+str(ID)+" есть, но оно не активно - операция отменена!"))
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
-            continue
+            return
         task.add_series_point()
         player_attack()                  # Атакуем врага, потому что мы выполнили задание привычки
         prof = Profile.get_instance()

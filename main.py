@@ -81,7 +81,6 @@ while(True):
 
     if text == "2" or text == "3":
         print("\n#######################################################\n")
-        functions.save_data_store()
         functions.save_data_profile()
         functions.save_data_person()
         functions.save_data_task()

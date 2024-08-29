@@ -10,7 +10,7 @@ import random
 def use_consumables(prof): # Если расходный материал успешно использован вернет True иначе False:
     inventory = prof.get_tools_id()
     for tool_id, price in inventory.items():
-        if tool_id == "smartphone_consumables":
+        if tool_id.find("smartphone_consumables") != -1:
             prof.del_tools_id(tool_id)
             return True
     return False
