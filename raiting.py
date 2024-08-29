@@ -218,7 +218,7 @@ def check_reset_time_of_points():
     current_date = datetime.now().date()
 
     if os.path.exists("DataApp/reset_time_of_points.txt") == False:
-        reset_day   = 30
+        reset_day   = 90 # было 30 дней, но за 30 дней я не успею, да и сезон длиться не месяц, а вероятнее 3 месяца, это примерно 90 дней.
         reset_date  = current_date + timedelta(days=reset_day)
         create_reset_time_of_points_file(reset_date)
 
