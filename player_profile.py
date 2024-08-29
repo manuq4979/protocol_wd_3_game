@@ -1,9 +1,10 @@
 import random, json, os
 from os import path
 
+
 class Profile:
     @staticmethod
-    def get_instance() :
+    def get_instance():
         if "_instance" not in Profile.__dict__:
             Profile._instance = Profile()
             return Profile._instance
@@ -40,6 +41,10 @@ class Profile:
                     self.current_raiting = arr[14]
                 except IndexError:
                     self.current_raiting = "Новичок"
+                try:
+                    self.current_raiting_number = arr[15]
+                except IndexError:
+                    self.current_raiting_number = "I"
             except json.decoder.JSONDecodeError:                      # Это исключение значит, что файл конфигурации пуст, код ниже задат дефолтные значения.
                 self.set_all_fields_default()
                 arr = self.get_all_fields()
@@ -49,7 +54,7 @@ class Profile:
                     print("Save profile data!")
     
     def get_all_fields(self):
-        return [self.HP, self.armor, self.strong, self.intellect, self.damage, self.critical_dmg, self.quest_reward_setting, self.ETO, self.tools_id, self.pers_id, self.slots_occupied, self.slots, self.keep_tool, self.history, self.current_raiting]
+        return [self.HP, self.armor, self.strong, self.intellect, self.damage, self.critical_dmg, self.quest_reward_setting, self.ETO, self.tools_id, self.pers_id, self.slots_occupied, self.slots, self.keep_tool, self.history, self.current_raiting, self.current_raiting_number]
     
     def set_all_fields_default(self):
         self.HP = 100
@@ -67,6 +72,7 @@ class Profile:
         self.keep_tool = {}
         self.history = []
         self.current_raiting = "Новичок"
+        self.current_raiting_number = "I"
         print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Все значения профиля установлены по умолчанию!"))
         
         
@@ -236,6 +242,12 @@ class Profile:
 
     def set_current_raiting(self, new_current_raiting):
         self.current_raiting = new_current_raiting
+
+    def get_current_raiting_number(self):
+        return self.current_raiting_number
+
+    def set_current_raiting_number(self, current_raiting_number):
+        self.current_raiting_number = current_raiting_number
     
     def apply_to_characteristics(char_line, up=True): # char_line == tool_id
         chars = Profile.decoding_of_characteristics(char_line)
@@ -463,13 +475,15 @@ class Profile:
 def get_prof():
     prof = Profile.get_instance()
     if prof.get_HP() == 0:
-        print("\033[31m{}".format("[DEATH]: ")+"\033[0m{}".format("Вы проиграли!"))
-        print("\n\n\n")
-        print("----------------------")
-        print("1. Реванш")
-        res = input("\033[32m{}".format("> ")+"\033[0m{}".format(""))
-        if res == "1":
-            prof.set_HP(100)                                # Далее просто восстанавливаем HP и продолжаем игру!
+        while True:
+            print("\033[31m{}".format("[DEATH]: ")+"\033[0m{}".format("Вы проиграли!"))
+            print("\n\n\n")
+            print("----------------------")
+            print("1. Реванш")
+            res = input("\033[32m{}".format("> ")+"\033[0m{}".format(""))
+            if res == "1":
+                prof.set_HP(100)
+                return                                # Далее просто восстанавливаем HP и продолжаем игру!
     else:
         print("\033[32m{}".format("[Profile]:")+"\033[0m{}".format(""))
         prof.get_profile()
@@ -590,9 +604,11 @@ def player_attack():
     prof = Profile.get_instance()
     npc = NPC.get_instance()
     
+
     # Игрок не может нанести врагу урон, если тот не был устанволен - игрок не выбрал врага:
     if npc.installed_contender == "None":
         return
+
     
     take_off_tool = check_charge(prof)
     
@@ -601,7 +617,8 @@ def player_attack():
         npc.HP = 0
         drop = calculate_drop_trophy(npc)
         if drop != 0:
-            prof.add_tools_id(drop, 50)
+            for drop_tool in drop:
+                prof.add_tools_id(drop_tool, 50)
             history_line = "Получен трофей "+str(drop)+" - ценность 50 ETO."
             prof.save_to_history(history_line)
             print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Получен трофей: "+str(drop)+" !"))

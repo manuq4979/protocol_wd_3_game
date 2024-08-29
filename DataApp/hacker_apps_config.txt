@@ -1,0 +1,1 @@
+{"Tactical camouflage": 0, "shutdown": 24, "theft of ETO": 0, "encryption of inventory": 0}

@@ -15,16 +15,20 @@ def print_tool_id(tool_id):
 # Вернет False если ввод не коррктный и True если всё ОК:
 def checkin_for_int_and_spaces(line):
     line = line.replace(" ", "")
+
     if len(line) == 0:
-        print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Пробелы и пустые строки не допустимы!"))
-        input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
-        return False
+        return True
 
     if line.isdigit() == False:
         print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допускаются лишь числа и цифры, текст и прч не допустимо!"))
         input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
         return False
 
+def delete_missing_item(line):
+    line = line.replace(" ", "")
+    if len(line) == 0:
+        return True
+    return False
 
 def sort_array_tool(array_tool):
     new_array_tool = []
@@ -113,7 +117,7 @@ def id_compile(index=0):
             print("\n#######################################################\n")
         if welcom_string != "Заряды":
             if welcom_string != "Аптечки" and welcom_string != "Броня":
-                res = input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Это всё?(да/нет - 0/1):\n-> "))
+                res = input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Это всё? (да/1 - нет/0):\n-> "))
                 if checkin_for_int_and_spaces(res) == False:
                     return
             else:
@@ -122,32 +126,38 @@ def id_compile(index=0):
                 HP = input("\n[HP]:\n-> ")
                 if checkin_for_int_and_spaces(HP) == False:
                     return
-                array_tool.append(["HP", HP])
+                if delete_missing_item(HP) == False:
+                    array_tool.append(["HP", HP])
 
                 charge = input("\n[Заряженность]:\n-> ")
                 if checkin_for_int_and_spaces(charge) == False:
                     return
-                array_tool.append(["charge", charge])
+                if delete_missing_item(charge) == False:
+                    array_tool.append(["charge", charge])
 
                 critical_dmg = input("\n[Критический урон(до 45)]:\n-> ")
                 if checkin_for_int_and_spaces(critical_dmg) == False:
                     return
-                array_tool.append(["critical-dmg", critical_dmg])
+                if delete_missing_item(critical_dmg) == False:
+                    array_tool.append(["critical-dmg", critical_dmg])
 
                 armor = input("\n[Защита]:\n-> ")
                 if checkin_for_int_and_spaces(armor) == False:
                     return
-                array_tool.append(["armor", armor])
+                if delete_missing_item(armor) == False:
+                    array_tool.append(["armor", armor])
 
                 strong = input("\n[Сила]:\n-> ")
                 if checkin_for_int_and_spaces(strong) == False:
                     return
-                array_tool.append(["strong", strong])
+                if delete_missing_item(strong) == False:
+                    array_tool.append(["strong", strong])
 
                 intellect = input("\n[Интелект]:\n-> ")
                 if checkin_for_int_and_spaces(intellect) == False:
                     return
-                array_tool.append(["intellect", intellect])
+                if delete_missing_item(intellect) == False:
+                    array_tool.append(["intellect", intellect])
             print("\n#######################################################\n")
 
         array_tool = sort_array_tool(array_tool)

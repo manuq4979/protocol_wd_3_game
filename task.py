@@ -22,7 +22,10 @@ class Task:
         if str(activation_time).isdigit() == True:
             self.activation_time = activation_time
         if activation_time != '' and type(activation_time) != int:
-            self.activation_time = datetime.strptime(activation_time, "%Y-%m-%d").date()
+            try:
+                self.activation_time = datetime.strptime(activation_time, "%Y-%m-%d").date()
+            except ValueError:
+                print("\033[33m{}".format("[BAG]: ")+"\033[0m{}".format("Ошибки раньше не было, сейчас появилась, я не понял что с ней делать:\nValueError: time data '7' does not match format '%Y-%m-%d'"))
         self.reward = reward
         self.status = status # По умолчанию все задания активны!
         
@@ -491,9 +494,10 @@ def del_no_active_task(task_list):
             new_task_list.append(task)
     return new_task_list
     
-def get_pages(task_list, chunk_size=3):
+def get_pages(task_list, chunk_size=3, flag_del_no_active_task=True):
     # Удаляем не активные задачи, так как они тоже в списке и мешают отображать страницы корректно:
-    task_list = del_no_active_task(task_list)
+    if flag_del_no_active_task:
+        task_list = del_no_active_task(task_list)
     
     if len(task_list) == 0:
         return []
@@ -549,6 +553,10 @@ def get_series_points_menu(task_dict):
     res = input("> ")
     
     if res == "1":                       # При выборе плюса, игрок отмечает, что выполнил привычку.
+        if task.get_status() != "Active":
+            print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Задание с ID_"+str(ID)+" есть, но оно не активно - операция отменена!"))
+            input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+            continue
         task.add_series_point()
         player_attack()                  # Атакуем врага, потому что мы выполнили задание привычки
         prof = Profile.get_instance()
@@ -623,6 +631,10 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
                 else:
                     ID = int(ID)
                     task = task_dict[ID]
+                    if task.get_status() != "Active":
+                        print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Задание с ID_"+str(ID)+" есть, но оно не активно - операция отменена!"))
+                        input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+                        continue
                     player_attack()                  # Атакуем врага, потому что мы выполнили задание
                     prof = Profile.get_instance()
                     prof.add_reward(task.complexity, ID=ID, task_class="одиночное") 

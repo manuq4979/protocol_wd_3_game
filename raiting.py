@@ -253,7 +253,9 @@ def print_reset_point_counter():
 def determine_my_ranking(complexity, complite, prof):
     current_raiting = prof.get_current_raiting()
     points = read_rank()
-    rank = is_rank_text(points)[0]
+    rank_arr = is_rank_text(points)
+    rank = rank_arr[0]
+    rank_number = rank_arr[1]
     eto_and_exp_table = table[rank]
     eto_and_exp = eto_and_exp_table[complexity]
 
@@ -268,14 +270,21 @@ def determine_my_ranking(complexity, complite, prof):
         new_points += points - eto_and_exp[1]
     write_rank(new_points)
     points = read_rank()
-    rank = is_rank_text(points)[0]
+    rank_arr = is_rank_text(points)
+    rank = rank_arr[0]
+    current_rank_number = prof.get_current_raiting_number()
 
     print("\033[32m{}".format("[RAITING]: ")+"\033[0m{}".format("Вашь счет: "+str(points)+" в поинтах."))
-    print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Добавлено: "+str(eto_and_exp[1])+" поинтов."))
+    if complite == True:
+        print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Добавлено: "+str(eto_and_exp[1])+" поинтов."))
+    if complite == False:
+        print("\033[31m{}".format("[INFO]: ")+"\033[0m{}".format("Убавлено: "+str(eto_and_exp[1])+" поинтов."))
 
     # Определяет был ли ранг изменен - повышен или понижен:
-    if current_raiting != rank:
+    if current_raiting != rank or rank_number != current_rank_number:
         new_raiting = rank
+        if rank_number != current_rank_number:
+            prof.set_current_raiting_number(rank_number)
         up_rating_or_not_up = whether_rank_has_increased_or_not(current_raiting, new_raiting)
         if up_rating_or_not_up == True:
             reward_new_rank = reward_table[new_raiting]

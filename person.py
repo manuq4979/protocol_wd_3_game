@@ -10,6 +10,7 @@ class NPC:
             return NPC._instance
         else:
             return NPC._instance
+    
 
     def __init__(self):
         # инициализация должна быть из файла!
@@ -34,7 +35,7 @@ class NPC:
                 with open("DataApp/person.txt", "w+", encoding="utf-8") as file:
                     json_string = json.dumps(arr)
                     file.write(json_string)
-                    print("Save NPC class data!")
+                    print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Save NPC default class data!"))
 	
     def get_all_fields(self): 
         return [self.name, self.HP, self.armor, self.damage, self.strong, self.critical_dmg, self.drop_trophy, self.installed_contender]  
@@ -154,6 +155,7 @@ class NPC:
     def set_new_npc(self, NPC_ID):
         self.apply_to_characteristics_NPC(NPC_ID, up=False, new_npc=True)
         self.installed_contender = True
+
         
 
 def add_NPC(tool_id):

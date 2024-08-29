@@ -129,10 +129,11 @@ def get_menu():
         print("[ 4]: История баланса ETO")
         print("[ 5]: Магазин инструментов")
         print("[ 6]: Установить ID врага")
+        print("[61]: Установить ID вражеского хакера")
         print("[65]: Открыть Smart Electronics.")
         print("[ 7]: Инвентарь")
-        print("[ 8]: Сменить характеристики своего персонажа.")
-        print("[85]: Вернуть характеристики моего персонажа.")
+        print("[ 8]: Сменить характеристики своего персонажа")
+        print("[85]: Вернуть характеристики моего персонажа")
         print("[ 0]: Назад")
         print("[10]: Для разработчиков")
         print("\n#######################################################\n")
@@ -158,6 +159,10 @@ def get_menu():
             continue
         if number == "6":
             get_installer_NPC()
+            continue
+        if number == "61":
+            from hacker_person import add_NPC
+            add_NPC()
             continue
         if number == "65":
             get_smart_electronics_menu()
@@ -343,8 +348,8 @@ def check_relevance_task():
     # Проверка Одиночных заданий:
     for ID, task in list(single_task_dict.items()):
         res = task.check_complition_time()
-    
-        if res == True and task.get_status() == "Active":                         # если игрок просрочил задание
+                                                                                # задания требующие финансирования имею другой статус:
+        if res == True and task.get_status() == "Active" or task.get_status() == "requiring funding":                         # если игрок просрочил задание
             npc = NPC.get_instance()
             if npc.installed_contender != "None":
                 prof = Profile.get_instance()

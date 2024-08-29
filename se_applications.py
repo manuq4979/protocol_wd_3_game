@@ -1,10 +1,12 @@
+import random
+
 ###
 
 #    Тут приложения в виде обычных def:
 
 ###
 
-# METHOD APP 3
+
 def use_consumables(prof): # Если расходный материал успешно использован вернет True иначе False:
     inventory = prof.get_tools_id()
     for tool_id, price in inventory.items():
@@ -13,7 +15,8 @@ def use_consumables(prof): # Если расходный материал усп
             return True
     return False
 
-# METHOD APP 1
+
+# APP 1 --------------------------------------------------------------------------
 percent = 40
 original_calculate_drop_trophy = "Unknown"
 def hacked_calculate_drop_trophy(npc):
@@ -25,7 +28,7 @@ def hacked_calculate_drop_trophy(npc):
         return npc.drop_trophy
     return 0
     
-# APP NUMBER 1
+
 def hack_trophy(prof):
     global percent, original_calculate_drop_trophy
     bots_id = [["two-wheeled-bot", 70], ["spider-bot", 100]]
@@ -116,8 +119,7 @@ def hack_trophy(prof):
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             
 
-
-# METHOD APP 2
+# APP 2 --------------------------------------------------------------------------
 def get_ability_to_flash_firmware(prof):
     from smart_electronics import Smart_Electronics, set_new_soft
     se = Smart_Electronics.get_instance()
@@ -165,9 +167,9 @@ def get_ability_to_flash_firmware(prof):
         if command == "2" and access == 1:
             set_new_soft()
 
-# APP NUMBER 2 DEF
+# ЗАГЛУШКА НА ВЫЗОВ МЕТОДОВ ВЫШЕ:
 def check_access_2(prof):
-    inventory = prof.get_tools_id()
+    inventory = prof.get_tools_id() # ДЛЯ APP 2
     for tool_id, price in inventory.items():
         if tool_id == "dedsec_flash-driver=retro4979":
             get_ability_to_flash_firmware(prof)
@@ -176,8 +178,7 @@ def check_access_2(prof):
     input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
     return
 
-# APP NUMBER 1 DEF
-def check_access_1(prof):
+def check_access_1(prof): # ДЛЯ APP 1
     inventory = prof.get_tools_id()
     for tool_id, price in inventory.items():
         if tool_id == "dedsec_flash-driver=retro4979":
@@ -188,6 +189,64 @@ def check_access_1(prof):
     return
     
     
+# APP 3 --------------------------------------------------------------------------
+def to_see_if_enemy_has_already_been_installed():
+    from person import NPC
+    npc = NPC.get_instance()
+    return npc.installed_contender
+
+def menu_detect_an_enemy_hacker(hacker, prof):
+    while True:
+        print("\n#######################################################\n")
+        print("\033[32m{}".format("[Решите что сделать с хакером]:")+"\033[0m{}".format(""))
+        if to_see_if_enemy_has_already_been_installed() == True:
+            print("\033[31m{}".format("[1]: Установить хакера в качестве врага.")+"\033[0m{}".format(""))
+        else:
+            print("[1]: Установить хакера в качестве врага.")
+        print("[2]: Предложить сделку.")
+        print("\n#######################################################\n")
+
+        command = input("> ")
+
+        if command == "1":
+            if to_see_if_enemy_has_already_been_installed() == False:
+                hacker.set_this_npc_as_an_enemy()
+                return
+            print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Враг уже установлен! Он является прикрытием для хакера!"))
+            return
+        if command == "2":
+            hacker.menu_for_deal(prof)
+            return
+
+
+def detect_an_enemy_hacker(prof):
+    if use_consumables(prof) == False:
+        print("\033[31m{}".format("[FAILED]: ")+"\033[0m{}".format("Нет расходного материала!"))
+        input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+        return
+
+    from hacker_person import HACKER_NPC
+    hacker = HACKER_NPC.get_instance()
+    hacker_lvl = int(hacker.lvl)
+    probability_of_success = 90 -(hacker_lvl * 10) # если уровень хакера 5, то итоговая будет 5*10 - 90 и того: 40% успеха, формула вычисления простая, уровень это x, а фрмула: x*10 - 90
+    if probability_of_success <= 50: # если вероятность ниже 50%, то:
+        if prof.get_intellect() >= 9: # начиная от интелекта 9 и выше, то:
+            probability_of_success += 35 # к итоговой вероятноти +35
+
+    print("\n#######################################################\n\n\n\n\n\n")
+    print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Вероятность успеха: "+str(probability_of_success)+"%"))
+    print("\n\n\n\n\n\n#######################################################\n")
+
+    probability = random.randint(1, 100)
+    if probability <= probability_of_success:
+        print("\033[32m{}".format("[COMPLITE]: ")+"\033[0m{}".format("Местоположение вражеского хакера вычислено!"))
+        input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+        menu_detect_an_enemy_hacker(hacker, prof)
+        return
+    else:
+        print("\033[31m{}".format("[FAILED]: ")+"\033[0m{}".format("Попытка вычислить местоположение провалилась!"))
+        input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+
 
 
 ###
@@ -196,7 +255,7 @@ def check_access_1(prof):
 
 ###
 
-applications_list = [["hack_trophy_systems", check_access_1], ["get_ability_to_flash_firmware", check_access_2]] # [[name, app_address], ...]
+applications_list = [["Взломать систему трофеев врага", check_access_1], ["Получить возможность перепрошивки", check_access_2], ["Обнаружить вражеского хакера", detect_an_enemy_hacker]] # [[name, app_address], ...]
 
 def get_applications_and_print():
     size = len(applications_list)
