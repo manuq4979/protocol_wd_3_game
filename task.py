@@ -514,7 +514,7 @@ def get_pages(task_list, chunk_size=3, flag_del_no_active_task=True):
             new_task_list.append(page)
             page = []
             chunk_size += step
-            print(chunk_size)
+            # print(chunk_size) # код для отладки
         i+=1
     new_task_list.append(page)
     
