@@ -474,7 +474,10 @@ class Profile:
 
 def get_prof():
     prof = Profile.get_instance()
+    npc = Persone.get_instance()
     if prof.get_HP() == 0:
+        npc.HP = npc.start_HP
+        npc.armor = npc.start_armor
         while True:
             print("\033[31m{}".format("[DEATH]: ")+"\033[0m{}".format("Вы проиграли!"))
             print("\n\n\n")
