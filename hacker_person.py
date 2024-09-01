@@ -200,8 +200,9 @@ def get_installer_hacker_NPC():
 # Метод также прверяет жив ли хакер:
 def print_hacker_npc():
 	hacker = HACKER_NPC.get_instance()
-	if hacker.HP <= 0:
-		self.del_NPC()
+	if hacker.hacker_exposed == True:
+		if npc.HP <= 0:
+			self.del_NPC()
 	if hacker.installed_contender == True:
 		print("\033[33m{}".format("[WARNING]:")+"\033[0m{}".format("Обнаружено вторжение в систему!"))
 	else:
