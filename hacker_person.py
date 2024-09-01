@@ -201,6 +201,8 @@ def get_installer_hacker_NPC():
 def print_hacker_npc():
 	hacker = HACKER_NPC.get_instance()
 	if hacker.hacker_exposed == True:
+		from person import NPC
+		npc = NPC.get_instance()
 		if npc.HP <= 0:
 			self.del_NPC()
 	if hacker.installed_contender == True:
