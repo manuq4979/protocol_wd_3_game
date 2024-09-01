@@ -33,6 +33,8 @@ class HACKER_NPC:
 					self.lvl = arr[8]
 					self.scripts = arr[9]
 					self.inventory = arr[10]
+					
+					self.hacker_exposed = arr[11]
 
 				
 			except OSError:    # Это исключение значит, что файл конфигурации пуст, код ниже задат дефолтные значения.
@@ -44,7 +46,7 @@ class HACKER_NPC:
 					print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Save HACKER_NPC default class data!"))
 
 	def get_all_fields(self): 
-		return [self.name, self.HP, self.armor, self.damage, self.strong, self.critical_dmg, self.drop_trophy, self.installed_contender, self.lvl, self.scripts, self.inventory]  
+		return [self.name, self.HP, self.armor, self.damage, self.strong, self.critical_dmg, self.drop_trophy, self.installed_contender, self.lvl, self.scripts, self.inventory, self.hacker_exposed]  
 	
 	def set_all_fields_default(self):
 		self.name=""
@@ -58,8 +60,10 @@ class HACKER_NPC:
 		self.lvl = 1
 		self.inventory = []
 		self.scripts = []
+		self.hacker_exposed = False
 		print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Все значения NPC класса установлены по умолчанию!"))
 	
+	# НЕ ИСПОЛЬЗУЕТСЯ!
 	def print_characteristics(self):
 		print("lvl: "+str(self.lvl))
 		print("Name: "+self.name)
@@ -69,10 +73,6 @@ class HACKER_NPC:
 		print("critical dmg: "+str(self.critical_dmg)+"%")
 		print("drop trophy: "+str(self.drop_trophy))
 
-	def decoding_of_characteristics_NPC(self, j_npc_id):
-		npc_id = ["anton", 100, 0, 0, 3, 3, ["tool_id_1", "tool_id_2"], False, 3, ["tool_id_3", "tool_id_4", "tool_id_5"],["scripts1", "scripts2"]]
-		j_npc_id = json.dumps(npc_id)
-		return j_npc_id
 
 	def apply_to_characteristics_NPC(self, j_npc_id, up=True,  new_npc=False):
 		arr = json.loads(j_npc_id)
@@ -90,6 +90,7 @@ class HACKER_NPC:
 		self.lvl = arr[8][1]
 		self.scripts = arr[9][1]
 		self.inventory = arr[10][1]
+		self.hacker_exposed = arr[11][1]
 
 	def menu_for_deal(self, prof):
 		x = int(self.lvl) * 100
@@ -144,7 +145,7 @@ class HACKER_NPC:
 	def set_this_npc_as_an_enemy(self):
 		from person import NPC, save_data_person
 		npc = NPC.get_instance()
-		npc.name = self.name
+		npc.name = self.name + " | lvl: " + str(self.lvl)
 		npc.HP = self.HP
 		npc.armor = self.armor
 		npc.damage = self.damage
@@ -152,6 +153,7 @@ class HACKER_NPC:
 		npc.drop_trophy = self.drop_trophy
 		npc.installed_contender = True
 		npc.critical_dmg = self.critical_dmg
+		self.hacker_exposed = True # когда игрок победит хакера, тот вторжение в систему будет отменено!
 		save_data_person()
 		print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Хакер установлен в качестве вашего противника!"))
 		input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
@@ -197,10 +199,10 @@ def get_installer_hacker_NPC():
 
 # Метод также прверяет жив ли хакер:
 def print_hacker_npc():
-	npc = HACKER_NPC.get_instance()
-	if npc.HP <= 0:
+	hacker = HACKER_NPC.get_instance()
+	if hacker.HP <= 0:
 		self.del_NPC()
-	if npc.installed_contender == True:
+	if hacker.installed_contender == True:
 		print("\033[33m{}".format("[WARNING]:")+"\033[0m{}".format("Обнаружено вторжение в систему!"))
 	else:
 		print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Вторжений не обнаружено."))
