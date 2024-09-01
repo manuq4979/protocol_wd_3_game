@@ -204,7 +204,7 @@ def print_hacker_npc():
 		from person import NPC
 		npc = NPC.get_instance()
 		if npc.HP <= 0:
-			self.del_NPC()
+			del_NPC()
 	if hacker.installed_contender == True:
 		print("\033[33m{}".format("[WARNING]:")+"\033[0m{}".format("Обнаружено вторжение в систему!"))
 	else:
