@@ -473,6 +473,7 @@ class Profile:
 
 
 def get_prof():
+    from person import NPC
     prof = Profile.get_instance()
     npc = NPC.get_instance()
     if prof.get_HP() == 0:
