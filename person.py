@@ -29,6 +29,10 @@ class NPC:
 	            
                 self.drop_trophy = arr[6]           # Это отдельный tool_id предмета.
                 self.installed_contender = arr[7]
+            
+                # Параметры ниже нужны чтобы по нажатию кнопки реваншь противник восстановился:
+                self.start_HP = arr[8]
+                self.start_armor = arr[9]
             except json.decoder.JSONDecodeError:    # Это исключение значит, что файл конфигурации пуст, код ниже задат дефолтные значения.
                 self.set_all_fields_default()
                 arr = self.get_all_fields()
@@ -38,7 +42,7 @@ class NPC:
                     print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Save NPC default class data!"))
 	
     def get_all_fields(self): 
-        return [self.name, self.HP, self.armor, self.damage, self.strong, self.critical_dmg, self.drop_trophy, self.installed_contender]  
+        return [self.name, self.HP, self.armor, self.damage, self.strong, self.critical_dmg, self.drop_trophy, self.installed_contender, self.start_HP, self.start_armor]  
 	
     def set_all_fields_default(self):
         self.name=""
@@ -49,6 +53,8 @@ class NPC:
         self.drop_trophy=""
         self.installed_contender="None"
         self.critical_dmg=3
+        self.start_HP=100
+        self.start_armor=0
         print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Все значения NPC класса установлены по умолчанию!"))
 	
     def print_characteristics(self):
@@ -139,6 +145,9 @@ class NPC:
                         self.critical_dmg = 45
             if tool[0] == "drop-trophy":
                 self.drop_trophy = tool[1]
+            
+            self.start_HP = self.HP
+            self.start_armor = self.armor
 
     def keeping_tool_NPC(self, tool_id):
         self.apply_to_characteristics_NPC(tool_id)
