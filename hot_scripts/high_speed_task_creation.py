@@ -108,6 +108,11 @@ def down_raiting(task, prof):
 
 
 def complite_hot_task(task, task_id, task_class, player_attack):
+	if task.get_status() != "Active":
+		print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Задача не активна - операция отменена!"))
+		input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+		return
+
 	from task import single_task_dict, habit_task_dict, daily_task_dict
 	from player_profile import Profile
 	from person import NPC
@@ -144,6 +149,11 @@ def complite_hot_task(task, task_id, task_class, player_attack):
 	input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
 
 def failed_hot_task(task, task_id, task_class, npc_attack):
+	if task.get_status() != "Active":
+		print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Задача не активна - операция отменена!"))
+		input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+		return
+
 	from task import single_task_dict, habit_task_dict, daily_task_dict
 	from player_profile import Profile
 	from person import NPC
