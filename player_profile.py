@@ -474,7 +474,7 @@ class Profile:
 
 def get_prof():
     prof = Profile.get_instance()
-    npc = Persone.get_instance()
+    npc = NPC.get_instance()
     if prof.get_HP() == 0:
         npc.HP = npc.start_HP
         npc.armor = npc.start_armor
