@@ -447,17 +447,25 @@ def print_counter_tasks():
     print("[Одиночные задания]: "+str(single_len))
     print("[Задания привычки]: "+str(habit_len))
 
-def set_ID_counter(ID):
-    counter = ID
-    if os.path.exists(filename) != True:
-        with open("DataApp/ID_counter.txt", "w+", encoding="utf-8") as file:
-        pass
+def set_ID_counter(counter):
+    if os.path.exists("DataApp/ID_counter.txt") != True:
+        print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Файл с счетчиком ID для здаданий был создан!"))
+    with open("DataApp/ID_counter.txt", "w+", encoding="utf-8") as file:
+        file.write(counter)
+    print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Счетчик заданий обнавлен, новое значение "+str(counter)))
+
+def get_counter_ID():
+    with open("DataApp/ID_counter.txt", "r", encoding="utf-8") as file:
+        counter = file.read()
+    return int(counter)
 
 def up_ID_counter():
-    pass
+    counter = 0
+    counter = get_counter_ID()
+    counter += 1
+    set_ID_counter(counter)
 
-def get_last_ID():
-    pass
+
 
 def add_single_task():
     new_task = SingleTask()
