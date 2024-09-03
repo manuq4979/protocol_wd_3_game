@@ -57,6 +57,7 @@ def get_menu_developer():
         print("[ 6]: Установить профиль в default.")
         print("[ 7]: Установить ID врага в значение по умолчанию.")
         print("[ 8]: Меню рейтинга.")
+        print("[ 9]: Удалить все не активные задания.")
         print("[ 0]: Назад.")
         print("\n#######################################################\n")
         
@@ -111,6 +112,9 @@ def get_menu_developer():
         if number == "8":
             from raiting import raiting_menu
             raiting_menu()
+            continue
+        if number == "9":
+            del_all_no_active_task()
             continue
         if number == "0":
             return
