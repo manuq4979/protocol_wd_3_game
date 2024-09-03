@@ -669,6 +669,8 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
                     # Задания привычек не должны удаляться после выполнения, потому что есть функция повтора через какое-то время!
             if habit_menu == True:
                 get_series_points_menu(task_dict)
+            if task_dict != daily_task_dict:
+                del task_dict[ID]
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             continue
         if number == "25":
@@ -690,6 +692,8 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
             complexity = task.complexity
             complite = False
             determine_my_ranking(complexity, complite, prof)
+            if task_dict != daily_task_dict:
+                del task_dict[ID]
             print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Поражение зафиксировано!"))
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             continue
