@@ -263,7 +263,6 @@ def verify_assignment_deadlines_and_completion():
 		sum = line_3[index:]
 		sum.replace(" ", "")
 		sum = int(sum)
-		print(line)
 		
 		
 		from datetime import datetime
