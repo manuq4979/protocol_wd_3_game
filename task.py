@@ -509,6 +509,8 @@ def del_daily_task():
     print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Задание ID_"+str(ID)+" удалено !"))
     
 def del_no_active_task(task_list, developer_menu=False):
+    global single_task_dict, daily_task_dict, habit_task_dict
+    
     task_dict = {}
     new_task_dict = {}
     if developer_menu == True:
