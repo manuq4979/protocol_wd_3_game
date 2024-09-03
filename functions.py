@@ -349,12 +349,13 @@ def get_inventory():
 # метод только проверяет актуальность задачь и наносит урон игроку за про$бы.
 def check_relevance_task():
     from datetime import datetime, timedelta
+    from currency2ETO import STATUS
     
     # Проверка Одиночных заданий:
     for ID, task in list(single_task_dict.items()):
         res = task.check_complition_time()
                                                                                 # задания требующие финансирования имею другой статус:
-        if res == True and task.get_status() == "Active" or task.get_status() == "requiring funding":                         # если игрок просрочил задание
+        if res == True and task.get_status() == "Active" or task.get_status() == STATUS:                         # если игрок просрочил задание
             npc = NPC.get_instance()
             if npc.installed_contender != "None":
                 prof = Profile.get_instance()
