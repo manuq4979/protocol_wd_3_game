@@ -547,7 +547,7 @@ def del_no_active_task(task_list, developer_menu=False):
             if task.get_status() == "Active" or task.get_status() == STATUS:
                 new_task_dict[ID] = task
         print("\n#######################################################\n\n\n\n\n\n")
-        print("     "+str(new_task_dict))
+        print("     "+str(task_dict))
         print("\n\n\n\n\n\n#######################################################\n")
     
 def get_pages(task_list, chunk_size=3, flag_del_no_active_task=True):
