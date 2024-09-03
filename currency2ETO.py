@@ -256,7 +256,7 @@ def verify_assignment_deadlines_and_completion():
 		activation_time = line_2[index:]
 		
 		# пример этой строки: "\n[Награда за финансирование]: 1000"
-		line_3 = line[1]
+		line_3 = line[3]
 		index = line_3.find(":")+2
 		sum = line_3[index:]
 		sum.replace(" ", "")
