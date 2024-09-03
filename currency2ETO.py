@@ -253,7 +253,7 @@ def verify_assignment_deadlines_and_completion():
 		
 		line_2 = line[0]
 		index = line_2.find(":")+2
-		print(line_2[index:])
+		activation_time = line_2[index:]
 		
 		# пример этой строки: "\n[Награда за финансирование]: 1000"
 		line_3 = line[2]
@@ -267,7 +267,6 @@ def verify_assignment_deadlines_and_completion():
 		from player_profile import player_attack, Profile
 		from raiting import determine_my_ranking
 		prof = Profile.get_instance()
-		activation_time = task.activation_time
 		activation_time = datetime.strptime(activation_time, "%Y-%m-%d").date()
 		res = task.check_time(activation_time)
 		
