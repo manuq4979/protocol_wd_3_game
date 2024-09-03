@@ -509,6 +509,8 @@ def del_daily_task():
     print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Задание ID_"+str(ID)+" удалено !"))
     
 def del_no_active_task(task_list, developer_menu=False):
+    task_dict = {}
+    new_task_dict = {}
     if developer_menu == True:
         while True:
             print("\n#######################################################\n")
@@ -523,26 +525,30 @@ def del_no_active_task(task_list, developer_menu=False):
                 continue
             
             if number == "1":
-                task_list = single_task_dict
+                task_dict = single_task_dict
                 break
             if number == "2":
-                task_list = daily_task_dict
+                task_dict = daily_task_dict
                 break
             if number == "3":
-                task_list = habit_task_dict
+                task_dict = habit_task_dict
                 break
     
     
     from currency2ETO import STATUS
-    new_task_list = []
-    for task in task_list:
-        if task.get_status() == "Active" or task.get_status() == STATUS:
-            new_task_list.append(task)
+    if developer_menu == False:
+        new_task_list = []
+        for task in task_list:
+            if task.get_status() == "Active" or task.get_status() == STATUS:
+                new_task_list.append(task)
+        return new_task_list
     if developer_menu == True:
+        for ID, task in task_dict.items():
+            if task.get_status() == "Active" or task.get_status() == STATUS:
+                new_task_dict[ID] = task
         print("\n#######################################################\n\n\n\n\n\n")
-        print("     "+str(new_task_list))
+        print("     "+str(new_task_dict))
         print("\n\n\n\n\n\n#######################################################\n")
-    return new_task_list
     
 def get_pages(task_list, chunk_size=3, flag_del_no_active_task=True):
     # Удаляем не активные задачи, так как они тоже в списке и мешают отображать страницы корректно:
