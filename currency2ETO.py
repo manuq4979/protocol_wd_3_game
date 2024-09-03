@@ -276,6 +276,7 @@ def verify_assignment_deadlines_and_completion():
 			complexity = task.complexity
 			complite = False
 			determine_my_ranking(complexity, complite, prof)
+			del single_task_dict[ID]
 			print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Задание завершено - вышло время!"))
 			input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
 			return
@@ -284,6 +285,7 @@ def verify_assignment_deadlines_and_completion():
 			complexity = task.complexity
 			complite = True
 			determine_my_ranking(complexity, complite, prof)
+			del single_task_dict[ID]
 			print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Задание завершено - профинансированно!"))
 			input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
 
