@@ -508,12 +508,40 @@ def del_daily_task():
     del daily_task_dict[ID]
     print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Задание ID_"+str(ID)+" удалено !"))
     
-def del_no_active_task(task_list):
+def del_no_active_task(task_list, developer_menu=False):
+    if developer_menu == True:
+        while True:
+            print("\n#######################################################\n")
+            print("\nВыберете номер:")
+            print("[1]: single_task_dict.")
+            print("[2]: daily_task_dict.")
+            print("[3]: habit_task_dict.")
+            print("\n#######################################################\n")
+            
+            number = input("> ")
+            if number.isdigit() == False:
+                continue
+            
+            if number == "1":
+                task_list = single_task_dict
+                break
+            if number == "2":
+                task_list = daily_task_dict
+                break
+            if number == "3":
+                task_list = habit_task_dict
+                break
+    
+    
     from currecy2ETO import STATUS
     new_task_list = []
     for task in task_list:
         if task.get_status() == "Active" or task.get_status() == STATUS:
             new_task_list.append(task)
+    if developer_menu == True:
+        print("\n#######################################################\n\n\n\n\n\n")
+        print("     "+str(new_task_list))
+        print("\n\n\n\n\n\n#######################################################\n")
     return new_task_list
     
 def get_pages(task_list, chunk_size=3, flag_del_no_active_task=True):
