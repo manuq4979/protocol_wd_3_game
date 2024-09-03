@@ -256,14 +256,16 @@ def verify_assignment_deadlines_and_completion():
 		sum = line_3[index:]
 		sum.replace(" ", "")
 		sum = int(sum)
-		activation_time = task.activation_time
-		activation_time = datetime.strptime(activation_time, "%Y-%m-%d").date()
-		res = task.check_time(activation_time)
+		
 		
 		from datetime import datetime
 		from player_profile import player_attack, Profile
 		from raiting import determine_my_ranking
 		prof = Profile.get_instance()
+		activation_time = task.activation_time
+		activation_time = datetime.strptime(activation_time, "%Y-%m-%d").date()
+		res = task.check_time(activation_time)
+		
 		if res == 1 or res == 2:
 			from person import npc_attack
 			npc_attack(prof)
