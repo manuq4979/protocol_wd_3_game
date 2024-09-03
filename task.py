@@ -547,7 +547,7 @@ def del_no_active_task(task_list, developer_menu=False):
             if task.get_status() == "Active" or task.get_status() == STATUS:
                 new_task_dict[ID] = task
         print("\n#######################################################\n\n\n\n\n\n")
-        for ID, task in list(task_dict.items())
+        for ID, task in list(task_dict.items()):
             print("     "+str(str(ID)+" : "+str(task.get_status()))
         print("\n\n\n\n\n\n#######################################################\n")
         input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
