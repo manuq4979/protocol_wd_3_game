@@ -543,12 +543,14 @@ def del_no_active_task(task_list, developer_menu=False):
                 new_task_list.append(task)
         return new_task_list
     if developer_menu == True:
-        for ID, task in task_dict.items():
+        for ID, task in list(task_dict.items()):
             if task.get_status() == "Active" or task.get_status() == STATUS:
                 new_task_dict[ID] = task
         print("\n#######################################################\n\n\n\n\n\n")
-        print("     "+str(task_dict))
+        for ID, task in list(task_dict.items())
+            print("     "+str(str(ID)+" : "+str(task.get_status()))
         print("\n\n\n\n\n\n#######################################################\n")
+        input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
     
 def get_pages(task_list, chunk_size=3, flag_del_no_active_task=True):
     # Удаляем не активные задачи, так как они тоже в списке и мешают отображать страницы корректно:
