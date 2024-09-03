@@ -261,7 +261,7 @@ def verify_assignment_deadlines_and_completion():
 		from player_profile import player_attack, Profile
 		from raiting import determine_my_ranking
 		prof = Profile.get_instance()
-		if res == 1 or res = 2:
+		if res == 1 or res == 2:
 			from person import npc_attack
 			npc_attack(prof)
 			complexity = task.complexity
