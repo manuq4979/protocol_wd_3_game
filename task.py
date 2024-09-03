@@ -509,9 +509,10 @@ def del_daily_task():
     print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Задание ID_"+str(ID)+" удалено !"))
     
 def del_no_active_task(task_list):
+    from currecy2ETO import STATUS
     new_task_list = []
     for task in task_list:
-        if task.get_status() == "Active":
+        if task.get_status() == "Active" or task.get_status() == STATUS:
             new_task_list.append(task)
     return new_task_list
     
