@@ -250,7 +250,11 @@ def verify_assignment_deadlines_and_completion():
 	for ID, task in list(single_task_dict.items()):
 		line = task.get_description()
 		line = line.split("\n")
-		print(line)
+		
+		line_2 = line[0]
+		index = line_2.find(":")+2
+		print(line_2[index:])
+		
 		# пример этой строки: "\n[Награда за финансирование]: 1000"
 		line_3 = line[2]
 		index = line_3.find(":")+2
