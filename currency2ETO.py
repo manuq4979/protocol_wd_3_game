@@ -248,6 +248,8 @@ def top_down():
 def verify_assignment_deadlines_and_completion():
 	global single_task_dict
 	for ID, task in list(single_task_dict.items()):
+		if task.get_status() != STATUS:
+			continue
 		line = task.get_description()
 		line = line.split("\n")
 		
