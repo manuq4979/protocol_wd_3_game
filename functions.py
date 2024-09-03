@@ -114,7 +114,7 @@ def get_menu_developer():
             raiting_menu()
             continue
         if number == "9":
-            del_all_no_active_task()
+            del_no_active_task()
             continue
         if number == "0":
             return
