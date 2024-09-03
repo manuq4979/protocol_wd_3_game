@@ -555,7 +555,7 @@ def del_no_active_task(task_list, developer_menu=False):
         if number == "3":
             habit_task_dict = new_task_dict
         print("\n#######################################################\n\n\n\n\n\n")
-        for ID, task in list(task_dict.items()):
+        for ID, task in list(new_task_dict.items()):
             print("     "+str(ID)+" : "+str(task.get_status()))
         print("\n\n\n\n\n\n#######################################################\n")
         input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
