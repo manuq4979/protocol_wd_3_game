@@ -257,16 +257,24 @@ def verify_assignment_deadlines_and_completion():
 		sum.replace(" ", "")
 		sum = int(sum)
 		res = task.check_time(task.activation_time)
+		
 		from player_profile import player_attack, Profile
+		from raiting import determine_my_ranking
 		prof = Profile.get_instance()
 		if res == 1 or res = 2:
 			from person import npc_attack
 			npc_attack(prof)
+			complexity = task.complexity
+			complite = False
+			determine_my_ranking(complexity, complite, prof)
 			print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Задание завершено - вышло время!"))
 			input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
 			return
 		if sum <= 0:
 			player_attack()
+			complexity = task.complexity
+			complite = True
+			determine_my_ranking(complexity, complite, prof)
 			print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Задание завершено - профинансированно!"))
 			input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
 
