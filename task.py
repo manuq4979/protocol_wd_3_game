@@ -533,7 +533,7 @@ def del_no_active_task(task_list, developer_menu=False):
                 break
     
     
-    from currecy2ETO import STATUS
+    from currency2ETO import STATUS
     new_task_list = []
     for task in task_list:
         if task.get_status() == "Active" or task.get_status() == STATUS:
