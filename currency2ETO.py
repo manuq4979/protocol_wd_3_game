@@ -244,14 +244,43 @@ def top_down():
 			input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
 			return
 
+
+def verify_assignment_deadlines_and_completion():
+	global single_task_dict
+	for ID, task in list(single_task_dict.items()):
+		line = task.get_description()
+		line = line.split("\n")
+		# пример этой строки: "\n[Награда за финансирование]: 1000"
+		line_3 = line[2]
+		index = line_3.find(":")+2
+		sum = line_3[index:]
+		sum.replace(" ", "")
+		sum = int(sum)
+		res = task.check_time(task.activation_time)
+		from player_profile import player_attack, Profile
+		prof = Profile.get_instance()
+		if res == 1 or res = 2:
+			from person import npc_attack
+			npc_attack(prof)
+			print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Задание завершено - вышло время!"))
+			input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+			return
+		if sum <= 0:
+			player_attack()
+			print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Задание завершено - профинансированно!"))
+			input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+
+
 def print_amount_on_account():
 	global config
 	print("\033[32m{}".format("[СУММА НА СЧЕТУ]: ")+"\033[0m{}".format(str(config[0]) + " рубли.")) 
+
 
 def currency2ETO_menu():
 	global single_task_dict
 	index = 0
 	while True:
+		verify_assignment_deadlines_and_completion()
 		print("\n#######################################################\n")
 	
 		print_amount_on_account()
