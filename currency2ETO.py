@@ -294,7 +294,9 @@ def verify_assignment_deadlines_and_completion():
 
 def print_amount_on_account():
 	global config
-	print("\033[32m{}".format("[СУММА НА СЧЕТУ]: ")+"\033[0m{}".format(str(config[0]) + " рубли.")) 
+	x = int(config[0])
+	x = '{0:,}'.format(x).replace(',', '.')
+	print("\033[32m{}".format("[СУММА НА СЧЕТУ]: ")+"\033[0m{}".format(str(x) + " рубли.")) 
 
 
 def currency2ETO_menu():
