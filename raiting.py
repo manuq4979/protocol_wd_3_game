@@ -243,7 +243,7 @@ def print_reset_point_counter():
     if reset_date == current_date:
         str_date_line = "Дата сброса!"
     str_dates = "От " + str(current_date) + " до " + str(reset_date)
-    print("\033[32m{}".format("[Срок до сброса рейтинга]: ")+"\033[0m{}".format(str(str_date_line)+"("+str_dates+")"))
+    print("\033[32m{}".format("[Срок до сброса рейтинга]: ")+"\033[0m{}".format(str(str_date_line))) # +"("+str_dates+")"))
 
 
 
