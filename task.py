@@ -592,12 +592,12 @@ def get_pages(task_list, chunk_size=3, flag_del_no_active_task=True):
     
     return new_task_list
 
-def get_series_points_menu(task_dict):
+# command == 2+ID или 2-ID
+def get_series_points_menu(task_dict, command):
     from raiting import determine_my_ranking
-    print("\n#######################################################\n")
-    print("\033[32m{}".format("[INFO]:")+"\033[0m{}".format("Выберете ID задания привычки"))
-    print("\n#######################################################\n")
-    ID = input("ID> ")
+    
+    ID = command[2:]
+    operation = command[1]
     if ID.isdigit() == False:
         print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("ID указывается лишь в числах!"))
         return
@@ -609,17 +609,7 @@ def get_series_points_menu(task_dict):
         print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("задание не найдено!"))
         return
     
-    print("\n#######################################################\n")
-    print("[Серия]: "+str(task.get_series_point()))
-    print("\nMenu: ----------------------")
-    print("1. +")
-    print("2. -")
-    print("0. Назад")
-    print("\n#######################################################\n")
-    
-    res = input("> ")
-    
-    if res == "1":                       # При выборе плюса, игрок отмечает, что выполнил привычку.
+    if operation == "+":                       # При выборе плюса, игрок отмечает, что выполнил привычку.
         if task.get_status() != "Active":
             print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Задание с ID_"+str(ID)+" есть, но оно не активно - операция отменена!"))
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
@@ -635,7 +625,7 @@ def get_series_points_menu(task_dict):
         determine_my_ranking(complexity, complite, prof)
         print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Выполнение привычки зафиксированно!"))
         return
-    if res == "2":                       # При выборе минуса, игрок подтверждает, что не выполнил привычку
+    if operation == "-":                       # При выборе минуса, игрок подтверждает, что не выполнил привычку
         task.turn_down_point()
         prof = Profile.get_instance()
         npc_attack(prof)                 # Получаем урон от врага, потому что не выполнили задание привычки
@@ -646,10 +636,8 @@ def get_series_points_menu(task_dict):
         determine_my_ranking(complexity, complite, prof)
         print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Не выполнение привычки зафиксированно!"))
         return
-    if res == "0":
-        return
     
-    print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Выбран не существующий номер в этом меню!"))
+    print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Вы написали: "+operation+", а ожидалось + или -!"))
 
 def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
     from raiting import determine_my_ranking
@@ -665,8 +653,10 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
             if len(pages) != 0:
                 for task in pages[index]:
                     if task.get_status() == "Active":# Не активные задания не будут отображены!
-                        print(task.get_title())
-                        print(task.get_description())
+                       if habbit_menu == True:
+                            print("[Серия]: "+str(task.get_series_point()))
+                       print(task.get_title())
+                       print(task.get_description())
         except IndexError:
             print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Больше нет страниц!"))
         print("\n-----------")
@@ -690,10 +680,9 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
             add_task()
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             continue
-        if number == "2":
-            ID = 0
+        if number[0] == "2":
+            ID = input("ID> ")
             if habit_menu == False:
-                ID = input("ID> ")
                 if ID.isdigit() == False:
                     print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
                 else:
@@ -715,7 +704,7 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
                     determine_my_ranking(complexity, complite, prof)
                     # Задания привычек не должны удаляться после выполнения, потому что есть функция повтора через какое-то время!
             if habit_menu == True:
-                get_series_points_menu(task_dict)
+                get_series_points_menu(task_dict, number)
             if task_dict != daily_task_dict:
                 del task_dict[ID]
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
