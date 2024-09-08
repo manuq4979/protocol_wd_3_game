@@ -597,7 +597,7 @@ def get_series_points_menu(task_dict, command):
     from raiting import determine_my_ranking
     
     size = len(command)
-    ID = command[1:][size-2]
+    ID = command[1:][:size-2]
     operation = command[size-1]
     if ID.isdigit() == False:
         print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("ID указывается лишь в числах!"))
@@ -663,13 +663,13 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
                        print(task.get_description())
         except IndexError:
             print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Больше нет страниц!"))
-        print("\n-----------")
+        print("\nmenu -----------")
         print("1. Добавить")
         if habit_menu == False:
             print("2. Завершено")
             print("25. Провалено")
         else:
-            print("2. Отчет по привычке(2ID+/2ID-")
+            print("2. Отчет по привычке(2ID+/2ID-).")
         print("3. Удалить")
         if len(pages) > 1:                       # Если страниц более 1, то отобразить кнопку Далее
             print("4. Далее")
