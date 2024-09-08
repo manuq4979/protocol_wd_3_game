@@ -314,14 +314,23 @@ def add_product():
     while True:
         tool_id = input("tool_id> ")
         tool_id = tool_id.replace(" ", "")
-        if tool_id != "":
-            break
+        if tool_id == "":
+            print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("tool_id не указан!"))
+            input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+            continue
 
         price   = input("price> ")
         price = price.replace(" ", "")
-        if price != "":
-            break
-    store[tool_id] = price
+        if price == "" or price.isdigit() == False:
+            error_text = ""
+            if price == "":
+                error_text += "price не указан!"
+            else:
+                error_text += "price должен быть в числовых значения!"
+            print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format(error_text))
+            input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+            continue
+    store[tool_id] = int(price)
     save_data_store(store_ETO=0, save_only_store=True)
     print("\033[32m{}".format("[INFO]:")+"\033[0m{}".format("Готово!\n\n"))
     
