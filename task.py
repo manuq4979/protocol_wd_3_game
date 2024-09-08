@@ -687,8 +687,7 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
         if number[0] == "2":
             ID = 0
             if habit_menu == False:
-                number = input("ID> ")
-                ID = number[1:]
+                ID = input("ID> ")
                 if ID.isdigit() == False:
                     print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
                 else:
@@ -711,7 +710,7 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
                     # Задания привычек не должны удаляться после выполнения, потому что есть функция повтора через какое-то время!
             if habit_menu == True:
                 get_series_points_menu(task_dict, number)
-            if task_dict != daily_task_dict and habit_menu == False:
+            if habit_menu == False:
                 del task_dict[ID]
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             continue
