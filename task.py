@@ -646,6 +646,9 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
     index = 0
     while True:
         print("\n#######################################################\n")
+        if habit_menu == True:
+            print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Введите 2ID- или 2ID+ для отчета по привычке(это сокращение операции)!"))
+
         task_list = task_dict.values()           # Берем массив задачь - получаем dict_values([])
         task_list = list(task_list)              # dict_values([]) преобразуем в []
         pages = get_pages(task_list)             # Делим на страницы
