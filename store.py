@@ -308,6 +308,9 @@ def get_store():
 
 
 def add_product():
+    tool_id = ""
+    price = ""
+    
     while True:
         tool_id = input("tool_id> ")
         tool_id = tool_id.replace(" ", "")
