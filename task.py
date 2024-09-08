@@ -712,6 +712,7 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
                 get_series_points_menu(task_dict, number)
             if title_minu == "Одиночные":
                 del task_dict[ID]
+                print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Задание с ID_"+str(ID)+" удалено!"))
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             continue
         if number == "6":
@@ -733,8 +734,9 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
             complexity = task.complexity
             complite = False
             determine_my_ranking(complexity, complite, prof)
-            if task_dict != daily_task_dict:
+            if title_menu != "Ежедневные":
                 del task_dict[ID]
+                print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Задание с ID_"+str(ID)+" удалено!"))
             print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Поражение зафиксировано!"))
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             continue
