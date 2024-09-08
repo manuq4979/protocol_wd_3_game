@@ -597,7 +597,7 @@ def get_series_points_menu(task_dict, command):
     from raiting import determine_my_ranking
     
     size = len(command)
-    ID = command[2:(size-2)]
+    ID = command[1:][size-2]
     operation = command[size-1]
     if ID.isdigit() == False:
         print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("ID указывается лишь в числах!"))
