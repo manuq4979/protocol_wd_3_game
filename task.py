@@ -665,7 +665,7 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
             print("2. Завершено")
             print("25. Провалено")
         else:
-            print("2. Выбрать")
+            print("2. Отчет по привычке(2ID+/2ID-")
         print("3. Удалить")
         if len(pages) > 1:                       # Если страниц более 1, то отобразить кнопку Далее
             print("4. Далее")
@@ -681,8 +681,9 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             continue
         if number[0] == "2":
-            ID = input("ID> ")
+            ID = 0
             if habit_menu == False:
+                ID = input("ID> ")
                 if ID.isdigit() == False:
                     print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
                 else:
@@ -705,7 +706,7 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
                     # Задания привычек не должны удаляться после выполнения, потому что есть функция повтора через какое-то время!
             if habit_menu == True:
                 get_series_points_menu(task_dict, number)
-            if task_dict != daily_task_dict:
+            if task_dict != daily_task_dict and habit_menu == False:
                 del task_dict[ID]
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             continue
