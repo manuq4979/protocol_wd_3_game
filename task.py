@@ -592,12 +592,13 @@ def get_pages(task_list, chunk_size=3, flag_del_no_active_task=True):
     
     return new_task_list
 
-# command == 2+ID или 2-ID
+# command == 2ID+ или 2ID-
 def get_series_points_menu(task_dict, command):
     from raiting import determine_my_ranking
     
-    ID = command[2:]
-    operation = command[1]
+    size = len(command)
+    ID = command[2:(size-2)]
+    operation = command[size-1]
     if ID.isdigit() == False:
         print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("ID указывается лишь в числах!"))
         return
