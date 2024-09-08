@@ -691,6 +691,7 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             continue
         if number == "2":
+            ID = 0
             if habit_menu == False:
                 ID = input("ID> ")
                 if ID.isdigit() == False:
