@@ -459,14 +459,23 @@ class Profile:
     def death(self):
         history_line = "-"+str(self.ETO)+" ETO"
         self.save_to_history(history_line)
+        
+        if len(self.keep_tool) != 0:
+            for tool_id, price in list(self.keep_tool.items()):
+                self.add_tools_id(tool_id, price)
+                self.del_keep_tool(tool_id)
+            print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Вся экипировка была снята!"))
+        
         inventory = list(self.tools_id.keys())              # Получаем ID инструментов
         size_inventory = len(inventory)
+        
         if size_inventory != 0:                             # Проверяем есть ли инструменты в инвентаре и если да то
             r_index = random.randint(0, size_inventory-1)   # Выбераем рандомный индекс в массиве инструментов
             tool_id = inventory[r_index]                    # Получаем рандомный tool_id
             del self.tools_id[tool_id]                      # Удаляем рандомный инструмент
             history_line = "Был удален инструмент - "+str(tool_id)
             self.save_to_history(history_line)
+            print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format(history_line))
         self.ETO = 0                                        # Обнуляем баланс
         # Тут бы арт смерти распечатать.
         
