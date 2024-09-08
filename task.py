@@ -711,6 +711,10 @@ def get_menu_task(title_menu, task_dict, add_task, del_task, habit_menu=False):
             if habit_menu == True:
                 get_series_points_menu(task_dict, number)
             if title_menu == "Одиночные":
+                if (ID in list(task_dict.keys())) == False:
+                    print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Задание с ID_"+str(ID)+" не существует - операция отменена!"))
+                    input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+                    continue
                 del task_dict[ID]
                 print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Задание с ID_"+str(ID)+" удалено!"))
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
