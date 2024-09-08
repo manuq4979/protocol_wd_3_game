@@ -653,7 +653,7 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
             if len(pages) != 0:
                 for task in pages[index]:
                     if task.get_status() == "Active":# Не активные задания не будут отображены!
-                       if habbit_menu == True:
+                       if habit_menu == True:
                             print("[Серия]: "+str(task.get_series_point()))
                        print(task.get_title())
                        print(task.get_description())
