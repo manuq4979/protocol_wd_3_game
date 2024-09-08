@@ -687,7 +687,8 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
         if number[0] == "2":
             ID = 0
             if habit_menu == False:
-                ID = input("ID> ")
+                number = number.replace(" ", "")
+                ID = number[1:]
                 if ID.isdigit() == False:
                     print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
                 else:
