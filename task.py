@@ -710,7 +710,7 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
                     # Задания привычек не должны удаляться после выполнения, потому что есть функция повтора через какое-то время!
             if habit_menu == True:
                 get_series_points_menu(task_dict, number)
-            if habit_menu == False:
+            if title_minu == "Одиночные":
                 del task_dict[ID]
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             continue
