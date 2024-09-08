@@ -652,7 +652,7 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
         task_list = task_dict.values()           # Берем массив задачь - получаем dict_values([])
         task_list = list(task_list)              # dict_values([]) преобразуем в []
         pages = get_pages(task_list)             # Делим на страницы
-        print(title_minu+":\n")
+        print("\033[32m{}".format(title_minu)+"\033[0m{}".format("\n"))
         try:
             if len(pages) != 0:
                 for task in pages[index]:
