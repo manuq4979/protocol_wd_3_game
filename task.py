@@ -667,7 +667,7 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
         print("1. Добавить")
         if habit_menu == False:
             print("2. Завершено")
-            print("25. Провалено")
+            print("6. Провалено")
         else:
             print("2. Отчет по привычке(2ID+/2ID-).")
         print("3. Удалить")
@@ -684,7 +684,7 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
             add_task()
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             continue
-        if number[0] == "2":
+        if number[0] == "2" and len(number) > 1:
             ID = 0
             if habit_menu == False:
                 number = number.replace(" ", "")
@@ -715,7 +715,7 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
                 del task_dict[ID]
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             continue
-        if number == "25":
+        if number == "6":
             import person
             
             ID = input("ID> ")
