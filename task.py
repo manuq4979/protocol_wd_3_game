@@ -593,6 +593,7 @@ def get_pages(task_list, chunk_size=3, flag_del_no_active_task=True):
     return new_task_list
 
 def get_series_points_menu(task_dict):
+    from raiting import determine_my_ranking
     print("\n#######################################################\n")
     print("\033[32m{}".format("[INFO]:")+"\033[0m{}".format("Выберете ID задания привычки"))
     print("\n#######################################################\n")
