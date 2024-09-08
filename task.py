@@ -640,7 +640,7 @@ def get_series_points_menu(task_dict, command):
     
     print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Вы написали: "+operation+", а ожидалось + или -!"))
 
-def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
+def get_menu_task(title_menu, task_dict, add_task, del_task, habit_menu=False):
     from raiting import determine_my_ranking
 
     index = 0
@@ -652,7 +652,7 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
         task_list = task_dict.values()           # Берем массив задачь - получаем dict_values([])
         task_list = list(task_list)              # dict_values([]) преобразуем в []
         pages = get_pages(task_list)             # Делим на страницы
-        print("\033[32m{}".format("["+title_minu+"]:")+"\033[0m{}".format("\n"))
+        print("\033[32m{}".format("["+title_menu+"]:")+"\033[0m{}".format("\n"))
         try:
             if len(pages) != 0:
                 for task in pages[index]:
@@ -710,7 +710,7 @@ def get_menu_task(title_minu, task_dict, add_task, del_task, habit_menu=False):
                     # Задания привычек не должны удаляться после выполнения, потому что есть функция повтора через какое-то время!
             if habit_menu == True:
                 get_series_points_menu(task_dict, number)
-            if title_minu == "Одиночные":
+            if title_menu == "Одиночные":
                 del task_dict[ID]
                 print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Задание с ID_"+str(ID)+" удалено!"))
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
