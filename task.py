@@ -633,7 +633,7 @@ def get_series_points_menu(task_dict, command):
         
         # Код понижения рейтинга:
         complexity = task.complexity
-        complite = True
+        complite = False
         determine_my_ranking(complexity, complite, prof)
         print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Не выполнение привычки зафиксированно!"))
         return
