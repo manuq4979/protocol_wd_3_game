@@ -494,8 +494,8 @@ def get_prof():
             print("----------------------")
             print("1. Реванш")
             res = input("\033[32m{}".format("> ")+"\033[0m{}".format(""))
+            prof.set_HP(100)
             if res == "1":
-                prof.set_HP(100)
                 return                                # Далее просто восстанавливаем HP и продолжаем игру!
     else:
         print("\033[32m{}".format("[Profile]:")+"\033[0m{}".format(""))
