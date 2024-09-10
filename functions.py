@@ -321,11 +321,10 @@ def get_inventory():
         print("\033[32m{}".format("\nЭкиперованно")+"\033[0m{}".format("(")+str(slots_occupied)+" из "+str(slots)+"):")
         index = 0
         for tool in keep_tool:
-            if tool == "":
-                prof.del_keep_tool(tool)
-                continue
             index += 1
             print("\033[34m{}".format("[Инструмент]: ")+"\033[0m{}".format("["+str(index)+"]: "+tool))
+        if index == 0:
+            prof.set_slots_occupied(0)
         print("\nMenu: ----------------------")
         print("1. Экипировать")
         print("2. Снять предмет")
