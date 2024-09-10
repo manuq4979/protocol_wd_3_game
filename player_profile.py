@@ -463,7 +463,7 @@ class Profile:
         if len(self.keep_tool) != 0:
             for tool_id, price in list(self.keep_tool.items()):
                 self.add_tools_id(tool_id, price)
-                self.del_keep_tool(tool_id)
+                Profile.take_off(tool_id)
             print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Вся экипировка была снята!"))
         
         inventory = list(self.tools_id.keys())              # Получаем ID инструментов
