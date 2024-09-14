@@ -11,6 +11,7 @@ professional = "Профессионал"
 master = "Мастер"
 grant_master = "Грант-мастер"
 ligend = "Легенда"
+reset_day = 90
 
 
 def get_intelect_award(intellect):
@@ -202,13 +203,13 @@ def create_reset_time_of_points_file(reset_date):
     return file
 
 def read_reset_time_of_points_file():
+    global reset_day
     file = None
     try:
         file = open("DataApp/reset_time_of_points.txt", "r", encoding='utf-8')
     except FileNotFoundError:
         from datetime import datetime, timedelta
         current_date = datetime.now().date()
-        reset_day    = 30
         reset_date   = current_date + timedelta(days=reset_day)
         create_reset_time_of_points_file(reset_date)
         file = open("DataApp/reset_time_of_points.txt", "r", encoding='utf-8')
@@ -218,7 +219,7 @@ def read_reset_time_of_points_file():
 
 
 def check_reset_time_of_points():
-    reset_day = 90 # было 30 дней, но за 30 дней я не успею, да и сезон длиться не месяц, а вероятнее 3 месяца, это примерно 90 дней.
+    global reset_day
     from datetime import datetime, timedelta
 
     current_date = datetime.now().date()
