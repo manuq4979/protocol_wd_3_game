@@ -11,7 +11,7 @@ professional = "Профессионал"
 master = "Мастер"
 grant_master = "Грант-мастер"
 ligend = "Легенда"
-reset_day = 90
+reset_day = 90 # было 30 дней, но за 30 дней я не успею, да и сезон длиться не месяц, а вероятнее 3 месяца, это примерно 90 дней.
 
 
 def get_intelect_award(intellect):
