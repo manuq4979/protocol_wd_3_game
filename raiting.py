@@ -176,7 +176,8 @@ def write_rank(points, status=False):
 def default_rank():
     from player_profile import Profile
     prof = Profile.get_instance()
-    complexity_table = table[newbie]
+    eto_and_exp_table = table[newbie]
+    complexity_table = get_complexity_table(eto_and_exp_table)
     prof.quest_reward_setting = complexity_table
     write_rank(1)
 
