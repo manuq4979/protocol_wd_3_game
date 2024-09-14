@@ -174,6 +174,10 @@ def write_rank(points, status=False):
         print_status()
 
 def default_rank():
+    from player_profile import Profile
+    prof = Profile.get_instance()
+    complexity_table = table[newbie]
+    prof.quest_reward_setting = complexity_table
     write_rank(1)
 
 
@@ -213,12 +217,12 @@ def read_reset_time_of_points_file():
 
 
 def check_reset_time_of_points():
+    reset_day = 90 # было 30 дней, но за 30 дней я не успею, да и сезон длиться не месяц, а вероятнее 3 месяца, это примерно 90 дней.
     from datetime import datetime, timedelta
 
     current_date = datetime.now().date()
 
     if os.path.exists("DataApp/reset_time_of_points.txt") == False:
-        reset_day   = 90 # было 30 дней, но за 30 дней я не успею, да и сезон длиться не месяц, а вероятнее 3 месяца, это примерно 90 дней.
         reset_date  = current_date + timedelta(days=reset_day)
         create_reset_time_of_points_file(reset_date)
 
@@ -227,7 +231,6 @@ def check_reset_time_of_points():
 
     if reset_date <= current_date:
         default_rank()
-        reset_day   = 30
         reset_date  = current_date + timedelta(days=reset_day)
         create_reset_time_of_points_file(reset_date)
         print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Прошло "+str(reset_day)+" в днях и пришло время сброса рейтинговых очков!"))
