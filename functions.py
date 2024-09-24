@@ -62,6 +62,7 @@ def get_menu_developer():
         print("\n#######################################################\n")
         
         number = input("> ")
+        print("\n" * 100) # очищаем экран консоли
         
         if number == "1":
             add_product()
@@ -94,9 +95,6 @@ def get_menu_developer():
             continue
         if number == "5":
             prof = Profile.get_instance()
-            print("\n#######################################################\n")
-            prof.print_quest_reward_setting()
-            print("\n#######################################################\n")
             prof.edit_quest_reward_setting()
             continue
         if number == "6":
@@ -143,6 +141,7 @@ def get_menu():
         print("\n#######################################################\n")
     
         number = input("> ")
+        print("\n" * 100) # очищаем экран консоли
         
         if number == "0":
             return
@@ -304,11 +303,12 @@ def hot_key_inventory(text, prof):
     return [inventory_menu_item, tool_id]
 
 def get_inventory():
-    print("\n#######################################################\n")
-    print("\033[32m{}".format("Inventory:")+"\033[0m{}".format("\n"))
+    
     prof = Profile.get_instance()
     tools = prof.get_tools_id()
     while True:
+        print("\n#######################################################\n")
+        print("\033[32m{}".format("Inventory:")+"\033[0m{}".format("\n"))
         index = 0
         for tool, price in tools.items():
             index += 1
@@ -331,10 +331,14 @@ def get_inventory():
         print("0. Назад.")
         print("\n#######################################################\n")
         
+
         text = input("> ")
+        print("\n" * 100) # очищаем экран консоли
+
+        
         if text == "0":
             return
-            
+        
         text = hot_key_inventory(text, prof)
         
         if text == False:
@@ -350,6 +354,7 @@ def get_inventory():
             continue
         else:
             print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("выбран не верный номер."))
+
     
    
 # метод только проверяет актуальность задачь и наносит урон игроку за про$бы.

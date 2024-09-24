@@ -1,7 +1,7 @@
 import time, json
 
 
-def hello_user():
+def hello_user(t_sleep=0.05):
 	amblema=""
 	#print("\033[47m{}".format(" "))
 	with open("hello_user_art.txt", "r") as fd:
@@ -11,14 +11,14 @@ def hello_user():
 	i = 0
 	for e in amblema:
 		if e == "@":
-			print("\033[37m{}".format("\033[40m{}".format(e)), end="")
+			print("\033[37m{}".format("\033[40m{}".format(e))+"\033[0m{}".format(""), end="")
 			print("\033[0m{}".format(""), end="")
 		else:
-			print("\033[30m{}".format("\033[47m{}".format(e)), end="")
+			print("\033[30m{}".format("\033[47m{}".format(e))+"\033[0m{}".format(""), end="")
 			print("\033[0m{}".format(""), end="")
 			
 		if i == 54:
-			time.sleep(0.05)
+			time.sleep(t_sleep)
 			i=0
 		
 		i = i+1
@@ -50,6 +50,7 @@ class Smart_Electronics:
                 self.user_profile = ""                          # Профиль игрока, инициализируется в poit_of_entry(...)
                 
                 self.name = arr[0]
+    
                 self.network_interface = int(arr[1])            # имеет или не имеет выход в интернет
                 self.remote_access = int(arr[2])                # имеет или не имеет удаленный доступ
                 self.operation_system = int(arr[3])             # есть или нет ОС
@@ -63,6 +64,7 @@ class Smart_Electronics:
             
                 self.access_algorithm_dict = arr[11]            # Список целей, список NPC которые имеют карты доступа.
                 self.storage = arr[12]                          # Тут трофеи - инструменты, ETO, карты доступа. Их может быть сколько угодно, но больше чем у NPC.
+            
             except json.decoder.JSONDecodeError:                # Это исключение значит, что файл конфигурации пуст, код ниже задат дефолтные значения.
                 self.set_all_fields_default()
                 arr = self.get_all_fields()
@@ -101,7 +103,9 @@ class Smart_Electronics:
     
     def print_SE(self):
         if self.name == "":
-            print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Ещё нет активвного подключения."))
+            print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Ещё нет активвного подключения.\n\n\n\n\n"))
+            input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+            print("\n" * 100) # очищаем экран консоли
             connection = False
             return connection
             
@@ -216,6 +220,7 @@ def apply_to_characteristics_SE(char_line):
 def set_new_soft():
     se = Smart_Electronics.get_instance()
     while True:
+        print("\n" * 100) # очищаем экран консоли
         print("\n#######################################################\n")
         print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Впишите в поле NI или иной из отображенных параметров класса, а далее присвойте ему новое значение!\n"))
 
@@ -230,9 +235,11 @@ def set_new_soft():
         print("W == "+str(se.write)+" # W - write")
         print("R == "+str(se.read)+" # R - read")
         print("\n#######################################################\n")
-        print("[0]: Назад.")
+        print("[ 0]: Назад.")
         
         soft = input("> ")
+        print("\n" * 100) # очищаем экран консоли
+
         if soft == "0":
             return
         
@@ -309,6 +316,7 @@ def set_storage():
     print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Также подразумевает что будет использован тот же шаблон!"))
     print("storage == "+str(se.get_storage()))
     storage = input("new storage> ")
+    print("\n" * 100) # очищаем экран консоли
     se.set_storage(storage)
 
 # Главный код отвечающий за изменение полей SE:
@@ -338,12 +346,13 @@ def get_access():
         if se.operation_system == 1 and se.connection_port == 1 and se.control_panel == 1:
             print("[2]: Физический доступ.")
         
-        print("[3]: Назад.")
+        print("[0]: Назад.")
         print("\n")
         
         command = input(PS1)
+        print("\n" * 100) # очищаем экран консоли
         
-        if command == "3":
+        if command == "0":
             return
         
         # Удаленный доступ:
@@ -353,8 +362,9 @@ def get_access():
         if se.operation_system == 1 and se.connection_port == 1 and se.control_panel == 1:
             access = get_access_card()
             if access == False:
-                print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Ошибка доступа! У вас нет карты доступа!\n"))
-
+                print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Ошибка доступа! У вас нет карты доступа!\n\n\n\n"))
+                input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+                print("\n" * 100) # очищаем экран консоли
 
 def set_npc_as_target():
     from person import NPC
@@ -369,6 +379,7 @@ def set_npc_as_target():
             print("\n#######################################################\n")
         
             command = input("> ")
+            print("\n" * 100) # очищаем экран консоли
 								
             if command == "1":
                 break
@@ -383,24 +394,25 @@ def set_npc_as_target():
 
 def get_OS_menu():
     se = Smart_Electronics.get_instance()
-    print("\n")
-    print("\033[32m{}".format("\n[INFO]: ")+"\033[0m{}".format("Welcom to SE OS!"))
 
     while True:
         print("\n")
+        print("\033[32m{}".format("\n[INFO]: ")+"\033[0m{}".format("Welcom to SE OS!"))
+        print("\n")
         if se.write == 1 and se.possibility_of_flashing == 1:
-            print("[1]: Перепрошить.")
+            print("[ 1]: Перепрошить.")
         if se.write == 1:
-            print("[2]: Изменить хранилище данных.")
+            print("[ 2]: Изменить хранилище данных.")
         if se.write == 0 or se.write == 0:
-            print("[3]: Получить доступ.")
+            print("[ 3]: Получить доступ.")
         if se.read == 1:
             print("[32]: Установить противника для попытки получения доступа.")
-        print("[4]: Отключиться.")
-        print("[0]: Назад.")
+        print("[ 4]: Отключиться.")
+        print("[ 0]: Назад.")
         print("\n")
         
         command = input(PS1)
+        print("\n" * 100) # очищаем экран консоли
         
         if command == "0":
             return
@@ -411,6 +423,7 @@ def get_OS_menu():
             se.set_all_fields_default()
             print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Отключено успешно - все настройки SE класса установлены по умолчанию!"))
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+            print("\n" * 100) # очищаем экран консоли
             break
         if command == "1" and se.write == 1 and se.possibility_of_flashing == 1:
             set_new_soft()
@@ -428,15 +441,17 @@ def get_OS_menu():
 def set_SE():
     SE_ID = input("SE_ID> ")
     apply_to_characteristics_SE(SE_ID)
+    print("\n" * 100) # очищаем экран консоли
     
     
     
 def print_menu_smart_electronics():
-    print("[1]: Текущие подключение.")
-    print("[2]: Подключиться.")
-    print("[0]: Назад.")
+    print("[ 1]: Текущие подключение.")
+    print("[ 2]: Подключиться.")
+    print("[ 0]: Назад.")
     
 def select_item(command):
+    print("\n" * 100) # очищаем экран консоли
     se = Smart_Electronics.get_instance()
     
     if command == "1":
@@ -472,6 +487,7 @@ def poit_of_entry(computer, prof):
         print("\n######################################################\n")
         
         command = input(PS1)
+        print("\n" * 100) # очищаем экран консоли
         
         if command == "0":
             return
@@ -479,6 +495,7 @@ def poit_of_entry(computer, prof):
             import se_applications
             se_applications.application_menu(prof)
         select_item(command)
+        hello_user(t_sleep=0)
         
             
 # Сохранить данные модуля в файл:

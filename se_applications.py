@@ -43,6 +43,7 @@ def hack_trophy(prof):
         print("\n#######################################################\n")
     
         command = input("~# ")
+        print("\n" * 100) # очищаем экран консоли
         
         if command == "0":
             return
@@ -50,6 +51,7 @@ def hack_trophy(prof):
         if command.isdigit() == False:
             print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+            print("\n" * 100) # очищаем экран консоли
             continue
             
     
@@ -70,11 +72,13 @@ def hack_trophy(prof):
                         print("\n")
                 print("\n#######################################################\n")
                 input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+                print("\n" * 100) # очищаем экран консоли
                 continue
                 
             if len(my_bots) == 0:
                 print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Требуется наличие бота в инвентаре!"))
                 input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+                print("\n" * 100) # очищаем экран консоли
                 continue
             values = []
             for bot_id in my_bots:
@@ -86,6 +90,7 @@ def hack_trophy(prof):
             if use_consumables(prof) == False:
                 print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Отсутствует расходный материал - смартфон!"))
                 input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+                print("\n" * 100) # очищаем экран консоли
                 continue
             
             from person import NPC
@@ -94,12 +99,14 @@ def hack_trophy(prof):
             if npc.installed_contender != True:
                 print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Нет цели для взлома!"))
                 input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+                print("\n" * 100) # очищаем экран консоли
                 continue
             
             drop = hacked_calculate_drop_trophy(npc)
             if drop == 0:
                 print("\033[31m{}".format("[FAILED]: ")+"\033[0m{}".format("Взлом провалился!"))
                 input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+                print("\n" * 100) # очищаем экран консоли
                 continue
             
             prof.add_tools_id(drop, 50)
@@ -117,7 +124,8 @@ def hack_trophy(prof):
                 print("\n")
             print("\n#######################################################\n")
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
-            
+            print("\n" * 100) # очищаем экран консоли
+
 
 # APP 2 --------------------------------------------------------------------------
 def get_ability_to_flash_firmware(prof):
@@ -135,10 +143,12 @@ def get_ability_to_flash_firmware(prof):
         print("\n#######################################################\n")
     
         command = input("~# ")
+        print("\n" * 100) # очищаем экран консоли
     
         if command.isdigit() == False:
             print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+            print("\n" * 100) # очищаем экран консоли
             continue
     
         if command == "0":
@@ -148,15 +158,18 @@ def get_ability_to_flash_firmware(prof):
             if se.name == "": # по умолчанию имя name
                 print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Нет подключенных устройств!"))
                 input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+                print("\n" * 100) # очищаем экран консоли
                 continue
             if se.possibility_of_flashing == 1:
                 print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Доступ уже получен!"))
                 input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+                print("\n" * 100) # очищаем экран консоли
                 continue
             
             if use_consumables(prof) == False:
                 print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Отсутствует расходный материал - смартфон!"))
                 input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+                print("\n" * 100) # очищаем экран консоли
                 continue
             
             se.possibility_of_flashing = 1
@@ -164,6 +177,7 @@ def get_ability_to_flash_firmware(prof):
         
             print("\033[32m{}".format("[COMPLITE]: ")+"\033[0m{}".format("Взлом успешно выполнен!"))
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+            print("\n" * 100) # очищаем экран консоли
         if command == "2" and access == 1:
             set_new_soft()
 
@@ -176,6 +190,7 @@ def check_access_2(prof):
             return
     print("\033[31m{}".format("[ACCESS DENIED]: ")+"\033[0m{}".format("Требуется доступ уровня DedSec!"))
     input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+    print("\n" * 100) # очищаем экран консоли
     return
 
 def check_access_1(prof): # ДЛЯ APP 1
@@ -186,6 +201,7 @@ def check_access_1(prof): # ДЛЯ APP 1
             return
     print("\033[31m{}".format("[ACCESS DENIED]: ")+"\033[0m{}".format("Требуется доступ уровня DedSec!"))
     input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+    print("\n" * 100) # очищаем экран консоли
     return
     
     
@@ -207,12 +223,14 @@ def menu_detect_an_enemy_hacker(hacker, prof):
         print("\n#######################################################\n")
 
         command = input("> ")
+        print("\n" * 100) # очищаем экран консоли
 
         if command == "1":
             if to_see_if_enemy_has_already_been_installed() == False:
                 hacker.set_this_npc_as_an_enemy()
                 return
             print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Враг уже установлен! Он является прикрытием для хакера!"))
+            print("\n" * 100) # очищаем экран консоли
             return
         if command == "2":
             hacker.menu_for_deal(prof)
@@ -223,6 +241,7 @@ def detect_an_enemy_hacker(prof):
     if use_consumables(prof) == False:
         print("\033[31m{}".format("[FAILED]: ")+"\033[0m{}".format("Нет расходного материала!"))
         input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+        print("\n" * 100) # очищаем экран консоли
         return
 
     from hacker_person import HACKER_NPC
@@ -242,11 +261,12 @@ def detect_an_enemy_hacker(prof):
         print("\033[32m{}".format("[COMPLITE]: ")+"\033[0m{}".format("Местоположение вражеского хакера вычислено!"))
         input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
         menu_detect_an_enemy_hacker(hacker, prof)
+        print("\n" * 100) # очищаем экран консоли
         return
     else:
         print("\033[31m{}".format("[FAILED]: ")+"\033[0m{}".format("Попытка вычислить местоположение провалилась!"))
         input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
-
+        print("\n" * 100) # очищаем экран консоли
 
 
 ###
@@ -274,6 +294,7 @@ def check_input(input_text):
         if len(applications_list) < index:
             print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Данного пункта меню не существует!"))
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+            print("\n" * 100) # очищаем экран консоли
             return False
         return index
 
@@ -285,6 +306,8 @@ def application_menu(prof):
     print("\n#######################################################\n")
     
     index = input("APP-MENU:~# ")
+    print("\n" * 100) # очищаем экран консоли
+
     if index == "0":
         return
     index = check_input(index)

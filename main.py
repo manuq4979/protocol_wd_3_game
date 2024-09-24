@@ -3,10 +3,14 @@ import functions
 from person import NPC
 from raiting import check_reset_time_of_points, print_reset_point_counter, print_status
 from hot_scripts.high_speed_task_creation import redirecting_input
-from hacker_person import print_hacker_npc, save_data_person, hacker_attack, use_reactivation, check_time_to_disable_camouflage
+from hacker_person import print_hacker_npc, save_data_person, hacker_attack, use_reactivation, check_time_to_disable_camouflage, HACKER_NPC
 from currency2ETO import currency2ETO_menu, print_amount_on_account
-use_reactivation() # метод восстановления сессий хакерских приложений, вызван тут потому что он должен быть запущен лишь при перезапуске приложения, а данный код только в этом случае срабатывает!
-    
+
+print("\n" * 100) # очищаем экран консоли
+menu_line = False # нужно чтобы не отображать два одинаковых разделительных принта:
+print("\n#######################################################\n")
+use_reactivation(HACKER_NPC.get_instance()) # метод восстановления сессий хакерских приложений, вызван тут потому что он должен быть запущен лишь при перезапуске приложения, а данный код только в этом случае срабатывает!
+
 
 PS1 = profile_wd.PS1
 help = ("1 - меню игры\n"+
@@ -27,9 +31,13 @@ def print_NPC():
         print(npc.print_characteristics())
         print("\n")
 
+
 while(True):
-    check_time_to_disable_camouflage()
-    print("\n#######################################################\n")
+    check_time_to_disable_camouflage() # из модуля hacker_apps, как правило используется на пользу противнику
+    if menu_line == True:
+        print("\n#######################################################\n")
+    if menu_line == False:
+        menu_line = True
     print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Используйте команду help, если не разобрались!")+"\n")
     print("\n")
     print_amount_on_account()
@@ -52,6 +60,7 @@ while(True):
     print("\n#######################################################\n")
     
     text = input(PS1)
+    print("\n" * 100) # очищаем экран консоли
 
     if text == "help":
         print("\n#######################################################\n")
@@ -59,6 +68,7 @@ while(True):
         print(help)
         print("\n#######################################################\n")
         input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+        print("\n" * 100) # очищаем экран консоли
     else: # если текст, то метод выдаст ошибку, так я исключу попадание текста в него.
         redirecting_input(text) # перенаправка на hot scripts
     if text == "4":
@@ -72,7 +82,6 @@ while(True):
         menu()
     if text == "7":
         print_status()
-        input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))    
     if text == "8":
         from hot_scripts.create_HACKER_ID import menu
         menu()
@@ -88,7 +97,9 @@ while(True):
         save_data_person()
         print("\n#######################################################\n")
         input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+        print("\n" * 100) # очищаем экран консоли
         if text == "2":
+            print("\n" * 100) # очищаем экран консоли
             break
 	
     if text == "1":

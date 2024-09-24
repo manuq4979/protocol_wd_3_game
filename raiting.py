@@ -151,7 +151,7 @@ def read_rank():
     
     return int(points)
 
-def print_status():
+def print_status(waiting_for_enter=True):
     print("\033[0m{}".format("--------------------------------------------------"))
     rank_int = read_rank()
     rank_array = is_rank_text(rank_int)
@@ -159,6 +159,9 @@ def print_status():
     rank_array.append(my_rank_point)
             
     rank_arts.print_rank_art(rank_array)
+    if waiting_for_enter:
+        input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))    
+        print("\n" * 100) # очищаем экран консоли
 
 def write_rank(points, status=False):
     file = None
@@ -311,6 +314,7 @@ def determine_my_ranking(complexity, complite, prof):
 def raiting_menu():
     while True:
         print("\n#######################################################\n")
+        print_status(waiting_for_enter=False)
         print("\033[32m{}".format("[Raiting menu]: ")+"\033[0m{}".format("\n"))
         print("[1]: Установить поинты по умолчанию.")
         print("[2]: Добавить очки.")
@@ -320,12 +324,15 @@ def raiting_menu():
         print("\n#######################################################\n")
 
         command = input("> ")
+        print("\n" * 100) # очищаем экран консоли
 
         if command == "0":
             return
 
         if command == "1": 
             default_rank()
+            print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Очки рейтинга сброшены!"))
+            print_status()
             continue
                 
         if command == "2":

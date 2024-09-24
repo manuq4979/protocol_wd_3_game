@@ -1,11 +1,11 @@
 import json
-
+default_config_dict = {"Tactical camouflage" : 0, "shutdown" : 0, "theft of ETO" : 0, "encryption of inventory" : 0, "encryption of inventory" : 0}
 
 def init_config():
 	import json, os.path
 
 	if os.path.exists("DataApp/hacker_apps_config.txt") != True:
-		config_dict = {"Tactical camouflage" : 0, "shutdown" : 0, "theft of ETO" : 0, "encryption of inventory" : 0, "encryption of inventory" : 0}
+		config_dict = default_config_dict
 		with open("DataApp/hacker_apps_config.txt", "w+", encoding="utf-8") as file:
 			json_string = json.dumps(config_dict)
 			file.write(json_string)
@@ -285,12 +285,17 @@ def auto_decrypt_of_inventory(hacker=None, command="reactivation"):
 all_scripts = ["Tactical camouflage", "shutdown", "theft of ETO", "encryption of inventory"]
 scripts_to_script = {"Tactical camouflage" : script_tactical_camouflage, "shutdown" : script_shutdown, "theft of ETO" : script_theft_of_ETO, "encryption of inventory" : script_encryption_of_inventory}
 
-def use_reactivation():
+# Задуменно для вызова исключительно из main.py!
+def use_reactivation(hacker):
 	global config_dict, original_npc
 	for script_name, counter in config_dict.items():
 		if counter > 0:
 			script = scripts_to_script[script_name]
-			script()
+			if hacker.installed_contender != "None":
+				script()
+			else:
+				config_dict = default_config_dict
+				print("\033[33m{}".format("[HACKER_APPS]: ")+"\033[0m{}".format("Скрипт: "+script_name+" отменен - исполнитель не найлен!"))
 
 # SAVE TO CONFIG FILE --------------------------------------------------------------------------
 def save_to_config_file():

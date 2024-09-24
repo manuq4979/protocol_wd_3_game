@@ -1,1 +1,1 @@
-["test-hacker", 100, 0, 30, 3, 3, ["smartphone_consumables"], true, 4, ["Tactical camouflage", "shutdown", "theft of ETO", "damage to the access card", "encryption of inventory"], ["smartphone_consumables", 998], true]
+["", 100, 0, 0, 0, 3, [], "None", 1, [], [], false]

@@ -25,7 +25,9 @@ class Task:
             try:
                 self.activation_time = datetime.strptime(activation_time, "%Y-%m-%d").date()
             except ValueError:
-                print("\033[33m{}".format("[BAG]: ")+"\033[0m{}".format("Ошибки раньше не было, сейчас появилась, я не понял что с ней делать:\nValueError: time data '7' does not match format '%Y-%m-%d'"))
+                # print("\033[33m{}".format("[BAG]: ")+"\033[0m{}".format("Ошибки раньше не было, сейчас появилась, я не понял что с ней делать:\nValueError: time data '7' does not match format '%Y-%m-%d'"))
+                pass
+                        
         self.reward = reward
         self.status = status # По умолчанию все задания активны!
         
@@ -523,6 +525,8 @@ def del_no_active_task(task_list, developer_menu=False):
             print("\n#######################################################\n")
             
             number = input("> ")
+            print("\n" * 100) # очищаем экран консоли
+
             if number.isdigit() == False:
                 continue
             
@@ -559,7 +563,8 @@ def del_no_active_task(task_list, developer_menu=False):
             print("     "+str(ID)+" : "+str(task.get_status()))
         print("\n\n\n\n\n\n#######################################################\n")
         input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
-    
+        print("\n" * 100) # очищаем экран консоли
+
 def get_pages(task_list, chunk_size=3, flag_del_no_active_task=True):
     # Удаляем не активные задачи, так как они тоже в списке и мешают отображать страницы корректно:
     if flag_del_no_active_task:
@@ -614,6 +619,7 @@ def get_series_points_menu(task_dict, command):
         if task.get_status() != "Active":
             print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Задание с ID_"+str(ID)+" есть, но оно не активно - операция отменена!"))
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+            print("\n" * 100) # очищаем экран консоли
             return
         task.add_series_point()
         player_attack()                  # Атакуем врага, потому что мы выполнили задание привычки
@@ -679,10 +685,16 @@ def get_menu_task(title_menu, task_dict, add_task, del_task, habit_menu=False):
         print("\n#######################################################\n")
         
         number = input("> ")
+        print("\n" * 100) # очищаем экран консоли
+
+        number.replace(" ", "")
+        if number == "":
+            continue
         
         if number == "1":
             add_task()
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+            print("\n" * 100) # очищаем экран консоли
             continue
         if number[0] == "2":
             ID = 0
@@ -696,6 +708,7 @@ def get_menu_task(title_menu, task_dict, add_task, del_task, habit_menu=False):
                     if task.get_status() != "Active":
                         print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Задание с ID_"+str(ID)+" есть, но оно не активно - операция отменена!"))
                         input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+                        print("\n" * 100) # очищаем экран консоли
                         continue
                     player_attack()                  # Атакуем врага, потому что мы выполнили задание
                     prof = Profile.get_instance()
@@ -714,10 +727,12 @@ def get_menu_task(title_menu, task_dict, add_task, del_task, habit_menu=False):
                 if (ID in list(task_dict.keys())) == False:
                     print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Задание с ID_"+str(ID)+" не существует - операция отменена!"))
                     input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+                    print("\n" * 100) # очищаем экран консоли
                     continue
                 del task_dict[ID]
                 print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Задание с ID_"+str(ID)+" удалено!"))
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+            print("\n" * 100) # очищаем экран консоли
             continue
         if number == "6":
             import person
@@ -743,10 +758,12 @@ def get_menu_task(title_menu, task_dict, add_task, del_task, habit_menu=False):
                 print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Задание с ID_"+str(ID)+" удалено!"))
             print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Поражение зафиксировано!"))
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+            print("\n" * 100) # очищаем экран консоли
             continue
         if number == "3":
             del_task()
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+            print("\n" * 100) # очищаем экран консоли
             continue
         if number == "4":
             if len(pages) > 1:
@@ -792,6 +809,7 @@ def get_entry_rewards():
         print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Получена награда за ежедневный вход в сумме: "+str(entry_reward)+" в ETO."))
         print("\n\n\n\n\n\n#######################################################\n")
         input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+        print("\n" * 100) # очищаем экран консоли
 
 # Сохранить данные модуля в файл:
 def save_data_task(msg_on_or_off=True):

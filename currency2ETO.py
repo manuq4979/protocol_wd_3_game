@@ -58,6 +58,7 @@ def add_new_task():
 	if check_if_id_is_duplicated(ID) == True:
 		print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("task_id под номером "+str(ID)+" уже занят!"))
 		input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+		print("\n" * 100) # очищаем экран консоли
 		return
 
 	if type(ID) != str:
@@ -75,6 +76,7 @@ def add_new_task():
 		save_config_currecy2ETO()
 		print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Новое задание добавлено !"))
 		input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+		print("\n" * 100) # очищаем экран консоли
 
 def del_task():
 	global single_task_dict
@@ -86,6 +88,7 @@ def del_task():
 	except KeyError:
 		print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Задание с ID_"+str(ID)+" не существует!"))
 		input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+		print("\n" * 100) # очищаем экран консоли
 		return
 	if task.get_status() == STATUS:
 		del single_task_dict[ID]
@@ -94,11 +97,13 @@ def del_task():
 		save_single_task()
 		print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Задание ID_"+str(ID)+" удалено!"))
 		input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+		print("\n" * 100) # очищаем экран консоли
 		return
 	else:
 		print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Задание ID_"+str(ID)+" не относиться к заданиям требующих финансирования!"))
 		print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Удаление отменено!"))
 		input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+		print("\n" * 100) # очищаем экран консоли
 
 def this_is_the_last_page(pages, index):
 	index += 1 # следующая страница
@@ -167,6 +172,7 @@ def give_an_award(task_id, funding_amount):
 	if config[0] == 0:
 		print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Для начала поплните вашь счет!"))
 		input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+		print("\n" * 100) # очищаем экран консоли
 		return False
 
 	from player_profile import Profile
@@ -183,12 +189,14 @@ def give_an_award(task_id, funding_amount):
 		save_config_currecy2ETO()
 		print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format(history_line))
 		input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+		print("\n" * 100) # очищаем экран консоли
 		return
 	percentage_of_amount = (100-percentage_of_amount) / 100
 
 	if (config[0] - funding_amount) < 0:
 		print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("На счете не достаточно средств!\nТребуется "+str(total_sum)+"  в рублях."))
 		input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+		print("\n" * 100) # очищаем экран консоли
 		return False
 
 	config[0] -= funding_amount
@@ -201,6 +209,7 @@ def give_an_award(task_id, funding_amount):
 	save_config_currecy2ETO()
 	print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format(history_line))
 	input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+	print("\n" * 100) # очищаем экран консоли
 
 
 # профенансировать:
@@ -214,6 +223,7 @@ def fund_in():
 	except KeyError:
 		print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Задание с ID_"+str(ID)+" не существует!"))
 		input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+		print("\n" * 100) # очищаем экран консоли
 		return
 
 	while True:
@@ -231,6 +241,7 @@ def top_up():
 			save_config_currecy2ETO()
 			print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Успешно поплнено!"))
 			input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+			print("\n" * 100) # очищаем экран консоли
 			return
 
 def top_down():
@@ -242,6 +253,7 @@ def top_down():
 			save_config_currecy2ETO()
 			print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Успешно снято!"))
 			input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+			print("\n" * 100) # очищаем экран консоли
 			return
 
 
@@ -281,6 +293,7 @@ def verify_assignment_deadlines_and_completion():
 			del single_task_dict[ID]
 			print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Задание завершено - вышло время!"))
 			input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+			print("\n" * 100) # очищаем экран консоли
 			return
 		if sum <= 0:
 			player_attack()
@@ -290,6 +303,7 @@ def verify_assignment_deadlines_and_completion():
 			del single_task_dict[ID]
 			print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Задание завершено - профинансированно!"))
 			input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+			print("\n" * 100) # очищаем экран консоли
 
 
 def print_amount_on_account():
@@ -325,6 +339,7 @@ def currency2ETO_menu():
 		print("\n#######################################################\n")
 
 		command = input("> ")
+		print("\n" * 100) # очищаем экран консоли
 
 		if command == "0":
 			return

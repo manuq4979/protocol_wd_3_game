@@ -37,6 +37,7 @@ class Profile:
                 self.keep_tool = arr[12]            # {} экипированное снаряжение по умолчанию
                 
                 self.history = arr[13]              # [] по умолчанию
+        
                 try:
                     self.current_raiting = arr[14]
                 except IndexError:
@@ -79,7 +80,17 @@ class Profile:
     
     def edit_quest_reward_setting(self):
         while True:
+            print("\n#######################################################\n")
+            self.print_quest_reward_setting()
+            print("\n#######################################################\n")
+
             difficulty_lvl = input("Введите уровень сложности или 0 для выхода> ")
+            print("\n" * 100) # очищаем экран консоли
+
+            difficulty_lvl.replace(" ", "")
+            if difficulty_lvl == "":
+                continue
+
             if difficulty_lvl == "0":
                 return
             if difficulty_lvl == "+" or difficulty_lvl == "++" or difficulty_lvl == "+++" or difficulty_lvl == "++++":
@@ -510,8 +521,12 @@ def get_history():
     print("\nMenu: ----------------------")
     print("0. Назад.")
     print("\n#######################################################\n")
+
     command = input("> ")
+    print("\n" * 100) # очищаем экран консоли
+
     if command == "0":
+        print("\n" * 100) # очищаем экран консоли
         return
     
     
@@ -519,7 +534,8 @@ def calculate_drop_trophy(npc):
     r = random.randint(1, 100)
     print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Шанс выпадения трофея был: "+str(r)))
     if r <= 40:                     # 40% шанс выпадения трафея
-        return npc.drop_trophy
+        if npc.drop_trophy[0] != "": # если с противника не выпадает трофей, то первый эллемент будет пустой
+            return npc.drop_trophy
     return 0
 
 def calculate_critical_dmg_PLAYER():
@@ -608,12 +624,13 @@ def check_charge(prof):
                     
     return take_off_tool                                                     # нужно чтобы после боя снова экипировать предметы, чтобы не делать этого вручную.
                     
-                    
+      
 
 def player_attack():
     # Это я бы не трогал, потому что это решение я нашел на stackoverflow. Это позволяет избежать цикличного импорта,
     # за счет того что модуль не полностью импортируется в этот модуль, а локально в конкретном методе и потом снова удаляется.
     from person import NPC
+    from kurohana_art.printer import animation_for_tool, get_method, flush_input
     prof = Profile.get_instance()
     npc = NPC.get_instance()
     
@@ -622,11 +639,23 @@ def player_attack():
     if npc.installed_contender == "None":
         return
 
-    
+
     take_off_tool = check_charge(prof)
+
+    console_log = ""
+    animation_id = animation_for_tool(prof)
+
+
     
     damage = calculate_critical_dmg_PLAYER()
     if int(npc.HP) <= 0:
+        if animation_id == False:
+            if get_method.get(animation_id) != False:
+                animation_id = 'default'
+            get_method[animation_id][1]()
+            animation_id = False
+            flush_input()
+
         npc.HP = 0
         drop = calculate_drop_trophy(npc)
         if drop != 0:
@@ -634,11 +663,14 @@ def player_attack():
                 prof.add_tools_id(drop_tool, 50)
             history_line = "Получен трофей "+str(drop)+" - ценность 50 ETO."
             prof.save_to_history(history_line)
-            print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Получен трофей: "+str(drop)+" !"))
+            print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Получен трофей: "+str(drop)+" !")+"\n")
         npc.installed_contender = "None"
         
         npc.set_all_fields_default()    # после нейтрализации противника, класс NPC устанавливает свои поля в поля по умолчанию.
         print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Противник нейтрализован!"))
+        input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+        print("\n" * 100) # очищаем экран консоли
+
     if int(npc.armor) == 0:
         HP = int(npc.HP)
         new_HP = HP - damage
@@ -657,6 +689,11 @@ def player_attack():
     for keeping_tool in take_off_tool:
         Profile.keeping_tool(keeping_tool) # Снова экипировываем предметы снятые по причине того что были разряжены.
 
+    if animation_id != False:
+        if get_method.get(animation_id) == False:
+                animation_id = 'default'
+        get_method[animation_id][0](2)
+        flush_input()
 
 # Сохранить данные модуля в файл:
 def save_data_profile():

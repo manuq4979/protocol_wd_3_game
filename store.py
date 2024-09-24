@@ -36,16 +36,17 @@ def save_data_store(store_ETO, save_only_store=False):
         file.write(json_string)
         print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Save store data!"))
 
-def checking_input(input_text):
-	if len(input_text) <= 1:
-		return False
-
-	if input_text.isdigit() == False:
-		print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
-		input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))     
-		return False
-
-	return True
+def checking_input(input_text):  
+    if len(input_text) <= 1:
+        return False
+ 
+    if input_text.isdigit() == False:
+        print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
+        input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))     
+        print("\n" * 100) # очищаем экран консоли
+        return False
+ 
+    return True
 
 def hot_key(text, prof):
     if checking_input(text) == False:
@@ -64,45 +65,48 @@ def hot_key(text, prof):
 
 
 def buy_reload_tool(prof, buy):
-	charge = 0
-	my_tool_id = ""
-	my_price = 0
-	inventory = list(prof.get_tools_id().keys())
+    charge = 0
+    my_tool_id = ""
+    my_price = 0
+    inventory = list(prof.get_tools_id().keys())
+	    
+    index = input("index> ")
+    print("\n" * 100) # очищаем экран консоли
 	
-	index = input("index> ")
-
-	if str(index).isdigit() == False:
-		print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
-		input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
-		return
-	index = int(index)
-	size = len(prof.get_tools_id())
-	try:
+    if str(index).isdigit() == False:
+        print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
+        input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+        print("\n" * 100) # очищаем экран консоли
+        return    
+    index = int(index)
+    size = len(prof.get_tools_id())
+    try:
             char_line = inventory[index-1]
-	except IndexError:
+    except IndexError:
             print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Инструмента не может быть по данному индексу!"))
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+            print("\n" * 100) # очищаем экран консоли
             return
-	my_tool_id = char_line
-	my_price = prof.get_tools_id()[my_tool_id]
+    my_tool_id = char_line
+    my_price = prof.get_tools_id()[my_tool_id]
 	
-	if char_line.find("recharge") != -1:
+    if char_line.find("recharge") != -1:
             res = char_line.find("recharge")
             recharge = char_line[res:]
             recharge = recharge.split(":")
             return recharge
     
-	chars = char_line.split("_")
-	name = chars[0]
-	chars.remove(name)
-	result = []
-	result.append(name)
-	for char in chars:
+    chars = char_line.split("_")
+    name = chars[0]
+    chars.remove(name)
+    result = []
+    result.append(name)
+    for char in chars:
             char = char.split("=")
             result.append(char)
             
-	new_tool = ""
-	for i in range(len(result)):
+    new_tool = ""
+    for i in range(len(result)):
             if i == 0:
                 new_tool += result[i]+"_"
                 continue
@@ -120,11 +124,12 @@ def buy_reload_tool(prof, buy):
                 charge = int(charge/100)*100    # если ввести 453 - то будет округлено до 400, потому что продаётся лишь по 100 зарядов.
                 result[i][1] = str(charge)
             new_tool += result[i][0]+"="+result[i][1]+"_"
-	prof.del_tools_id(my_tool_id)
-	new_tool = new_tool[0:-1]
-	prof.add_tools_id(new_tool, my_price)
-	print("\033[32m{}".format("[INFO]:")+"\033[0m{}".format("Готово!"))
-	input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+    prof.del_tools_id(my_tool_id)
+    new_tool = new_tool[0:-1]
+    prof.add_tools_id(new_tool, my_price)
+    print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Готово!"))
+    input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+    print("\n" * 100) # очищаем экран консоли
 
 
 def transfer_ETO_to_storage(prof):
@@ -136,6 +141,7 @@ def transfer_ETO_to_storage(prof):
     print("\n\n\n\n\n\n#######################################################\n")
 
     command = input("Введите сумму> ")
+    print("\n" * 100) # очищаем экран консоли
 
     command.replace(" ", "")
     if command == "":
@@ -144,6 +150,7 @@ def transfer_ETO_to_storage(prof):
     if command.isdigit() == False:
         print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допускаются лишь числа и цифры, текст и прч не допустимо!"))
         input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+        print("\n" * 100) # очищаем экран консоли
         return
 
     ETO = int(command)
@@ -151,6 +158,7 @@ def transfer_ETO_to_storage(prof):
     if prof.get_ETO() < ETO:
         print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Не достаточно средств для совершения операции!"))
         input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+        print("\n" * 100) # очищаем экран консоли
         return
 
     prof.set_ETO(int(prof.get_ETO()-ETO))
@@ -166,6 +174,7 @@ def transfer_ETO_to_storage(prof):
     save_data_store(store_ETO)
     print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Готво, сумма коммисии составила "+str(commission_rate)+" ETO!"))
     input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+    print("\n" * 100) # очищаем экран консоли
     return
 
 def transfer_ETO_to_inventary(prof, tool_id):
@@ -178,7 +187,7 @@ def transfer_ETO_to_inventary(prof, tool_id):
     prof.del_tools_id(tool_id)
     print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Пополнение счета на "+str(price)+" ETO!"))
     input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
-
+    print("\n" * 100) # очищаем экран консоли
 
 # В методе use_consumables модуля se_applications есть проверка на "smartphone_consumables", с помощью str.find(), из чего следует, что строчка просто должна присутствовать.
 def buy_consumables(prof):
@@ -190,6 +199,7 @@ def buy_consumables(prof):
     if i.isdigit() == False:
         print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
         input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+        print("\n" * 100) # очищаем экран консоли
         return
 
     i = int(i)
@@ -200,6 +210,7 @@ def buy_consumables(prof):
     if prof.get_ETO() < counter_price:
         print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Не достаточно средств для покупки!"))
         input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+        print("\n" * 100) # очищаем экран консоли
         return
 
     while i != 0:
@@ -245,7 +256,7 @@ def get_store():
     prof = Profile.get_instance()
     while True:
         print("\n#######################################################\n")
-        print("Баланс продовца: "+str(init_store()[1]))
+        print("Баланс продовца: "+str(init_store()[1])+" ETO")
         print("\033[32m{}".format("[Welcom to the Store menu]: ")+"\033[0m{}".format("\n"))
         index = 0
         for tool_id, ETO in store.items():
@@ -258,15 +269,17 @@ def get_store():
             print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("В данный момент товаров на продажу нет!\n"))
         
         print("\nMenu: ----------------------")
-        print("[1]: Купить")
-        print("[2]: Продать")
-        print("[3]: Инвентарь")
-        print("[4]: Зарядить")
-        print("[5]: Перенести ETO на носитель.")
-        print("[6]: Купить расходный материал .")
-        print("[0]: Назад")
+        print("[ 1]: Купить")
+        print("[ 2]: Продать")
+        print("[ 3]: Инвентарь")
+        print("[ 4]: Зарядить")
+        print("[ 5]: Перенести ETO на носитель.")
+        print("[ 6]: Купить расходный материал .")
+        print("[ 0]: Назад")
         print("\n#######################################################\n")
+
         text = input("> ")
+        print("\n" * 100) # очищаем экран консоли
         
         if text == "0":
             return
