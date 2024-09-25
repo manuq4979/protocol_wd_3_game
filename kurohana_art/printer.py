@@ -32,7 +32,7 @@ COLOR_DARK_GREY  = "grey"  # блекло-белый
 
 SET_OF_COLORS_FOR_SKULL_AND_AXE_ART = [[0, 1, COLOR_WHITE], [2, 8, COLOR_RED], [9, 14, COLOR_WHITE], [15, 20, COLOR_DARK_GREY]]
 
-click_the_button_to_continue = "\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <q> чтобы продолжить...")
+click_the_button_to_continue = ""# "\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <q> чтобы продолжить...")
 
 def print_color_text(text, color, end="\n"):
 	color = str(color)
