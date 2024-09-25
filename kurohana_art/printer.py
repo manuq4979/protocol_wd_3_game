@@ -101,7 +101,7 @@ async def print_cobra_win():
 
 		i = 0
 		while True:
-			if KEY.get_instance().get_key() == "q":
+			if i == "q":
 				clear_interface()  # убераем остатки анимации которые остаются при завершении
 				return True
 			if i >= 17:
@@ -110,7 +110,7 @@ async def print_cobra_win():
 					clear_interface()
 					continue
 				print_color_text(data[i], COLOR_RED, end="")
-				await asyncio.sleep(0.1)
+				time.sleep(0.1)
             
 			i += 1
 
@@ -128,7 +128,7 @@ async def print_cobra_win():
 """
 
 
-async def print_cobra_animation_dmg():
+def print_cobra_animation_dmg():
 	version=2
 	user_text=None
 	standart_cadr_size = 14
@@ -163,7 +163,7 @@ async def print_cobra_animation_dmg():
 	i = 0
 	s = cadr_size
 	while True:#i < 169:
-		if KEY.get_instance().get_key() == "q":
+		if i == "q":
 			# clear_interface()  # убераем остатки анимации которые остаются при завершении
 			return True
 		text = data[i]
@@ -175,7 +175,7 @@ async def print_cobra_animation_dmg():
 				print(user_text)
 				
 			print(click_the_button_to_continue)
-			await asyncio.sleep(fps)
+			time.sleep(fps)
 			clear_interface()
 			s += cadr_size
 		if i >= size_file:
