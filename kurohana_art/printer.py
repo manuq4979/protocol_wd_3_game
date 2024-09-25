@@ -177,12 +177,10 @@ async def print_cobra_animation_dmg():
 		if i >= size_file:
 			i = 0
 			s = cadr_size
-		try:
-			if KEY.get_instance().get_key() == "q":
-				clear_interface()  # убераем остатки анимации которые остаются при завершении
-				return True
-		except:
-			return False
+		if KEY.get_instance().get_key() == "q":
+			# clear_interface()  # убераем остатки анимации которые остаются при завершении
+			return True
+
 """
         try:
 			if keyboard.is_pressed('q'):
