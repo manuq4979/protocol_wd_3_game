@@ -100,10 +100,7 @@ def print_cobra_win():
 			i += 1
 
 		i = 0
-		while True:
-			if i == "q":
-				clear_interface()  # убераем остатки анимации которые остаются при завершении
-				return True
+		while i < len(data):
 			if i >= 17:
 				if data[i].find("clear") != -1:
 					print(click_the_button_to_continue)
