@@ -90,7 +90,8 @@ def print_cobra():
 			i += 1
 
 
-def print_cobra_win(version=None, user_text=None):
+def print_cobra_win():
+	global key
 	with open("kurohana_art/cobra.py", "r+", encoding="utf-8") as file:
 		data = []
 		file_size = 167
@@ -126,7 +127,9 @@ def print_cobra_win(version=None, user_text=None):
 """
 
 
-def print_cobra_animation_dmg(version=2, user_text=None):
+def print_cobra_animation_dmg():
+	global key
+	version=2, user_text=None
 	standart_cadr_size = 14
 
 	fps1 = 0.05
