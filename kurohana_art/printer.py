@@ -1,6 +1,6 @@
 from termcolor import colored
 import time, os, keyboard, random
-from kurohana_art.animation_starter import starting_anim, key, asyncio
+from kurohana_art.animation_starter import starting_anim, KEY, asyncio
 
 # Тут спрашивали про этот буфер:
 # https://www.cyberforum.ru/c-beginners/thread1491921.html?ysclid=m1fdn0as5b870627355
@@ -91,7 +91,6 @@ def print_cobra():
 
 
 async def print_cobra_win():
-	global key
 	with open("kurohana_art/cobra.py", "r+", encoding="utf-8") as file:
 		data = []
 		file_size = 167
@@ -115,7 +114,7 @@ async def print_cobra_win():
 			if  i >= file_size:
 				print('\n') # иначе у змеи сьедит крыша )
 				i = 0
-			if key == "q":
+			if KEY.get_instance().get_key() == "q":
 				clear_interface()  # убераем остатки анимации которые остаются при завершении
 				return True
 """
@@ -129,7 +128,6 @@ async def print_cobra_win():
 
 
 async def print_cobra_animation_dmg():
-	global key
 	version=2
 	user_text=None
 	standart_cadr_size = 14
@@ -181,7 +179,7 @@ async def print_cobra_animation_dmg():
 		if i >= size_file:
 			i = 0
 			s = cadr_size
-		if key == "q":
+		if KEY.get_instance().get_key() == "q":
 			clear_interface()  # убераем остатки анимации которые остаются при завершении
 			return True
 """
