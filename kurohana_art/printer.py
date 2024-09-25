@@ -164,7 +164,7 @@ async def print_cobra_animation_dmg():
 	s = cadr_size
 	while True:#i < 169:
 		if KEY.get_instance().get_key() == "q":
-			clear_interface()  # убераем остатки анимации которые остаются при завершении
+			# clear_interface()  # убераем остатки анимации которые остаются при завершении
 			return True
 		text = data[i]
 		print_color_text(text, COLOR_RED, end="")
