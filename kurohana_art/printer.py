@@ -113,7 +113,6 @@ def print_cobra_win():
 
 			if  i >= file_size:
 				print('\n') # иначе у змеи сьедит крыша )
-				i = 0
 			
 """
 			try:
