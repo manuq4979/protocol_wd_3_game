@@ -308,6 +308,9 @@ def application_menu(prof):
     index = input("APP-MENU:~# ")
     print("\n" * 100) # очищаем экран консоли
 
+    index = index.replace(" ", "")
+    if index == "":
+        continue
     if index == "0":
         return
     index = check_input(index)
