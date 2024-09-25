@@ -162,10 +162,7 @@ def print_cobra_animation_dmg():
 	
 	i = 0
 	s = cadr_size
-	while True:#i < 169:
-		if i == "q":
-			# clear_interface()  # убераем остатки анимации которые остаются при завершении
-			return True
+	while i < 169:
 		text = data[i]
 		print_color_text(text, COLOR_RED, end="")
 		i += 1
@@ -181,8 +178,6 @@ def print_cobra_animation_dmg():
 		if i >= size_file:
 			i = 0
 			s = cadr_size
-		if i >= 200:
-			return
 
 """
         try:
