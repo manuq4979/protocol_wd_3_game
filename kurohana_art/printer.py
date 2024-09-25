@@ -182,7 +182,7 @@ async def print_cobra_animation_dmg():
 				clear_interface()  # убераем остатки анимации которые остаются при завершении
 				return True
 		except:
-            return False
+			return False
 """
         try:
 			if keyboard.is_pressed('q'):
