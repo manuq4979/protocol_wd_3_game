@@ -1,6 +1,6 @@
 from termcolor import colored
 import time, os, keyboard, random
-from animation_starter import starting_anim
+from animation_starter import starting_anim, key
 
 # Тут спрашивали про этот буфер:
 # https://www.cyberforum.ru/c-beginners/thread1491921.html?ysclid=m1fdn0as5b870627355
@@ -31,6 +31,7 @@ COLOR_WHITE      = 37 # белый
 COLOR_DARK_GREY  = "grey"  # блекло-белый
 
 SET_OF_COLORS_FOR_SKULL_AND_AXE_ART = [[0, 1, COLOR_WHITE], [2, 8, COLOR_RED], [9, 14, COLOR_WHITE], [15, 20, COLOR_DARK_GREY]]
+
 
 
 def print_color_text(text, color, end="\n"):
@@ -112,12 +113,17 @@ def print_cobra_win(version=None, user_text=None):
 			if  i >= file_size:
 				print('\n') # иначе у змеи сьедит крыша )
 				i = 0
+            if key == "q":
+            clear_interface()  # убераем остатки анимации которые остаются при завершении
+            return True
+            """
 			try:
 				if keyboard.is_pressed('q'):
 					clear_interface() # убераем остатки анимации которые остаются при завершении
 					break
 			except:
 				break
+            """
 
 
 def print_cobra_animation_dmg(version=1, user_text=None):
@@ -167,13 +173,17 @@ def print_cobra_animation_dmg(version=1, user_text=None):
 		if i >= size_file:
 			i = 0
 			s = cadr_size
-		try:
+        if key == "q":
+            clear_interface()  # убераем остатки анимации которые остаются при завершении
+            return True
+        """
+        try:
 			if keyboard.is_pressed('q'):
 				clear_interface()  # убераем остатки анимации которые остаются при завершении
 				return True # Значит анимация завершена по просьбе пользователя
 		except:
 			return False # значит анимацию прервали ошибочно
-
+        """
 
 ##
 #       MAIN:
