@@ -162,7 +162,7 @@ def print_cobra_animation_dmg():
 	
 	i = 0
 	s = cadr_size
-	while i < 169:
+	while i < len(data):
 		text = data[i]
 		print_color_text(text, COLOR_RED, end="")
 		i += 1
