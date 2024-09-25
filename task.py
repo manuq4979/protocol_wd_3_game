@@ -807,7 +807,7 @@ def get_entry_rewards():
         create_entry_rewards_date_file(current_date)
         print("\n" * 100) # очищаем экран консоли
         print("\n#######################################################\n\n\n\n\n\n")
-        print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Получена награда за ежедневный вход в сумме: "+str(entry_reward)+" в ETO."))
+        print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Получена награда за ежедневный вход\nв сумме: "+str(entry_reward)+" в ETO."))
         print("\n\n\n\n\n\n#######################################################\n")
         input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
         print("\n" * 100) # очищаем экран консоли
