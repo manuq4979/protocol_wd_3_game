@@ -171,7 +171,7 @@ async def print_cobra_animation_dmg():
 			print("\n")
 			if user_text != None:
 				# print(user_text)
-                pass
+				pass
 			print("key value: "+key)
 				
 			print(click_the_button_to_continue))
