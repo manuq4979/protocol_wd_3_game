@@ -693,7 +693,7 @@ def player_attack():
         if get_method.get(animation_id) == False:
                 animation_id = 'default'
         get_method[animation_id][0]()
-        flush_input()
+        # flush_input()
 
 # Сохранить данные модуля в файл:
 def save_data_profile():
