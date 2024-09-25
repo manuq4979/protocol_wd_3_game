@@ -1,5 +1,6 @@
 from termcolor import colored
 import time, os, keyboard, random
+from animation_starter import starting_anim
 
 # Тут спрашивали про этот буфер:
 # https://www.cyberforum.ru/c-beginners/thread1491921.html?ysclid=m1fdn0as5b870627355
