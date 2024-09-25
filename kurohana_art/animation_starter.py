@@ -2,11 +2,26 @@ import asyncio
 import time 
 from aioconsole import ainput
 
-key = ""
+class KEY:
+    @staticmethod
+    def get_instance():
+        if "_instance" not in KEY.__dict__:
+            KEY._instance = KEY()
+            return KEY._instance
+        else:
+            return KEY._instance
+    
+    def __init__(self):
+        self.key = ""
+    def set_key(self, key):
+        self.key = key
+    def get_key(self):
+        return self.key
+    
 async def wait_key():
-    global key
+    K = KEY.get_instance()
     key = await ainput()
-    print("завершено")
+    K.set_key(key)
     
     
 async def main(def_animation_cycle):
