@@ -147,11 +147,13 @@ def complite_hot_task(task, task_id, task_class, player_attack):
 		task.add_series_point()
 	print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Победа зафиксирована!"))
 	input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+	print("\n" * 100) # очищаем экран консоли
 
 def failed_hot_task(task, task_id, task_class, npc_attack):
 	if task.get_status() != "Active":
 		print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Задача не активна - операция отменена!"))
 		input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+		print("\n" * 100) # очищаем экран консоли
 		return
 
 	from task import single_task_dict, habit_task_dict, daily_task_dict
@@ -169,7 +171,7 @@ def failed_hot_task(task, task_id, task_class, npc_attack):
 	# Я отказался от удаления заданий, ведь у Ежедневных есть функция повтора.
 	print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Поражение зафиксировано!"))
 	input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
-
+	print("\n" * 100) # очищаем экран консоли
 
 def del_hot_task(task_id, task_class):
 	from task import single_task_dict, habit_task_dict, daily_task_dict
@@ -189,7 +191,7 @@ def del_hot_task(task_id, task_class):
 
 	print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format(task_class_str+" задание ID_"+str(task_id)+" удалено !"))
 	input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
-
+	print("\n" * 100) # очищаем экран консоли
 
 def checking_input(input_text):
 	if len(input_text) <= 1:
@@ -198,6 +200,7 @@ def checking_input(input_text):
 	if input_text.isdigit() == False:
 		print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
 		input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))     
+		print("\n" * 100) # очищаем экран консоли
 		return False
 
 	return True
