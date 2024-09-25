@@ -126,7 +126,7 @@ def print_cobra_win(version=None, user_text=None):
             """
 
 
-def print_cobra_animation_dmg(version=1, user_text=None):
+def print_cobra_animation_dmg(version=2, user_text=None):
 	standart_cadr_size = 14
 
 	fps1 = 0.05
@@ -185,6 +185,9 @@ def print_cobra_animation_dmg(version=1, user_text=None):
 			return False # значит анимацию прервали ошибочно
         """
 
+print_cobra_win_lambda = lambda: starting_anim(print_cobra_win)
+print_cobra_animation_dmg_lambda = lambda: starting_anim(print_cobra_animation_dmg)
+
 ##
 #       MAIN:
 ##
@@ -192,7 +195,7 @@ def default_method(version=None, user_text=None):
 	clear_interface()
 	print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Увы, для данного инструмента анимации нет!"))
 
-get_method = {"cobra" : [print_cobra_animation_dmg, print_cobra_win], 'default' : [default_method, default_method]}
+get_method = {"cobra" : [print_cobra_animation_dmg_lambda, print_cobra_win_lambda], 'default' : [default_method, default_method]}
 
 
 # вернет False если у игрока в экипированном нет инструмента с анимацией, а иначе вернет kurohana_id
