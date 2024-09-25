@@ -650,8 +650,7 @@ def player_attack():
     damage = calculate_critical_dmg_PLAYER()
     if int(npc.HP) <= 0:
         print("\n" * 100) # очищаем экран консоли
-        print("animation_id: "+str(animation_id))
-        if animation_id == False:
+        if animation_id != False:
             if get_method.get(animation_id) != False:
                 animation_id = 'default'
             get_method[animation_id][1]()
