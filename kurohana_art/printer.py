@@ -90,7 +90,7 @@ def print_cobra():
 			i += 1
 
 
-async def print_cobra_win():
+def print_cobra_win():
 	with open("kurohana_art/cobra.py", "r+", encoding="utf-8") as file:
 		data = []
 		file_size = 167
