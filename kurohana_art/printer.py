@@ -101,6 +101,9 @@ async def print_cobra_win():
 
 		i = 0
 		while True:
+			if KEY.get_instance().get_key() == "q":
+				clear_interface()  # убераем остатки анимации которые остаются при завершении
+				return True
 			if i >= 17:
 				if data[i].find("clear") != -1:
 					print(click_the_button_to_continue)
@@ -114,9 +117,7 @@ async def print_cobra_win():
 			if  i >= file_size:
 				print('\n') # иначе у змеи сьедит крыша )
 				i = 0
-			if KEY.get_instance().get_key() == "q":
-				clear_interface()  # убераем остатки анимации которые остаются при завершении
-				return True
+			
 """
 			try:
 				if keyboard.is_pressed('q'):
