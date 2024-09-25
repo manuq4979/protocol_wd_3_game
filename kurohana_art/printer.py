@@ -113,7 +113,7 @@ def print_cobra_win(version=None, user_text=None):
 			if  i >= file_size:
 				print('\n') # иначе у змеи сьедит крыша )
 				i = 0
-            if key == "q":
+			if key == "q":
                 clear_interface()  # убераем остатки анимации которые остаются при завершении
                 return True
             """
@@ -173,7 +173,7 @@ def print_cobra_animation_dmg(version=2, user_text=None):
 		if i >= size_file:
 			i = 0
 			s = cadr_size
-        if key == "q":
+		if key == "q":
             clear_interface()  # убераем остатки анимации которые остаются при завершении
             return True
         """
