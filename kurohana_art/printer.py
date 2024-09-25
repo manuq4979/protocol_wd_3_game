@@ -170,7 +170,7 @@ async def print_cobra_animation_dmg():
 			if user_text != None:
 				# print(user_text)
 				pass
-			print("key value: "+key)
+			print("key value: "+KEY.get_instance().get_key())
 				
 			print(click_the_button_to_continue)
 			await asyncio.sleep(fps)
