@@ -90,7 +90,7 @@ def print_cobra():
 			i += 1
 
 
-def print_cobra_win():
+async def print_cobra_win():
 	global key
 	with open("kurohana_art/cobra.py", "r+", encoding="utf-8") as file:
 		data = []
@@ -108,7 +108,8 @@ def print_cobra_win():
 					clear_interface()
 					continue
 				print_color_text(data[i], COLOR_RED, end="")
-				time.sleep(0.1)
+				await asyncio.sleep(0.1)
+            
 			i += 1
 
 			if  i >= file_size:
@@ -127,7 +128,7 @@ def print_cobra_win():
 """
 
 
-def print_cobra_animation_dmg():
+async def print_cobra_animation_dmg():
 	global key
 	version=2
 	user_text=None
@@ -173,7 +174,7 @@ def print_cobra_animation_dmg():
 				print("key value: "+key)
 				pass
 			print(print(click_the_button_to_continue))
-			time.sleep(fps)
+			await asyncio.sleep(fps)
 			clear_interface()
 			s += cadr_size
 		if i >= size_file:
