@@ -168,9 +168,7 @@ async def print_cobra_animation_dmg():
 		if i == s:
 			print("\n")
 			if user_text != None:
-				# print(user_text)
-				pass
-			print("key value: "+KEY.get_instance().get_key())
+				print(user_text)
 				
 			print(click_the_button_to_continue)
 			await asyncio.sleep(fps)
@@ -179,9 +177,12 @@ async def print_cobra_animation_dmg():
 		if i >= size_file:
 			i = 0
 			s = cadr_size
-		if KEY.get_instance().get_key() == "q":
-			clear_interface()  # убераем остатки анимации которые остаются при завершении
-			return True
+		try:
+			if KEY.get_instance().get_key() == "q":
+				clear_interface()  # убераем остатки анимации которые остаются при завершении
+				return True
+		except:
+            return False
 """
         try:
 			if keyboard.is_pressed('q'):
