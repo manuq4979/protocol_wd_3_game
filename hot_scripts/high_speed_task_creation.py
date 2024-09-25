@@ -146,7 +146,10 @@ def complite_hot_task(task, task_id, task_class, player_attack):
 	if task_class == HABIT:
 		task.add_series_point()
 	print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Победа зафиксирована!"))
-	input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+	try:
+		input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+	except:
+		input()
 
 def failed_hot_task(task, task_id, task_class, npc_attack):
 	if task.get_status() != "Active":
