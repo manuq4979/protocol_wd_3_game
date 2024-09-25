@@ -181,7 +181,7 @@ def print_cobra_animation_dmg():
 		if i >= size_file:
 			i = 0
 			s = cadr_size
-		if i == 200:
+		if i >= 200:
 			return
 
 """
