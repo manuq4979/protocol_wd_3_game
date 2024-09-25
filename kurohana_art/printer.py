@@ -116,14 +116,14 @@ def print_cobra_win(version=None, user_text=None):
 			if key == "q":
 				clear_interface()  # убераем остатки анимации которые остаются при завершении
 				return True
-            """
+"""
 			try:
 				if keyboard.is_pressed('q'):
 					clear_interface() # убераем остатки анимации которые остаются при завершении
 					break
 			except:
 				break
-            """
+"""
 
 
 def print_cobra_animation_dmg(version=2, user_text=None):
@@ -176,14 +176,14 @@ def print_cobra_animation_dmg(version=2, user_text=None):
 		if key == "q":
 			clear_interface()  # убераем остатки анимации которые остаются при завершении
 			return True
-        """
+"""
         try:
 			if keyboard.is_pressed('q'):
 				clear_interface()  # убераем остатки анимации которые остаются при завершении
 				return True # Значит анимация завершена по просьбе пользователя
 		except:
 			return False # значит анимацию прервали ошибочно
-        """
+"""
 
 print_cobra_win_lambda = lambda: starting_anim(print_cobra_win)
 print_cobra_animation_dmg_lambda = lambda: starting_anim(print_cobra_animation_dmg)
