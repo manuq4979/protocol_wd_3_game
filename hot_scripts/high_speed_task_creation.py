@@ -149,7 +149,7 @@ def complite_hot_task(task, task_id, task_class, player_attack):
 	try:
 		input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
 	except:
-		input()
+		text = input()
 
 def failed_hot_task(task, task_id, task_class, npc_attack):
 	if task.get_status() != "Active":
