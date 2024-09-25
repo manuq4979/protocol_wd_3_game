@@ -805,6 +805,7 @@ def get_entry_rewards():
         history_line = "Получена награда за ежедневный вход в сумме: "+str(entry_reward)+" в ETO."
         prof.save_to_history(history_line)
         create_entry_rewards_date_file(current_date)
+        print("\n" * 100) # очищаем экран консоли
         print("\n#######################################################\n\n\n\n\n\n")
         print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Получена награда за ежедневный вход в сумме: "+str(entry_reward)+" в ETO."))
         print("\n\n\n\n\n\n#######################################################\n")
