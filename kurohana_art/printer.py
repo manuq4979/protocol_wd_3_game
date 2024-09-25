@@ -182,7 +182,7 @@ def print_cobra_animation_dmg():
 			i = 0
 			s = cadr_size
 		if i == 200:
-            return
+			return
 
 """
         try:
