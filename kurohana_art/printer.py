@@ -174,7 +174,7 @@ async def print_cobra_animation_dmg():
 				pass
 			print("key value: "+key)
 				
-			print(click_the_button_to_continue))
+			print(click_the_button_to_continue)
 			await asyncio.sleep(fps)
 			clear_interface()
 			s += cadr_size
