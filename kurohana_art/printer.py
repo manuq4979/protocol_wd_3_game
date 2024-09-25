@@ -129,7 +129,8 @@ def print_cobra_win():
 
 def print_cobra_animation_dmg():
 	global key
-	version=2, user_text=None
+	version=2
+	user_text=None
 	standart_cadr_size = 14
 
 	fps1 = 0.05
