@@ -175,9 +175,11 @@ def print_cobra_animation_dmg():
 			time.sleep(fps)
 			clear_interface()
 			s += cadr_size
+"""
 		if i >= size_file:
 			i = 0
 			s = cadr_size
+"""
 
 """
         try:
