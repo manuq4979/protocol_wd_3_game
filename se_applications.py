@@ -299,21 +299,22 @@ def check_input(input_text):
         return index
 
 def application_menu(prof):
-    print("\n#######################################################\n")
-    print("Menu: ----------------------")
-    get_applications_and_print()
-    print("[0]: Выход.")
-    print("\n#######################################################\n")
+    while True:
+        print("\n#######################################################\n")
+        print("Menu: ----------------------")
+        get_applications_and_print()
+        print("[0]: Выход.")
+        print("\n#######################################################\n")
+        
+        index = input("APP-MENU:~# ")
+        print("\n" * 100) # очищаем экран консоли
     
-    index = input("APP-MENU:~# ")
-    print("\n" * 100) # очищаем экран консоли
-
-    index = index.replace(" ", "")
-    if index == "":
-        continue
-    if index == "0":
-        return
-    index = check_input(index)
-    
-    
-    applications_list[index][1](prof)
+        index = index.replace(" ", "")
+        if index == "":
+            continue
+        if index == "0":
+            return
+        index = check_input(index)
+        
+        
+        applications_list[index][1](prof)
