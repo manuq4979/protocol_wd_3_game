@@ -654,7 +654,7 @@ def player_attack():
             if get_method.get(animation_id) != False:
                 animation_id = 'default'
             get_method[animation_id][1]()
-            animation_id = False
+            # animation_id = False
             flush_input()
 
         npc.HP = 0
