@@ -32,7 +32,7 @@ COLOR_DARK_GREY  = "grey"  # блекло-белый
 
 SET_OF_COLORS_FOR_SKULL_AND_AXE_ART = [[0, 1, COLOR_WHITE], [2, 8, COLOR_RED], [9, 14, COLOR_WHITE], [15, 20, COLOR_DARK_GREY]]
 
-
+click_the_button_to_continue = "\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <q> чтобы продолжить...")
 
 def print_color_text(text, color, end="\n"):
 	color = str(color)
@@ -103,7 +103,7 @@ def print_cobra_win(version=None, user_text=None):
 		while True:
 			if i >= 17:
 				if data[i].find("clear") != -1:
-					print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <q> чтобы продолжить..."))
+					print(click_the_button_to_continue)
 					clear_interface()
 					continue
 				print_color_text(data[i], COLOR_RED, end="")
@@ -114,8 +114,8 @@ def print_cobra_win(version=None, user_text=None):
 				print('\n') # иначе у змеи сьедит крыша )
 				i = 0
             if key == "q":
-            clear_interface()  # убераем остатки анимации которые остаются при завершении
-            return True
+                clear_interface()  # убераем остатки анимации которые остаются при завершении
+                return True
             """
 			try:
 				if keyboard.is_pressed('q'):
@@ -166,7 +166,7 @@ def print_cobra_animation_dmg(version=1, user_text=None):
 			print("\n")
 			if user_text != None:
 				print(user_text)
-			print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <q> чтобы продолжить..."))
+			print(print(click_the_button_to_continue))
 			time.sleep(fps)
 			clear_interface()
 			s += cadr_size
