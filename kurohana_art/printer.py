@@ -114,8 +114,8 @@ def print_cobra_win(version=None, user_text=None):
 				print('\n') # иначе у змеи сьедит крыша )
 				i = 0
 			if key == "q":
-                clear_interface()  # убераем остатки анимации которые остаются при завершении
-                return True
+				clear_interface()  # убераем остатки анимации которые остаются при завершении
+				return True
             """
 			try:
 				if keyboard.is_pressed('q'):
@@ -174,8 +174,8 @@ def print_cobra_animation_dmg(version=2, user_text=None):
 			i = 0
 			s = cadr_size
 		if key == "q":
-            clear_interface()  # убераем остатки анимации которые остаются при завершении
-            return True
+			clear_interface()  # убераем остатки анимации которые остаются при завершении
+			return True
         """
         try:
 			if keyboard.is_pressed('q'):
