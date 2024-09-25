@@ -6,6 +6,7 @@ key = ""
 async def wait_key():
     global key
     key = await ainput()
+    print("завершено")
     
     
 async def main(def_animation_cycle):
