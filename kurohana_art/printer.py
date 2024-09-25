@@ -169,7 +169,9 @@ def print_cobra_animation_dmg():
 		if i == s:
 			print("\n")
 			if user_text != None:
-				print(user_text)
+				# print(user_text)
+                print("key value: "+key)
+                pass
 			print(print(click_the_button_to_continue))
 			time.sleep(fps)
 			clear_interface()
