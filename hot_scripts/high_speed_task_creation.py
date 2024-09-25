@@ -89,7 +89,7 @@ def add_hot_task(new_task, task_id, task_class):
 		print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Новое ежедневное задание добавлено!"))
 
 	input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
-
+	print("\n" * 100) # очищаем экран консоли
 
 def up_raiting(task, prof):
 	from raiting import determine_my_ranking
@@ -111,6 +111,7 @@ def complite_hot_task(task, task_id, task_class, player_attack):
 	if task.get_status() != "Active":
 		print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Задача не активна - операция отменена!"))
 		input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+		print("\n" * 100) # очищаем экран консоли
 		return
 
 	from task import single_task_dict, habit_task_dict, daily_task_dict
