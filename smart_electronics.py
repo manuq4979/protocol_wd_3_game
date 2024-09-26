@@ -101,14 +101,17 @@ class Smart_Electronics:
     def set_storage(self, storage):
         self.storage = storage
     
-    def print_SE(self):
+    def print_SE(self, no_print=False):
         if self.name == "":
             print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Ещё нет активвного подключения.\n\n\n\n\n"))
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             print("\n" * 100) # очищаем экран консоли
             connection = False
             return connection
-            
+        
+        if no_print == True:
+            return True
+												
         print("\n")
         print("\033[31m{}".format("["+self.name+"]")+"\033[0m{}".format(": "))
         
@@ -402,6 +405,7 @@ def get_OS_menu():
     se = Smart_Electronics.get_instance()
 
     while True:
+        se.print_SE()
         print("\n")
         print("\033[32m{}".format("\n[INFO]: ")+"\033[0m{}".format("Welcom to SE OS!"))
         print("\n")
@@ -462,7 +466,7 @@ def select_item(command):
     
     if command == "1":
         if (se.operation_system == 1 and se.remote_access == 1 and se.network_interface == 1 and se.user_interface == 1) or (se.operation_system == 1 and se.connection_port == 1 and se.control_panel == 1): # Тут проверяем подключаемое ли вообще устройство.
-            connection = se.print_SE()
+            connection = se.print_SE(no_print=True)
             if connection != False:
                 get_OS_menu()
         else:
