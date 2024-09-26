@@ -352,11 +352,17 @@ def get_access():
         command = input(PS1)
         print("\n" * 100) # очищаем экран консоли
         
+        command = command.replace(" ", "")
+        if command.isdigit() == False:
+            print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Для ввода допустимы лишь числовые значения!"))
+        if command == "":
+            continue
         if command == "0":
             return
         
         # Удаленный доступ:
         if se.operation_system == 1 and se.remote_access == 1 and se.network_interface == 1 and se.user_interface == 1:
+            print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Пока что не реализовано!"))
             pass
         # Физичесский доступ:
         if se.operation_system == 1 and se.connection_port == 1 and se.control_panel == 1:
