@@ -343,6 +343,7 @@ def get_access_card():
 def get_access():
     se = Smart_Electronics.get_instance()
     while True:
+        se.print_SE()
         print("\n")
         if se.operation_system == 1 and se.remote_access == 1 and se.network_interface == 1 and se.user_interface == 1:
             print("[1]: Удаленный доступ.")
@@ -424,6 +425,9 @@ def get_OS_menu():
         command = input(PS1)
         print("\n" * 100) # очищаем экран консоли
         
+        command = command.replace(" ", "")
+        if command == "":
+            continue
         if command == "0":
             return
         if command == "32" and se.read == 1:
@@ -441,7 +445,7 @@ def get_OS_menu():
         if command == "2" and se.write == 1:
             set_storage()
             break
-        if se.write == 0 or se.write == 0:
+        if command == "3" and se.write == 0 or se.write == 0:
             get_access()
             break
         else:
