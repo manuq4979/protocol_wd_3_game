@@ -27,7 +27,7 @@ class Task:
             except ValueError:
                 # причина бага, в том, что нно дату сегодня + дни - это число в activation_time вызвавшее это исключение!
                 # print("\033[33m{}".format("[BAG]: ")+"\033[0m{}".format("Ошибки раньше не было, сейчас появилась, я не понял что с ней делать:\nValueError: time data '7' does not match format '%Y-%m-%d'"))
-                self.activation_time = datetime.now() + datetime.timedelta(days=int(self.activation_time))
+                self.activation_time = datetime.now() + timedelta(days=int(self.activation_time))
                         
         self.reward = reward
         self.status = status # По умолчанию все задания активны!
