@@ -25,9 +25,9 @@ class Task:
             try:
                 self.activation_time = datetime.strptime(activation_time, "%Y-%m-%d").date()
             except ValueError:
+                # вкроятно причино бага стало то, что раньше это не конвертировалось в дату, а было числом - то, через сколько дней сброс!
                 # print("\033[33m{}".format("[BAG]: ")+"\033[0m{}".format("Ошибки раньше не было, сейчас появилась, я не понял что с ней делать:\nValueError: time data '7' does not match format '%Y-%m-%d'"))
                 self.activation_time = activation_time # datetime.now() + timedelta(days=int(self.activation_time))
-                print(self.activation_time)
                         
         self.reward = reward
         self.status = status # По умолчанию все задания активны!
