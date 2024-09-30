@@ -306,7 +306,7 @@ class HabitTask(Task):
         date = datetime.strptime(current_date, "%Y-%m-%d").date() # Ожидает строку с датой в формате г-м-д !
         res = date + timedelta(days=int(self.activation_time))
         res = res
-        print("Дата сброса: "+str(self.check_time(res)))
+        
         return self.check_time(res)
         
     def input_habit_task(self):
