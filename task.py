@@ -302,7 +302,7 @@ class HabitTask(Task):
     def check_reset_time(self):
         # Дни прибавляем к дате, чтобы посмотреть, пора ли уже повторять:
         current_date = str(datetime.now().date())
-        # добавляем день к дате:
+        # добавляем указанное кол-во дней к дате:
         date = datetime.strptime(current_date, "%Y-%m-%d").date() # Ожидает строку с датой в формате г-м-д !
         res = date + timedelta(days=int(self.activation_time))
         res = res
