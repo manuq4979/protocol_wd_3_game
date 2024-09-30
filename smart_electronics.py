@@ -508,6 +508,8 @@ def poit_of_entry(computer, prof):
         if command == "01":
             import se_applications
             se_applications.application_menu(prof)
+            continue
+												
         error_log = select_item(command)
         hello_user(t_sleep=0)
         if error_log != None:
