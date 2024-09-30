@@ -360,7 +360,7 @@ def get_load_habit_task_dict(habit_task_dict):
     new_dict = {}
     for ID, task in habit_task_dict.items():
         ID = int(ID)
-        new_dict[ID] = HabitTask(task[0], task[1], task[2], task[3], task[4], task[5], task[6], task[7])
+        new_dict[ID] = HabitTask(task[0], task[1], task[2], task[3], task[4], task[5], task[6], task[7], task[8])
     return new_dict
 
 
