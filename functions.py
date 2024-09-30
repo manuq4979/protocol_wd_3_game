@@ -376,7 +376,7 @@ def check_relevance_task():
     # Проверка заданий Привычек:
     for ID, task in list(habit_task_dict.items()):
         res = task.check_reset_time()
-        print("res: "+str(res))
+        
         if res != False and (int(res) == 1 or int(res) == 2):       # если дата уже прошла или она сегодня, то пора произвести сброс серии
             task.reset_series_point()
             save_data_task(msg_on_or_off=False)
