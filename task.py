@@ -68,7 +68,7 @@ class Task:
     # Вернет False если ещё рано.
     def check_time(self, activation_time):
         now_time = datetime.strptime("2024-10-03", "%Y-%m-%d").date()#datetime.now().date()
-        print("activation time: "+str(activation_time))
+        
         if activation_time < now_time:
             return 1
         if activation_time == now_time:
