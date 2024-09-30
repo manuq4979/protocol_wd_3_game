@@ -495,6 +495,7 @@ def poit_of_entry(computer, prof):
     
     hello_user()
     while True:
+        print_error = True
         print("\n######################################################\n")
         print_menu_smart_electronics()
         print("[01]: Приложения.")
@@ -503,16 +504,19 @@ def poit_of_entry(computer, prof):
         command = input(PS1)
         print("\n" * 100) # очищаем экран консоли
         
+        command = command.replace(" ", "")
+        if command == "":
+            print_error = False
         if command == "0":
             return
         if command == "01":
             import se_applications
             se_applications.application_menu(prof)
-            continue
+            print_error = False
 												
         error_log = select_item(command)
         hello_user(t_sleep=0)
-        if error_log != None:
+        if error_log != None and print_error == True:
             print(error_log)
         
             
