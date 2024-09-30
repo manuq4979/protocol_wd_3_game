@@ -33,6 +33,7 @@ def print_NPC():
 
 
 while(True):
+    print("серия: "+str(task.get_series_point()))
     check_time_to_disable_camouflage() # из модуля hacker_apps, как правило используется на пользу противнику
     if menu_line == True:
         print("\n#######################################################\n")
