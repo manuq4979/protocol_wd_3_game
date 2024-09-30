@@ -5,7 +5,7 @@ from raiting import check_reset_time_of_points, print_reset_point_counter, print
 from hot_scripts.high_speed_task_creation import redirecting_input
 from hacker_person import print_hacker_npc, save_data_person, hacker_attack, use_reactivation, check_time_to_disable_camouflage, HACKER_NPC
 from currency2ETO import currency2ETO_menu, print_amount_on_account
-from task import habit_task_dict
+
 
 print("\n" * 100) # очищаем экран консоли
 menu_line = False # нужно чтобы не отображать два одинаковых разделительных принта:
@@ -34,7 +34,6 @@ def print_NPC():
 
 
 while(True):
-    print("серия: "+str(habit_task_dict.get(1).get_series_point()))
     check_time_to_disable_camouflage() # из модуля hacker_apps, как правило используется на пользу противнику
     if menu_line == True:
         print("\n#######################################################\n")
