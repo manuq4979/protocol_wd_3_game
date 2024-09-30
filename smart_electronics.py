@@ -510,7 +510,8 @@ def poit_of_entry(computer, prof):
             se_applications.application_menu(prof)
         error_log = select_item(command)
         hello_user(t_sleep=0)
-        print(error_log)
+        if error_log != None:
+            print(error_log)
         
             
 # Сохранить данные модуля в файл:
