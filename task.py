@@ -292,7 +292,12 @@ class HabitTask(Task):
         self.series_point -= 1
     
     def reset_series_point(self):
-        self.series_point = 0
+        print("reset_series_point")
+        res = self.check_reset_time()
+        
+        if int(res) == 1 or int(res) == 2:       # если дата уже прошла или она сегодня, то пора произвести сброс серии
+            self.series_point = 0
+            print("reset_series_point - сработал!")
     
     
     # Аналогично родительскому методу check_time().
