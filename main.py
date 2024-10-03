@@ -34,7 +34,7 @@ def print_NPC():
 
 
 while(True):
-    functions.check_charge(prof="add_auto") # модуль functions импортирует весь player_profile
+    functions.check_charge(prof="add_auto", only_check_charge=True) # модуль functions импортирует весь player_profile
     check_time_to_disable_camouflage() # из модуля hacker_apps, как правило используется на пользу противнику
     if menu_line == True:
         print("\n#######################################################\n")
