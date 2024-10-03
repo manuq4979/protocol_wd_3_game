@@ -686,9 +686,10 @@ def player_attack():
             npc.armor = 0
         if armor >= 0:
             npc.armor = armor
-    
-    for keeping_tool in take_off_tool:
-        Profile.keeping_tool(keeping_tool) # Снова экипировываем предметы снятые по причине того что были разряжены.
+            
+    # Как оказалось, снова надевать разряженные предметы, это плохая практика, усложнение для игрока.
+    #for keeping_tool in take_off_tool:
+    #    Profile.keeping_tool(keeping_tool) # Снова экипировываем предметы снятые по причине того что были разряжены.
 
     if animation_id != False:
         if get_method.get(animation_id) == False:
