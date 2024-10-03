@@ -591,6 +591,9 @@ def find_recharge_for_tool_id(prof, finding_tool_id, array_tool=[], i=0):
                 
 
 def check_charge(prof):
+    if prof == "add_auto":
+        prof = Profile.get_instance()
+    
     take_off_tool = []
     keep_tool = prof.get_keep_tool()
 
