@@ -121,8 +121,8 @@ def id_compile(index=0):
                 if checkin_for_int_and_spaces(res) == False:
                     return
             else:
-                res = "1"
-            if res == "1":
+                res = "0"
+            if res == "0":
                 HP = input("\n[HP]:\n-> ")
                 if checkin_for_int_and_spaces(HP) == False:
                     return
