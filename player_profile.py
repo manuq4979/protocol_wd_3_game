@@ -610,7 +610,7 @@ def check_charge(prof):
                 charge = int(char[1])                                        # от 0 до 100
                 if charge == 0:                                              # Проверяем не равен ли заряд 0, есл да то
                      if find_recharge_for_tool_id(prof, [name, tool_id], array_tool, i-1) != True:    # Проверяем есть ли перезарядка, если да, то просто ничего не делать. Иначе
-                        print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Инструмент - "+tool_id+" разряжен, добавьте новый заряд в инвентарь!"))
+                        print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Инструмент - "+tool_id+" разряжен, зарядите инструмент в меню магазина!"))
                         input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
                         Profile.take_off(tool_id)                               # Снимаем предмет.
                         take_off_tool.append(tool_id)
