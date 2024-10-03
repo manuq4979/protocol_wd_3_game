@@ -34,6 +34,7 @@ def print_NPC():
 
 
 while(True):
+    check_charge(prof="add_auto")
     check_time_to_disable_camouflage() # из модуля hacker_apps, как правило используется на пользу противнику
     if menu_line == True:
         print("\n#######################################################\n")
