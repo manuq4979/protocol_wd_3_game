@@ -589,8 +589,8 @@ def find_recharge_for_tool_id(prof, finding_tool_id, array_tool=[], i=0):
             prof.add_keep_tool(new_tool_id, price)                          # Экипируем новый инструмент
             return True
                 
-
-def check_charge(prof):
+# МЕТОД ТАКЖЕ ПОНИЖАЕТ УРОВЕНЬ ЗАРЯДА И ВОЗВРАЩАЕТ СПИСОК РАЗРЯЖЕННЫХ И ПОТОМУ СНЯТЫХ ИНСТРУМЕНТОВ
+def check_charge(prof, only_check_charge=False):
     if prof == "add_auto":
         prof = Profile.get_instance()
     
@@ -614,7 +614,7 @@ def check_charge(prof):
                         input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
                         Profile.take_off(tool_id)                               # Снимаем предмет.
                         take_off_tool.append(tool_id)
-                if charge > 0:
+                if charge > 0 and only_check_charge == False:
                     prof.del_keep_tool(tool_id)                              # заряд предмета будет изменен из чего следует что нужно снять старый tool_id
                     charge = int(array_tool[i-1][1])                         # array_tool == ['gun', ['damage', '500'], ['charge', '100']] - пример
                     charge = charge - 30                                     # Находим по i - индексу - поле charge и отнимаем 30(30 каждый бой отнимается)
