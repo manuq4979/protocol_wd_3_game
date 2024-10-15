@@ -90,7 +90,7 @@ class HACKER_NPC:
 		self.lvl = arr[8][1]
 		self.scripts = arr[9][1]
 		self.inventory = arr[10][1]
-		self.hacker_exposed = arr[11][1]
+		self.hacker_exposed = False # arr[11][1]
 
 	def menu_for_deal(self, prof):
 		x = int(self.lvl) * 100
