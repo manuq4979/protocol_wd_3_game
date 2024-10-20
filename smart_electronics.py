@@ -460,7 +460,7 @@ def set_SE():
         print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Операция отменена!\n\n\n\n"))
         input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
         print("\n" * 100) # очищаем экран консоли
-								return
+        return
     apply_to_characteristics_SE(SE_ID)
     print("\n" * 100) # очищаем экран консоли
     
