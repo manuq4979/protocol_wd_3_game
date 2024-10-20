@@ -466,6 +466,7 @@ def set_SE():
 def print_menu_smart_electronics():
     print("[ 1]: Текущие подключение.")
     print("[ 2]: Подключиться.")
+    print("[ 3]: Созадать сеть.")
     print("[ 0]: Назад.")
     
 def select_item(command):
