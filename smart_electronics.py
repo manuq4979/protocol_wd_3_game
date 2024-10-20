@@ -454,6 +454,10 @@ def get_OS_menu():
 
 def set_SE():
     SE_ID = input("SE_ID> ")
+    SE_ID = SE_ID.replace(" ", "")
+    if SE_ID == "":
+        print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Операция отменена!"))
+        return
     apply_to_characteristics_SE(SE_ID)
     print("\n" * 100) # очищаем экран консоли
     
