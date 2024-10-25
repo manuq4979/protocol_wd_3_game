@@ -173,6 +173,11 @@ def add_NPC():
 	HACKER_ID = input("HACKER_NPC_ID> ")
 
 	hacker = HACKER_NPC.get_instance()
+	if HACKER_ID == "" or HACKER_ID == None:
+		hacker.set_all_fields_default()
+		print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Вражеский хакер был сброшен!"))
+		input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+		return
 	hacker.keeping_tool_NPC(HACKER_ID)
 	hacker.installed_contender = True
 	arr = hacker.get_all_fields()
