@@ -181,7 +181,8 @@ def get_installer_NPC():
     print("\033[32m{}".format("Set NPC_ID:")+"\033[0m{}".format(""))    # NPC_ID- это тот же tool_id, отличается лишь тем что есть drop-trophy
     NPC_ID = input("NPC_ID> ")
     if NPC_ID == "" or NPC_ID == None:
-        print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("NPC не был добавлен!"))
+        npc.set_all_fields_default()
+        print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("NPC был сброшен!"))
         return
     npc.set_new_npc(NPC_ID)
 
