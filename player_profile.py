@@ -502,7 +502,7 @@ def get_prof():
         npc.HP = npc.start_HP
         npc.armor = npc.start_armor
         while True:
-            print("\033[31m{}".format("[DEATH]: ")+"\033[0m{}".format("Вы проиграли!"))
+            print("\033[31m{}".format("[YOU ARE NEUTRALIZED]: ")+"\033[0m{}".format("Вы проиграли!"))
             print("\n\n\n")
             print("----------------------")
             print("1. Реванш")
