@@ -257,6 +257,7 @@ def get_store():
     while True:
         print("\n#######################################################\n")
         print("Баланс продовца: "+str(init_store()[1])+" ETO")
+        print("Вашь баланс: "+str(prof.get_ETO()+" ETO"))
         print("\033[32m{}".format("[Welcom to the Store menu]: ")+"\033[0m{}".format("\n"))
         index = 0
         for tool_id, ETO in store.items():
