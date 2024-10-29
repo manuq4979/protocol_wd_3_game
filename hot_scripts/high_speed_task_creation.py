@@ -128,8 +128,6 @@ def complite_hot_task(task, task_id, task_class, player_attack):
 	if task_class == DAILY:
 		task_class_str = "ежедневное"
 
-	if task_class == HABIT:
-		task.add_series_point()
 	player_attack() # Атакуем врага, потому что мы выполнили задание
 	prof = Profile.get_instance()
 
