@@ -7,13 +7,22 @@ import random
 ###
 
 
-def use_consumables(prof): # Если расходный материал успешно использован вернет True иначе False:
+def use_consumables(prof, quantity=1): # Если расходный материал успешно использован вернет True иначе False:
     inventory = prof.get_tools_id()
-    for tool_id, price in inventory.items():
-        if tool_id.find("smartphone_consumables") != -1:
-            prof.del_tools_id(tool_id)
-            return True
-    return False
+    flag = False
+    # подсчитываем есть ли в инвентаре нужное кол-во расхолников
+    while quantity > 0:
+        for tool_id, price in inventory.items():
+            if tool_id.find("smartphone_consumables") != -1:
+                consumables_array.append(tool_id) # добавлчем для начала в массив, если в инвентаре насчитается нужное кол-во необходимых расходников, тогда они будут все удалены - использованы позже
+                flag = True
+        if flag == False: # если после первого прохожения по инвентарю не будет найден расхожник то:
+            return flag
+        quantity -= 1
+        flag = False # если расходник был найден, то при новом обороте также будет икаться расходник и если он не будет найден, то также False
+    for consumables in consumables_array:
+        prof.del_tools_id(consumables)
+    return True
 
 
 # APP 1 --------------------------------------------------------------------------
@@ -165,8 +174,9 @@ def get_ability_to_flash_firmware(prof):
                 input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
                 print("\n" * 100) # очищаем экран консоли
                 continue
-            
-            if use_consumables(prof) == False:
+                
+            number = int(se.valuation_storage * 30) # расчет количества требуемых для взлома расходников(зависит от оценки ценности хранилеща у SE обьекта)
+            if use_consumables(prof, quantity=number) == False:
                 print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Отсутствует расходный материал - смартфон!"))
                 input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
                 print("\n" * 100) # очищаем экран консоли
