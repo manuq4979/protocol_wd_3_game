@@ -64,6 +64,7 @@ class Smart_Electronics:
             
                 self.access_algorithm_dict = arr[11]            # Список целей, список NPC которые имеют карты доступа.
                 self.storage = arr[12]                          # Тут трофеи - инструменты, ETO, карты доступа. Их может быть сколько угодно, но больше чем у NPC.
+                self.valuation_storage = arr[13]                # Оценка от 0 до 5 иныормации в ранилище, влияет на расходный материал для взлома.
             
             except json.decoder.JSONDecodeError:                # Это исключение значит, что файл конфигурации пуст, код ниже задат дефолтные значения.
                 self.set_all_fields_default()
@@ -74,7 +75,7 @@ class Smart_Electronics:
                     print("Save profile data!")
 
     def get_all_fields(self):
-        return [self.name, self.network_interface, self.remote_access, self.operation_system, self.possibility_of_flashing, self.artificial_intelligence, self.connection_port, self.user_interface, self.control_panel, self.write, self.read, self.access_algorithm_dict, self.storage]
+        return [self.name, self.network_interface, self.remote_access, self.operation_system, self.possibility_of_flashing, self.artificial_intelligence, self.connection_port, self.user_interface, self.control_panel, self.write, self.read, self.access_algorithm_dict, self.storage, self.valuation_storage]
 
     def set_all_fields_default(self):
         self.user_profile = ""
@@ -93,6 +94,7 @@ class Smart_Electronics:
     
         self.access_algorithm_dict = {}
         self.storage = []
+        self.valuation_storage = 0
         print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Все значения Smart Electronics установлены по умолчанию!"))
 
     def set_access_algorithm_dict(self, access_algorithm_dict):
