@@ -142,9 +142,11 @@ def get_ability_to_flash_firmware(prof):
     se = Smart_Electronics.get_instance()
     access = se.possibility_of_flashing
     while True:
-        print("\n#######################################################\n")
+        print("\n#######################################################\n\n\n\n")
         print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Приложение позволяет вам получать возможность устанавливать прошивку для подключенного устройтсва!\n"))
-        print("Hack Menu: ----------------------")
+        number = int(se.valuation_storage * 30) # расчет количества требуемых для взлома расходников(зависит от оценки ценности хранилеща у SE обьекта)
+        print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("Требуется расходников: "+str(number)+" штук!"))
+        print("\n\n\nHack Menu: ----------------------")
         print("[1]: Получить возможность перепрошивки.")
         if access == 1:
             print("[2]: Меню прошивки.")
@@ -175,7 +177,6 @@ def get_ability_to_flash_firmware(prof):
                 print("\n" * 100) # очищаем экран консоли
                 continue
                 
-            number = int(se.valuation_storage * 30) # расчет количества требуемых для взлома расходников(зависит от оценки ценности хранилеща у SE обьекта)
             if use_consumables(prof, quantity=number) == False:
                 print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Отсутствует расходный материал - смартфон!"))
                 input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
