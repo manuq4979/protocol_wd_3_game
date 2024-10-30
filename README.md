@@ -87,6 +87,8 @@ class:
                 self.installed_contender = arr[7]
 ```
 
+Чтобы привести значения к состоянию по умолчанию для противника, то просто при добавлениинового противника нажмите enter.
+
 Пример противника: NPC_ID:
 ```Python
 bot_HP=100_armor=200_damage=100_strong=3_critical-dmg=45_drop-trophy:gun_damage=100
