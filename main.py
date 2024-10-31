@@ -91,7 +91,7 @@ while(True):
     if text == "9":
         currency2ETO_menu()
     if text == "10":
-        from se_application import application_menu
+        from se_applications import application_menu
         from player_profile import Profile
         prof = Profile.get_instance()
         application_menu(prof, open_via_smartphone=True)
