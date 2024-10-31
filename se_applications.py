@@ -330,7 +330,19 @@ def check_input(input_text):
             return False
         return index
 
-def application_menu(prof):
+def application_menu(prof, open_via_smartphone=False):
+    open_menu = False
+    if open_via_smartphone:
+        inventory = prof.get_tools_id()
+        for tool_id, price in inventory.items():
+            if tool_id.find("smartphone_smart_electronics=1") != -1:
+                open_menu = True
+    if open_menu == False:
+        print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("У вас нет смартфона для быстрого доступа в это меню!"))
+        input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+        print("\n" * 100)
+        return
+        
     while True:
         print("\n#######################################################\n\n\n\n\n\n")
         print("У вас расходников: "+str(counter_consumables(prof))+" штук.")
