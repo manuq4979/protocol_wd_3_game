@@ -150,11 +150,11 @@ def id_compile():
                  "CP="+connection_port+"_"+
                  "UI="+user_interface+"_"+
                  "CP2="+control_panel+"_"+
-                 "VS="+valuation_storage+"_"+
                  "W="+write+"_"+
                  "R="+read+"+"+
                  "S;"+storage+"+"+
-                 "AAD;"+access_algorithm_dict)
+                 "AAD;"+access_algorithm_dict+"_"+
+                 "VS="+valuation_storage)
 
         print_tool_id(SE_ID)
 
