@@ -30,11 +30,14 @@ def use_consumables(prof, quantity=1): # Если расходный матер�
     arr = counter_consumables(prof, get_consumables=True)
     count = arr[0]
     consumables_array = arr[1]
-    if count != quantity:
+    if count < quantity:
         return False
     
     for consumables in consumables_array:
+        if quantity != 0:
+            return True
         prof.del_tools_id(consumables)
+        quantity -= 1
     return True
 
 
