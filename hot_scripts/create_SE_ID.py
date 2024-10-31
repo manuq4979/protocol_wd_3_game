@@ -136,10 +136,11 @@ def id_compile():
                 print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
                 input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
                 continue
-            elif int(valuation_storage) > 0 or int(valuation_storage) > 5:
+            elif int(valuation_storage) < 0 or int(valuation_storage) > 5:
                 print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы лишь значения в диапозоне от 0 до 5!"))
                 input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
                 continue
+            break
 
         SE_ID = (name+"_"+
                  "NI="+network_interface+"_"+
