@@ -407,6 +407,7 @@ def set_npc_as_target():
 
 
 def get_OS_menu():
+        
     se = Smart_Electronics.get_instance()
 
     while True:
