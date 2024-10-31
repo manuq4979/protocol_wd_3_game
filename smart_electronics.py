@@ -154,7 +154,8 @@ class Smart_Electronics:
         else:
             print("\033[32m{}".format("[Хранилище]: ")+"\033[0m{}".format("***************"))
             print("\033[32m{}".format("[Цели имеющие доступ к устройству]: ")+"\033[0m{}".format("***************"))
-        print("\n")
+        print("\033[32m{}".format("[Оценка ценности хранилища]: ")+"\033[0m{}".format(str(self.valuation_storage))+" из 5.")
+								print("\n")
         
         connection = True
         return connection
