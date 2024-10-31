@@ -17,8 +17,7 @@ def counter_consumables(prof, get_consumables=False):
             consumables_array.append(tool_id) # добавлчем для начала в массив, если в инвентаре насчитается нужное кол-во необходимых расходников, тогда они будут все удалены - использованы позже
     
     count = len(consumables_array)
-    if count == 0:
-        count = 1
+
     if get_consumables != False:
         return [count, consumables_array]
     return count
