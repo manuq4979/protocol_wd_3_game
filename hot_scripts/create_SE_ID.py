@@ -129,6 +129,12 @@ def id_compile():
                         break
                 storage += res + ";"
                 i += 1
+                
+        valuation_storage = input("\n[Оцените ценность наград в хранилище(от 0 до 5]:\n-> ")
+        if valuation_storage.isdigit() == False:
+                return
+        elif int(valuation_storage) > 0 or int(valuation_storage) > 5:
+                return
 
         SE_ID = (name+"_"+
                  "NI="+network_interface+"_"+
@@ -139,6 +145,7 @@ def id_compile():
                  "CP="+connection_port+"_"+
                  "UI="+user_interface+"_"+
                  "CP2="+control_panel+"_"+
+                 "VS="+valuation_storage+"_"+
                  "W="+write+"_"+
                  "R="+read+"+"+
                  "S;"+storage+"+"+
