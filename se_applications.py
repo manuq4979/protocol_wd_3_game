@@ -196,7 +196,10 @@ def get_ability_to_flash_firmware(prof):
                 continue
                 
             if use_consumables(prof, quantity=number) == False:
-                print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Отсутствует расходный материал - смартфон!"))
+                if number == 1:
+                    print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Отсутствует расходный материал - смартфон!"))
+                else:
+                    print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Не достаточно расходного материала - смартфонов!"))
                 input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
                 print("\n" * 100) # очищаем экран консоли
                 continue
