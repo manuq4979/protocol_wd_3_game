@@ -53,7 +53,7 @@ def get_smart_electronics_menu():
     inventory = prof.get_tools_id()
     computer = False # изначально буем считать что компьютера нет
     for tool_id, price in inventory.items():
-        if tool_id.find("smart_electronics") != -1:
+        if tool_id.find("laptop-base_smart_electronics=1") != -1:
             computer = True # Значит есть
             
     poit_of_entry(computer, prof)
