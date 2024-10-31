@@ -34,7 +34,7 @@ def use_consumables(prof, quantity=1): # Если расходный матер�
         return False
     
     for consumables in consumables_array:
-        if quantity != 0:
+        if quantity == 0:
             return True
         prof.del_tools_id(consumables)
         quantity -= 1
