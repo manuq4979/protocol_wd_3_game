@@ -8,7 +8,7 @@ import random
 
 def counter_consumables(prof, get_consumables=False):
     inventory = prof.get_tools_id()
-    consumables_array
+    consumables_array = []
     for tool_id, price in inventory.items():
         if tool_id.find("smartphone_consumables") != -1:
             consumables_array.append(tool_id) # добавлчем для начала в массив, если в инвентаре насчитается нужное кол-во необходимых расходников, тогда они будут все удалены - использованы позже
