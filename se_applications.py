@@ -13,9 +13,12 @@ def counter_consumables(prof, get_consumables=False):
         if tool_id.find("smartphone_consumables") != -1:
             consumables_array.append(tool_id) # добавлчем для начала в массив, если в инвентаре насчитается нужное кол-во необходимых расходников, тогда они будут все удалены - использованы позже
     
+    count = len(consumables_array)
+    if count == 0:
+        count = 1
     if get_consumables != False:
-        return [len(consumables_array), consumables_array]
-    return len(consumables_array)
+        return [count, consumables_array]
+    return count
 
 def use_consumables(prof, quantity=1): # Если расходный материал успешно использован вернет True иначе False:
     inventory = prof.get_tools_id()
