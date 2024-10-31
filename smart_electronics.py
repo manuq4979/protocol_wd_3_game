@@ -218,6 +218,7 @@ def apply_to_characteristics_SE(char_line):
     
     se.set_access_algorithm_dict(access_algorithm_dict)
     se.set_storage(storage)
+    se.valuation_storage = int(char_line[-1])
     
     print("\033[32m{}".format("\n[INFO]: ")+"\033[0m{}".format("Характеристики успешно пременены к классу SE!"))
 
