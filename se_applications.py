@@ -6,20 +6,28 @@ import random
 
 ###
 
+def counter_consumables(prof, get_consumables=False):
+    inventory = prof.get_tools_id()
+    consumables_array
+    for tool_id, price in inventory.items():
+        if tool_id.find("smartphone_consumables") != -1:
+            consumables_array.append(tool_id) # добавлчем для начала в массив, если в инвентаре насчитается нужное кол-во необходимых расходников, тогда они будут все удалены - использованы позже
+    
+    if get_consumables != False:
+        return [len(consumables_array), consumables_array]
+    return len(consumables_array)
 
 def use_consumables(prof, quantity=1): # Если расходный материал успешно использован вернет True иначе False:
     inventory = prof.get_tools_id()
     flag = False
+    consumables_array = []
     # подсчитываем есть ли в инвентаре нужное кол-во расхолников
-    while quantity > 0:
-        for tool_id, price in inventory.items():
-            if tool_id.find("smartphone_consumables") != -1:
-                consumables_array.append(tool_id) # добавлчем для начала в массив, если в инвентаре насчитается нужное кол-во необходимых расходников, тогда они будут все удалены - использованы позже
-                flag = True
-        if flag == False: # если после первого прохожения по инвентарю не будет найден расхожник то:
-            return flag
-        quantity -= 1
-        flag = False # если расходник был найден, то при новом обороте также будет икаться расходник и если он не будет найден, то также False
+    arr = counter_consumables(prof, get_consumables=True)
+    count = arr[0]
+    consumables_array = arr[1]
+    if count = != quantity:
+        return False
+    
     for consumables in consumables_array:
         prof.del_tools_id(consumables)
     return True
@@ -312,6 +320,7 @@ def check_input(input_text):
 def application_menu(prof):
     while True:
         print("\n#######################################################\n")
+        print("У вас расходников: "+str(counter_consumables(prof))+" штук.")
         print("Menu: ----------------------")
         get_applications_and_print()
         print("[0]: Выход.")
