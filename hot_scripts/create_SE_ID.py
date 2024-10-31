@@ -130,11 +130,16 @@ def id_compile():
                 storage += res + ";"
                 i += 1
                 
-        valuation_storage = input("\n[Оцените ценность наград в хранилище(от 0 до 5]:\n-> ")
-        if valuation_storage.isdigit() == False:
-                return
-        elif int(valuation_storage) > 0 or int(valuation_storage) > 5:
-                return
+        while True:
+            valuation_storage = input("\n[Оцените ценность наград в хранилище(от 0 до 5]:\n-> ")
+            if valuation_storage.isdigit() == False:
+                print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
+                input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+                continue
+            elif int(valuation_storage) > 0 or int(valuation_storage) > 5:
+                print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы лишь значения в диапозоне от 0 до 5!"))
+                input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+                continue
 
         SE_ID = (name+"_"+
                  "NI="+network_interface+"_"+
