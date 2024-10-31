@@ -1,4 +1,7 @@
 import random
+from smart_electronics import PS1
+
+
 
 ###
 
@@ -331,7 +334,7 @@ def application_menu(prof):
         print("[0]: Выход.")
         print("\n#######################################################\n")
         
-        index = input("APP-MENU:~# ")
+        index = input(PS1)
         print("\n" * 100) # очищаем экран консоли
     
         index = index.replace(" ", "")
