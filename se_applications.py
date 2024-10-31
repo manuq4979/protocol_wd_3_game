@@ -319,9 +319,9 @@ def check_input(input_text):
 
 def application_menu(prof):
     while True:
-        print("\n#######################################################\n")
+        print("\n#######################################################\n\n\n\n\n\n")
         print("У вас расходников: "+str(counter_consumables(prof))+" штук.")
-        print("Menu: ----------------------")
+        print("\n\n\nMenu: ----------------------")
         get_applications_and_print()
         print("[0]: Выход.")
         print("\n#######################################################\n")
