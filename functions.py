@@ -322,18 +322,7 @@ def hot_key_inventory(text, prof):
     
     return [inventory_menu_item, tool_id]
 
-def add_menu_item_to_inventory_menu(menu_item, menu_func, item_index, text):
-    if menu_item != None and menu_func != None:
-        item_index = str(item_index)
-        print("["+item_index+"]: "+menu_item)
-        if text == item_index:
-            menu_func()
-
-def get_inventory(menu_item=None, menu_func=None):
-    
-    prof = Profile.get_instance()
-    tools = prof.get_tools_id()
-    while True:
+def get_inventory_interface(prof, other_menu=None):
         print("\n#######################################################\n")
         print("\033[32m{}".format("Inventory:")+"\033[0m{}".format("\n"))
         index = 0
@@ -353,12 +342,21 @@ def get_inventory(menu_item=None, menu_func=None):
         if index == 0:
             prof.set_slots_occupied(0)
         print("\nMenu: ----------------------")
-        print("[1]: Экипировать")
-        print("[2]: Снять предмет")
-        add_menu_item_to_inventory_menu(menu_item, menu_func, item_index=3, text)
-        print("[0]: Назад.")
+        if other_menu == None:
+            print("[1]: Экипировать")
+            print("[2]: Снять предмет")
+            print("[0]: Назад.")
+        else:
+            other_menu()
         print("\n#######################################################\n")
         
+
+def get_inventory():
+    
+    prof = Profile.get_instance()
+    tools = prof.get_tools_id()
+    while True:
+        get_inventory_interface(prof)
 
         text = input("> ")
         print("\n" * 100) # очищаем экран консоли
