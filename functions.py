@@ -323,6 +323,7 @@ def hot_key_inventory(text, prof):
     return [inventory_menu_item, tool_id]
 
 def get_inventory_interface(prof, other_menu=None):
+        tools = prof.get_tools_id()
         print("\n#######################################################\n")
         print("\033[32m{}".format("Inventory:")+"\033[0m{}".format("\n"))
         index = 0
@@ -354,7 +355,7 @@ def get_inventory_interface(prof, other_menu=None):
 def get_inventory():
     
     prof = Profile.get_instance()
-    tools = prof.get_tools_id()
+
     while True:
         get_inventory_interface(prof)
 
