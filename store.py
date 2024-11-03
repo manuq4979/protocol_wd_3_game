@@ -64,7 +64,7 @@ def hot_key(text, prof):
     return [store_menu_item, tool_id]
 
 def menu_for_buy_reload_tool():
-    print("[1]: Индекс(1<INDEX>).")
+    print("[1]: Индекс предмета для перезарядки(1<INDEX>).")
     print("[0]: Назад.")
 
 def buy_reload_tool(prof, buy):
@@ -126,6 +126,7 @@ def buy_reload_tool(prof, buy):
                     if str(charge).isdigit() == False:
                             print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
                             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+                            print("\n" * 100) # очищаем экран консоли
                             break
                     price = int(charge/100)*50 # каждые 100 - это 50
                     if buy("no tool", no_add_to_inventory=True, service_price=price) == False:
