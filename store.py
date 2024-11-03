@@ -148,7 +148,7 @@ def buy_reload_tool(prof, buy):
                             return
                     charge = int(charge/100)*100    # если ввести 453 - то будет округлено до 400, потому что продаётся лишь по 100 зарядов.
                     result[i][1] = str(charge)
-                new_tool = ""
+                    
                 try:
                     new_tool += result[i][0]+"="+result[i][1]+"_"
                 except:
