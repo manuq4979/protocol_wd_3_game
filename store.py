@@ -85,6 +85,7 @@ def buy_reload_tool(prof, buy):
             print("\n" * 100) # очищаем экран консоли
             get_inventory()
             print("\n" * 100) # очищаем экран консоли
+            continue
         index = index[1:]
         print("\n" * 100) # очищаем экран консоли
     	
