@@ -63,16 +63,21 @@ def hot_key(text, prof):
     
     return [store_menu_item, tool_id]
 
+def menu_for_buy_reload_tool():
+    print("[1]: Индекс(1<INDEX>).")
+    print("[0]: Назад.")
 
 def buy_reload_tool(prof, buy):
     charge = 0
     my_tool_id = ""
     my_price = 0
     inventory = list(prof.get_tools_id().keys())
-	    
-    index = input("index> ")
-    from functions import get_inventory
-    get_inventory(menu_item="индекс предмета, menu_func=)
+
+    from functions import get_inventory_interface
+    get_inventory_interface(prof, other_menu=menu_for_buy_reload_tool)
+
+    index = input("> ")
+    index = index[1:]
     print("\n" * 100) # очищаем экран консоли
 	
     if str(index).isdigit() == False:
