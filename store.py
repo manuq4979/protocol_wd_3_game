@@ -73,70 +73,74 @@ def buy_reload_tool(prof, buy):
     my_price = 0
     inventory = list(prof.get_tools_id().keys())
 
-    from functions import get_inventory_interface
-    get_inventory_interface(prof, other_menu=menu_for_buy_reload_tool)
-
-    index = input("> ")
-    index = index[1:]
-    print("\n" * 100) # очищаем экран консоли
-	
-    if str(index).isdigit() == False:
-        print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
-        input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+    while True:
+        from functions import get_inventory_interface
+        get_inventory_interface(prof, other_menu=menu_for_buy_reload_tool)
+    
+        index = input("> ")
+        if index == "0":
+            return
+        index = index[1:]
         print("\n" * 100) # очищаем экран консоли
-        return    
-    index = int(index)
-    size = len(prof.get_tools_id())
-    try:
-            char_line = inventory[index-1]
-    except IndexError:
-            print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Инструмента не может быть по данному индексу!"))
+    	
+        if str(index).isdigit() == False:
+            print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             print("\n" * 100) # очищаем экран консоли
-            return
-    my_tool_id = char_line
-    my_price = prof.get_tools_id()[my_tool_id]
-	
-    if char_line.find("recharge") != -1:
-            res = char_line.find("recharge")
-            recharge = char_line[res:]
-            recharge = recharge.split(":")
-            return recharge
-    
-    chars = char_line.split("_")
-    name = chars[0]
-    chars.remove(name)
-    result = []
-    result.append(name)
-    for char in chars:
-            char = char.split("=")
-            result.append(char)
-            
-    new_tool = ""
-    for i in range(len(result)):
-            if i == 0:
-                new_tool += result[i]+"_"
+            continue    
+        index = int(index)
+        size = len(prof.get_tools_id())
+        try:
+                char_line = inventory[index-1]
+        except IndexError:
+                print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Инструмента не может быть по данному индексу!"))
+                input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+                print("\n" * 100) # очищаем экран консоли
                 continue
-            if result[i][0] == "charge":
-                charge = int(result[i][1])
-                charge += int(input("charge> "))
-                if str(charge).isdigit() == False:
-                        print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
-                        input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
-                        break
-                price = int(charge/100)*50 # каждые 100 - это 50
-                if buy("no tool", no_add_to_inventory=True, service_price=price) == False:
-                        print("\033[31m{}".format("[ERROR]:")+"\033[0m{}".format("Отменено!"))
-                        return
-                charge = int(charge/100)*100    # если ввести 453 - то будет округлено до 400, потому что продаётся лишь по 100 зарядов.
-                result[i][1] = str(charge)
-            new_tool += result[i][0]+"="+result[i][1]+"_"
-    prof.del_tools_id(my_tool_id)
-    new_tool = new_tool[0:-1]
-    prof.add_tools_id(new_tool, my_price)
-    print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Готово!"))
-    input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
-    print("\n" * 100) # очищаем экран консоли
+        my_tool_id = char_line
+        my_price = prof.get_tools_id()[my_tool_id]
+    	
+        if char_line.find("recharge") != -1:
+                res = char_line.find("recharge")
+                recharge = char_line[res:]
+                recharge = recharge.split(":")
+                return recharge
+        
+        chars = char_line.split("_")
+        name = chars[0]
+        chars.remove(name)
+        result = []
+        result.append(name)
+        for char in chars:
+                char = char.split("=")
+                result.append(char)
+                
+        new_tool = ""
+        for i in range(len(result)):
+                if i == 0:
+                    new_tool += result[i]+"_"
+                    continue
+                if result[i][0] == "charge":
+                    charge = int(result[i][1])
+                    charge += int(input("charge> "))
+                    if str(charge).isdigit() == False:
+                            print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
+                            input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+                            break
+                    price = int(charge/100)*50 # каждые 100 - это 50
+                    if buy("no tool", no_add_to_inventory=True, service_price=price) == False:
+                            print("\033[31m{}".format("[ERROR]:")+"\033[0m{}".format("Отменено!"))
+                            return
+                    charge = int(charge/100)*100    # если ввести 453 - то будет округлено до 400, потому что продаётся лишь по 100 зарядов.
+                    result[i][1] = str(charge)
+                new_tool += result[i][0]+"="+result[i][1]+"_"
+        prof.del_tools_id(my_tool_id)
+        new_tool = new_tool[0:-1]
+        prof.add_tools_id(new_tool, my_price)
+        print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Готово!"))
+        input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+        print("\n" * 100) # очищаем экран консоли
+        return
 
 
 def transfer_ETO_to_storage(prof):
