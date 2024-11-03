@@ -87,7 +87,7 @@ def buy_reload_tool(prof, buy):
             print("\n" * 100) # очищаем экран консоли
             continue
         index = index[1:]
-        print("\n" * 100) # очищаем экран консоли
+        # print("\n" * 100) # очищаем экран консоли
     	
         if str(index).isdigit() == False:
             print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
@@ -140,7 +140,14 @@ def buy_reload_tool(prof, buy):
                             return
                     charge = int(charge/100)*100    # если ввести 453 - то будет округлено до 400, потому что продаётся лишь по 100 зарядов.
                     result[i][1] = str(charge)
-                new_tool += result[i][0]+"="+result[i][1]+"_"
+                new_tool = ""
+                try:
+                    new_tool += result[i][0]+"="+result[i][1]+"_"
+                except:
+                    print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Вероятно вашь предмет не имеет функции перезарядки!"))
+                    input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+                    print("\n" * 100) # очищаем экран консоли
+                    continue
         prof.del_tools_id(my_tool_id)
         new_tool = new_tool[0:-1]
         prof.add_tools_id(new_tool, my_price)
