@@ -70,6 +70,7 @@ def menu_for_buy_reload_tool():
 
 def buy_reload_tool(prof, buy):
     while True:
+        error_log = False
         charge = 0
         my_tool_id = ""
         my_price = 0
@@ -134,6 +135,7 @@ def buy_reload_tool(prof, buy):
                             print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Допустимы лишь числовые значения!"))
                             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
                             print("\n" * 100) # очищаем экран консоли
+                            error_log = True
                             break
                     charge += int(charge_input)
                     price = int(charge/100)*50 # каждые 100 - это 50
@@ -149,7 +151,10 @@ def buy_reload_tool(prof, buy):
                     print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Вероятно вашь предмет не имеет функции перезарядки!"))
                     input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
                     print("\n" * 100) # очищаем экран консоли
-                    continue
+                    error_log = True
+                    break
+        if error_log == True:
+            continue
         prof.del_tools_id(my_tool_id)
         new_tool = new_tool[0:-1]
         prof.add_tools_id(new_tool, my_price)
