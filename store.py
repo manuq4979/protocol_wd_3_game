@@ -65,6 +65,7 @@ def hot_key(text, prof):
 
 def menu_for_buy_reload_tool():
     print("[1]: Индекс предмета для перезарядки(1<INDEX>).")
+    print("[2]: Меню инвенторя.")
     print("[0]: Назад.")
 
 def buy_reload_tool(prof, buy):
@@ -74,12 +75,16 @@ def buy_reload_tool(prof, buy):
     inventory = list(prof.get_tools_id().keys())
 
     while True:
-        from functions import get_inventory_interface
+        from functions import get_inventory_interface, get_inventory
         get_inventory_interface(prof, other_menu=menu_for_buy_reload_tool)
     
         index = input("> ")
         if index == "0":
             return
+        if index == "2":
+            print("\n" * 100) # очищаем экран консоли
+            get_inventory()
+            print("\n" * 100) # очищаем экран консоли
         index = index[1:]
         print("\n" * 100) # очищаем экран консоли
     	
