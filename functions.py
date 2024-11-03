@@ -322,7 +322,14 @@ def hot_key_inventory(text, prof):
     
     return [inventory_menu_item, tool_id]
 
-def get_inventory():
+def add_menu_item_to_inventory_menu(menu_item, menu_func, item_index, text):
+    if menu_item != None and menu_func != None:
+        item_index = str(item_index)
+        print("["+item_index+"]: "+menu_item)
+        if text == item_index:
+            menu_func()
+
+def get_inventory(menu_item=None, menu_func=None):
     
     prof = Profile.get_instance()
     tools = prof.get_tools_id()
@@ -346,9 +353,10 @@ def get_inventory():
         if index == 0:
             prof.set_slots_occupied(0)
         print("\nMenu: ----------------------")
-        print("1. Экипировать")
-        print("2. Снять предмет")
-        print("0. Назад.")
+        print("[1]: Экипировать")
+        print("[2]: Снять предмет")
+        add_menu_item_to_inventory_menu(menu_item, menu_func, item_index=3, text)
+        print("[0]: Назад.")
         print("\n#######################################################\n")
         
 
