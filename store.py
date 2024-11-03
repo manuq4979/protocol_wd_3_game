@@ -71,6 +71,8 @@ def buy_reload_tool(prof, buy):
     inventory = list(prof.get_tools_id().keys())
 	    
     index = input("index> ")
+    from functions import get_inventory
+    get_inventory(menu_item="индекс предмета, menu_func=)
     print("\n" * 100) # очищаем экран консоли
 	
     if str(index).isdigit() == False:
