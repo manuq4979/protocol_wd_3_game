@@ -69,12 +69,12 @@ def menu_for_buy_reload_tool():
     print("[0]: Назад.")
 
 def buy_reload_tool(prof, buy):
-    charge = 0
-    my_tool_id = ""
-    my_price = 0
-    inventory = list(prof.get_tools_id().keys())
-
     while True:
+        charge = 0
+        my_tool_id = ""
+        my_price = 0
+        inventory = list(prof.get_tools_id().keys())
+        
         from functions import get_inventory_interface, get_inventory
         get_inventory_interface(prof, other_menu=menu_for_buy_reload_tool)
     
