@@ -116,7 +116,7 @@ def this_is_the_last_page(pages, index):
 def print_pages(task_list, index):
 	pages = get_pages(task_list, chunk_size=3, flag_del_no_active_task=False)
 	for page in pages:
-		for i in range(3):
+		for i in range(len(page)):
 				print(page[i].get_title())
 	last_page = this_is_the_last_page(pages, index) # проверяем последния ли это страница или нет
 	counter_task = 0
