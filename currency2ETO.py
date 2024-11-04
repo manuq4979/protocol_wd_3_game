@@ -74,7 +74,7 @@ def add_new_task():
 		config[1][ID] = tatal_reward
 		save_single_task()
 		save_config_currecy2ETO()
-		print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Новое задание добавлено !"))
+		print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Новое задание добавлено!"))
 		input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
 		print("\n" * 100) # очищаем экран консоли
 
