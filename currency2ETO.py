@@ -124,6 +124,7 @@ def print_pages(task_list, index):
 			if task.get_status() == STATUS:# Не активные задания не будут отображены!
 				print(task.get_title())
 				print(task.get_description())
+				print("\n")
 				counter_task += 1
 
 	if counter_task == 0 and index == 0: # если первая страница не содержит заданий этого статуса, то логично что нет заданий ещё:
