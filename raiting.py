@@ -99,7 +99,7 @@ def is_rank_text(enter):
     points = read_rank()
     points = enter + points
 
-      
+    print(enter)
     if(enter == 1000):
         # print("Текущий ранг: "+arr_newbie[0]+" "+dict_numbers[4])
         var_next_position_rank = 1201
