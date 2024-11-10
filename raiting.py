@@ -85,7 +85,7 @@ def is_rank_text(enter):
     arr_professional = [professional, 3001, 3301, 3601, 3901, 4201, 4500]
     arr_master = [master, 4501, 4901, 5301, 5701, 6101, 6500]
     arr_grant_master = [grant_master, 6501, 6801, 7101, 7401, 7701, 8000]
-    arr_ligend = [ligend, 8001, 0, 0, 0, 0, 8002]
+    arr_ligend = [ligend, 8001, 0, 0, 0, 0, 999999999999]
 
     array_ranks = [arr_newbie, arr_veteran, arr_elite, arr_professional, arr_master, arr_grant_master, arr_ligend]
 
@@ -99,7 +99,6 @@ def is_rank_text(enter):
     points = read_rank()
     points = enter + points
 
-    print(enter)
     if(enter == 1000):
         # print("Текущий ранг: "+arr_newbie[0]+" "+dict_numbers[4])
         var_next_position_rank = 1201
@@ -122,7 +121,6 @@ def is_rank_text(enter):
   
     for arr_rank in array_ranks:
         for lvl in range(5):
-            print(enter in range(arr_rank[lvl+1], arr_rank[lvl+2]))
             if enter in range(arr_rank[lvl+1], arr_rank[lvl+2]):
             
                 rank_lvl = lvl+1
