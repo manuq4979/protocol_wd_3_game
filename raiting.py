@@ -115,13 +115,14 @@ def is_rank_text(enter):
     if(enter == 6500):
         var_next_position_rank = 6801
         return [arr_master[0], dict_numbers[4], var_next_position_rank]
-    if(enter >= 8000):
+    if(enter == 8000):
         var_next_position_rank = 10000
         return [arr_grant_master[0], dict_numbers[4], var_next_position_rank]
         
   
     for arr_rank in array_ranks:
         for lvl in range(5):
+            print(enter in range(arr_rank[lvl+1], arr_rank[lvl+2]))
             if enter in range(arr_rank[lvl+1], arr_rank[lvl+2]):
             
                 rank_lvl = lvl+1
