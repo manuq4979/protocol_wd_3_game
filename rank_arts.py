@@ -221,6 +221,7 @@ rank_art_dict = {
 
 
 def print_rank_art(rank_array):
+	print(rank_array)
 	rank_name 	   = rank_array[0]
 	rank_lvl  	   = rank_array[1]
 	next_position_rank = rank_array[2]
