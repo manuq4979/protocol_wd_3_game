@@ -115,7 +115,7 @@ def is_rank_text(enter):
     if(enter == 6500):
         var_next_position_rank = 6801
         return [arr_master[0], dict_numbers[4], var_next_position_rank]
-    if(enter == 8000):
+    if(enter >= 8000):
         var_next_position_rank = 10000
         return [arr_grant_master[0], dict_numbers[4], var_next_position_rank]
         
