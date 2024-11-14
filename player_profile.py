@@ -184,9 +184,9 @@ class Profile:
             ch = tool.split("_")
             for e in ch:
                 if "critical-dmg" in e:
-                    crit_dmg = e.split("=")[1]
+                    crit_dmg = int(e.split("=")[1])
             
-            if max_crit_dmg < int(crit_dmg):
+            if max_crit_dmg < crit_dmg:
                 max_crit_dmg = crit_dmg
         return max_crit_dmg
     
