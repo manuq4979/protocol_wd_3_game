@@ -175,9 +175,20 @@ class Profile:
             damage = 0
         self.damage = damage
         return 0
-    
+        
+    # теперь выдает максимальное значение крит дамага из всех экипированных предметов:
     def get_critical_dmg(self):
-        return self.critical_dmg
+        max_crit_dmg = 0
+        for tool, price in self.keep_tool.items():
+            crit_dmg = 0
+            ch = tool.split("_")
+            for e in ch:
+                if "critical-dmg" in e:
+                    crit_dmg = e.split("=")[1]
+            
+            if max_crit_dmg < crit_dmg:
+                max_crit_dmg = crit_dmg
+        return max_crit_dmg
     
     def set_critical_dmg(self, critical_dmg):
         critical_dmg = int(critical_dmg)
