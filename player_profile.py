@@ -191,15 +191,7 @@ class Profile:
         return max_crit_dmg
     
     def set_critical_dmg(self, critical_dmg):
-        critical_dmg = int(critical_dmg)
-        if critical_dmg < 0:
-            critical_dmg = 3
-        if critical_dmg <= 45:              # максимальный крит урон равен 45%
-            self.critical_dmg = self.get_critical_dmg()
-        else:
-            critical_dmg = 45
-            print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("У игрока как и у NPC, крит урон не может привышать 45%!\nДанное условие было нарушено - значение крит крона игрока установленов в 45%!"))
-        return 1
+        self.critical_dmg = self.get_critical_dmg()
     
     def get_ETO(self):
         return self.ETO
