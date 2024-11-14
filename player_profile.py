@@ -180,8 +180,6 @@ class Profile:
         return self.critical_dmg
     
     def set_critical_dmg(self, critical_dmg):
-        if self.critical_dmg > critical_dmg:
-            return
         critical_dmg = int(critical_dmg)
         if critical_dmg < 0:
             critical_dmg = 3
