@@ -328,7 +328,7 @@ def get_inventory_interface(prof, other_menu=None):
         print("\033[32m{}".format("Ваши характеристики:")+"\033[0m{}".format(""))
         prof.get_profile()
         print("\n")
-        print("\033[32m{}".format("Инвентарь:")+"\033[0m{}".format("\n"))
+        print("\033[32m{}".format("Инвентарь:")+"\033[0m{}".format(" -----------------\n"))
         index = 0
         for tool, price in tools.items():
             index += 1
