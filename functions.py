@@ -75,7 +75,9 @@ def del_product_menu():
             break
             
         if text == "all":
-            store
+            del_all_items_of_store()
+            print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Все предметы магазина были удалены если они были!"))
+            continue
         
         try:
             text = hot_key(str(1)+text, prof) # ожидается что вернет [item_menu, tool_id] или False в случае провала операции
