@@ -397,3 +397,8 @@ def del_product(tool_id):
     del store[tool_id]
     save_data_store(store_ETO=0, save_only_store=True)
     print("\033[32m{}".format("[INFO]:")+"\033[0m{}".format("Предмет удален!\n\n"))
+
+def del_all_items_of_store():
+    with open("DataApp/store.txt", "w+", encoding="utf-8") as file:
+        json_string = json.dumps([{}, 0])
+        file.write(json_string)
