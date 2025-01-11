@@ -72,22 +72,26 @@ def del_product_menu():
         print("\n#######################################################\n")
         
         text = input("del> ")
+        print("\n" * 100) # очищаем экран консоли
         
         if text == "q":
             break
             
         if text == "all":
             del_all_items_of_store()
+            print("\n" * 100) # очищаем экран консоли
             print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Все предметы магазина были удалены если они были!"))
             continue
         
         try:
             text = hot_key(str(1)+text, prof) # ожидается что вернет [item_menu, tool_id] или False в случае провала операции
         except IndexError:
+            print("\n" * 100) # очищаем экран консоли
             print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("не верный индекс!"))
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
 
         if text == False:
+            print("\n" * 100) # очищаем экран консоли
             continue
         
         tool_id = text[1]
@@ -121,6 +125,7 @@ def get_menu_developer():
         if number == "2":
             del_product_menu()
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+            print("\n" * 100) # очищаем экран консоли
             continue
         if number == "3":
             ETO = input("ETO> ")
