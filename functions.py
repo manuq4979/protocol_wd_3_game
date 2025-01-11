@@ -61,6 +61,8 @@ def get_smart_electronics_menu():
 def del_product_menu():
     while True:
         print("\n#######################################################\n")
+        print_store_interface()
+        
         
         print("\n#######################################################\n")
         
