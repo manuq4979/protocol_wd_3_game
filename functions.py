@@ -68,7 +68,16 @@ def del_product_menu():
         print("[2: all удалить всё]")
         print("\n#######################################################\n")
         
-        tool_id = input("del> ")
+        text = input("del> ")
+        
+        try:
+            text = hot_key([1, text], prof)
+        except IndexError:
+            print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("не верный индекс!"))
+            input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+
+        if text == False:
+            continue
         
         del_product(tool_id)
         
