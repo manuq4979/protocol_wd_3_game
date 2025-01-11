@@ -89,6 +89,7 @@ def del_product_menu():
             print("\n" * 100) # очищаем экран консоли
             print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("не верный индекс!"))
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
+            continue
 
         if text == False:
             print("\n" * 100) # очищаем экран консоли
