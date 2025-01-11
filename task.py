@@ -669,6 +669,7 @@ def get_menu_task(title_menu, task_dict, add_task, del_task, habit_menu=False):
                             print("[Серия]: "+str(task.get_series_point()))
                        print(task.get_title())
                        print(task.get_description())
+                       print("\n") # чтобы тоже меню привычек имело вид отдельных заднаний а нн монолитного текста без блоков
         except IndexError:
             print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Больше нет страниц!"))
         print("\nmenu -----------")
