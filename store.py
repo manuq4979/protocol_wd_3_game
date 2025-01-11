@@ -289,7 +289,7 @@ def buy_consumables(prof):
 # Тут вывод оставить как есть! пока что.  #
 #-----------------------------------------#
 def print_store_interface():
-    from functions import buy, sell, get_inventory, Profile
+    from functions import get_inventory, Profile
     prof = Profile.get_instance()
     
     print("Баланс продовца: "+str(init_store()[1])+" ETO")
