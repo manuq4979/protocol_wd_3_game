@@ -58,7 +58,9 @@ def get_smart_electronics_menu():
             
     poit_of_entry(computer, prof)
 
+
 def del_product_menu():
+    prof = Profile.get_instance()
     while True:
         print("\n#######################################################\n")
         print_store_interface()
