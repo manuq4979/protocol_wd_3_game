@@ -21,8 +21,8 @@ class Profile:
             
                 self.HP = arr[0]                    # 100 по умолчанию
                 self.armor = arr[1]                 # 0 по умолчанию
-                self.strong = arr[2]                # 1 из 15 по умолчанию
-                self.intellect = arr[3]             # 1 из 15 по умолчанию
+                self.strong = arr[2]                # 1 из <бесконечность>, а было из 15 по умолчанию
+                self.intellect = arr[3]             # 1 из <бесконечность>, а было из 15 по умолчанию
                 self.damage = arr[4]                # 30 по умолчанию
                 self.critical_dmg = arr[5]          # 3% шанс по умолчанию, максимум 45%
                 
@@ -153,8 +153,8 @@ class Profile:
         return self.strong
         
     def set_strong(self, strong):
-        if strong > 15:
-            strong = 15
+        #if strong > 15:
+        #    strong = 15
         self.strong = strong
         return 0
     
@@ -162,8 +162,8 @@ class Profile:
         return self.intellect
         
     def set_intellect(self, intellect):
-        if intellect > 15:
-            intellect = 15
+        # if intellect > 15:
+        #    intellect = 15
         self.intellect = intellect
         return 0
     
