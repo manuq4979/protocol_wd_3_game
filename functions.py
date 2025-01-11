@@ -68,13 +68,13 @@ def del_product_menu():
         print("\nMenu: ----------------------")
         print("[1: Введите индекс ]")
         print("[2: all удалить всё]")
-        print("[3: q чтобы выйти. ]")
+        print("[0]: выход.")
         print("\n#######################################################\n")
         
         text = input("del> ")
         print("\n" * 100) # очищаем экран консоли
         
-        if text == "q":
+        if text == "0":
             break
             
         if text == "all":
