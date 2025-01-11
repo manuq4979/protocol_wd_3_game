@@ -63,10 +63,12 @@ def del_product_menu():
         print("\n#######################################################\n")
         print_store_interface()
         
-        
+        print("\nMenu: ----------------------")
+        print("[1: Введите индекс ]")
+        print("[2: all удалить всё]")
         print("\n#######################################################\n")
         
-        tool_id = input("> ")
+        tool_id = input("del> ")
         
         del_product(tool_id)
         
