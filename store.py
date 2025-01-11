@@ -288,24 +288,30 @@ def buy_consumables(prof):
 #-----------------------------------------#
 # Тут вывод оставить как есть! пока что.  #
 #-----------------------------------------#
+def print_store_interface():
+    from functions import buy, sell, get_inventory, Profile
+    prof = Profile.get_instance()
+    
+    print("Баланс продовца: "+str(init_store()[1])+" ETO")
+    print("Вашь баланс: "+str(prof.get_ETO())+" ETO")
+    print("\033[32m{}".format("[Welcom to the Store menu]: ")+"\033[0m{}".format("\n"))
+    index = 0
+    for tool_id, ETO in store.items():
+        index += 1
+        print("["+str(index)+"]: "+"ID: "+str(tool_id) + "\nЦена: "+str(ETO)+" ETO")
+        print("\n")
+        # Элемент дизайна:
+        if len(store) == 0: # если в магазине нет товара, то будет рапечатано:
+            print("\n")
+            print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("В данный момент товаров на продажу нет!\n"))
+
 def get_store():
 
     from functions import buy, sell, get_inventory, Profile
     prof = Profile.get_instance()
     while True:
         print("\n#######################################################\n")
-        print("Баланс продовца: "+str(init_store()[1])+" ETO")
-        print("Вашь баланс: "+str(prof.get_ETO())+" ETO")
-        print("\033[32m{}".format("[Welcom to the Store menu]: ")+"\033[0m{}".format("\n"))
-        index = 0
-        for tool_id, ETO in store.items():
-            index += 1
-            print("["+str(index)+"]: "+"ID: "+str(tool_id) + "\nЦена: "+str(ETO)+" ETO")
-            print("\n")
-        # Элемент дизайна:
-        if len(store) == 0: # если в магазине нет товара, то будет рапечатано:
-            print("\n")
-            print("\033[33m{}".format("[WARNING]: ")+"\033[0m{}".format("В данный момент товаров на продажу нет!\n"))
+        print_store_interface()
         
         print("\nMenu: ----------------------")
         print("[ 1]: Купить")
