@@ -58,6 +58,17 @@ def get_smart_electronics_menu():
             
     poit_of_entry(computer, prof)
 
+def del_product_menu():
+    while True:
+        print("\n#######################################################\n")
+        
+        print("\n#######################################################\n")
+        
+        tool_id = input("> ")
+        
+        del_product(tool_id)
+        
+
 def get_menu_developer():
     while True:
         print("\n#######################################################\n")
@@ -83,7 +94,7 @@ def get_menu_developer():
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             continue
         if number == "2":
-            del_product()
+            del_product_menu()
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
             continue
         if number == "3":
