@@ -71,7 +71,7 @@ def del_product_menu():
         text = input("del> ")
         
         try:
-            text = hot_key([1, text], prof)
+            text = hot_key(str(1)+text, prof)
         except IndexError:
             print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("не верный индекс!"))
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
