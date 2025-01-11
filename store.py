@@ -19,8 +19,8 @@ def init_store():
 
         return [store, store_ETO]
 
-store = init_store()[0]
-store_ETO = init_store()[1]
+store = init_store()[0] # {tool_id: ETO, ...}
+store_ETO = init_store()[1] # Тут сумма которая есть у продавца.
 
 # Сохранить данные модуля в файл:
 def save_data_store(store_ETO, save_only_store=False):
@@ -387,8 +387,7 @@ def add_product():
     save_data_store(store_ETO=0, save_only_store=True)
     print("\033[32m{}".format("[INFO]:")+"\033[0m{}".format("Готово!\n\n"))
     
-def del_product():
-    tool_id = input("tool_id> ")
+def del_product(tool_id):
     del store[tool_id]
     save_data_store(store_ETO=0, save_only_store=True)
     print("\033[32m{}".format("[INFO]:")+"\033[0m{}".format("Предмет удален!\n\n"))
