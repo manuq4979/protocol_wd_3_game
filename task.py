@@ -67,7 +67,7 @@ class Task:
     # Вернет 2 если дата сегодня.
     # Вернет False если ещё рано.
     def check_time(self, activation_time):
-        now_time = time_localization_function.current_time
+        now_time = time_localization_function.current_datetime.date()
         
         if activation_time < now_time:
             return 1
