@@ -112,8 +112,8 @@ class Profile:
             print("\n")
     
     def save_to_history(self, history_line):
-        from datetime import datetime
-        self.history.append(str(datetime.now())+"\n"+history_line)
+        import time_localization_function
+        self.history.append(str(time_localization_function.current_datetime)+"\n"+history_line)
         # print("\033[32m{}".format("[info]:")+"\033[0m{}".format("Готово!\n\n"))
     
     # print history по сути:
