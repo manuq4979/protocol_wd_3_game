@@ -7,7 +7,7 @@ import os
 
 
 def print_current_date():
-    current_date = str(datetime.now())
+    current_date = str(time_localization_function.current_datetime)
     print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Текущая дата и время: ["+current_date+"]."))
 
 
