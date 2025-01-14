@@ -47,15 +47,15 @@ def get_title_and_description(task_class):
 	pass
 
 def get_deadlines(task_class):
-	from datetime import datetime, timedelta
+	import time_localization_function
 
 	if task_class == DAILY or task_class == HABIT:
-		deadlines = datetime.now().date()
+		deadlines = time_localization_function.current_datetime.date()
 		repeat_day = 1
 		# print(deadlines)
 		return [deadlines, repeat_day]
 	if task_class == SINGLE:
-		deadlines = datetime.now().date()
+		deadlines = time_localization_function.current_datetime.date()
 		deadlines = deadlines + timedelta(days=1) # если оставить текущию дату, то окажется что выполнить нужно было ДО: СЕГОДНЯ.
 		# print(deadlines)
 		return deadlines
