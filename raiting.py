@@ -222,9 +222,9 @@ def read_reset_time_of_points_file():
 
 def check_reset_time_of_points():
     global reset_day
-    from datetime import datetime, timedelta
+    import time_localization_function
 
-    current_date = datetime.now().date()
+    current_date = time_localization_function.current_datetime.date()
 
     if os.path.exists("DataApp/reset_time_of_points.txt") == False:
         reset_date  = current_date + timedelta(days=reset_day)
