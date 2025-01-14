@@ -98,7 +98,11 @@ def del_product_menu():
         tool_id = text[1]
         del_product(tool_id)
         
-
+def time_zone_menu():
+    while True:
+        print("\n#######################################################\n")
+        print("Defualt")
+        print("\n#######################################################\n")
 def get_menu_developer():
     while True:
         print("\n#######################################################\n")
@@ -170,6 +174,9 @@ def get_menu_developer():
             continue
         if number == "9":
             del_no_active_task(task_list=[], developer_menu=True)
+            continue
+        if number == "10":
+            time_zone_menu()
             continue
         if number == "0":
             return
