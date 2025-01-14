@@ -19,7 +19,7 @@ else:
     set_time_zone(new_time_zone=MOSCOW)
 
 
-current_time = datetime.now() + timedelta(hours=time_zone)
+current_datetime = datetime.now() + timedelta(hours=time_zone)
 
     
 
