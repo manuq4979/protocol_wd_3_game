@@ -242,10 +242,10 @@ def check_reset_time_of_points():
         input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
 
 def print_reset_point_counter():
-    from datetime import datetime, timedelta
+    import time_localization_function
     reset_date = read_reset_time_of_points_file()
     reset_date = datetime.strptime(reset_date, "%Y-%m-%d").date()
-    current_date = datetime.now().date()
+    current_date = time_localization_function.current_datetime.date()
     str_date_line = reset_date - current_date
     if reset_date == current_date:
         str_date_line = "Дата сброса!"
