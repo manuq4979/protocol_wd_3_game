@@ -795,7 +795,7 @@ def read_entry_rewards_date_file():
          
 def get_entry_rewards():
     entry_reward = 30
-    current_date = datetime.now().date()
+    current_date = time_localization_function.current_datetime.date()
     if os.path.exists("DataApp/entry_rewards_date.txt") == False:
         create_entry_rewards_date_file(current_date)
     entry_rewards_date = read_entry_rewards_date_file()
