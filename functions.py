@@ -106,8 +106,8 @@ def time_zone_menu():
     
     while True:
         print("\n#######################################################\n")
-        print("\033[31m{}".format("> ")+"\033[31m{}".format(str(current_datetime())+"\n")
-        print("[ 1]: " + color1.format("UTC.")+"\033[0m{}".format(""))
+        print("\033[31m{}".format("> ") + "\033[31m{}".format(str(current_datetime()))+"\n")
+        print("[ 1]: " + color1.format("UTC.") + "\033[0m{}".format(""))
         print("[ 2]: " + color2.format("Moscow.") + "\033[0m{}".format(""))
         print("[ 0]: Выход.")
         print("\n#######################################################\n")
