@@ -7,7 +7,7 @@ import os
 
 
 def print_current_date():
-    current_date = str(current_datetime)
+    current_date = str(current_datetime())
     print("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Текущая дата и время: ["+current_date+"]."))
 
 
@@ -67,7 +67,7 @@ class Task:
     # Вернет 2 если дата сегодня.
     # Вернет False если ещё рано.
     def check_time(self, activation_time):
-        now_time = current_datetime.date()
+        now_time = current_datetime().date()
         
         if activation_time < now_time:
             return 1
@@ -301,7 +301,7 @@ class HabitTask(Task):
     # Вернет False если ещё рано.
     def check_reset_time(self):
         # Дни прибавляем к дате, чтобы посмотреть, пора ли уже повторять:
-        current_date = str(current_datetime.date())
+        current_date = str(current_datetime().date())
         # добавляем указанное кол-во дней к дате:
         date = datetime.strptime(current_date, "%Y-%m-%d").date() # Ожидает строку с датой в формате г-м-д !
         res = date + timedelta(days=int(self.activation_time))
@@ -795,7 +795,7 @@ def read_entry_rewards_date_file():
          
 def get_entry_rewards():
     entry_reward = 30
-    current_date = current_datetime.date()
+    current_date = current_datetime().date()
     if os.path.exists("DataApp/entry_rewards_date.txt") == False:
         create_entry_rewards_date_file(current_date)
     entry_rewards_date = read_entry_rewards_date_file()
