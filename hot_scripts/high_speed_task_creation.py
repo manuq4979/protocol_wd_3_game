@@ -30,6 +30,8 @@
 
 После отобразить сообщение и новый метод паузы - input()
 """
+from time_localization_function import *
+
 # single_task_dict
 # habit_task_dict
 # daily_task_dict
@@ -47,7 +49,6 @@ def get_title_and_description(task_class):
 	pass
 
 def get_deadlines(task_class):
-	from time_localization_function import *
 
 	if task_class == DAILY or task_class == HABIT:
 		deadlines = current_datetime.date()
