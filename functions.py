@@ -99,7 +99,7 @@ def del_product_menu():
         del_product(tool_id)
         
 def time_zone_menu():
-    import time_localization_function
+    from time_localization_function import set_time_zone, MOSCOW, UTC
     while True:
         print("\n#######################################################\n")
         print("[ 1]: UTC.")
@@ -108,9 +108,16 @@ def time_zone_menu():
         print("\n#######################################################\n")
         
         number = input("> ")
+
+        if number == "0":
+            return
         
         if number == "1":
-            time_localization_function
+            set_time_zone(UTC)
+            continue
+            
+        if number == "2":
+            set_time_zone(MOSCOW)
             continue
         
 def get_menu_developer():
