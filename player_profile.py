@@ -533,6 +533,10 @@ def get_history():
     if command == "0":
         print("\n" * 100) # очищаем экран консоли
         return
+    if command == "00":
+        from main import main_cycle
+        main_cycle()
+        return
     
     
 def calculate_drop_trophy(npc):
