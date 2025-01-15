@@ -11,13 +11,13 @@ def set_time_zone(new_time_zone: int):
     file.write(str(new_time_zone))
     file.close()
 
-time_zone = 0
+time_zone = None
 if os.path.exists(time_zone_file_path):
     file = open(time_zone_file_path, "r", encoding='utf-8')
     time_zone = int(file.read())
     file.close()
 else:
-    set_time_zone(new_time_zone=MOSCOW)
+    set_time_zone(new_time_zone=UTC)
 
 
 current_datetime = datetime.now() + timedelta(hours=time_zone)
