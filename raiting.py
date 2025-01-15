@@ -241,7 +241,6 @@ def check_reset_time_of_points():
         input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
 
 def print_reset_point_counter():
-    from time_localization_function import *
     reset_date = read_reset_time_of_points_file()
     reset_date = datetime.strptime(reset_date, "%Y-%m-%d").date()
     current_date = current_datetime.date()
