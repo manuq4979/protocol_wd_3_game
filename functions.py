@@ -502,7 +502,7 @@ def check_relevance_task():
         if task.check_repeat_time() == True:
                 task.set_status("Active")            # Делаем задание активным
 
-                this_day = current_datetime.date()
+                this_day = current_datetime().date()
                 task.set_start_date(this_day)        # Устанавливаем новую дату начала - а именно лень активации, потому что если оставить прежний день, то окажется что задание не было выполненно, а было провалено!
                 new_description = "[Повтор]: "+str(this_day)+": "+str(task.get_repeat())
                 task.set_description(new_description)
