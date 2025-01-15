@@ -12,7 +12,7 @@
 """
 
 
-#from datetime import datetime, timedelta
+from time_localization_function import *
 from store import *
 from person import *
 from player_profile import *
@@ -456,7 +456,6 @@ def get_inventory():
    
 # метод только проверяет актуальность задачь и наносит урон игроку за про$бы.
 def check_relevance_task():
-    from time_localization_function import *
     
     # Проверка Одиночных заданий:
     for ID, task in list(single_task_dict.items()):
