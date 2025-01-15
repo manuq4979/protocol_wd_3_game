@@ -1,5 +1,5 @@
 import profile_wd
-# import functions
+import functions
 from person import NPC
 from raiting import check_reset_time_of_points, print_reset_point_counter, print_status
 from hot_scripts.high_speed_task_creation import redirecting_input
@@ -35,7 +35,6 @@ def print_NPC():
 
 
 while(True):
-    import functions
     functions.check_charge(prof="add_auto", only_check_charge=True) # модуль functions импортирует весь player_profile
     check_time_to_disable_camouflage() # из модуля hacker_apps, как правило используется на пользу противнику
     if menu_line == True:
