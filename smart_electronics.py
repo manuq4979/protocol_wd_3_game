@@ -435,6 +435,10 @@ def get_OS_menu():
             continue
         if command == "0":
             return
+								if command == "00":
+            from main import main_cycle
+            main_cycle()
+            return
         if command == "32" and se.read == 1:
             set_npc_as_target()
             break
@@ -521,6 +525,10 @@ def poit_of_entry(computer, prof):
         if command == "":
             print_error = False
         if command == "0":
+            return
+        if command == "00":
+            from main import main_cycle
+            main_cycle()
             return
         if command == "01":
             import se_applications
