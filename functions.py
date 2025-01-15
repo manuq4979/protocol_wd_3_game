@@ -99,6 +99,7 @@ def del_product_menu():
         del_product(tool_id)
         
 def time_zone_menu():
+    import time_localization_function
     while True:
         print("\n#######################################################\n")
         print("[ 1]: UTC.")
@@ -109,7 +110,7 @@ def time_zone_menu():
         number = input("> ")
         
         if number == "1":
-            
+            time_localization_function
             continue
         
 def get_menu_developer():
