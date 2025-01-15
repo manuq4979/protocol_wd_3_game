@@ -101,8 +101,16 @@ def del_product_menu():
 def time_zone_menu():
     while True:
         print("\n#######################################################\n")
-        print("Defualt")
+        print("[ 1]: UTC.")
+        print("[ 2]: Moscow.")
+        print("[ 0]: Выход.")
         print("\n#######################################################\n")
+        
+        number = input("> ")
+        
+        if number == "1":
+            continue
+        
 def get_menu_developer():
     while True:
         print("\n#######################################################\n")
