@@ -1,4 +1,4 @@
-import time_localization_function
+from time_localization_function import *
 from player_profile import *
 from person import *
 import os
