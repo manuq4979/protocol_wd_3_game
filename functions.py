@@ -169,6 +169,11 @@ def get_menu_developer():
         number = input("> ")
         print("\n" * 100) # очищаем экран консоли
         
+        if number == "00":
+            from main import main_cycle
+            main_cycle()
+            return
+        
         if number == "1":
             add_product()
             input("\033[32m{}".format("[INFO]: ")+"\033[0m{}".format("Нажмите <enter> чтобы продолжить..."))
@@ -253,6 +258,10 @@ def get_menu():
         print("\n" * 100) # очищаем экран консоли
         
         if number == "0":
+            return
+        if number == "00":
+            from main import main_cycle
+            main_cycle()
             return
         if number == "1":
             get_menu_DailyTask()
