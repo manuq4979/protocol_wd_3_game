@@ -105,6 +105,7 @@ def time_zone_menu():
     from time_localization_function import set_time_zone, MOSCOW, UTC, current_datetime, get_time_zone
     GREEN = "\033[32m{}"
     NOT_COLOR = "\033[0m{}"
+    print(get_time_zone())
     if get_time_zone() == MOSCOW:
         color2 = GREEN
         color1 = NOT_COLOR
