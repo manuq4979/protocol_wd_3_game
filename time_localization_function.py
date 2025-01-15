@@ -24,7 +24,6 @@ def get_time_zone():
 
 def current_datetime():
     current_datetime = datetime.now() + timedelta(hours=get_time_zone())
-    print("!!!! "+str(current_datetime))
     return current_datetime
     
 
