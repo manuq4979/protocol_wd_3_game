@@ -104,8 +104,9 @@ def del_product_menu():
 def time_zone_menu():
     from time_localization_function import set_time_zone, MOSCOW, UTC, current_datetime
     GREEN = "\033[32m{}"
+    NOT_COLOR = "\033[0m{}"
     color1 = GREEN
-    color2 = "\033[0m{}"
+    color2 = NOT_COLOR
     
     while True:
         print("\n#######################################################\n")
@@ -125,11 +126,13 @@ def time_zone_menu():
         if number == "1":
             set_time_zone(UTC)
             color1 = GREEN
+            color2 = NOT_COLOR
             continue
             
         if number == "2":
             set_time_zone(MOSCOW)
             color2 = GREEN
+            color1 = NOT_COLOR
             continue
         
 def get_menu_developer():
