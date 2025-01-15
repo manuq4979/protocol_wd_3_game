@@ -51,12 +51,12 @@ def get_title_and_description(task_class):
 def get_deadlines(task_class):
 
 	if task_class == DAILY or task_class == HABIT:
-		deadlines = current_datetime.date()
+		deadlines = current_datetime().date()
 		repeat_day = 1
 		# print(deadlines)
 		return [deadlines, repeat_day]
 	if task_class == SINGLE:
-		deadlines = current_datetime.date()
+		deadlines = current_datetime().date()
 		deadlines = deadlines + timedelta(days=1) # если оставить текущию дату, то окажется что выполнить нужно было ДО: СЕГОДНЯ.
 		# print(deadlines)
 		return deadlines
