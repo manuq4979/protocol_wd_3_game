@@ -1,6 +1,7 @@
 import os
 import os.path
 import rank_arts
+from time_localization_function import *
 
 
 
@@ -222,7 +223,6 @@ def read_reset_time_of_points_file():
 
 def check_reset_time_of_points():
     global reset_day
-    from time_localization_function import *
 
     current_date = current_datetime.date()
 
