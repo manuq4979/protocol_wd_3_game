@@ -14,7 +14,7 @@ def set_time_zone(new_time_zone: int):
 time_zone = 0
 if os.path.exists(time_zone_file_path):
     file = open(time_zone_file_path, "r", encoding='utf-8')
-    time_zone = file.read()
+    time_zone = int(file.read())
     file.close()
 else:
     set_time_zone(new_time_zone=MOSCOW)
