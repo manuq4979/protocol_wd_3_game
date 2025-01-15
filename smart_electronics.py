@@ -435,7 +435,7 @@ def get_OS_menu():
             continue
         if command == "0":
             return
-								if command == "00":
+        if command == "00":
             from main import main_cycle
             main_cycle()
             return
