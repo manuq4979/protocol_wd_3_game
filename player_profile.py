@@ -113,7 +113,7 @@ class Profile:
             print("\n")
     
     def save_to_history(self, history_line):
-        self.history.append(str(current_datetime)+"\n"+history_line)
+        self.history.append(str(current_datetime())+"\n"+history_line)
         # print("\033[32m{}".format("[info]:")+"\033[0m{}".format("Готово!\n\n"))
     
     # print history по сути:
