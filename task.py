@@ -778,6 +778,10 @@ def get_menu_task(title_menu, task_dict, add_task, del_task, habit_menu=False):
             continue
         if number == "0":
             return
+        if number == "00":
+            from main import main_cycle
+            main_cycle()
+            return
         
         print("\033[31m{}".format("[ERROR]: ")+"\033[0m{}".format("Выбран не существующий номер в этом меню!"))
 
