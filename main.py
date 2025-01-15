@@ -6,24 +6,24 @@ from hot_scripts.high_speed_task_creation import redirecting_input
 from hacker_person import print_hacker_npc, save_data_person, hacker_attack, use_reactivation, check_time_to_disable_camouflage, HACKER_NPC
 from currency2ETO import currency2ETO_menu, print_amount_on_account
 
-
-print("\n" * 100) # очищаем экран консоли
-menu_line = False # нужно чтобы не отображать два одинаковых разделительных принта:
-print("\n#######################################################\n")
-use_reactivation(HACKER_NPC.get_instance()) # метод восстановления сессий хакерских приложений, вызван тут потому что он должен быть запущен лишь при перезапуске приложения, а данный код только в этом случае срабатывает!
-
-
-PS1 = profile_wd.PS1
-help = ("1 - меню игры\n"+
-        "2 - сохранить и выйти\n"+
-        "3 - сохранить\n"+
-        "4 - создать NPC_ID\n"+
-        "5 - создать SE_ID\n"+
-        "6 - создать tool_id\n"+
-        "7 - текущий рейтинг\n"+
-        "8 - создать HACKER_ID\n"+
-        "9 - открыть меню финансов\n"+
-        "10 - открыть меню приложений.")
+def init_main_cycle():
+        print("\n" * 100) # очищаем экран консоли
+        menu_line = False # нужно чтобы не отображать два одинаковых разделительных принта:
+        print("\n#######################################################\n")
+        use_reactivation(HACKER_NPC.get_instance()) # метод восстановления сессий хакерских приложений, вызван тут потому что он должен быть запущен лишь при перезапуске приложения, а данный код только в этом случае срабатывает!
+        
+        
+        PS1 = profile_wd.PS1
+        help = ("1 - меню игры\n"+
+                "2 - сохранить и выйти\n"+
+                "3 - сохранить\n"+
+                "4 - создать NPC_ID\n"+
+                "5 - создать SE_ID\n"+
+                "6 - создать tool_id\n"+
+                "7 - текущий рейтинг\n"+
+                "8 - создать HACKER_ID\n"+
+                "9 - открыть меню финансов\n"+
+                "10 - открыть меню приложений.")
         
 def print_NPC():
     npc = NPC.get_instance()
@@ -34,6 +34,7 @@ def print_NPC():
         print("\n")
 
 def main_cycle():
+        init_main_cycle()
         while(True):
             functions.check_charge(prof="add_auto", only_check_charge=True) # модуль functions импортирует весь player_profile
             check_time_to_disable_camouflage() # из модуля hacker_apps, как правило используется на пользу противнику
