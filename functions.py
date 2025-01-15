@@ -76,6 +76,9 @@ def del_product_menu():
         
         if text == "0":
             break
+        
+        if text == "00":
+            pass
             
         if text == "all":
             del_all_items_of_store()
