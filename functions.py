@@ -99,12 +99,14 @@ def del_product_menu():
         del_product(tool_id)
         
 def time_zone_menu():
-    from time_localization_function import set_time_zone, MOSCOW, UTC
+    from time_localization_function import set_time_zone, MOSCOW, UTC, current_datetime
+    GREEN = "\033[32m{}"
+    color1 = GREEN
+    color2 = "\033[0m{}"
+    
     while True:
-        GREEN = "\033[32m{}"
-        color1 = "\033[0m{}"
-        color2 = "\033[0m{}"
         print("\n#######################################################\n")
+        print("\033[31m{}".format("> ")+"\033[31m{}".format(str(current_datetime())+"\n")
         print("[ 1]: " + color1.format("UTC.")+"\033[0m{}".format(""))
         print("[ 2]: " + color2.format("Moscow.") + "\033[0m{}".format(""))
         print("[ 0]: Выход.")
