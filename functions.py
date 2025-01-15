@@ -78,7 +78,9 @@ def del_product_menu():
             break
         
         if text == "00":
-            pass
+            from main import main_cycle
+            main_cycle()
+            return
             
         if text == "all":
             del_all_items_of_store()
@@ -127,6 +129,11 @@ def time_zone_menu():
 
         if number == "0":
             print("\n" * 100) # очищаем экран консоли
+            return
+        
+        if number == "00":
+            from main import main_cycle
+            main_cycle()
             return
         
         if number == "1":
