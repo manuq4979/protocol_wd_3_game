@@ -82,6 +82,10 @@ def buy_reload_tool(prof, buy):
         index = input("> ")
         if index == "0":
             return
+        if index == "00":
+            from main import main_cycle
+            main_cycle()
+            return
         if index == "2":
             print("\n" * 100) # очищаем экран консоли
             get_inventory()
@@ -327,6 +331,10 @@ def get_store():
         print("\n" * 100) # очищаем экран консоли
         
         if text == "0":
+            return
+        if text == "00":
+            from main import main_cycle
+            main_cycle()
             return
         if text == "3":
             get_inventory()
