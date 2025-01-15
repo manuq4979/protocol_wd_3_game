@@ -11,16 +11,19 @@ def set_time_zone(new_time_zone: int):
     file.write(str(new_time_zone))
     file.close()
 
-time_zone = 30
-if os.path.exists(time_zone_file_path):
-    file = open(time_zone_file_path, "r", encoding='utf-8')
-    time_zone = int(file.read())
-    file.close()
-else:
-    set_time_zone(new_time_zone=UTC)
+
+def get_time_zone():
+    if os.path.exists(time_zone_file_path):
+        file = open(time_zone_file_path, "r", encoding='utf-8')
+        time_zone = int(file.read())
+        file.close()
+        return time_zone
+    else:
+        set_time_zone(new_time_zone=UTC)
+        return UTC
 
 
-current_datetime = datetime.now() + timedelta(hours=time_zone)
+current_datetime = datetime.now() + timedelta(hours=get_time_zone())
 
     
 
