@@ -11,7 +11,7 @@ def set_time_zone(new_time_zone: int):
     file.write(str(new_time_zone))
     file.close()
 
-time_zone = None
+time_zone = 30
 if os.path.exists(time_zone_file_path):
     file = open(time_zone_file_path, "r", encoding='utf-8')
     time_zone = int(file.read())
