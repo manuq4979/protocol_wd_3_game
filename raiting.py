@@ -211,7 +211,7 @@ def read_reset_time_of_points_file():
     try:
         file = open("DataApp/reset_time_of_points.txt", "r", encoding='utf-8')
     except FileNotFoundError:
-        current_date = current_datetime.date()
+        current_date = current_datetime().date()
         reset_date   = current_date + timedelta(days=reset_day)
         create_reset_time_of_points_file(reset_date)
         file = open("DataApp/reset_time_of_points.txt", "r", encoding='utf-8')
@@ -223,7 +223,7 @@ def read_reset_time_of_points_file():
 def check_reset_time_of_points():
     global reset_day
 
-    current_date = current_datetime.date()
+    current_date = current_datetime().date()
 
     if os.path.exists("DataApp/reset_time_of_points.txt") == False:
         reset_date  = current_date + timedelta(days=reset_day)
@@ -243,7 +243,7 @@ def check_reset_time_of_points():
 def print_reset_point_counter():
     reset_date = read_reset_time_of_points_file()
     reset_date = datetime.strptime(reset_date, "%Y-%m-%d").date()
-    current_date = current_datetime.date()
+    current_date = current_datetime().date()
     str_date_line = reset_date - current_date
     if reset_date == current_date:
         str_date_line = "Дата сброса!"
