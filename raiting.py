@@ -325,6 +325,10 @@ def raiting_menu():
 
         if command == "0":
             return
+        if command == "00":
+            from main import main_cycle
+            main_cycle()
+            return
 
         if command == "1": 
             default_rank()
