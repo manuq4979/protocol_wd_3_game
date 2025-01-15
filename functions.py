@@ -109,6 +109,7 @@ def time_zone_menu():
         number = input("> ")
         
         if number == "1":
+            
             continue
         
 def get_menu_developer():
