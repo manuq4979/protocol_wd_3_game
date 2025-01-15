@@ -8,7 +8,7 @@ UTC = 0
 
 def set_time_zone(new_time_zone: int):
     file = open(time_zone_file_path, "w+", encoding='utf-8')
-    file.write(new_time_zone)
+    file.write(str(new_time_zone))
     file.close()
 
 time_zone = 0
