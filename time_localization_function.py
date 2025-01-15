@@ -22,9 +22,10 @@ def get_time_zone():
         set_time_zone(new_time_zone=UTC)
         return UTC
 
-
-current_datetime = datetime.now() + timedelta(hours=get_time_zone())
-print("!!!! "+str(current_datetime))
+def current_datetime():
+    current_datetime = datetime.now() + timedelta(hours=get_time_zone())
+    print("!!!! "+str(current_datetime))
+    return current_datetime
     
 
 
