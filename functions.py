@@ -101,23 +101,30 @@ def del_product_menu():
 def time_zone_menu():
     from time_localization_function import set_time_zone, MOSCOW, UTC
     while True:
+        GREEN = "\033[32m{}"
+        color1 = "\033[0m{}"
+        color2 = "\033[0m{}"
         print("\n#######################################################\n")
-        print("[ 1]: UTC.")
-        print("[ 2]: Moscow.")
+        print("[ 1]: " + color1.format("UTC.")+"\033[0m{}".format(""))
+        print("[ 2]: " + color2.format("Moscow.") + "\033[0m{}".format(""))
         print("[ 0]: Выход.")
         print("\n#######################################################\n")
         
         number = input("> ")
+        print("\n" * 100) # очищаем экран консоли
 
         if number == "0":
+            print("\n" * 100) # очищаем экран консоли
             return
         
         if number == "1":
             set_time_zone(UTC)
+            color1 = GREEN
             continue
             
         if number == "2":
             set_time_zone(MOSCOW)
+            color2 = GREEN
             continue
         
 def get_menu_developer():
